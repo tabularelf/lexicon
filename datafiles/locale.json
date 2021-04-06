@@ -1,0 +1,27 @@
+{
+	"English": {
+		"locale": ["en-US", "en-AU"],
+		"text": {
+			"text.test": "This is a test. %s This will work %s% of the time! %s"
+		}
+	},
+	"French": {
+		"locale": "fr-FR",
+		"text": {
+			"text.test": "Ceci est un test. %s Cela fonctionnera %s% du temps! %s"
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
