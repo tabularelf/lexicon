@@ -5,7 +5,7 @@ It supports the following:
 
 * Substring Replacement/s. (Replacing `%s` with `Hello World!`)
 * Adding/removing languages through built-in functionality.
-* Supports CSV/JSON parsing. (As well as functions to easily add more parsers)
+* Supports CSV/JSON parsing. (As well as functions to help easily add more parsers)
 
 Credits:
 
