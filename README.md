@@ -3,7 +3,7 @@
 Lexicon is a localization system focused around on simplifying implementation of adding translation to your GameMaker project!
 It supports the following:
 
-* Substring Replacement. (Replacing `%s` with `Hello World!`
+* Substring Replacement. (Replacing `%s` with `Hello World!`)
 * Adding/removing languages through built-in functionality.
 * Supports CSV/JSON parsing. (As well as functions to easily add more parsers)
 
