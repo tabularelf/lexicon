@@ -7,5 +7,5 @@ buffer_delete(_buff);
 
 var _buff = buffer_load("locale.csv");
 var _string = buffer_read(_buff,buffer_text);
-var _grid = parse_csv(_string);
+var _grid = lexicon_parse_csv(_string);
 buffer_delete(_buff);
