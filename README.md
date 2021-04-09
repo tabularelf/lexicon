@@ -8,6 +8,7 @@ It supports the following:
 * Supports CSV/JSON parsing. (As well as functions to easily add more parsers)
 
 Credits:
+
 Created by: TabularElf [https://linktr.ee/TabularElf]
 
 Code adapted from `csv_to_grid` by JujuAdams [https://github.com/jujuadams] for `lexicon_parse_csv`
