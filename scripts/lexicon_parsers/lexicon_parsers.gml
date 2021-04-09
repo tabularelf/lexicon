@@ -32,7 +32,9 @@ function lexicon_parse_json(_string) {
 /// @param [cell_delimiter]
 /// @param [string_delimiter]
 /// @param [mac_newline]
-// Juju made this so I can't take credit
+
+// Juju made the original script (csv_to_grid). This was merely adapted to be used as a parser. 
+// I cannot take full credit for this as a result.
 function lexicon_parse_csv(_buffer_grid, _is_buffer, _force_strings, _cell_delim, _string_delim, _mac_newline) {
 var _buff = undefined, _grid = undefined, _using_own_buffer = false;
 
