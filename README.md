@@ -5,7 +5,7 @@ It supports the following:
 
 * Substring Replacement.
 * Adding/removing languages through built-in functionality.
-* Supports CSV/JSON parsing.
+* Supports CSV/JSON parsing. (As well as functions to easily add more parsers)
 
 Created by: TabularElf [https://linktr.ee/TabularElf]
 
