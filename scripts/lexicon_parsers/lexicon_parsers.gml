@@ -25,7 +25,7 @@ function lexicon_parse_json(_string) {
 	return LEXICON_STRUCT.parse_json(_string);
 }
 
-/// @func parse_csv
+/// @func lexicon_parse_csv
 /// @param buffer_string_grid
 /// @param [is_buffer]
 /// @param [force_strings]
@@ -138,7 +138,7 @@ _mac_newline  =  is_undefined(_mac_newline) ? false : _mac_newline;
 	
 				//If the previous character is a string delimiter itself, add the string delimiter to the working string
 				if ( _prev_val == _string_delimiter_ord ) {
-					_str += _string_delimiter;
+					_str += _string_delimiter_ord;
 					continue;
 				}
 	
