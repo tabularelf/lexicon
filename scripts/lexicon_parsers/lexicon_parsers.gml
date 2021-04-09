@@ -33,7 +33,7 @@ function lexicon_parse_json(_string) {
 /// @param [string_delimiter]
 /// @param [mac_newline]
 // Juju made this so I can't take credit
-function parse_csv(_buffer_grid, _is_buffer, _force_strings, _cell_delim, _string_delim, _mac_newline) {
+function lexicon_parse_csv(_buffer_grid, _is_buffer, _force_strings, _cell_delim, _string_delim, _mac_newline) {
 var _buff = undefined, _grid = undefined, _using_own_buffer = false;
 
 // Get arguments
