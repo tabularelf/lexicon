@@ -87,7 +87,7 @@ _mac_newline  =  is_undefined(_mac_newline) ? false : _mac_newline;
 		var _bom_b = buffer_read( _buff, buffer_u8 );
 		var _bom_c = buffer_read( _buff, buffer_u8 );
 		if !( ( _bom_a == 239 ) and ( _bom_b == 187 ) and ( _bom_c == 191 ) ) {
-			show_debug_message( "CAUTION: csv_to_grid: " + _filename + ": CSV file might not be UTF-8 encoded (no BOM)" );
+			show_debug_message( "CAUTION: lexicon_parse_csv: " + _filename + ": CSV file might not be UTF-8 encoded (no BOM)" );
 			buffer_seek( _buff, buffer_seek_start, 0 );
 		} else {
 			_size -= 3;
