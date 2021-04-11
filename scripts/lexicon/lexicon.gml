@@ -1,6 +1,7 @@
 #macro LEXICON_STRUCT global.__lexicon_struct
 #macro LEXICON_VERSION "1.0.0"
 #macro LEXICON_CREDITS "TabularElf at https://github.com/tabularelf"
+#macro LEXICON_USE_ADVANCE_CACHE true
 
 // Setup Lexicon well before anything else
 LEXICON_STRUCT = undefined;
@@ -140,8 +141,10 @@ function lexicon_text(_text) {
 			// We'll check to see if it already exists in the cache before processing the string at hand.
 			if (argument_count > 1) {
 				var _cacheStr = _text;
-				for(var _i = 1; _i < argument_count; ++_i) {
-					_cacheStr += string(argument[_i]);
+				if (LEXICON_USE_ADVANCE_CACHE) {
+					for(var _i = 1; _i < argument_count; ++_i) {
+						_cacheStr += string(argument[_i]);
+					}
 				}
 				
 				if ds_map_exists(LEXICON_STRUCT.lang_cache, _cacheStr) {
