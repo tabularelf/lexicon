@@ -244,8 +244,8 @@ _mac_newline  =  is_undefined(_mac_newline) ? false : _mac_newline;
 	} 
 	
 	// Create Dummy variables
-	var _language = undefined;
-	var _locale = undefined;
+	var _language = "";
+	var _locale = "";
 
 	for(var _i = 0; _i < ds_grid_width(_grid); ++_i) {
 		var _entry = _grid[# _i, 0];
