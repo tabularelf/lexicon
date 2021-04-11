@@ -2,6 +2,7 @@
   "resources": [
     {"id":{"name":"obj_test","path":"objects/obj_test/obj_test.yy",},"order":0,},
     {"id":{"name":"lexicon_parsers","path":"scripts/lexicon_parsers/lexicon_parsers.yy",},"order":2,},
+    {"id":{"name":"lexicon_settings","path":"scripts/lexicon_settings/lexicon_settings.yy",},"order":3,},
     {"id":{"name":"lexicon","path":"scripts/lexicon/lexicon.yy",},"order":0,},
     {"id":{"name":"lexicon_language_locale","path":"scripts/lexicon_language_locale/lexicon_language_locale.yy",},"order":1,},
     {"id":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},"order":0,},

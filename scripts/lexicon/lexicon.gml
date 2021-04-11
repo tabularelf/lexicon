@@ -1,7 +1,6 @@
 #macro LEXICON_STRUCT global.__lexicon_struct
 #macro LEXICON_VERSION "1.0.0"
 #macro LEXICON_CREDITS "TabularElf at https://github.com/tabularelf"
-#macro LEXICON_USE_ADVANCE_CACHE true
 
 // Setup Lexicon well before anything else
 LEXICON_STRUCT = undefined;
@@ -120,6 +119,31 @@ function lexicon_init(_default_locale, _default_replace_chr) {
 
 // General Functions
 
+/// @func lexicon_handle_cache
+function lexicon_handle_cache() {
+	
+	// Keep track of frame
+	static _frame = 0;
+	
+	if (current_time == _frame) exit;
+	
+	with(LEXICON_STRUCT) {
+		var _length = ds_list_size(lang_cache_list);
+		for(var _i = 0; _i < _length; ++_i) {
+			var _ref = lang_cache_list[| _i];
+			if !weak_ref_alive(_ref.ref) {
+				ds_list_delete(lang_cache_list,_i);
+				ds_map_delete(lang_cache, _ref.cacheStr);
+				--_i;
+				--_length;
+				if (LEXICON_DEBUG_WARNINGS) show_debug_message(_ref.cacheStr + " has been removed!");
+			}
+		}
+	}
+	
+	_frame = current_time;
+}
+
 /// @func lexicon_text_array
 /// @param text
 /// @param array
@@ -136,26 +160,27 @@ function lexicon_text_array(_text, _array) {
 /// @param [substring]
 /// @param [...]
 function lexicon_text(_text) {
-			
+			// Auto GC
+			if (LEXICON_AUTO_GC) lexicon_handle_cache();
 			//if (_replchr == undefined) _replchr = "";
 			// We'll check to see if it already exists in the cache before processing the string at hand.
+			with(LEXICON_STRUCT) {
 			if (argument_count > 1) {
 				var _cacheStr = _text;
 				if (LEXICON_USE_ADVANCE_CACHE) {
 					for(var _i = 1; _i < argument_count; ++_i) {
 						_cacheStr += string(argument[_i]);
 					}
-				}
+				} 
 				
-				if ds_map_exists(LEXICON_STRUCT.lang_cache, _cacheStr) {
-					var _struct = LEXICON_STRUCT.lang_cache[? _cacheStr];
+				if ds_map_exists(lang_cache, _cacheStr) {
+					var _struct = lang_cache[? _cacheStr];
 					if is_struct(_struct) {
 						return _struct.text;
 					}
 				}
 			}
 			
-			with(LEXICON_STRUCT) {
 			var _replchr = lang_replace_chr;
 			// Correct for any potential errors
 			if (lang_map[$ lang_type] == undefined) {
@@ -171,14 +196,14 @@ function lexicon_text(_text) {
 			if (argument_count > 1) {
 				var _count = string_count(_replchr,_str);
 				for(var _i = 0; _i < _count; ++_i) {
-					if (_count > argument_count) break;
+					if (_i > argument_count-2) break;
 					var _arg = string(argument[_i+1]);
 					_str = string_replace(_str, _replchr, _arg);
 				}
 				
 				var _struct = {text: _str};
-				LEXICON_STRUCT.lang_cache[? _cacheStr] = _struct;
-				ds_list_add(LEXICON_STRUCT.lang_cache_list, weak_ref_create(_struct));
+				LEXICON_STRUCT.lang_cache[? _cacheStr] = _str;
+				ds_list_add(LEXICON_STRUCT.lang_cache_list, {cacheStr: _cacheStr, ref: weak_ref_create(_struct)});
 				//show_debug_message(LEXICON_STRUCT.lang_cache[? _cacheStr]);
 			}
 			}

@@ -1,0 +1,3 @@
+#macro LEXICON_USE_ADVANCE_CACHE true
+#macro LEXICON_AUTO_GC true
+#macro LEXICON_DEBUG_WARNINGS false
