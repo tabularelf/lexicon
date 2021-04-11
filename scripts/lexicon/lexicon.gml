@@ -18,6 +18,8 @@ function lexicon_init(_default_locale, _default_replace_chr) {
 		lang_type: os_get_language() + "-" + os_get_region(),
 		lang_replace_chr: "%s",
 		lang_async_list: ds_list_create(),
+		lang_cache: ds_map_create(),
+		lang_cache_list: ds_list_create(),
 
 		#region functions
 		parse_json: function(_data) {
@@ -117,6 +119,17 @@ function lexicon_init(_default_locale, _default_replace_chr) {
 
 // General Functions
 
+/// @func lexicon_text_array
+/// @param text
+/// @param array
+function lexicon_text_array(_text, _array) {
+	var _arrayCopy;
+	_arrayCopy[array_length(_array)-1] = 0;
+	array_copy(_arrayCopy,0,_array,0,array_length(_array));
+	array_insert(_arrayCopy,0,string(_text))
+	return script_execute_ext(lexicon_text,_arrayCopy);
+}
+
 /// @func lexicon_text
 /// @param text
 /// @param [substring]
@@ -124,6 +137,21 @@ function lexicon_init(_default_locale, _default_replace_chr) {
 function lexicon_text(_text) {
 			
 			//if (_replchr == undefined) _replchr = "";
+			// We'll check to see if it already exists in the cache before processing the string at hand.
+			if (argument_count > 1) {
+				var _cacheStr = _text;
+				for(var _i = 1; _i < argument_count; ++_i) {
+					_cacheStr += string(argument[_i]);
+				}
+				
+				if ds_map_exists(LEXICON_STRUCT.lang_cache, _cacheStr) {
+					var _struct = LEXICON_STRUCT.lang_cache[? _cacheStr];
+					if is_struct(_struct) {
+						return _struct.text;
+					}
+				}
+			}
+			
 			with(LEXICON_STRUCT) {
 			var _replchr = lang_replace_chr;
 			// Correct for any potential errors
@@ -140,11 +168,18 @@ function lexicon_text(_text) {
 			if (argument_count > 1) {
 				var _count = string_count(_replchr,_str);
 				for(var _i = 0; _i < _count; ++_i) {
+					if (_count > argument_count) break;
 					var _arg = string(argument[_i+1]);
 					_str = string_replace(_str, _replchr, _arg);
 				}
+				
+				var _struct = {text: _str};
+				LEXICON_STRUCT.lang_cache[? _cacheStr] = _struct;
+				ds_list_add(LEXICON_STRUCT.lang_cache_list, weak_ref_create(_struct));
+				//show_debug_message(LEXICON_STRUCT.lang_cache[? _cacheStr]);
 			}
 			}
+			
 			return _str;
 }
 
