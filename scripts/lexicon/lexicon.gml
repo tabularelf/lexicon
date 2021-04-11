@@ -124,8 +124,15 @@ function lexicon_handle_cache() {
 	
 	// Keep track of frame
 	static _frame = 0;
+	static _cFrame = 0;
 	
-	if (current_time == _frame) exit;
+	// Perform first check
+	if (_cFrame == current_time) exit;
+	
+	// Perform second check
+	_frame = ++_frame mod LEXICON_GC_NEXT_TICK;
+	if (_frame != 0) exit;
+
 	
 	with(LEXICON_STRUCT) {
 		var _length = ds_list_size(lang_cache_list);
@@ -141,7 +148,7 @@ function lexicon_handle_cache() {
 		}
 	}
 	
-	_frame = current_time;
+	_cFrame = current_time;
 }
 
 /// @func lexicon_text_array
@@ -161,7 +168,7 @@ function lexicon_text_array(_text, _array) {
 /// @param [...]
 function lexicon_text(_text) {
 			// Auto GC
-			if (LEXICON_AUTO_GC) lexicon_handle_cache();
+			if (LEXICON_AUTO_GC_CACHE) lexicon_handle_cache();
 			//if (_replchr == undefined) _replchr = "";
 			// We'll check to see if it already exists in the cache before processing the string at hand.
 			with(LEXICON_STRUCT) {
@@ -175,9 +182,7 @@ function lexicon_text(_text) {
 				
 				if ds_map_exists(lang_cache, _cacheStr) {
 					var _struct = lang_cache[? _cacheStr];
-					if is_struct(_struct) {
-						return _struct.text;
-					}
+						return _struct;
 				}
 			}
 			
