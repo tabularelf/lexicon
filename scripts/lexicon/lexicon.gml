@@ -119,6 +119,12 @@ function lexicon_init(_default_locale, _default_replace_chr) {
 
 // General Functions
 
+/// @funct lexicon_flush_cache
+function lexicon_flush_cache() {
+	ds_map_clear(LEXICON_STRUCT.lang_cache);
+	ds_list_clear(LEXICON_STRUCT.lang_cache_list);
+}
+
 /// @func lexicon_handle_cache
 function lexicon_handle_cache() {
 	
