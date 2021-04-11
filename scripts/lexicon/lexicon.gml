@@ -143,7 +143,7 @@ function lexicon_handle_cache() {
 				ds_map_delete(lang_cache, _ref.cacheStr);
 				--_i;
 				--_length;
-				if (LEXICON_DEBUG_WARNINGS) show_debug_message(_ref.cacheStr + " has been removed!");
+				if (LEXICON_DEBUG_WARNINGS) show_debug_message("Lexicon Debug Warning: " + _ref.cacheStr + " has been removed!");
 			}
 		}
 	}
@@ -172,17 +172,19 @@ function lexicon_text(_text) {
 			//if (_replchr == undefined) _replchr = "";
 			// We'll check to see if it already exists in the cache before processing the string at hand.
 			with(LEXICON_STRUCT) {
-			if (argument_count > 1) {
-				var _cacheStr = _text;
-				if (LEXICON_USE_ADVANCE_CACHE) {
-					for(var _i = 1; _i < argument_count; ++_i) {
-						_cacheStr += string(argument[_i]);
+			if (LEXICON_USE_CACHE) {
+				if (argument_count > 1) {
+					var _cacheStr = _text;
+					if (LEXICON_USE_ADVANCE_CACHE) {
+						for(var _i = 1; _i < argument_count; ++_i) {
+							_cacheStr += string(argument[_i]);
+						}
+					} 
+					
+					if ds_map_exists(lang_cache, _cacheStr) {
+						var _struct = lang_cache[? _cacheStr];
+							return _struct;
 					}
-				} 
-				
-				if ds_map_exists(lang_cache, _cacheStr) {
-					var _struct = lang_cache[? _cacheStr];
-						return _struct;
 				}
 			}
 			
@@ -199,18 +201,19 @@ function lexicon_text(_text) {
 			}
 			
 			if (argument_count > 1) {
-				var _count = string_count(_replchr,_str);
-				for(var _i = 0; _i < _count; ++_i) {
-					if (_i > argument_count-2) break;
-					var _arg = string(argument[_i+1]);
-					_str = string_replace(_str, _replchr, _arg);
+					var _count = string_count(_replchr,_str);
+					for(var _i = 0; _i < _count; ++_i) {
+						if (_i > argument_count-2) break;
+						var _arg = string(argument[_i+1]);
+						_str = string_replace(_str, _replchr, _arg);
+					}
+					
+					if (LEXICON_USE_CACHE) {
+						var _struct = {text: _str};
+						LEXICON_STRUCT.lang_cache[? _cacheStr] = _str;
+						ds_list_add(LEXICON_STRUCT.lang_cache_list, {cacheStr: _cacheStr, ref: weak_ref_create(_struct)});
+					}
 				}
-				
-				var _struct = {text: _str};
-				LEXICON_STRUCT.lang_cache[? _cacheStr] = _str;
-				ds_list_add(LEXICON_STRUCT.lang_cache_list, {cacheStr: _cacheStr, ref: weak_ref_create(_struct)});
-				//show_debug_message(LEXICON_STRUCT.lang_cache[? _cacheStr]);
-			}
 			}
 			
 			return _str;
