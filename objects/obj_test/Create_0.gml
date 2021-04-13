@@ -13,6 +13,7 @@ show_debug_overlay(true);
 
 array = [];
 var _i = 0;
-repeat(100) {
+repeat(1000) {
 	array[_i++] = _i;
 }
+text = lexicon_text_array("text.test",array);

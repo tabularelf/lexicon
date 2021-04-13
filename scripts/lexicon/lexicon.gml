@@ -129,27 +129,39 @@ function lexicon_flush_cache() {
 function lexicon_handle_cache() {
 	
 	// Keep track of frame
-	static _frame = 0;
-	static _cFrame = 0;
-	
-	// Perform first check
-	if (_cFrame == current_time) exit;
-	
-	// Perform second check
-	_frame = ++_frame mod LEXICON_GC_NEXT_TICK;
-	if (_frame != 0) exit;
+	if (LEXICON_USE_CACHE) {
+		static _frame = 0;
+		static _cFrame = 0;
+		
+		// Perform first check
+		if (_cFrame == current_time) exit;
+		
+		// Perform second check
+		_frame = ++_frame mod LEXICON_GC_NEXT_TICK;
+		if (_frame != 0) exit;
+	}
 
 	
 	with(LEXICON_STRUCT) {
 		var _length = ds_list_size(lang_cache_list);
 		for(var _i = 0; _i < _length; ++_i) {
+			var _deleteStruct = false;
 			var _ref = lang_cache_list[| _i];
 			if !weak_ref_alive(_ref.ref) {
+				_deleteStruct=  true;
+			}
+			if (current_time > lang_cache[? _ref.cacheStr].timeStamp+LEXICON_CACHE_TIMEOUT) {
+				_deleteStruct = true;	
+			}
+			
+			
+			if (_deleteStruct) {
 				ds_list_delete(lang_cache_list,_i);
+				delete lang_cache[? _ref.cacheStr];
 				ds_map_delete(lang_cache, _ref.cacheStr);
 				--_i;
 				--_length;
-				if (LEXICON_DEBUG_WARNINGS) show_debug_message("Lexicon Debug Warning: " + _ref.cacheStr + " has been removed!");
+				if (LEXICON_DEBUG_WARNINGS) show_debug_message("Lexicon Debug Warning: " + _ref.cacheStr + " has been removed!");	
 			}
 		}
 	}
@@ -173,27 +185,32 @@ function lexicon_text_array(_text, _array) {
 /// @param [substring]
 /// @param [...]
 function lexicon_text(_text) {
+			
+			// Text Cache Function
+			static _lexiconCacheText = function(_text, _cacheStr) constructor {
+				static memStr = "";
+				str = _text;
+				//memStr = _text;
+				cacheStr = _cacheStr
+				timeStamp = current_time;
+				
+				static toString = function() {
+					/*if (LEXICON_USE_CACHE) {
+						lexicon_handle_cache();	
+					}*/
+					timeStamp = current_time;
+					return str;	
+				}
+			}
+	
 			// Auto GC
 			if (LEXICON_AUTO_GC_CACHE) lexicon_handle_cache();
 			//if (_replchr == undefined) _replchr = "";
 			// We'll check to see if it already exists in the cache before processing the string at hand.
 			with(LEXICON_STRUCT) {
-			if (LEXICON_USE_CACHE) {
-				if (argument_count > 1) {
-					var _cacheStr = _text;
-					if (LEXICON_USE_ADVANCE_CACHE) {
-						for(var _i = 1; _i < argument_count; ++_i) {
-							_cacheStr += string(argument[_i]);
-						}
-					} 
-					
-					if ds_map_exists(lang_cache, _cacheStr) {
-						var _struct = lang_cache[? _cacheStr];
-							return _struct;
-					}
-				}
-			}
 			
+			// Failsafe before everything else!
+					
 			var _replchr = lang_replace_chr;
 			// Correct for any potential errors
 			if (lang_map[$ lang_type] == undefined) {
@@ -205,6 +222,34 @@ function lexicon_text(_text) {
 			if (_str == undefined) {
 				return _text;	
 			}
+				
+			if (LEXICON_USE_CACHE) {
+				if (argument_count > 1) {
+					var _cacheStr = sha1_string_utf8(lang_type+"."+_text);
+					if (LEXICON_USE_ADVANCE_CACHE) {
+						var _args = array_create(argument_count);
+						for(var _i = 1; _i < argument_count; ++_i) {_args[_i-1] = argument[_i];}
+							_cacheStr += sha1_string_utf8(string(_args));
+					} 
+					
+					if ds_map_exists(lang_cache, _cacheStr) {
+						var _struct = lang_cache[? _cacheStr];
+						if _struct.cacheStr == _cacheStr {								
+							// Update timestamp
+							/*if (_struct.str != _struct.memStr) {
+								if (_struct.cacheStr != _cacheStr) {
+									// Recache
+									var _newStruct = new _lexiconCacheText(_str, _cacheStr);
+									delete _struct;
+									ds_map_delete(_cacheStr
+								}
+							}*/
+							_struct.lastUsed = current_time;
+							return _struct.str;
+						}
+					}
+				}
+			}
 			
 			if (argument_count > 1) {
 					var _count = string_count(_replchr,_str);
@@ -215,9 +260,10 @@ function lexicon_text(_text) {
 					}
 					
 					if (LEXICON_USE_CACHE) {
-						var _struct = {text: _str};
-						LEXICON_STRUCT.lang_cache[? _cacheStr] = _str;
+						var _struct = new _lexiconCacheText(_str, _cacheStr);
+						LEXICON_STRUCT.lang_cache[? _cacheStr] = _struct;
 						ds_list_add(LEXICON_STRUCT.lang_cache_list, {cacheStr: _cacheStr, ref: weak_ref_create(_struct)});
+						//return _struct;
 					}
 				}
 			}
