@@ -185,7 +185,8 @@ function lexicon_text_array(_text, _array) {
 /// @param [substring]
 /// @param [...]
 function lexicon_text(_text) {
-			
+			gml_pragma("forceinline");
+	
 			// Text Cache Function
 			static _lexiconCacheText = function(_text, _cacheStr) constructor {
 				static memStr = "";
@@ -198,13 +199,13 @@ function lexicon_text(_text) {
 					/*if (LEXICON_USE_CACHE) {
 						lexicon_handle_cache();	
 					}*/
-					timeStamp = current_time;
+					//timeStamp = current_time;
 					return str;	
 				}
 			}
 	
 			// Auto GC
-			if (LEXICON_AUTO_GC_CACHE) lexicon_handle_cache();
+			if (LEXICON_USE_CACHE && LEXICON_AUTO_GC_CACHE) lexicon_handle_cache();
 			//if (_replchr == undefined) _replchr = "";
 			// We'll check to see if it already exists in the cache before processing the string at hand.
 			with(LEXICON_STRUCT) {
@@ -216,19 +217,24 @@ function lexicon_text(_text) {
 			if (lang_map[$ lang_type] == undefined) {
 				return lang_type + "." + _text;	
 			}
-			
+
 			// Check to see if text exists
 			var _str = lang_map[$ lang_type][$ "text"][$ _text];
 			if (_str == undefined) {
 				return _text;	
 			}
-				
+			
+			// Check against Cache
 			if (LEXICON_USE_CACHE) {
 				if (argument_count > 1) {
 					var _cacheStr = sha1_string_utf8(lang_type+"."+_text);
 					if (LEXICON_USE_ADVANCE_CACHE) {
-						var _args = array_create(argument_count);
-						for(var _i = 1; _i < argument_count; ++_i) {_args[_i-1] = argument[_i];}
+						var _count = string_count(_replchr,_str);
+						var _args = array_create(_count);
+						for(var _i = 1; _i < _count; ++_i) {
+							if (_i > argument_count) break;
+							_args[_i-1] = argument[_i-1];
+						}
 							_cacheStr += sha1_string_utf8(string(_args));
 					} 
 					
@@ -244,7 +250,7 @@ function lexicon_text(_text) {
 									ds_map_delete(_cacheStr
 								}
 							}*/
-							_struct.lastUsed = current_time;
+							_struct.timeStamp = current_time;
 							return _struct.str;
 						}
 					}
@@ -255,7 +261,7 @@ function lexicon_text(_text) {
 					var _count = string_count(_replchr,_str);
 					for(var _i = 0; _i < _count; ++_i) {
 						if (_i > argument_count-2) break;
-						var _arg = string(argument[_i+1]);
+						var _arg = argument[_i+1];
 						_str = string_replace(_str, _replchr, _arg);
 					}
 					
