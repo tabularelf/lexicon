@@ -23,50 +23,50 @@ function lexicon_init(_default_locale, _default_replace_chr) {
 
 		#region functions
 		parse_json: function(_data) {
-			
+
 			if buffer_exists(_data) {
 				var _json = buffer_read(_data, buffer_string);
 			} else if is_string(_data) {
-				var _json = _data;	
+				var _json = _data;
 			}
-			
+
 			var _map = json_parse(_json);
 			var _status = -1;
 			if (_map != -1) {
 				_status = _map;
-				
+
 				// Get Languages
 				var _languages = variable_struct_get_names(_map);
-				
+
 				for(var _j = 0; _j < array_length(_languages); ++_j) {
 					// Get Lang type
 					var _lang_type = _map[$ _languages[_j]][$ "locale"];
-					
-					// Create Language struct 
+
+					// Create Language struct
 					var _langStruct = {};
-					// Loop text entries 
+					// Loop text entries
 					var _textStructPtr = _map[$ _languages[_j]][$ "text"];
 					var _textArray = variable_struct_get_names(_textStructPtr);
 					var _textStruct = {};
 					for(var _k = 0; _k < array_length(_textArray); ++_k) {
 						_textStruct[$ _textArray[_k]] = _textStructPtr[$ _textArray[_k]];
 					}
-					
+
 					_langStruct.text = _textStruct;
 					_langStruct.language = _languages[_j];
 					_langStruct.locale = _lang_type;
-					
+
 					if (is_array(_lang_type)) {
 						for(var _i = 0; _i < array_length(_lang_type); ++_i) {
-							lang_map[$ _lang_type[_i]] = _langStruct;	
+							lang_map[$ _lang_type[_i]] = _langStruct;
 						}
 					} else {
-						lang_map[$ _lang_type] = _langStruct;		
-					}	
+						lang_map[$ _lang_type] = _langStruct;
+					}
 				}
 			} else {
 				show_debug_message("Error! Language JSON invalid!");
-			}	
+			}
 			return _status;
 		},
 		add: function(_file) {
@@ -91,7 +91,7 @@ function lexicon_init(_default_locale, _default_replace_chr) {
 						var _str = buffer_read(_info[1],buffer_text);
 						parse_json(_str);
 					} else {
-						show_debug_message("Lexicon Error! File not loaded!");	
+						show_debug_message("Lexicon Error! File not loaded!");
 					}
 					// Clean up
 					buffer_delete(_info[1]);
@@ -105,14 +105,14 @@ function lexicon_init(_default_locale, _default_replace_chr) {
 			}
 		},
 		language_exists: function() {
-				
+
 		}
 		#endregion
 	}
 
 	if (_default_locale != undefined) {lexicon_set_locale(_default_locale);}
 	if(_default_replace_chr != undefined) {lexicon_set_replace_chr(_default_replace_chr);}
-	
+
 	show_debug_message("Lexicon " + LEXICON_VERSION + " initialized!");
 	show_debug_message("Created by " + LEXICON_CREDITS);
 }
@@ -127,21 +127,21 @@ function lexicon_flush_cache() {
 
 /// @func __lexicon_handle_cache
 function __lexicon_handle_cache() {
-	
+
 	// Keep track of frame
 	if (LEXICON_USE_CACHE) {
 		static _frame = 0;
 		static _cFrame = 0;
-		
+
 		// Perform first check
 		if (_cFrame >= current_time) exit;
-		
+
 		// Perform second check
 		_frame = ++_frame mod LEXICON_GC_NEXT_TICK;
 		if (_frame != 0) exit;
 	}
 
-	
+
 	with(LEXICON_STRUCT) {
 		var _length = ds_list_size(lang_cache_list);
 		for(var _i = 0; _i < _length; ++_i) {
@@ -151,21 +151,21 @@ function __lexicon_handle_cache() {
 				_deleteStruct=  true;
 			}
 			if (current_time > lang_cache[? _ref.cacheStr].timeStamp+LEXICON_CACHE_TIMEOUT) {
-				_deleteStruct = true;	
+				_deleteStruct = true;
 			}
-			
-			
+
+
 			if (_deleteStruct) {
 				ds_list_delete(lang_cache_list,_i);
 				delete lang_cache[? _ref.cacheStr];
 				ds_map_delete(lang_cache, _ref.cacheStr);
 				--_i;
 				--_length;
-				if (LEXICON_DEBUG_WARNINGS) show_debug_message("Lexicon Debug Warning: " + _ref.cacheStr + " has been removed!");	
+				if (LEXICON_DEBUG_WARNINGS) show_debug_message("Lexicon Debug Warning: " + _ref.cacheStr + " has been removed!");
 			}
 		}
 	}
-	
+
 	_cFrame = current_time+1000;
 }
 
@@ -173,7 +173,7 @@ function __lexicon_handle_cache() {
 /// @param text
 /// @param struct
 function lexicon_text_struct(_text, _struct) {
-	
+
 	// Text Cache Function
 		static _lexiconCacheText = function(_text, _cacheStr) constructor {
 			static memStr = "";
@@ -181,35 +181,35 @@ function lexicon_text_struct(_text, _struct) {
 			//memStr = _text;
 			cacheStr = _cacheStr;
 			timeStamp = current_time;
-			
+
 			static toString = function() {
 				/*if (LEXICON_USE_CACHE) {
-					lexicon_handle_cache();	
+					lexicon_handle_cache();
 				}*/
 				timeStamp = current_time;
-				return str;	
+				return str;
 			}
 		}
-		
+
 		// Auto GC
 		if (LEXICON_USE_CACHE && LEXICON_AUTO_GC_CACHE) __lexicon_handle_cache();
-	
+
 	with(LEXICON_STRUCT) {
-		
+
 		// Failsafe before everything else!
-				
+
 		var _replchr = lang_replace_chr;
 		// Correct for any potential errors
 		if (lang_map[$ lang_type] == undefined) {
-			return lang_type + "." + _text;	
+			return lang_type + "." + _text;
 		}
 
 		// Check to see if text exists
 		var _str = lang_map[$ lang_type][$ "text"][$ _text];
 		if (_str == undefined) {
-			return _text;	
+			return _text;
 		}
-		
+
 		#region Cache
 		// Check against Cache
 			if (LEXICON_USE_CACHE) {
@@ -217,18 +217,18 @@ function lexicon_text_struct(_text, _struct) {
 					var _cacheStr = sha1_string_utf8(lang_type+"."+_text);
 					if (LEXICON_USE_ADVANCE_CACHE) {
 							_cacheStr += sha1_string_utf8(string(_struct));
-					} 
-					
+					}
+
 					if ds_map_exists(lang_cache, _cacheStr) {
 						var _structCache = lang_cache[? _cacheStr];
-						if _structCache.cacheStr == _cacheStr {								
+						if _structCache.cacheStr == _cacheStr {
 							_structCache.timeStamp = current_time;
 							return _structCache.str;
 						}
 					}
 			}
 		#endregion
-		
+
 		// Lets loop through struct-based stuff
 		var _count = string_count("{{", _str) + string_count("}}", _str);
 		for(var _i = 0; _i < _count; ++_i) {
@@ -242,16 +242,16 @@ function lexicon_text_struct(_text, _struct) {
 				}
 			}
 		}
-		
+
 	}
-	
+
 	if (LEXICON_USE_CACHE) {
 		var _structEntry = new _lexiconCacheText(_str, _cacheStr);
 		LEXICON_STRUCT.lang_cache[? _cacheStr] = _structEntry;
 		ds_list_add(LEXICON_STRUCT.lang_cache_list, {cacheStr: _cacheStr, ref: weak_ref_create(_structEntry)});
 		//return _struct;
 	}
-	
+
 	return _str;
 }
 
@@ -273,7 +273,7 @@ function lexicon_text_array(_text, _array) {
 /// @param [...]
 function lexicon_text(_text) {
 			gml_pragma("forceinline");
-	
+
 			// Text Cache Function
 			static _lexiconCacheText = function(_text, _cacheStr) constructor {
 				static memStr = "";
@@ -281,36 +281,36 @@ function lexicon_text(_text) {
 				//memStr = _text;
 				cacheStr = _cacheStr;
 				timeStamp = current_time;
-				
+
 				static toString = function() {
 					/*if (LEXICON_USE_CACHE) {
-						lexicon_handle_cache();	
+						lexicon_handle_cache();
 					}*/
 					timeStamp = current_time;
-					return str;	
+					return str;
 				}
 			}
-	
+
 			// Auto GC
 			if (LEXICON_USE_CACHE && LEXICON_AUTO_GC_CACHE) __lexicon_handle_cache();
 			//if (_replchr == undefined) _replchr = "";
 			// We'll check to see if it already exists in the cache before processing the string at hand.
 			with(LEXICON_STRUCT) {
-			
+
 			// Failsafe before everything else!
-					
+
 			var _replchr = lang_replace_chr;
 			// Correct for any potential errors
 			if (lang_map[$ lang_type] == undefined) {
-				return lang_type + "." + _text;	
+				return lang_type + "." + _text;
 			}
 
 			// Check to see if text exists
 			var _str = lang_map[$ lang_type][$ "text"][$ _text];
 			if (_str == undefined) {
-				return _text;	
+				return _text;
 			}
-			
+
 			// Check against Cache
 			if (LEXICON_USE_CACHE) {
 				if (argument_count-1 >= LEXICON_CACHE_THRESHOLD) {
@@ -324,11 +324,11 @@ function lexicon_text(_text) {
 							_args[_i-1] = argument[_i-1];
 						}
 							_cacheStr += sha1_string_utf8(string(_args));
-					} 
-					
+					}
+
 					if ds_map_exists(lang_cache, _cacheStr) {
 						var _struct = lang_cache[? _cacheStr];
-						if _struct.cacheStr == _cacheStr {								
+						if _struct.cacheStr == _cacheStr {
 							// Update timestamp
 							/*if (_struct.str != _struct.memStr) {
 								if (_struct.cacheStr != _cacheStr) {
@@ -344,7 +344,7 @@ function lexicon_text(_text) {
 					}
 				}
 			}
-			
+
 			if (argument_count > 1) {
 					var _count = string_count(_replchr,_str);
 					for(var _i = 0; _i < _count; ++_i) {
@@ -352,7 +352,7 @@ function lexicon_text(_text) {
 						var _arg = argument[_i+1];
 						_str = string_replace(_str, _replchr, _arg);
 					}
-					
+
 					if (LEXICON_USE_CACHE) && (argument_count-1 >= LEXICON_CACHE_THRESHOLD) {
 						var _struct = new _lexiconCacheText(_str, _cacheStr);
 						LEXICON_STRUCT.lang_cache[? _cacheStr] = _struct;
@@ -361,19 +361,19 @@ function lexicon_text(_text) {
 					}
 				}
 			}
-			
+
 			return _str;
 }
 
 /// @func lexicon_set_replace_chr
 /// @arg string
 function lexicon_set_replace_chr(_chr) {
-	LEXICON_STRUCT.lang_replace_chr = _chr;	
+	LEXICON_STRUCT.lang_replace_chr = _chr;
 }
 
 /// @func lexicon_get_replace_chr
 function lexicon_get_replace_chr() {
-	return LEXICON_STRUCT.lang_replace_chr;	
+	return LEXICON_STRUCT.lang_replace_chr;
 }
 
 /// @func lexicon_add_entry
@@ -381,13 +381,12 @@ function lexicon_get_replace_chr() {
 /// @param text_pointer
 /// @param string
 function lexicon_add_entry(_locale, _text_name, _text) {
-	LEXICON_STRUCT.lang_map[$ _locale][$ "text"][$ _text_name] = _text;	
+	LEXICON_STRUCT.lang_map[$ _locale][$ "text"][$ _text_name] = _text;
 }
 
 /// @func lexicon_remove_entry
 /// @param locale
 /// @param text_pointer
 function lexicon_remove_entry(_locale, _text_name) {
-	variable_struct_remove(LEXICON_STRUCT.lang_map[$ _locale], _text_name);	
+	variable_struct_remove(LEXICON_STRUCT.lang_map[$ _locale], _text_name);
 }
-
