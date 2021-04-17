@@ -250,7 +250,7 @@ _mac_newline  =  is_undefined(_mac_newline) ? false : _mac_newline;
 	for(var _i = 0; _i < ds_grid_width(_grid); ++_i) {
 		var _entry = _grid[# _i, 0];
 		if (_entry == "Comments" || _entry == "Language") continue;
-		for(var _j = 0; _j < ds_grid_height(_grid)-1; ++_j) {
+		for(var _j = 0; _j < ds_grid_height(_grid); ++_j) {
 			switch(_grid[# 0, _j]) {
 			case "Language":
 				_language = _grid[# _i, _j];
