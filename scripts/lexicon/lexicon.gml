@@ -214,9 +214,9 @@ function lexicon_text_struct(_text, _struct) {
 		// Check against Cache
 			if (LEXICON_USE_CACHE) {
 				var _keys = variable_struct_get_names(_struct);
-					var _cacheStr = sha1_string_utf8(lang_type+"."+_text);
+					var _cacheStr = sha1_string_unicode(lang_type+"."+_text);
 					if (LEXICON_USE_ADVANCE_CACHE) {
-							_cacheStr += sha1_string_utf8(string(_struct));
+							_cacheStr += sha1_string_unicode(string(_struct));
 					}
 
 					if ds_map_exists(lang_cache, _cacheStr) {
@@ -310,11 +310,12 @@ function lexicon_text(_text) {
 			if (_str == undefined) {
 				return _text;
 			}
-
+			
+			#region Cache
 			// Check against Cache
 			if (LEXICON_USE_CACHE) {
 				if (argument_count-1 >= LEXICON_CACHE_THRESHOLD) {
-					var _cacheStr = sha1_string_utf8(lang_type+"."+_text);
+					var _cacheStr = sha1_string_unicode(lang_type+"."+_text);
 					if (LEXICON_USE_ADVANCE_CACHE) {
 						// Normable substring replacement loop
 						var _count = string_count(_replchr,_str);
@@ -323,7 +324,7 @@ function lexicon_text(_text) {
 							if (_i > argument_count) break;
 							_args[_i-1] = argument[_i-1];
 						}
-							_cacheStr += sha1_string_utf8(string(_args));
+							_cacheStr += sha1_string_unicode(string(_args));
 					}
 
 					if ds_map_exists(lang_cache, _cacheStr) {
@@ -344,6 +345,7 @@ function lexicon_text(_text) {
 					}
 				}
 			}
+			#endregion
 
 			if (argument_count > 1) {
 					var _count = string_count(_replchr,_str);
