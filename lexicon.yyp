@@ -43,7 +43,6 @@
   ],
   "IncludedFiles": [
     {"CopyToMask":153157610357391598,"filePath":"datafiles","resourceVersion":"1.0","name":"locale.json","resourceType":"GMIncludedFile",},
-    {"CopyToMask":153157610357391598,"filePath":"datafiles","resourceVersion":"1.0","name":"locale.~csv","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"locale.csv","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
