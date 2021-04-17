@@ -140,6 +140,7 @@ function lexicon_text(_text) {
 			if (argument_count > 1) {
 				var _count = string_count(_replchr,_str);
 				for(var _i = 0; _i < _count; ++_i) {
+					if (_i > argument_count-2) break;
 					var _arg = string(argument[_i+1]);
 					_str = string_replace(_str, _replchr, _arg);
 				}

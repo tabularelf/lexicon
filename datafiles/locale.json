@@ -2,26 +2,19 @@
 	"English": {
 		"locale": ["en-US", "en-AU"],
 		"text": {
-			"text.test": "This is a test. %s This will work %s% of the time! %s"
+			"text.test": "I love you %s more since you used Lexicon. %s - %s. Thank you !"
 		}
 	},
 	"French": {
 		"locale": "fr-FR",
 		"text": {
-			"text.test": "Ceci est un test. %s Cela fonctionnera %s% du temps! %s"
+			"text.test": "Je vous aime %s plus depuis que vous utilisez Lexicon. %s - le %s. Merci !"
 		}
-	}
+	},
+	"Japanese": {
+		"locale": "ja-JP",
+		"text": {
+			"text.test": "君が「lexicon」を使ってる前より%s回好きです。%s - %s。ありがとうございます !"
+		}
+	},
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
