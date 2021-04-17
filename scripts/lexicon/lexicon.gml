@@ -125,8 +125,8 @@ function lexicon_flush_cache() {
 	ds_list_clear(LEXICON_STRUCT.lang_cache_list);
 }
 
-/// @func lexicon_handle_cache
-function lexicon_handle_cache() {
+/// @func __lexicon_handle_cache
+function __lexicon_handle_cache() {
 	
 	// Keep track of frame
 	if (LEXICON_USE_CACHE) {
@@ -134,7 +134,7 @@ function lexicon_handle_cache() {
 		static _cFrame = 0;
 		
 		// Perform first check
-		if (_cFrame == current_time) exit;
+		if (_cFrame >= current_time) exit;
 		
 		// Perform second check
 		_frame = ++_frame mod LEXICON_GC_NEXT_TICK;
@@ -166,7 +166,93 @@ function lexicon_handle_cache() {
 		}
 	}
 	
-	_cFrame = current_time;
+	_cFrame = current_time+1000;
+}
+
+/// @func lexicon_text_struct
+/// @param text
+/// @param struct
+function lexicon_text_struct(_text, _struct) {
+	
+	// Text Cache Function
+		static _lexiconCacheText = function(_text, _cacheStr) constructor {
+			static memStr = "";
+			str = _text;
+			//memStr = _text;
+			cacheStr = _cacheStr;
+			timeStamp = current_time;
+			
+			static toString = function() {
+				/*if (LEXICON_USE_CACHE) {
+					lexicon_handle_cache();	
+				}*/
+				timeStamp = current_time;
+				return str;	
+			}
+		}
+		
+		// Auto GC
+		if (LEXICON_USE_CACHE && LEXICON_AUTO_GC_CACHE) __lexicon_handle_cache();
+	
+	with(LEXICON_STRUCT) {
+		
+		// Failsafe before everything else!
+				
+		var _replchr = lang_replace_chr;
+		// Correct for any potential errors
+		if (lang_map[$ lang_type] == undefined) {
+			return lang_type + "." + _text;	
+		}
+
+		// Check to see if text exists
+		var _str = lang_map[$ lang_type][$ "text"][$ _text];
+		if (_str == undefined) {
+			return _text;	
+		}
+		
+		#region Cache
+		// Check against Cache
+			if (LEXICON_USE_CACHE) {
+				var _keys = variable_struct_get_names(_struct);
+					var _cacheStr = sha1_string_utf8(lang_type+"."+_text);
+					if (LEXICON_USE_ADVANCE_CACHE) {
+							_cacheStr += sha1_string_utf8(string(_struct));
+					} 
+					
+					if ds_map_exists(lang_cache, _cacheStr) {
+						var _structCache = lang_cache[? _cacheStr];
+						if _structCache.cacheStr == _cacheStr {								
+							_structCache.timeStamp = current_time;
+							return _structCache.str;
+						}
+					}
+			}
+		#endregion
+		
+		// Lets loop through struct-based stuff
+		var _count = string_count("{{", _str) + string_count("}}", _str);
+		for(var _i = 0; _i < _count; ++_i) {
+			if (_i > argument_count-2) break;
+			var _arg = argument[_i+1];
+			if is_struct(_arg) {
+				var _keys = variable_struct_get_names(_arg);
+				var _lastPos = 1;
+				for(var _ii = 0; _ii < array_length(_keys); ++_ii) {
+					_str = string_replace_all(_str,"{{" + _keys[_ii] + "}}", _arg[$ _keys[_ii]]);
+				}
+			}
+		}
+		
+	}
+	
+	if (LEXICON_USE_CACHE) {
+		var _structEntry = new _lexiconCacheText(_str, _cacheStr);
+		LEXICON_STRUCT.lang_cache[? _cacheStr] = _structEntry;
+		ds_list_add(LEXICON_STRUCT.lang_cache_list, {cacheStr: _cacheStr, ref: weak_ref_create(_structEntry)});
+		//return _struct;
+	}
+	
+	return _str;
 }
 
 /// @func lexicon_text_array
@@ -177,7 +263,8 @@ function lexicon_text_array(_text, _array) {
 	_arrayCopy[array_length(_array)-1] = 0;
 	array_copy(_arrayCopy,0,_array,0,array_length(_array));
 	array_insert(_arrayCopy,0,string(_text))
-	return script_execute_ext(lexicon_text,_arrayCopy);
+	var _value = script_execute_ext(lexicon_text,_arrayCopy);
+	return _value;
 }
 
 /// @func lexicon_text
@@ -192,20 +279,20 @@ function lexicon_text(_text) {
 				static memStr = "";
 				str = _text;
 				//memStr = _text;
-				cacheStr = _cacheStr
+				cacheStr = _cacheStr;
 				timeStamp = current_time;
 				
 				static toString = function() {
 					/*if (LEXICON_USE_CACHE) {
 						lexicon_handle_cache();	
 					}*/
-					//timeStamp = current_time;
+					timeStamp = current_time;
 					return str;	
 				}
 			}
 	
 			// Auto GC
-			if (LEXICON_USE_CACHE && LEXICON_AUTO_GC_CACHE) lexicon_handle_cache();
+			if (LEXICON_USE_CACHE && LEXICON_AUTO_GC_CACHE) __lexicon_handle_cache();
 			//if (_replchr == undefined) _replchr = "";
 			// We'll check to see if it already exists in the cache before processing the string at hand.
 			with(LEXICON_STRUCT) {
@@ -226,9 +313,10 @@ function lexicon_text(_text) {
 			
 			// Check against Cache
 			if (LEXICON_USE_CACHE) {
-				if (argument_count > 1) {
+				if (argument_count-1 >= LEXICON_CACHE_THRESHOLD) {
 					var _cacheStr = sha1_string_utf8(lang_type+"."+_text);
 					if (LEXICON_USE_ADVANCE_CACHE) {
+						// Normable substring replacement loop
 						var _count = string_count(_replchr,_str);
 						var _args = array_create(_count);
 						for(var _i = 1; _i < _count; ++_i) {
@@ -265,7 +353,7 @@ function lexicon_text(_text) {
 						_str = string_replace(_str, _replchr, _arg);
 					}
 					
-					if (LEXICON_USE_CACHE) {
+					if (LEXICON_USE_CACHE) && (argument_count-1 >= LEXICON_CACHE_THRESHOLD) {
 						var _struct = new _lexiconCacheText(_str, _cacheStr);
 						LEXICON_STRUCT.lang_cache[? _cacheStr] = _struct;
 						ds_list_add(LEXICON_STRUCT.lang_cache_list, {cacheStr: _cacheStr, ref: weak_ref_create(_struct)});

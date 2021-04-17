@@ -9,11 +9,12 @@ var _buff = buffer_load("locale.csv");
 var _string = buffer_read(_buff,buffer_text);
 lexicon_parse_csv(_string);
 buffer_delete(_buff);
-show_debug_overlay(true);
 
-array = [];
+array[1000] = 0;
 var _i = 0;
-repeat(3000) {
+repeat(1000) {
 	array[_i++] = _i;
 }
-//text = lexicon_text_array("text.test",array);
+text = lexicon_text_array("text.test",array);
+lexicon_add_entry("en-US", "text.test2", "This is a test with my name : {{playerName}}, and my level {{level}}.");
+struct = {playerName: "TestSubject", level: current_time};
