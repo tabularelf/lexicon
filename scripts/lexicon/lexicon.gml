@@ -310,7 +310,7 @@ function lexicon_text(_text) {
 			if (_str == undefined) {
 				return _text;
 			}
-			
+
 			#region Cache
 			// Check against Cache
 			if (LEXICON_USE_CACHE) {

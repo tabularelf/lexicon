@@ -1,3 +1,3 @@
-﻿Language,English,Comments,French
-Locale,en-US,,fr-FR
-text.test,This is a test. %s %s %s %s %s %s %s %s %s %s UwU,This is a comment,Konnichiwa! %s OwO
+﻿Language,English,Comments,French,Japanese
+Locale,en-US,,fr-FR,ja-JP
+text.test,I love you %s more since you used Lexicon. %s - %s. Thank you !%s - %s. Thank you !,This is a comment,Je vous aime %s plus depuis que vous utilisez Lexicon. %s - le %s. Merci !utilisez Lexicon. %s - le %s. Merci !,君が「lexicon」を使ってる前より%s回好きです。%s - %s。ありがとうございます !
