@@ -174,7 +174,7 @@
     "path": "folders/font.yy",
   },
   "resourceVersion": "1.0",
-  "name": "FontWithJapanese",
+  "name": "fn_fontWithJapanese",
   "tags": [],
   "resourceType": "GMFont",
 }

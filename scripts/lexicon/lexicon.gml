@@ -6,11 +6,11 @@
 LEXICON_STRUCT = undefined;
 
 /// @func lexicon_init
-/// @param [default_loccale]
+/// @param [default_locale]
 /// @param [default_replace_chr]
 function lexicon_init(_default_locale, _default_replace_chr) {
 	if (LEXICON_STRUCT != undefined) {
-		show_debug_message("Lexicon already Initialized");
+		__lexicon_throw("Lexicon already Initialized");
 		return false;
 	}
 	LEXICON_STRUCT = {
@@ -65,9 +65,9 @@ function lexicon_init(_default_locale, _default_replace_chr) {
 					}
 				}
 			} else {
-				show_debug_message("Error! Language JSON invalid!");
+				__lexicon_throw("Error! Language JSON invalid!");
 			}
-			return _status;
+			return _lang_type;
 		},
 		add: function(_file) {
 			var _buff = buffer_load(_file);
@@ -91,7 +91,7 @@ function lexicon_init(_default_locale, _default_replace_chr) {
 						var _str = buffer_read(_info[1],buffer_text);
 						parse_json(_str);
 					} else {
-						show_debug_message("Lexicon Error! File not loaded!");
+						__lexicon_throw("Lexicon Error! File not loaded!");
 					}
 					// Clean up
 					buffer_delete(_info[1]);
@@ -123,6 +123,16 @@ function lexicon_init(_default_locale, _default_replace_chr) {
 function lexicon_flush_cache() {
 	ds_map_clear(LEXICON_STRUCT.lang_cache);
 	ds_list_clear(LEXICON_STRUCT.lang_cache_list);
+}
+
+/// @func __lexicon_throw
+function __lexicon_throw(_string) {
+	show_debug_message("Lexicon Error: " + string(_string));
+}
+
+/// @func __lexicon_debug
+function __lexicon_debug(_string) {
+	show_debug_message("Lexicon Debug: " + string(_string));
 }
 
 /// @func __lexicon_handle_cache
@@ -161,7 +171,7 @@ function __lexicon_handle_cache() {
 				ds_map_delete(lang_cache, _ref.cacheStr);
 				--_i;
 				--_length;
-				if (LEXICON_DEBUG_WARNINGS) show_debug_message("Lexicon Debug Warning: " + _ref.cacheStr + " has been removed!");
+				if (LEXICON_DEBUG_WARNINGS) __lexicon_debug(_ref.cacheStr + " has been removed!");
 			}
 		}
 	}
@@ -169,14 +179,10 @@ function __lexicon_handle_cache() {
 	_cFrame = current_time+1000;
 }
 
-/// @func lexicon_text_struct
-/// @param text
-/// @param struct
-function lexicon_text_struct(_text, _struct) {
-
-	// Text Cache Function
-		static _lexiconCacheText = function(_text, _cacheStr) constructor {
-			static memStr = "";
+// Text Cache Function
+// @func	__lexicon_cache_text
+		function __lexicon_cache_text(_text, _cacheStr) constructor {
+			//static memStr = "";
 			str = _text;
 			//memStr = _text;
 			cacheStr = _cacheStr;
@@ -191,8 +197,13 @@ function lexicon_text_struct(_text, _struct) {
 			}
 		}
 
-		// Auto GC
-		if (LEXICON_USE_CACHE && LEXICON_AUTO_GC_CACHE) __lexicon_handle_cache();
+/// @func lexicon_text_struct
+/// @param text
+/// @param struct
+function lexicon_text_struct(_text, _struct) {
+	gml_pragma("forceinline");
+	// Auto GC
+	if (LEXICON_USE_CACHE && LEXICON_AUTO_GC_CACHE) __lexicon_handle_cache();
 
 	with(LEXICON_STRUCT) {
 
@@ -246,7 +257,7 @@ function lexicon_text_struct(_text, _struct) {
 	}
 
 	if (LEXICON_USE_CACHE) {
-		var _structEntry = new _lexiconCacheText(_str, _cacheStr);
+		var _structEntry = new __lexicon_cache_text(_str, _cacheStr);
 		LEXICON_STRUCT.lang_cache[? _cacheStr] = _structEntry;
 		ds_list_add(LEXICON_STRUCT.lang_cache_list, {cacheStr: _cacheStr, ref: weak_ref_create(_structEntry)});
 		//return _struct;
@@ -273,23 +284,6 @@ function lexicon_text_array(_text, _array) {
 /// @param [...]
 function lexicon_text(_text) {
 			gml_pragma("forceinline");
-
-			// Text Cache Function
-			static _lexiconCacheText = function(_text, _cacheStr) constructor {
-				static memStr = "";
-				str = _text;
-				//memStr = _text;
-				cacheStr = _cacheStr;
-				timeStamp = current_time;
-
-				static toString = function() {
-					/*if (LEXICON_USE_CACHE) {
-						lexicon_handle_cache();
-					}*/
-					timeStamp = current_time;
-					return str;
-				}
-			}
 
 			// Auto GC
 			if (LEXICON_USE_CACHE && LEXICON_AUTO_GC_CACHE) __lexicon_handle_cache();
@@ -356,7 +350,7 @@ function lexicon_text(_text) {
 					}
 
 					if (LEXICON_USE_CACHE) && (argument_count-1 >= LEXICON_CACHE_THRESHOLD) {
-						var _struct = new _lexiconCacheText(_str, _cacheStr);
+						var _struct = new __lexicon_cache_text(_str, _cacheStr);
 						LEXICON_STRUCT.lang_cache[? _cacheStr] = _struct;
 						ds_list_add(LEXICON_STRUCT.lang_cache_list, {cacheStr: _cacheStr, ref: weak_ref_create(_struct)});
 						//return _struct;
