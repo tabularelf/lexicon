@@ -7,10 +7,6 @@ It supports the following:
 * Adding/removing languages through built-in functionality.
 * Supports CSV/JSON parsing. (As well as functions to help easily add more parsers)
 
-Credits:
-
-Created by: TabularElf [https://linktr.ee/TabularElf]
-
-Code adapted from `csv_to_grid` by JujuAdams [https://github.com/jujuadams] for `lexicon_parse_csv`
-
-Translation examples provided by CutThroat Neko [https://github.com/Manukineko]
+| Wiki| FAQ| |
+| ------------- | ------------- |
+| false| Toggles whether debug messages will be printed to the console or not. |

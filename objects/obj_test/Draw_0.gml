@@ -6,7 +6,7 @@ if (keyboard_check_released(vk_space)) {
 	++language_index;
 	language_index = language_index mod array_length(languages_array);
 	
-	lexicon_set_locale(languages_array[language_index][1]); //"English" ? "French" : "English");
+	lexicon_set_locale(languages_array[language_index][1]);
 }
 
 draw_set_font(font)

@@ -139,7 +139,7 @@ function __lexicon_debug(_string) {
 function __lexicon_handle_cache() {
 
 	// Keep track of frame
-	if (LEXICON_USE_CACHE) {
+	if (LEXICON_USE_CACHE) && (LEXICON_AUTO_GC_CACHE) {
 		static _frame = 0;
 		static _cFrame = 0;
 
