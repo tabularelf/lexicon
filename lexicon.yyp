@@ -2,9 +2,9 @@
   "resources": [
     {"id":{"name":"obj_test","path":"objects/obj_test/obj_test.yy",},"order":0,},
     {"id":{"name":"lexicon_parsers","path":"scripts/lexicon_parsers/lexicon_parsers.yy",},"order":2,},
-    {"id":{"name":"FontWithJapanese","path":"fonts/FontWithJapanese/FontWithJapanese.yy",},"order":0,},
+    {"id":{"name":"lexicon_settings","path":"scripts/lexicon_settings/lexicon_settings.yy",},"order":3,},
+    {"id":{"name":"fn_fontWithJapanese","path":"fonts/fn_fontWithJapanese/fn_fontWithJapanese.yy",},"order":0,},
     {"id":{"name":"lexicon","path":"scripts/lexicon/lexicon.yy",},"order":0,},
-    {"id":{"name":"select_relative_wrap","path":"scripts/select_relative_wrap/select_relative_wrap.yy",},"order":0,},
     {"id":{"name":"lexicon_language_locale","path":"scripts/lexicon_language_locale/lexicon_language_locale.yy",},"order":1,},
     {"id":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},"order":0,},
   ],
@@ -32,7 +32,6 @@
   "Folders": [
     {"folderPath":"folders/Scripts.yy","order":5,"resourceVersion":"1.0","name":"Scripts","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Rooms.yy","order":10,"resourceVersion":"1.0","name":"Rooms","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Scripts/Misc..yy","order":3,"resourceVersion":"1.0","name":"Misc.","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/font.yy","order":12,"resourceVersion":"1.0","name":"font","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [

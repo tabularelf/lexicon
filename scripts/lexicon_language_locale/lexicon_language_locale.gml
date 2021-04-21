@@ -38,7 +38,8 @@ function lexicon_exists_language(_language) {
 
 /// @func lexicon_set_language
 /// @param language
-function lexicon_set_language(_string) {
+/// @param [force_flush]
+function lexicon_set_language(_string, _forceFlush) {
 	var _map = LEXICON_STRUCT.lang_map;
 	var _mapArray = variable_struct_get_names(_map);
 	var _i = 0;
@@ -78,7 +79,10 @@ function lexicon_remove_language(_locale) {
 
 /// @func lexicon_set_locale
 /// @arg string
-function lexicon_set_locale(_locale) {
+/// @param [force_flush]
+function lexicon_set_locale(_locale, _forceFlush) {
+	_forceFlush = is_undefined(_forceFlush) ? true : _forceFlush;
+	if (_forceFlush) lexicon_flush_cache();
 	LEXICON_STRUCT.lang_type = _locale;	
 }
 
