@@ -4,9 +4,8 @@ Lexicon is a localization system focused around on simplifying implementation of
 It supports the following:
 
 * Substring Replacement/s. (Replacing `%s` with `Hello World!`)
+* Substring Replacement/s viahttps://github.com/tabularelf/lexicon/wiki/Functions-(Text)#lexicon_text_struct
 * Adding/removing languages through built-in functionality.
 * Supports CSV/JSON parsing. (As well as functions to help easily add more parsers)
 
-| Wiki| FAQ| |
-| ------------- | ------------- |
-| false| Toggles whether debug messages will be printed to the console or not. |
+For more information, check out the wiki! https://github.com/tabularelf/lexicon/wiki/
