@@ -8,6 +8,4 @@ It supports the following:
 * Adding/removing languages through built-in functionality.
 * Supports CSV/JSON parsing. (As well as functions to help easily add more parsers)
 
-MIT License included!
-
 For more information, check out the wiki! https://github.com/tabularelf/lexicon/wiki/
