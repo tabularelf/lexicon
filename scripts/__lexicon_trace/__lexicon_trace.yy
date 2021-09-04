@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Lexicon",
-    "path": "folders/Scripts/Lexicon.yy",
+    "name": "Internal",
+    "path": "folders/Scripts/Lexicon/Internal.yy",
   },
   "resourceVersion": "1.0",
-  "name": "lexicon_settings",
+  "name": "__lexicon_trace",
   "tags": [],
   "resourceType": "GMScript",
 }

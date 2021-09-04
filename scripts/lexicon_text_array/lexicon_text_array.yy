@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Lexicon",
-    "path": "folders/Scripts/Lexicon.yy",
+    "name": "General",
+    "path": "folders/Scripts/Lexicon/General.yy",
   },
   "resourceVersion": "1.0",
-  "name": "lexicon_settings",
+  "name": "lexicon_text_array",
   "tags": [],
   "resourceType": "GMScript",
 }
