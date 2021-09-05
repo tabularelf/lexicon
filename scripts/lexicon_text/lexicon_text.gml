@@ -28,7 +28,7 @@ function lexicon_text(_text) {
 			#region Cache
 			// Check against Cache
 			if (LEXICON_USE_CACHE) {
-				if (argument_count-1 >= LEXICON_CACHE_THRESHOLD) {
+				if (argument_count-1 >= LEXICON_CACHE_ARG_THRESHOLD) {
 					var _cacheStr = sha1_string_unicode(lang_type+"."+_text);
 					if (LEXICON_USE_ADVANCE_CACHE) {
 						// Normable substring replacement loop
@@ -69,7 +69,7 @@ function lexicon_text(_text) {
 						_str = string_replace(_str, _replchr, _arg);
 					}
 
-					if (LEXICON_USE_CACHE) && (argument_count-1 >= LEXICON_CACHE_THRESHOLD) {
+					if (LEXICON_USE_CACHE) && (argument_count-1 >= LEXICON_CACHE_ARG_THRESHOLD) {
 						var _struct = new __lexicon_cache_text(_str, _cacheStr);
 						LEXICON_STRUCT.lang_cache[? _cacheStr] = _struct;
 						ds_list_add(LEXICON_STRUCT.lang_cache_list, {cacheStr: _cacheStr, ref: weak_ref_create(_struct)});
