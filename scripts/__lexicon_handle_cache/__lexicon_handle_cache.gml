@@ -33,7 +33,7 @@ function __lexicon_handle_cache() {
 				ds_map_delete(lang_cache, _ref.cacheStr);
 				--_i;
 				--_length;
-				if (LEXICON_DEBUG_WARNINGS) __lexicon_trace(_ref.cacheStr + " has been removed!");
+				if (LEXICON_DEBUG) __lexicon_trace(_ref.cacheStr + " has been removed!");
 			}
 		}
 	}

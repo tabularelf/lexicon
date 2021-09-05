@@ -1,5 +1,5 @@
 // General
-#macro LEXICON_DEBUG_WARNINGS false
+#macro LEXICON_DEBUG false
 
 // Cache related
 
