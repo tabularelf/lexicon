@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Scripts",
-    "path": "folders/Scripts.yy",
+    "name": "Language",
+    "path": "folders/Scripts/Lexicon/Language.yy",
   },
   "resourceVersion": "1.0",
-  "name": "lexicon_language_locale",
+  "name": "lexicon_set_locale",
   "tags": [],
   "resourceType": "GMScript",
 }
