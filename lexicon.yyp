@@ -14,7 +14,7 @@
     {"id":{"name":"fn_fontWithJapanese","path":"fonts/fn_fontWithJapanese/fn_fontWithJapanese.yy",},"order":0,},
     {"id":{"name":"lexicon","path":"scripts/lexicon/lexicon.yy",},"order":0,},
     {"id":{"name":"__lexicon_cache_text","path":"scripts/__lexicon_cache_text/__lexicon_cache_text.yy",},"order":0,},
-    {"id":{"name":"lexicon_get_locale","path":"scripts/lexicon_get_locale/lexicon_get_locale.yy",},"order":1,},
+    {"id":{"name":"lexicon_get_locale","path":"scripts/lexicon_get_locale/lexicon_get_locale.yy",},"order":8,},
     {"id":{"name":"lexicon_remove_language","path":"scripts/lexicon_remove_language/lexicon_remove_language.yy",},"order":6,},
     {"id":{"name":"lexicon_set_locale","path":"scripts/lexicon_set_locale/lexicon_set_locale.yy",},"order":7,},
     {"id":{"name":"lexicon_exists_language","path":"scripts/lexicon_exists_language/lexicon_exists_language.yy",},"order":2,},
