@@ -1,4 +1,5 @@
 // General
+#macro LEXICON_DEFAULT_LOCALE os_get_language() + "-" + os_get_region()
 #macro LEXICON_DEBUG false
 
 // Cache related

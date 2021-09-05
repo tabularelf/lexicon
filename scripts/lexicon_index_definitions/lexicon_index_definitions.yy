@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Language",
-    "path": "folders/Scripts/Lexicon/Language.yy",
+    "name": "Index",
+    "path": "folders/Scripts/Lexicon/Index.yy",
   },
   "resourceVersion": "1.0",
-  "name": "lexicon_add_language",
+  "name": "lexicon_index_definitions",
   "tags": [],
   "resourceType": "GMScript",
 }

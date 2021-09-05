@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Scripts",
-    "path": "folders/Scripts.yy",
+    "name": "Index",
+    "path": "folders/Scripts/Lexicon/Index.yy",
   },
   "resourceVersion": "1.0",
-  "name": "lexicon",
+  "name": "lexicon_index_add_json",
   "tags": [],
   "resourceType": "GMScript",
 }

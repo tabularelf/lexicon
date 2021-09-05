@@ -10,14 +10,17 @@ function lexicon_text_struct(_text, _struct) {
 
 		// Failsafe before everything else!
 
-		var _replchr = lang_replace_chr;
+		var _replchr = replaceChr;
 		// Correct for any potential errors
-		if (lang_map[$ lang_type] == undefined) {
-			return lang_type + "." + _text;
-		}
+		if (localeMap[$ locale] == undefined) {
+				// Fallback to language
+				if (languageMap[$ language] == undefined) {
+					return locale + "." + _text;	
+				}
+			}
 
 		// Check to see if text exists
-		var _str = lang_map[$ lang_type][$ "text"][$ _text];
+		var _str = textEntries[$ _text];
 		if (_str == undefined) {
 			return _text;
 		}
@@ -26,13 +29,13 @@ function lexicon_text_struct(_text, _struct) {
 		// Check against Cache
 			if (LEXICON_USE_CACHE) {
 				var _keys = variable_struct_get_names(_struct);
-					var _cacheStr = sha1_string_unicode(lang_type+"."+_text);
+					var _cacheStr = sha1_string_unicode(locale+"."+_text);
 					if (LEXICON_USE_ADVANCE_CACHE) {
 							_cacheStr += sha1_string_unicode(string(_struct));
 					}
 
-					if ds_map_exists(lang_cache, _cacheStr) {
-						var _structCache = lang_cache[? _cacheStr];
+					if ds_map_exists(cacheMap, _cacheStr) {
+						var _structCache = cacheMap[? _cacheStr];
 						if _structCache.cacheStr == _cacheStr {
 							_structCache.timeStamp = current_time;
 							return _structCache.str;

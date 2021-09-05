@@ -1,20 +1,7 @@
 {
-	"English": {
-		"locale": ["en-US", "en-AU"],
-		"text": {
-			"text.test": "I love you %s more since you used Lexicon. %s - %s. Thank you !"
-		}
-	},
-	"French": {
-		"locale": "fr-FR",
-		"text": {
-			"text.test": "Je vous aime %s plus depuis que vous utilisez Lexicon. %s - le %s. Merci !"
-		}
-	},
-	"Japanese": {
-		"locale": "ja-JP",
-		"text": {
-			"text.test": "君が「lexicon」を使ってる前より%s回好きです。%s - %s。ありがとうございます !"
-		}
-	},
+	"language": "English",
+	"locale": ["en-US", "en-AU"],
+	"text": {
+		"text.test": "I love you %s more since you used Lexicon. %s - %s. Thank you !"
+	}
 }

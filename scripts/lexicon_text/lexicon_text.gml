@@ -12,24 +12,26 @@ function lexicon_text(_text) {
 			with(LEXICON_STRUCT) {
 
 			// Failsafe before everything else!
-
-			var _replchr = lang_replace_chr;
+			var _replchr = replaceChr;
+			
 			// Correct for any potential errors
-			if (lang_map[$ lang_type] == undefined) {
-				return lang_type + "." + _text;
+			if (localeMap[$ locale] == undefined) {
+				// Fallback to language
+				if (languageMap[$ language] == undefined) {
+					return locale + "." + _text;	
+				}
 			}
-
-			// Check to see if text exists
-			var _str = lang_map[$ lang_type][$ "text"][$ _text];
+			
+			var _str = textEntries[$ _text];
 			if (_str == undefined) {
-				return _text;
+					return _text;
 			}
 
 			#region Cache
 			// Check against Cache
 			if (LEXICON_USE_CACHE) {
 				if (argument_count-1 >= LEXICON_CACHE_ARG_THRESHOLD) {
-					var _cacheStr = sha1_string_unicode(lang_type+"."+_text);
+					var _cacheStr = sha1_string_unicode(locale+"."+_text);
 					if (LEXICON_USE_ADVANCE_CACHE) {
 						// Normable substring replacement loop
 						var _count = string_count(_replchr,_str);
@@ -41,8 +43,8 @@ function lexicon_text(_text) {
 							_cacheStr += sha1_string_unicode(string(_args));
 					}
 
-					if ds_map_exists(lang_cache, _cacheStr) {
-						var _struct = lang_cache[? _cacheStr];
+					if ds_map_exists(cacheMap, _cacheStr) {
+						var _struct = cacheMap[? _cacheStr];
 						if _struct.cacheStr == _cacheStr {
 							// Update timestamp
 							/*if (_struct.str != _struct.memStr) {
@@ -71,8 +73,8 @@ function lexicon_text(_text) {
 
 					if (LEXICON_USE_CACHE) && (argument_count-1 >= LEXICON_CACHE_ARG_THRESHOLD) {
 						var _struct = new __lexicon_cache_text(_str, _cacheStr);
-						LEXICON_STRUCT.lang_cache[? _cacheStr] = _struct;
-						ds_list_add(LEXICON_STRUCT.lang_cache_list, {cacheStr: _cacheStr, ref: weak_ref_create(_struct)});
+						LEXICON_STRUCT.cacheMap[? _cacheStr] = _struct;
+						ds_list_add(LEXICON_STRUCT.cacheList, {cacheStr: _cacheStr, ref: weak_ref_create(_struct)});
 						//return _struct;
 					}
 				}
