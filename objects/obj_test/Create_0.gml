@@ -4,8 +4,7 @@
 //Need a font supporting weird glyph (from an roman alphabet user's point of view ;) )
 font = fn_fontWithJapanese;
 
-lexicon_index_declare("English", "en-US");
-lexicon_index_add_json("English", "locale.json");
+lexicon_index_definitions("definitions.json");
 /*var _buff = buffer_load("locale.json");
 lexicon_parse_json(_buff);
 show_debug_message(LEXICON_STRUCT);

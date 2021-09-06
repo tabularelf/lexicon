@@ -8,13 +8,16 @@ function lexicon_index_declare(_language, _locale) {
 	
 	static _firstEntry = false;
 	
-	if (LEXICON_STRUCT.localeMap == undefined) {
-		LEXICON_STRUCT.languageMap = {};
-		LEXICON_STRUCT.localeMap = {};
-	}
-	
 	LEXICON_STRUCT.languageMap[$ _language] = _struct;
-	LEXICON_STRUCT.localeMap[$ _locale] = _struct;
+	if is_array(_locale) {
+			var _len = array_length(_locale);
+			for(var _i = 0; _i < _len; ++_i) {
+				LEXICON_STRUCT.localeMap[$ _locale[_i]] = _struct;
+			}
+			_locale = _locale[0];
+	} else {
+		LEXICON_STRUCT.localeMap[$ _locale] = _struct;
+	}
 	
 	if (_firstEntry == false) {
 		lexicon_set_locale(_locale, false);

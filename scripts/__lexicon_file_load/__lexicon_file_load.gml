@@ -1,7 +1,7 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function __lexicon_file_load(_file) {
-	var _buffer = 0;
+	var _buffer = -1;
 	if (_file.isLoaded == true) return;
 	if (_file.isAsync == true) {
 		_buffer = buffer_create(1, buffer_grow, 1);
@@ -24,5 +24,6 @@ function __lexicon_file_load(_file) {
 		}
 		
 		script_execute_ext(_file.fileType, _args);
+		_file.isLoaded = true;
 	}
 }

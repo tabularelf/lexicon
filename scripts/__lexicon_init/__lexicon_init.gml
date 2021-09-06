@@ -15,8 +15,8 @@ function __lexicon_init() {
 	}
 	
 	LEXICON_STRUCT = {
-		languageMap: undefined,
-		localeMap: undefined,
+		languageMap: {},
+		localeMap: {},
 		textEntries: {},
 		language: "",
 		locale: "",

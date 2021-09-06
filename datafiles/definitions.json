@@ -1,0 +1,16 @@
+{
+  "English": {
+    "locale": ["en-US", "en-AU"],
+    "files": {
+			"filePath": "english.json",
+			"isAsync": false
+		}
+  },
+  "Japanese": {
+    "locale": "ja-JP",
+    "files": {
+			"filePath": "japanese.json",
+			"isAsync": false
+		}
+  }
+}

@@ -9,6 +9,9 @@ function lexicon_set_language(_language, _forceFlush) {
 		LEXICON_STRUCT.language = _struct.language;	
 	}
 	
+	// Load entries
+	__lexicon_load_entries();
+	
 	_forceFlush = is_undefined(_forceFlush) ? true : _forceFlush;
 	if (_forceFlush) lexicon_flush_cache();
 }
