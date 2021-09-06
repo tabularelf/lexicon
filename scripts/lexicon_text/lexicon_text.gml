@@ -1,5 +1,5 @@
-/// @func lexicon_text
-/// @param text
+/// @func lexicon_text(text_pointer, [substring], [...]
+/// @param text_pointer
 /// @param [substring]
 /// @param [...]
 function lexicon_text(_text) {
@@ -7,7 +7,7 @@ function lexicon_text(_text) {
 
 			// Auto GC
 			if (LEXICON_USE_CACHE && LEXICON_AUTO_GC_CACHE) __lexicon_handle_cache();
-			//if (_replchr == undefined) _replchr = "";
+			
 			// We'll check to see if it already exists in the cache before processing the string at hand.
 			with(__LEXICON_STRUCT) {
 
@@ -33,7 +33,7 @@ function lexicon_text(_text) {
 				if (argument_count-1 >= LEXICON_CACHE_ARG_THRESHOLD) {
 					var _cacheStr = sha1_string_unicode(locale+"."+_text);
 					if (LEXICON_USE_ADVANCE_CACHE) {
-						// Normable substring replacement loop
+						// Substring replacement loop
 						var _count = string_count(_replchr,_str);
 						var _args = array_create(_count);
 						for(var _i = 1; _i < _count; ++_i) {

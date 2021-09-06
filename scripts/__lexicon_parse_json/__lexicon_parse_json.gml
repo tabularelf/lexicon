@@ -1,4 +1,6 @@
-function lexicon_parse_json(_json) {
+/// @func __lexicon_parse_json(json)
+/// @param json
+function __lexicon_parse_json(_json) {
 	
 	try {
 		var _map = json_parse(_json);
@@ -6,7 +8,7 @@ function lexicon_parse_json(_json) {
 			
 		} else {
 			if (__LEXICON_STRUCT.language != _map.language) {
-				__lexicon_throw("Error! language is " + __LEXICON_STRUCT.language + " where it expected " + _map.language);
+				if (LEXICON_DEBUG) __lexicon_throw("Error! language is " + __LEXICON_STRUCT.language + " where it expected " + _map.language);
 				return;
 			}
 			
@@ -22,12 +24,12 @@ function lexicon_parse_json(_json) {
 					}
 					
 					if !(_validLocale) {
-						__lexicon_throw("locale is " + __LEXICON_STRUCT.locale + " where it expected " + string(_locale));
+						if (LEXICON_DEBUG) __lexicon_throw("locale is " + __LEXICON_STRUCT.locale + " where it expected " + string(_locale));
 						return;		
 					}
 			} else {
 				if (__LEXICON_STRUCT.locale != _locale) {
-					__lexicon_throw("locale is " + __LEXICON_STRUCT.locale + " where it expected " + _map.locale);
+					if (LEXICON_DEBUG) __lexicon_throw("locale is " + __LEXICON_STRUCT.locale + " where it expected " + _map.locale);
 					return;	
 				}
 			}
@@ -40,6 +42,6 @@ function lexicon_parse_json(_json) {
 			}
 		}
 	} catch(_ex) {
-			__lexicon_throw("Language JSON invalid! " + _ex.message);
+			if (LEXICON_DEBUG) __lexicon_throw("Language JSON invalid! " + _ex.message);
 	}
 }

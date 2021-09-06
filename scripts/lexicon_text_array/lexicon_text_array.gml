@@ -1,5 +1,5 @@
-/// @func lexicon_text_array
-/// @param text
+/// @func lexicon_text_array(text_pointer, array)
+/// @param text_pointer
 /// @param array
 function lexicon_text_array(_text, _array) {
 	var _arrayCopy;

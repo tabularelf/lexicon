@@ -1,5 +1,5 @@
-/// @func lexicon_text_struct
-/// @param text
+/// @func lexicon_text_struct(text_pointer, struct)
+/// @param text_pointer
 /// @param struct
 function lexicon_text_struct(_text, _struct) {
 	gml_pragma("forceinline");

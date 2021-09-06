@@ -9,7 +9,7 @@ function __lexicon_handle_file_type(_lang, _fileStruct) {
 			
 			if (_fileStruct[$ "arguments"] != undefined) {
 				if !(is_array(_fileStruct.arguments)) {
-					__lexicon_throw("Invalid arguments for file definitions. Defaulting to none.")	
+					if (LEXICON_DEBUG) __lexicon_throw("Invalid arguments for file definitions. Defaulting to none.")	
 				} else {
 					_args = _fileStruct.arguments;	
 				}

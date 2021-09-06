@@ -1,8 +1,12 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+/// @func lexicon_index_add_csv(language/locale, file_name, [is_async], [cell_delimiter], [string_delimiter])
+/// @param language/locale
+/// @param file_name
+/// @param[is_async]
+/// @param [cell_delimiter]
+/// @param [string_delimiter]
 function lexicon_index_add_csv(_lang, _fileName, _async = false, _cell_delimiter = ",", _string_delimiter = "\"") {
 	if !(file_exists(_fileName)) {
-		__lexicon_throw(_fileName + "does not exist!");
+		if (LEXICON_DEBUG) __lexicon_throw(_fileName + "does not exist!");
 		return;
 	}
 	
@@ -13,7 +17,7 @@ function lexicon_index_add_csv(_lang, _fileName, _async = false, _cell_delimiter
 	}
 	
 	if (_struct == undefined) {
-		__lexicon_throw(_lang + " is not a valid language or locale!");
+		if (LEXICON_DEBUG) __lexicon_throw(_lang + " is not a valid language or locale!");
 		return;
 	}
 	

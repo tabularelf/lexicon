@@ -1,4 +1,6 @@
-
+/// @func lexicon_index_declare(language, locale)
+/// @param language
+/// @param locale
 function lexicon_index_declare(_language, _locale) {
 	var _struct = {
 		language: _language,

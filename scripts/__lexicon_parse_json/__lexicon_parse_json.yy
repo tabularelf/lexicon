@@ -3,10 +3,10 @@
   "isCompatibility": false,
   "parent": {
     "name": "Parsers",
-    "path": "folders/Scripts/Lexicon/Parsers.yy",
+    "path": "folders/Scripts/Lexicon/Internal/Parsers.yy",
   },
   "resourceVersion": "1.0",
-  "name": "lexicon_parse_json",
+  "name": "__lexicon_parse_json",
   "tags": [],
   "resourceType": "GMScript",
 }

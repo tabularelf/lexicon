@@ -1,6 +1,6 @@
 // General
 #macro LEXICON_DEFAULT_LOCALE					os_get_language() + "-" + os_get_region() // Determines what your preferred method of fetch language/region.
-#macro LEXICON_DEBUG										false // Enables Lexicons deep debugging information. (Which at the moment is very little)
+#macro LEXICON_DEBUG										false // Enables Lexicons debugging (outputs errors to console).
 #macro LEXICON_USE_FIRST_ENTRY_ADDED	false // Adds the very first entry that gets added
 
 // Cache related

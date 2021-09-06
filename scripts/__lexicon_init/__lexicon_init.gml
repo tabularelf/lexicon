@@ -10,7 +10,7 @@ __lexicon_init();
 
 function __lexicon_init() {
 	if (__LEXICON_STRUCT != undefined) {
-		__lexicon_throw("Lexicon already Initialized");
+		if (LEXICON_DEBUG) __lexicon_throw("Lexicon already Initialized");
 		return false;
 	}
 	

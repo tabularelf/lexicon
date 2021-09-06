@@ -1,4 +1,4 @@
-/// @func lexicon_locale_exists
+/// @func lexicon_locale_exists(locale)
 /// @param locale
 function lexicon_locale_exists(_locale) {
 	var _map = __LEXICON_STRUCT.localeMap;

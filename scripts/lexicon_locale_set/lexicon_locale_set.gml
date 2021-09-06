@@ -13,10 +13,13 @@ function lexicon_locale_set(_locale, _forceFlush) {
 	if (_struct != undefined) {
 		__LEXICON_STRUCT.locale = _locale;	
 		__LEXICON_STRUCT.language = _struct.language;	
-	}
 	
-	// Load entries
-	__lexicon_load_entries();
+		// Load entries
+		__lexicon_load_entries();
+	} else {
+		__LEXICON_STRUCT.locale = "unknown";
+		__LEXICON_STRUCT.language =  "unknown";
+	}
 	
 	_forceFlush = is_undefined(_forceFlush) ? true : _forceFlush;
 	if (_forceFlush) lexicon_flush_cache();

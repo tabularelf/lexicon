@@ -1,12 +1,12 @@
 
-/// @func lexicon_parse_csv
+/// @func __lexicon_parse_csv
 /// @param string
 /// @param [cell_delimiter]
 /// @param [string_delimiter]
 
 // Juju made the original script (csv_to_grid). This was merely adapted to be used as a parser. 
 // I cannot take full credit for this as a result.
-function lexicon_parse_csv(_string, _cell_delimiter = ",", _string_delimiter = "\"") {
+function __lexicon_parse_csv(_string, _cell_delimiter = ",", _string_delimiter = "\"") {
 var _array = __lexicon_array2D_from_csv(_string, _cell_delimiter, _string_delimiter);
 var _width = array_length(_array);
 var _height = array_length(_array[0]);

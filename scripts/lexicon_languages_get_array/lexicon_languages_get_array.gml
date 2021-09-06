@@ -1,4 +1,4 @@
-/// @func lexicon_languages_get_array
+/// @func lexicon_languages_get_array()
 function lexicon_languages_get_array() {
 	var _map = __LEXICON_STRUCT.languageMap;
 	var _array = [];

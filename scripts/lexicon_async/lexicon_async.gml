@@ -1,5 +1,4 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+/// @func lexicon_async()
 function lexicon_async() {
 	var _arrayFiles = __LEXICON_STRUCT.fileAsyncList;
 	var _len = array_length(_arrayFiles);
@@ -7,7 +6,7 @@ function lexicon_async() {
 	for(var _i = 0; _i < _len; ++_i) {
 		if (_arrayFiles[_i][0] == _id) {
 			if async_load[? "status"] == false {
-				__lexicon_throw(_arrayFiles[_i][2].filePath + " async load failed!");	
+				if (LEXICON_DEBUG) __lexicon_throw(_arrayFiles[_i][2].filePath + " async load failed!");	
 				buffer_delete(_arrayFiles[_i][1]);
 				array_delete(_arrayFiles, _i, 1);
 			} else {

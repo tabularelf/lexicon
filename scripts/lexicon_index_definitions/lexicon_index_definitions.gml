@@ -1,4 +1,5 @@
-
+/// @func lexicon_index_definitions(file_path)
+/// @param file_path
 function lexicon_index_definitions(_filePath) {
 	var _buffer = buffer_load(_filePath);
 	if (_buffer == -1) {
@@ -8,7 +9,7 @@ function lexicon_index_definitions(_filePath) {
 	
 	var _json = buffer_read(_buffer, buffer_text);
 	buffer_delete(_buffer);
-	//try {
+	try {
 		var _struct = json_parse(_json);
 		var _languages = variable_struct_get_names(_struct);
 		
@@ -32,8 +33,8 @@ function lexicon_index_definitions(_filePath) {
 				}
 			}
 		}
-	/*} catch(_ex) {
-		__lexicon_throw("Definitions JSON invalid! " + string(_ex.message));	
+	} catch(_ex) {
+		if (LEXICON_DEBUG) __lexicon_throw("Definitions JSON invalid! " + string(_ex.message));	
 		return;	
-	}*/
+	}
 }

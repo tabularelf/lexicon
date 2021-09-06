@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Internal",
-    "path": "folders/Scripts/Lexicon/Internal.yy",
+    "name": "Loading",
+    "path": "folders/Scripts/Lexicon/Internal/Loading.yy",
   },
   "resourceVersion": "1.0",
   "name": "__lexicon_load_entries",
