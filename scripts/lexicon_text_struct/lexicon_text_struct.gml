@@ -6,7 +6,7 @@ function lexicon_text_struct(_text, _struct) {
 	// Auto GC
 	if (LEXICON_USE_CACHE && LEXICON_AUTO_GC_CACHE) __lexicon_handle_cache();
 
-	with(LEXICON_STRUCT) {
+	with(__LEXICON_STRUCT) {
 
 		// Failsafe before everything else!
 
@@ -62,8 +62,8 @@ function lexicon_text_struct(_text, _struct) {
 
 	if (LEXICON_USE_CACHE) {
 		var _structEntry = new __lexicon_cache_text(_str, _cacheStr);
-		LEXICON_STRUCT.lang_cache[? _cacheStr] = _structEntry;
-		ds_list_add(LEXICON_STRUCT.lang_cache_list, {cacheStr: _cacheStr, ref: weak_ref_create(_structEntry)});
+		__LEXICON_STRUCT.cacheMap[? _cacheStr] = _structEntry;
+		ds_list_add(__LEXICON_STRUCT.cacheList, {cacheStr: _cacheStr, ref: weak_ref_create(_structEntry)});
 		//return _struct;
 	}
 

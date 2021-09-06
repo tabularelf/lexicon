@@ -7,7 +7,7 @@ function __lexicon_file(_language, _locale, _fileType, _fileName, _isAsync = fal
 		args = _args;
 		isLoaded = false;
 		
-	if (_language == LEXICON_STRUCT.language || _locale == LEXICON_STRUCT.locale) {
+	if (_language == __LEXICON_STRUCT.language || _locale == __LEXICON_STRUCT.locale) {
 		__lexicon_file_load(self);
 	}
 }

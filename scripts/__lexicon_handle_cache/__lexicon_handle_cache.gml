@@ -14,7 +14,7 @@ function __lexicon_handle_cache() {
 	}
 
 
-	with(LEXICON_STRUCT) {
+	with(__LEXICON_STRUCT) {
 		var _length = ds_list_size(cacheList);
 		for(var _i = 0; _i < _length; ++_i) {
 			var _deleteStruct = false;
@@ -29,7 +29,7 @@ function __lexicon_handle_cache() {
 
 			if (_deleteStruct) {
 				ds_list_delete(cacheList,_i);
-				delete lang_cache[? _ref.cacheStr];
+				delete cacheMap[? _ref.cacheStr];
 				ds_map_delete(cacheList, _ref.cacheStr);
 				--_i;
 				--_length;

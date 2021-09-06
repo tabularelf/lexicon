@@ -26,7 +26,7 @@ function lexicon_index_definitions(_filePath) {
 			if (is_struct(_files)) {
 					__lexicon_handle_file_type(_languages[_i], _files);
 			} else if (is_array(_files)) {
-				var _fileLen = array_length(_fileLen);
+				var _fileLen = array_length(_files);
 				for(var _j = 0; _j < _fileLen; ++_j) {
 						__lexicon_handle_file_type(_languages[_i], _files[_j]);
 				}

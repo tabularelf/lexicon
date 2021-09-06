@@ -6,7 +6,7 @@
     "path": "folders/Scripts/Lexicon/General.yy",
   },
   "resourceVersion": "1.0",
-  "name": "lexicon_async",
+  "name": "lexicon_replace_chr_set",
   "tags": [],
   "resourceType": "GMScript",
 }

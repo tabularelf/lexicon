@@ -9,7 +9,7 @@ function lexicon_text(_text) {
 			if (LEXICON_USE_CACHE && LEXICON_AUTO_GC_CACHE) __lexicon_handle_cache();
 			//if (_replchr == undefined) _replchr = "";
 			// We'll check to see if it already exists in the cache before processing the string at hand.
-			with(LEXICON_STRUCT) {
+			with(__LEXICON_STRUCT) {
 
 			// Failsafe before everything else!
 			var _replchr = replaceChr;
@@ -73,8 +73,8 @@ function lexicon_text(_text) {
 
 					if (LEXICON_USE_CACHE) && (argument_count-1 >= LEXICON_CACHE_ARG_THRESHOLD) {
 						var _struct = new __lexicon_cache_text(_str, _cacheStr);
-						LEXICON_STRUCT.cacheMap[? _cacheStr] = _struct;
-						ds_list_add(LEXICON_STRUCT.cacheList, {cacheStr: _cacheStr, ref: weak_ref_create(_struct)});
+						__LEXICON_STRUCT.cacheMap[? _cacheStr] = _struct;
+						ds_list_add(__LEXICON_STRUCT.cacheList, {cacheStr: _cacheStr, ref: weak_ref_create(_struct)});
 						//return _struct;
 					}
 				}

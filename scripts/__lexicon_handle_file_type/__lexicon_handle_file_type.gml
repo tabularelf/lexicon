@@ -15,6 +15,8 @@ function __lexicon_handle_file_type(_lang, _fileStruct) {
 				}
 			}
 			
-			_type.adder(_lang, _filePath, _fileStruct.isAsync, _args);
+			var _aync = _fileStruct[$ "isAsync"] != undefined ? _fileStruct.isAsync : false;
+			
+			_type.adder(_lang, _filePath, _aync, _args);
 		}
 }

@@ -1,0 +1,8 @@
+{
+	"language": "English",
+	"locale": ["en-US", "en-AU"],
+	"text": {
+		"text.test": "I love you %s more since you used Lexicon. %s - %s. Thank you !",
+		"text.test2": "I love you {{loveMeter}} more since you used Lexicon. {{playerName}} - {{dateTime}}. Thank you !%s - %s. Thank you !"
+	}
+}

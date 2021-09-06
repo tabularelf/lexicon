@@ -6,21 +6,21 @@ function lexicon_index_declare(_language, _locale) {
 		files: [],	
 	}
 	
-	static _firstEntry = false;
+	static _firstEntry = LEXICON_USE_FIRST_ENTRY_ADDED == true ? false : true;
 	
-	LEXICON_STRUCT.languageMap[$ _language] = _struct;
+	__LEXICON_STRUCT.languageMap[$ _language] = _struct;
 	if is_array(_locale) {
 			var _len = array_length(_locale);
 			for(var _i = 0; _i < _len; ++_i) {
-				LEXICON_STRUCT.localeMap[$ _locale[_i]] = _struct;
+				__LEXICON_STRUCT.localeMap[$ _locale[_i]] = _struct;
 			}
 			_locale = _locale[0];
 	} else {
-		LEXICON_STRUCT.localeMap[$ _locale] = _struct;
+		__LEXICON_STRUCT.localeMap[$ _locale] = _struct;
 	}
 	
 	if (_firstEntry == false) {
-		lexicon_set_locale(_locale, false);
+		lexicon_locale_set(_locale, false);
 		_firstEntry = true;
 	}
 }

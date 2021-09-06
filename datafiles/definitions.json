@@ -2,14 +2,20 @@
   "English": {
     "locale": ["en-US", "en-AU"],
     "files": {
-			"filePath": "english.json",
-			"isAsync": false
-		}
+				"filePath": "locale.json",
+			}
   },
   "Japanese": {
     "locale": "ja-JP",
     "files": {
-			"filePath": "japanese.json",
+			"filePath": "locale.csv",
+			"isAsync": false
+		}
+  },
+  "French": {
+    "locale": "fr-FR",
+    "files": {
+			"filePath": "locale.csv",
 			"isAsync": false
 		}
   }

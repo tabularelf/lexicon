@@ -7,6 +7,6 @@ LEXICON_FILE_TYPES = {
 		},
 		csv: {
 			parser: lexicon_parse_csv,
-			adder: undefined
+			adder: lexicon_index_add_csv
 		}
 }

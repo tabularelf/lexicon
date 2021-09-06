@@ -1,7 +1,0 @@
-{
-	"language": "English",
-	"locale": ["en-US", "en-AU"],
-	"text": {
-		"text.test": "I love you %s more since you used Lexicon. %s - %s. Thank you !"
-	}
-}

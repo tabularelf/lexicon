@@ -6,7 +6,7 @@ function __lexicon_file_load(_file) {
 	if (_file.isAsync == true) {
 		_buffer = buffer_create(1, buffer_grow, 1);
 		var _id = buffer_load_async(_buffer, _file.fileName, 0, -1);
-		LEXICON_STRUCT.fileAsyncList[array_length(LEXICON_STRUCT.fileAsyncList)] = [_id, _buffer, _file];
+		__LEXICON_STRUCT.fileAsyncList[array_length(__LEXICON_STRUCT.fileAsyncList)] = [_id, _buffer, _file];
 	} else {
 		_buffer = buffer_load(_file.fileName);
 		if (_buffer = -1) {
@@ -15,15 +15,8 @@ function __lexicon_file_load(_file) {
 		}
 		
 		var _string = buffer_read(_buffer, buffer_text);
+		buffer_delete(_buffer);
 		
-		var _args;
-		_args[0] = _string;
-		
-		if (_file.args != undefined) {
-			array_copy(_args, 1, _file.args, 0, array_length(_file.args));	
-		}
-		
-		script_execute_ext(_file.fileType, _args);
-		_file.isLoaded = true;
+		__lexicon_file_handle_load(_file, _string);
 	}
 }

@@ -7,6 +7,7 @@
 /// @param [stringDelimiter]   Character to use to indicate where strings start and end. First 127 ASCII chars only. Defaults to a double quote
 /// 
 /// @jujuadams 2020-06-28
+/// Modified snap_from_csv for the purposes of having a BOM check
 
 function __lexicon_array2D_from_csv()
 {
@@ -32,7 +33,7 @@ function __lexicon_array2D_from_csv()
     var _in_string   = false;
     var _string_cell = false;
     
-	if (_remove_bom && (buffer_get_size(_buffer) >= 4) && (buffer_peek(_buffer, 0, buffer_u32) & 0xFFFFFF == 0xBFBBEF)) {
+	if ((buffer_get_size(_buffer) >= 4) && (buffer_peek(_buffer, 0, buffer_u32) & 0xFFFFFF == 0xBFBBEF)) {
 		buffer_seek(_buffer, buffer_seek_start, 3);	
 		_size -= 3;
 		_word_start += 3;

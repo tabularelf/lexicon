@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "General",
-    "path": "folders/Scripts/Lexicon/General.yy",
+    "name": "Language",
+    "path": "folders/Scripts/Lexicon/Language.yy",
   },
   "resourceVersion": "1.0",
-  "name": "lexicon_async",
+  "name": "lexicon_locale_get",
   "tags": [],
   "resourceType": "GMScript",
 }
