@@ -1,0 +1,5 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Ignore .yy files for language statistics 
+*.yy linguist-generated=true
