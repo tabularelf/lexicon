@@ -1,7 +1,7 @@
 /// @func lexicon_index_declare(language, locale)
 /// @param language
 /// @param locale
-function lexicon_index_declare(_language, _locale) {
+function lexicon_index_declare(_language, _locale, _fallbackLocale = undefined) {
 	var _struct = {
 		language: _language,
 		locale: _locale,
@@ -16,9 +16,14 @@ function lexicon_index_declare(_language, _locale) {
 			for(var _i = 0; _i < _len; ++_i) {
 				__LEXICON_STRUCT.localeMap[$ _locale[_i]] = _struct;
 			}
+			
 			_locale = _locale[0];
 	} else {
 		__LEXICON_STRUCT.localeMap[$ _locale] = _struct;
+	}
+	
+	if (_fallbackLocale != undefined) {
+		lexicon_index_fallback_locale_set(_fallbackLocale, _locale);	
 	}
 	
 	if (_firstEntry == false) {

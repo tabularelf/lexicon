@@ -10,13 +10,14 @@ __lexicon_init();
 
 function __lexicon_init() {
 	if (__LEXICON_STRUCT != undefined) {
-		if (LEXICON_DEBUG) __lexicon_throw("Lexicon already Initialized");
+			__lexicon_throw("Lexicon already Initialized");
 		return false;
 	}
 	
 	__LEXICON_STRUCT = {
 		languageMap: {},
 		localeMap: {},
+		fallbackLocaleMap: {},
 		textEntries: {},
 		language: "unknown",
 		locale: "unknown",
@@ -26,6 +27,6 @@ function __lexicon_init() {
 		cacheList: ds_list_create()
 	}
 
-	show_debug_message("Lexicon " + LEXICON_VERSION + " initialized!");
-	show_debug_message("Created by " + LEXICON_CREDITS);
+	__lexicon_trace("Lexicon " + LEXICON_VERSION + " initialized!");
+	__lexicon_trace("Created by " + LEXICON_CREDITS);
 }

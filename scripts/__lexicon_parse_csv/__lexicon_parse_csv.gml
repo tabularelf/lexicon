@@ -1,11 +1,8 @@
-
 /// @func __lexicon_parse_csv
 /// @param string
 /// @param [cell_delimiter]
 /// @param [string_delimiter]
 
-// Juju made the original script (csv_to_grid). This was merely adapted to be used as a parser. 
-// I cannot take full credit for this as a result.
 function __lexicon_parse_csv(_string, _cell_delimiter = ",", _string_delimiter = "\"") {
 var _array = __lexicon_array2D_from_csv(_string, _cell_delimiter, _string_delimiter);
 var _width = array_length(_array);
@@ -47,22 +44,6 @@ for(var _j = 1; _j < _height;  ++_j) {
 		var _entry = _array[_i][_j];
 		var _textPointer = _array[_i][0]
 		lexicon_entry_add(_textPointer, _entry); 	
-		/*switch(_array[_i][0]) {
-			case "Language":
-				_language = _array[_i][_j];
-			break;
-			
-			case "Locale":
-				_locale = _array[_i][ _j];
-					if (lexicon_language_exists(_language) == false) && (lexicon_locale_exists(_locale) == false) {
-						lexicon_add_language(_language,_locale);
-					}
-			break;
-			
-			default: 
-					lexicon_entry_add(_locale, _array[_i][0], _array[_i][ _j]); 	
-			break;
-		}*/
 	}
 	break;
 }

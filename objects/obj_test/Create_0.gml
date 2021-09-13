@@ -6,7 +6,7 @@ font = fn_fontWithJapanese;
 draw_set_font(font);
 
 lexicon_index_definitions("definitions.json");
-lexicon_locale_set(LEXICON_DEFAULT_LOCALE);
+lexicon_locale_set(lexicon_get_os_locale());
 
 struct = {playerName: "TabularElf", loveMeter: "100%", dateTime: string(date_get_year(date_current_datetime()))+"/"+string(date_get_month(date_current_datetime()))};
 array = ["100%", "TabularElf", string( date_get_year(date_current_datetime()))+"/"+string(date_get_month(date_current_datetime()))];

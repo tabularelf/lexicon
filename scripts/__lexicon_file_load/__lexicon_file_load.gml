@@ -10,7 +10,7 @@ function __lexicon_file_load(_file) {
 	} else {
 		_buffer = buffer_load(_file.fileName);
 		if (_buffer = -1) {
-			if (LEXICON_DEBUG) __lexicon_throw("Invalid file " + string(_file.fileName));
+				__lexicon_throw("Invalid file " + string(_file.fileName));
 			return;
 		}
 		

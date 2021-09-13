@@ -8,7 +8,7 @@ function __lexicon_parse_json(_json) {
 			
 		} else {
 			if (__LEXICON_STRUCT.language != _map.language) {
-				if (LEXICON_DEBUG) __lexicon_throw("Error! language is " + __LEXICON_STRUCT.language + " where it expected " + _map.language);
+					__lexicon_throw("Error! language is " + __LEXICON_STRUCT.language + " where it expected " + _map.language);
 				return;
 			}
 			
@@ -24,12 +24,12 @@ function __lexicon_parse_json(_json) {
 					}
 					
 					if !(_validLocale) {
-						if (LEXICON_DEBUG) __lexicon_throw("locale is " + __LEXICON_STRUCT.locale + " where it expected " + string(_locale));
+							__lexicon_throw("locale is " + __LEXICON_STRUCT.locale + " where it expected one of these " + string(_locale));
 						return;		
 					}
 			} else {
 				if (__LEXICON_STRUCT.locale != _locale) {
-					if (LEXICON_DEBUG) __lexicon_throw("locale is " + __LEXICON_STRUCT.locale + " where it expected " + _map.locale);
+						__lexicon_throw("locale is " + __LEXICON_STRUCT.locale + " where it expected " + _map.locale);
 					return;	
 				}
 			}
@@ -42,6 +42,6 @@ function __lexicon_parse_json(_json) {
 			}
 		}
 	} catch(_ex) {
-			if (LEXICON_DEBUG) __lexicon_throw("Language JSON invalid! " + _ex.message);
+			__lexicon_throw("Language JSON invalid! " + _ex.message);
 	}
 }

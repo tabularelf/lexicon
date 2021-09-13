@@ -4,7 +4,7 @@
 /// @param[is_async]
 function lexicon_index_add_json(_lang, _fileName, _async = false) {
 	if !(file_exists(_fileName)) {
-		if (LEXICON_DEBUG) __lexicon_throw(_fileName + "does not exist!");
+			__lexicon_throw(_fileName + "does not exist!");
 		return;
 	}
 	
@@ -15,7 +15,7 @@ function lexicon_index_add_json(_lang, _fileName, _async = false) {
 	}
 	
 	if (_struct == undefined) {
-		if (LEXICON_DEBUG) __lexicon_throw(_lang + " is not a valid language or locale!");
+			__lexicon_throw(_lang + " is not a valid language or locale!");
 		return;
 	}
 	
