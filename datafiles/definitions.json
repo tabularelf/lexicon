@@ -1,0 +1,23 @@
+{
+	"English": {
+		"locale": ["en-US", "en-AU"],
+		"fallbackLocale": "en",
+		"files": {"filePath": "locale.json"}
+	},
+	"Japanese": {
+		"locale": "ja-JP",
+		"files": {
+			"filePath": "locale.csv",
+			"fileType": "csv",
+			"isAsync": true
+		}
+	},
+	"French": {
+		"locale": "fr-FR",
+		"files": {
+			"filePath": "locale.csv",
+			"fileType": "csv",
+			"isAsync": false
+		}
+	}
+}
