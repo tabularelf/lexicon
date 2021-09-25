@@ -1,5 +1,5 @@
 #macro __LEXICON_STRUCT global.__lexicon_struct
-#macro LEXICON_VERSION "2.0.0"
+#macro LEXICON_VERSION "2.0.1"
 #macro LEXICON_CREDITS "TabularElf at https://github.com/tabularelf"
 
 // Setup Lexicon well before anything else

@@ -2,7 +2,11 @@
 /// @param language
 /// @param [force_flush]
 function lexicon_language_set(_language, _forceFlush) {
-	var _struct = __LEXICON_STRUCT.language[$ _language];
+	// Clear entries
+	__lexicon_reset();
+	
+	// Load Language
+	var _struct = __LEXICON_STRUCT.languageMap[$ _language];
 	
 	if (_struct != undefined) {
 		__LEXICON_STRUCT.locale = _struct.locale;	
