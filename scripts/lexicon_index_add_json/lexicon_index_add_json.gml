@@ -1,4 +1,4 @@
-/// @func lexicon_index_add_csv(language/locale, file_name, [is_async])
+/// @func lexicon_index_add_json(language/locale, file_name, [is_async])
 /// @param language/locale
 /// @param file_name
 /// @param[is_async]
