@@ -6,7 +6,7 @@
 /// @param [string_delimiter]
 function lexicon_index_add_csv(_lang, _fileName, _async = false, _cell_delimiter = ",", _string_delimiter = "\"") {
 	if !(file_exists(_fileName)) {
-			__lexicon_throw(_fileName + "does not exist!");
+			__lexicon_throw(_fileName + " does not exist!");
 		return;
 	}
 	
