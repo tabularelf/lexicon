@@ -22,6 +22,10 @@ function lexicon_text_struct(_text, _struct) {
 		// Check to see if text exists
 		var _str = textEntries[$ _text];
 		if (_str == undefined) {
+			if (LEXICON_DEBUG) {
+				return "Missing text pointer: " + _text;	
+			}
+				
 			return _text;
 		}
 
@@ -29,9 +33,9 @@ function lexicon_text_struct(_text, _struct) {
 		// Check against Cache
 			if (LEXICON_USE_CACHE) {
 				var _keys = variable_struct_get_names(_struct);
-					var _cacheStr = sha1_string_unicode(locale+"."+_text);
+					var _cacheStr = locale+"."+_text;
 					if (LEXICON_USE_ADVANCE_CACHE) {
-							_cacheStr += sha1_string_unicode(string(_struct));
+							_cacheStr += string(_struct);
 					}
 
 					if ds_map_exists(cacheMap, _cacheStr) {
@@ -45,7 +49,15 @@ function lexicon_text_struct(_text, _struct) {
 		#endregion
 
 		// Lets loop through struct-based stuff
-		var _count = string_count("{{", _str) + string_count("}}", _str);
+		var _keys = variable_struct_get_names(_struct);
+		var _i = 0;
+		var _replChr0 = replaceChrStruct[0];
+		var _replChr1 = replaceChrStruct[1];
+		repeat(array_length(_keys)) {
+			_str = string_replace_all(_str, _replChr0 + _keys[_i] + _replChr1, _struct[$ _keys[_i]]);
+			++_i;
+		}
+		/*var _count = string_count(replaceChrStruct[0], _str) + string_count(replaceChrStruct[1], _str);
 		for(var _i = 0; _i < _count; ++_i) {
 			if (_i > argument_count-2) break;
 			var _arg = argument[_i+1];
@@ -53,10 +65,10 @@ function lexicon_text_struct(_text, _struct) {
 				var _keys = variable_struct_get_names(_arg);
 				var _lastPos = 1;
 				for(var _ii = 0; _ii < array_length(_keys); ++_ii) {
-					_str = string_replace_all(_str,"{{" + _keys[_ii] + "}}", _arg[$ _keys[_ii]]);
+					_str = string_replace_all(_str, "%" + _keys[_ii] + "%", _arg[$ _keys[_ii]]);
 				}
 			}
-		}
+		}*/
 
 	}
 

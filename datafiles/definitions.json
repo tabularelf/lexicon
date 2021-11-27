@@ -2,7 +2,7 @@
 	"English": {
 		"locale": ["en-US", "en-AU"],
 		"fallbackLocale": "en",
-		"files": {"filePath": "locale.json"}
+		"files": {"filePath": "locale.csv"}
 	},
 	"Japanese": {
 		"locale": "ja-JP",

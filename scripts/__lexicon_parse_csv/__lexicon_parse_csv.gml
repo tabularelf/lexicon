@@ -41,6 +41,7 @@ for(var _j = 1; _j < _height;  ++_j) {
 	
 	
 	for(var _i = 2; _i < _width; ++_i) {
+		if (_array[_i][0] == LEXICON_ROW_SEPERATOR) continue;
 		var _entry = _array[_i][_j];
 		var _textPointer = _array[_i][0]
 		lexicon_entry_add(_textPointer, _entry); 	

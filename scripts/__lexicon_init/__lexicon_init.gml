@@ -1,6 +1,6 @@
 #macro __LEXICON_STRUCT global.__lexicon_struct
-#macro LEXICON_VERSION "2.0.2"
-#macro LEXICON_CREDITS "TabularElf at https://github.com/tabularelf"
+#macro LEXICON_VERSION "2.0.3"
+#macro LEXICON_CREDITS "@TabularElf - https://github.com/tabularelf"
 
 // Setup Lexicon well before anything else
 __LEXICON_STRUCT = undefined;
@@ -9,10 +9,10 @@ __LEXICON_STRUCT = undefined;
 __lexicon_init();
 
 function __lexicon_init() {
-	if (__LEXICON_STRUCT != undefined) {
-			__lexicon_throw("Lexicon already Initialized");
-		return false;
-	}
+	static _init = false;
+	if (_init == false) {
+		_init = true;
+	
 	
 	__LEXICON_STRUCT = {
 		languageMap: {},
@@ -22,6 +22,7 @@ function __lexicon_init() {
 		language: "unknown",
 		locale: "unknown",
 		replaceChr: "%s",
+		replaceChrStruct: LEXICON_STRUCT_REPLACE_CHR_SYMBOLS,
 		fileAsyncList: [],
 		cacheMap: ds_map_create(),
 		cacheList: ds_list_create()
@@ -29,4 +30,5 @@ function __lexicon_init() {
 
 	__lexicon_trace("Lexicon " + LEXICON_VERSION + " initialized!");
 	__lexicon_trace("Created by " + LEXICON_CREDITS);
+	}
 }

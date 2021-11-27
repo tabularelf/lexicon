@@ -2,6 +2,9 @@
 /// @param language
 /// @param locale
 function lexicon_index_declare(_language, _locale, _fallbackLocale = undefined) {
+	// Ensure that it's loaded first!
+	__lexicon_init();
+	
 	var _struct = {
 		language: _language,
 		locale: _locale,

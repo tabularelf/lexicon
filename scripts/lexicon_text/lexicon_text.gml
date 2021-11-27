@@ -4,6 +4,8 @@
 /// @param [...]
 function lexicon_text(_text) {
 			gml_pragma("forceinline");
+			// Ensure that it's loaded first!
+			__lexicon_init();
 
 			// Auto GC
 			if (LEXICON_USE_CACHE && LEXICON_AUTO_GC_CACHE) __lexicon_handle_cache();
@@ -24,14 +26,18 @@ function lexicon_text(_text) {
 			
 			var _str = textEntries[$ _text];
 			if (_str == undefined) {
-					return _text;
+				if (LEXICON_DEBUG) {
+					return "Missing text pointer: " + _text;	
+				}
+				
+				return _text;
 			}
 
 			#region Cache
 			// Check against Cache
 			if (LEXICON_USE_CACHE) {
 				if (argument_count-1 >= LEXICON_CACHE_ARG_THRESHOLD) {
-					var _cacheStr = sha1_string_unicode(locale+"."+_text);
+					var _cacheStr = locale+"."+_text;
 					if (LEXICON_USE_ADVANCE_CACHE) {
 						// Substring replacement loop
 						var _count = string_count(_replchr,_str);
@@ -40,7 +46,7 @@ function lexicon_text(_text) {
 							if (_i > argument_count) break;
 							_args[_i-1] = argument[_i-1];
 						}
-							_cacheStr += sha1_string_unicode(string(_args));
+							_cacheStr += string(_args);
 					}
 
 					if ds_map_exists(cacheMap, _cacheStr) {

@@ -1,6 +1,9 @@
 /// @func lexicon_index_definitions(file_name)
 /// @param file_path
 function lexicon_index_definitions(_filePath) {
+	// Ensure that it's loaded first!
+	__lexicon_init();
+	
 	var _buffer = buffer_load(_filePath);
 	if (_buffer == -1) {
 		__lexicon_throw("File " + string(_filePath) + " doesn't exist.");

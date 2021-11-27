@@ -1,4 +1,5 @@
-﻿Language,English,Comments,French,Japanese
-Locale,"[""en-UK"", ""en-US"", ""en-AU""]",,fr-FR,ja-JP
-text.test,I love you %s more since you used Lexicon. %s - %s. Thank you !%s - %s. Thank you!,This is a comment,Je vous aime %s plus depuis que vous utilisez Lexicon. %s - le %s. Merci !utilisez Lexicon. %s - le %s. Merci !,君が「lexicon」を使ってる前より%s回好きです。%s - %s。ありがとうございます !
-text.test2,I love you {{loveMeter}} more since you used Lexicon. {{playerName}} - {{dateTime}}. Thank you!,This is a comment,Je vous aime {{loveMeter}} plus depuis que vous utilisez Lexicon. {{playerName}} - le {{dateTime}}. Merci !utilisez Lexicon. %s - le %s. Merci !,君が「lexicon」を使ってる前より{{loveMeter}}回好きです。{{playerName}} - {{dateTime}}。ありがとうございます !
+﻿Language,English,Comments,French,Japanese,
+Locale,"[""en-UK"", ""en-US"", ""en-AU""]",,fr-FR,ja-JP,
+text.test,I love you%s more since you used Lexicon. %s - %s. Thank you !%s - %s. Thank you!,This is a comment,Je vous aime %s plus depuis que vous utilisez Lexicon. %s - le %s. Merci !utilisez Lexicon. %s - le %s. Merci !,君が「lexicon」を使ってる前より%s回好きです。%s - %s。ありがとうございます !,
+------------------,test,test2t,test3,test4,test5
+text.test2,I love you {{loveMeter}} more since you used Lexicon. {{playerName}} - {{dateTime}}. Thank you!,This is a comment,Je vous aime {{loveMeter}} plus depuis que vous utilisez Lexicon. {{playerName}} - le {{dateTime}}. Merci !utilisez Lexicon. %s - le %s. Merci !,君が「lexicon」を使ってる前より{{loveMeter}}回好きです。{{playerName}} - {{dateTime}}。ありがとうございます !,
