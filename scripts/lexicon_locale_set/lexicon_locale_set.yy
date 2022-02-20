@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "Language",
-    "path": "folders/Scripts/Lexicon/Language.yy",
+    "path": "folders/Lexicon/Language.yy",
   },
   "resourceVersion": "1.0",
   "name": "lexicon_locale_set",

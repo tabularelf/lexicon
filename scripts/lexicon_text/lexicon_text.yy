@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "General",
-    "path": "folders/Scripts/Lexicon/General.yy",
+    "path": "folders/Lexicon/General.yy",
   },
   "resourceVersion": "1.0",
   "name": "lexicon_text",

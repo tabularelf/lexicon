@@ -8,9 +8,10 @@ function __lexicon_reset() {
 	
 	// Unload files
 	var _files = __LEXICON_STRUCT.localeMap[$ __LEXICON_STRUCT.locale].files;
-	var _len = array_length(_files);
-	for(var _i = 0; _i < _len; ++_i) {
+	var _i = 0;
+	repeat(array_length(_files)) {
 		_files[_i].isLoaded = false;	
+		++_i;
 	}
 	
 	__LEXICON_STRUCT.textEntries = {};

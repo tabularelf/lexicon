@@ -1,7 +1,7 @@
 /// @func lexicon_locale_set
 /// @param locale
 /// @param [force_flush]
-function lexicon_locale_set(_locale, _forceFlush) {
+function lexicon_locale_set(_locale, _forceFlush = true) {
 	// Clear entries
 	__lexicon_reset();
 	
@@ -35,6 +35,5 @@ function lexicon_locale_set(_locale, _forceFlush) {
 		__LEXICON_STRUCT.language =  "unknown";
 	}
 	
-	_forceFlush = is_undefined(_forceFlush) ? true : _forceFlush;
 	if (_forceFlush) lexicon_flush_cache();
 }

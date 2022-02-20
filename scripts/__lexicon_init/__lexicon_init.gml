@@ -1,6 +1,6 @@
 #macro __LEXICON_STRUCT global.__lexicon_struct
 #macro LEXICON_VERSION "2.0.3"
-#macro LEXICON_CREDITS "@TabularElf - https://github.com/tabularelf"
+#macro LEXICON_CREDITS "TabularElf - https://tabelf.link/"
 
 // Setup Lexicon well before anything else
 __LEXICON_STRUCT = undefined;
@@ -28,7 +28,6 @@ function __lexicon_init() {
 		cacheList: ds_list_create()
 	}
 
-	__lexicon_trace("Lexicon " + LEXICON_VERSION + " initialized!");
-	__lexicon_trace("Created by " + LEXICON_CREDITS);
+	__lexicon_trace("v" + LEXICON_VERSION + " initialized! Created by " + LEXICON_CREDITS);
 	}
 }
