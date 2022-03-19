@@ -3,6 +3,7 @@
   "glyphOperations": 0,
   "interpreter": 0,
   "pointRounding": 0,
+  "applyKerning": 0,
   "fontName": "MS Gothic",
   "styleName": "Regular",
   "size": 12.0,
@@ -19,7 +20,7 @@
     "name": "Default",
     "path": "texturegroups/Default",
   },
-  "ascenderOffset": 0,
+  "ascenderOffset": 1,
   "glyphs": {
     "32": {"x":2,"y":2,"w":8,"h":17,"character":32,"shift":8,"offset":0,},
     "33": {"x":62,"y":78,"w":8,"h":17,"character":33,"shift":8,"offset":0,},
