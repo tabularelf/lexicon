@@ -1,9 +1,8 @@
-#macro __LEXICON_STRUCT global.__lexicon_struct
-#macro LEXICON_VERSION "2.0.3"
+#macro __LEXICON_STRUCT /* Feather disable once GM2047 */ global.__lexicon_struct
+#macro LEXICON_VERSION "2.1.0"
 #macro LEXICON_CREDITS "TabularElf - https://tabelf.link/"
 
 // Setup Lexicon well before anything else
-__LEXICON_STRUCT = undefined;
 
 // Init Lexicon
 __lexicon_init();
@@ -24,6 +23,7 @@ function __lexicon_init() {
 		replaceChr: "%s",
 		replaceChrStruct: LEXICON_STRUCT_REPLACE_CHR_SYMBOLS,
 		fileAsyncList: [],
+		cacheUpdate: true,
 		cacheMap: ds_map_create(),
 		cacheList: ds_list_create()
 	}

@@ -8,6 +8,7 @@
 /// 
 /// @jujuadams 2020-06-28
 /// Modified snap_from_csv for the purposes of having a BOM check
+/// @returns {Mixed}
 
 function __lexicon_array2D_from_csv()
 {
