@@ -1,5 +1,5 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+/// @func lexicon_index_declare_from_csv(filePath)
+/// @param filePath
 function lexicon_index_declare_from_csv(_filePath, _cell_delimiter = ",", _string_delimiter = "\"") {
 	// Ensure that it's loaded first!
 	__lexicon_init();
