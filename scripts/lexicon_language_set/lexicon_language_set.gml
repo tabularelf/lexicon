@@ -19,5 +19,7 @@ function lexicon_language_set(_language, _forceFlush = true) {
 		__LEXICON_STRUCT.language =  "unknown";
 	}
 	
+	__LEXICON_STRUCT.cacheUpdate = true;
+	
 	if (_forceFlush) lexicon_flush_cache();
 }

@@ -35,5 +35,8 @@ function lexicon_locale_set(_locale, _forceFlush = true) {
 		__LEXICON_STRUCT.language =  "unknown";
 	}
 	
+	__LEXICON_STRUCT.cacheUpdate = true;
+	
 	if (_forceFlush) lexicon_flush_cache();
 }
+

@@ -16,7 +16,8 @@ function __lexicon_handle_cache() {
 
 	with(__LEXICON_STRUCT) {
 		var _length = ds_list_size(cacheList);
-		for(var _i = 0; _i < _length; ++_i) {
+		var _i = 0;
+		/*for(var _i = 0; _i < _length; ++_i)*/ repeat(_length) {
 			var _deleteStruct = false;
 			var _ref = cacheList[| _i];
 			if !weak_ref_alive(_ref.ref) {
@@ -32,7 +33,7 @@ function __lexicon_handle_cache() {
 				delete cacheMap[? _ref.cacheStr];
 				ds_map_delete(cacheList, _ref.cacheStr);
 				--_i;
-				--_length;
+				//--_length;
 				if (LEXICON_DEBUG) __lexicon_trace(_ref.cacheStr + " has been removed!");
 			}
 		}
@@ -40,3 +41,4 @@ function __lexicon_handle_cache() {
 
 	_cFrame = current_time+1000;
 }
+
