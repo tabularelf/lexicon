@@ -2,7 +2,8 @@
 /// @param language/locale
 /// @param file_name
 /// @param[is_async]
-function lexicon_index_add_json(_lang, _fileName, _async = false) {
+/* Feather ignore once GM1042 */
+function lexicon_index_add_json(_lang, _fileName, _async = false) { 
 	// Ensure that it's loaded first!
 	__lexicon_init();
 	
@@ -21,7 +22,7 @@ function lexicon_index_add_json(_lang, _fileName, _async = false) {
 			__lexicon_throw(_lang + " is not a valid language or locale!");
 		return;
 	}
-	
+	/* Feather ignore once GM1029 */
 	var _file = new __lexicon_file(_struct.language, _struct.locale, LEXICON_FILE_TYPES.json.parser, _fileName, _async);
 	_struct.files[array_length(_struct.files)] = _file;
 }

@@ -1,6 +1,5 @@
 {
   "resources": [
-    {"id":{"name":"lexicon_entries_get_unicode_range","path":"scripts/lexicon_entries_get_unicode_range/lexicon_entries_get_unicode_range.yy",},"order":8,},
     {"id":{"name":"obj_test","path":"objects/obj_test/obj_test.yy",},"order":0,},
     {"id":{"name":"lexicon_flush_cache","path":"scripts/lexicon_flush_cache/lexicon_flush_cache.yy",},"order":0,},
     {"id":{"name":"__lexicon_file_handle_load","path":"scripts/__lexicon_file_handle_load/__lexicon_file_handle_load.yy",},"order":0,},
@@ -35,13 +34,11 @@
     {"id":{"name":"__lexicon_add_file","path":"scripts/__lexicon_add_file/__lexicon_add_file.yy",},"order":5,},
     {"id":{"name":"__lexicon_load_entries","path":"scripts/__lexicon_load_entries/__lexicon_load_entries.yy",},"order":2,},
     {"id":{"name":"__lexicon_handle_file_type","path":"scripts/__lexicon_handle_file_type/__lexicon_handle_file_type.yy",},"order":1,},
-    {"id":{"name":"lexicon_text_get_unicode_range","path":"scripts/lexicon_text_get_unicode_range/lexicon_text_get_unicode_range.yy",},"order":10,},
     {"id":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},"order":0,},
     {"id":{"name":"lexicon_index_definitions","path":"scripts/lexicon_index_definitions/lexicon_index_definitions.yy",},"order":2,},
     {"id":{"name":"lexicon_index_declare","path":"scripts/lexicon_index_declare/lexicon_index_declare.yy",},"order":0,},
     {"id":{"name":"lexicon_text_struct","path":"scripts/lexicon_text_struct/lexicon_text_struct.yy",},"order":1,},
     {"id":{"name":"__lexicon_reset","path":"scripts/__lexicon_reset/__lexicon_reset.yy",},"order":4,},
-    {"id":{"name":"lexicon_language_get_unicode_range","path":"scripts/lexicon_language_get_unicode_range/lexicon_language_get_unicode_range.yy",},"order":9,},
     {"id":{"name":"lexicon_text_array","path":"scripts/lexicon_text_array/lexicon_text_array.yy",},"order":2,},
     {"id":{"name":"lexicon_replace_chr_set","path":"scripts/lexicon_replace_chr_set/lexicon_replace_chr_set.yy",},"order":4,},
     {"id":{"name":"__lexicon_handle_cache","path":"scripts/__lexicon_handle_cache/__lexicon_handle_cache.yy",},"order":1,},
@@ -91,12 +88,12 @@
     {"isScaled":true,"compressFormat":"bz2","autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":-1,"resourceVersion":"1.3","name":"Default","resourceType":"GMTextureGroup",},
   ],
   "IncludedFiles": [
-    {"CopyToMask":153157610357391598,"filePath":"datafiles","resourceVersion":"1.0","name":"locale.json","resourceType":"GMIncludedFile",},
+    {"CopyToMask":3035461389054378222,"filePath":"datafiles","resourceVersion":"1.0","name":"locale.json","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"definitions.json","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"locale.csv","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
-    "IDEVersion": "2022.300.0.499",
+    "IDEVersion": "2022.5.1.16",
   },
   "resourceVersion": "1.5",
   "name": "lexicon",

@@ -1,10 +1,11 @@
-#macro __LEXICON_STRUCT /* Feather disable once GM2047 */ global.__lexicon_struct
+#macro __LEXICON_STRUCT global.__lexicon_struct
 #macro LEXICON_VERSION "2.1.0"
 #macro LEXICON_CREDITS "TabularElf - https://tabelf.link/"
 
 // Setup Lexicon well before anything else
 
 // Init Lexicon
+
 __lexicon_init();
 
 function __lexicon_init() {
