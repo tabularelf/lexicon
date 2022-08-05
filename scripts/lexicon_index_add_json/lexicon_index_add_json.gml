@@ -2,7 +2,7 @@
 /// @param language/locale
 /// @param file_name
 /// @param[is_async]
-/* Feather ignore once GM1042 */
+// Feather ignore all
 function lexicon_index_add_json(_lang, _fileName, _async = false) { 
 	// Feather ignore all
 	// Ensure that it's loaded first!

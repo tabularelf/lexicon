@@ -4,6 +4,7 @@
 /// @param[is_async]
 /// @param [cell_delimiter]
 /// @param [string_delimiter]
+// Feather ignore all
 function lexicon_index_add_csv(_lang, _fileName, _async = false, _cell_delimiter = ",", _string_delimiter = "\"") {
 	// Feather ignore all
 	// Ensure that it's loaded first!
