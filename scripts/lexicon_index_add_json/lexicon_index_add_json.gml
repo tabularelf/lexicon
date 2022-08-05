@@ -4,6 +4,7 @@
 /// @param[is_async]
 /* Feather ignore once GM1042 */
 function lexicon_index_add_json(_lang, _fileName, _async = false) { 
+	// Feather ignore all
 	// Ensure that it's loaded first!
 	__lexicon_init();
 	

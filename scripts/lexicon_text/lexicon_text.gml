@@ -3,6 +3,7 @@
 /// @param [substring]
 /// @param [...]
 function lexicon_text(_text) {
+	// Feather ignore all
 	gml_pragma("forceinline");
 	// Ensure that it's loaded first!
 	__lexicon_init();

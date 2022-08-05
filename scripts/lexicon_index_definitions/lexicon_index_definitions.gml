@@ -1,6 +1,7 @@
 /// @func lexicon_index_definitions(file_name)
 /// @param file_path
 function lexicon_index_definitions(_filePath) {
+	// Feather ignore all
 	// Ensure that it's loaded first!
 	__lexicon_init();
 	

@@ -2,7 +2,8 @@
 /// @param string
 /// @param [cell_delimiter]
 /// @param [string_delimiter]
-
+// Feather ignore all
+/// @ignore
 function __lexicon_parse_csv(_string, _cell_delimiter = ",", _string_delimiter = "\"") {
 var _array = __lexicon_array2D_from_csv(_string, _cell_delimiter, _string_delimiter);
 var _width = array_length(_array);

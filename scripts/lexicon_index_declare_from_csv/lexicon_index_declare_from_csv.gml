@@ -1,6 +1,7 @@
 /// @func lexicon_index_declare_from_csv(filePath)
 /// @param filePath
 function lexicon_index_declare_from_csv(_filePath, _cell_delimiter = ",", _string_delimiter = "\"") {
+	// Feather ignore all
 	// Ensure that it's loaded first!
 	__lexicon_init();
 	var _buffer = buffer_load(_filePath);

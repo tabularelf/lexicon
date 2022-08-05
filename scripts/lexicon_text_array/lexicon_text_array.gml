@@ -2,6 +2,7 @@
 /// @param text_pointer
 /// @param array
 function lexicon_text_array(_text, _array) {
+	// Feather ignore all
 	var _arrayCopy;
 	_arrayCopy[array_length(_array)-1] = 0;
 	array_copy(_arrayCopy,0,_array,0,array_length(_array));

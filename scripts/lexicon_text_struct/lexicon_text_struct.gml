@@ -2,6 +2,7 @@
 /// @param text_pointer
 /// @param struct
 function lexicon_text_struct(_text, _struct) {
+	// Feather ignore all
 	gml_pragma("forceinline");
 	// Auto GC
 	if (LEXICON_USE_CACHE && LEXICON_AUTO_GC_CACHE) __lexicon_handle_cache();

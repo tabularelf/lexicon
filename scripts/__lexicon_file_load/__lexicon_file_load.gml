@@ -1,5 +1,5 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+// Feather ignore all
+/// @ignore
 function __lexicon_file_load(_file) {
 	var _buffer = -1;
 	if (_file.isLoaded == true) return;

@@ -1,5 +1,6 @@
+// Feather ignore all
+/// @ignore
 function __lexicon_handle_cache() {
-
 	// Keep track of frame
 	if (LEXICON_USE_CACHE) && (LEXICON_AUTO_GC_CACHE) {
 		static _frame = 0;

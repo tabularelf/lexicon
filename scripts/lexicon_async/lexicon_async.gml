@@ -1,5 +1,6 @@
 /// @func lexicon_async()
 function lexicon_async() {
+	// Feather ignore all
 	var _arrayFiles = __LEXICON_STRUCT.fileAsyncList;
 	var _len = array_length(_arrayFiles);
 	var _id = async_load[? "id"];

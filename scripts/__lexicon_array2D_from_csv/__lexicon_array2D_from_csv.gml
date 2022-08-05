@@ -9,9 +9,11 @@
 /// @jujuadams 2020-06-28
 /// Modified snap_from_csv for the purposes of having a BOM check
 /// @returns {Mixed}
-
+// Feather ignore all
+/// @ignore
 function __lexicon_array2D_from_csv()
 {
+	
     var _string           = argument[0];
     var _cell_delimiter   = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : ",";
     var _string_delimiter = ((argument_count > 2) && (argument[2] != undefined))? argument[2] : "\"";

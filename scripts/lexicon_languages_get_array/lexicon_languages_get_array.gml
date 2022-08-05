@@ -1,4 +1,5 @@
 /// @func lexicon_languages_get_array()
+// Feather ignore all
 function lexicon_languages_get_array() {
 	var _map = __LEXICON_STRUCT.languageMap;
 	var _array = [];

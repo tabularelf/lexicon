@@ -2,6 +2,7 @@
 /// @param fallbackLocale
 /// @param locale
 function lexicon_index_fallback_locale_set(_fallbackLocale, _locale) {
+	// Feather ignore all
 	// Ensure that it's loaded first!
 	__lexicon_init();
 	

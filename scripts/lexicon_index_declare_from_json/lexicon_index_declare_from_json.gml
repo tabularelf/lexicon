@@ -1,6 +1,7 @@
 /// @func lexicon_index_declare_from_json(filePath)
 /// @param filePath
 function lexicon_index_declare_from_json(_filePath) {
+	// Feather ignore all
 	// Ensure that it's loaded first!
 	__lexicon_init();
 	
