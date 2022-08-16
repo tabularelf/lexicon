@@ -5,13 +5,7 @@
 font = fn_fontWithJapanese;
 draw_set_font(font);
 
-/*buff = buffer_create(1, buffer_grow, 1);
-buffer_write(buff, buffer_text, "Hello World!");
-cbuff = buffer_compress(buff, 0, buffer_get_size(buff));
-show_message(buffer_read(cbuff, buffer_u8) == 0x78);
-show_message(buffer_read(cbuff, buffer_u8) == 0x9c);*/
-
-//lexicon_index_definitions("definitions.json");
+lexicon_index_definitions("definitions.json");
 lexicon_index_declare_from_csv("locale.csv");
 lexicon_index_declare_from_json("locale.json");
 

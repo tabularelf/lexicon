@@ -2,12 +2,12 @@
 	"English": {
 		"locale": ["en-US", "en-AU"],
 		"fallbackLocale": "en",
-		"files": {"filePath": "locale.csv"}
+		"files": {"filePath": "./locale.csv"}
 	},
 	"Japanese": {
 		"locale": "ja-JP",
 		"files": {
-			"filePath": "locale.csv",
+			"filePath": "./locale.csv",
 			"fileType": "csv",
 			"isAsync": true
 		}
@@ -15,7 +15,7 @@
 	"French": {
 		"locale": "fr-FR",
 		"files": {
-			"filePath": "locale.csv",
+			"filePath": "./locale.csv",
 			"fileType": "csv",
 			"isAsync": false
 		}

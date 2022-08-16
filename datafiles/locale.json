@@ -1,8 +1,11 @@
 {
 	"language": "English",
-	"locale": ["en-US", "en-AU"],
+	"locale": ["en-US", "en-AU", "en-UK"],
 	"text": {
 		"text.test3": "I love you %s more since you used Lexicon. %s - %s. Thank you!",
-		"text.test2": "I love you %loveMeter% more since you used Lexicon. %playerName% - %dateTime%. Thank you!"
+		"text.test2": "I love you %loveMeter% more since you used Lexicon. %playerName% - %dateTime%. Thank you!",
+		"generic": {
+			"foo": "bar"
+		}
 	}
 }

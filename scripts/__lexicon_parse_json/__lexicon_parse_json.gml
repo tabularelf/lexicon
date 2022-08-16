@@ -4,44 +4,48 @@ function __lexicon_parse_json(_json) {
 	
 	try {
 		var _map = json_parse(_json);
-		if is_array(_map) {
-			
-		} else {
-			if (__LEXICON_STRUCT.language != _map.language) {
-					__lexicon_throw("Error! language is " + __LEXICON_STRUCT.language + " where it expected " + _map.language);
-				return;
-			}
-			
-			var _locale = _map.locale;
-			if is_array(_locale) {
-					var _validLocale = false;
-					var _len = array_length(_locale);
-					for(var _i = 0; _i < _len; ++_i) {
-						if( __LEXICON_STRUCT.locale == _locale[_i]) {
-							_validLocale = true;	
-							break;
-						}
-					}
-					
-					if !(_validLocale) {
-							__lexicon_throw("locale is " + __LEXICON_STRUCT.locale + " where it expected one of these " + string(_locale));
-						return;		
-					}
-			} else {
-				if (__LEXICON_STRUCT.locale != _locale) {
-						__lexicon_throw("locale is " + __LEXICON_STRUCT.locale + " where it expected " + _map.locale);
-					return;	
+	} catch(_ex) {
+		__lexicon_throw("Language JSON invalid! " + _ex.message);
+	}
+	
+	if (__LEXICON_STRUCT.language != _map.language) {
+			__lexicon_trace("language is " + __LEXICON_STRUCT.language + " where it expected " + _map.language);
+		return;
+	}
+	
+	var _locale = _map.locale;
+	if is_array(_locale) {
+			var _validLocale = false;
+			var _len = array_length(_locale);
+			for(var _i = 0; _i < _len; ++_i) {
+				if( __LEXICON_STRUCT.locale == _locale[_i]) {
+					_validLocale = true;	
+					break;
 				}
 			}
 			
-			
-			var _textStructPtr = _map.text;
-			var _textArray = variable_struct_get_names(_textStructPtr);
-			for(var _k = 0; _k < array_length(_textArray); ++_k) {
-				__LEXICON_STRUCT.textEntries[$ _textArray[_k]] = _textStructPtr[$ _textArray[_k]];
+			if (!_validLocale) {
+				// No locale found?
+				__lexicon_trace("locale is " + __LEXICON_STRUCT.locale + " where it expected one of these " + string(_locale));
+				exit;
 			}
+	} else {
+		if (__LEXICON_STRUCT.locale != _locale) {
+				__lexicon_trace("locale is " + __LEXICON_STRUCT.locale + " where it expected " + _map.locale);
+			return;	
 		}
-	} catch(_ex) {
-			__lexicon_throw("Language JSON invalid! " + _ex.message);
+	}
+	
+	
+	var _textStructPtr = _map.text;
+	var _textArray = variable_struct_get_names(_textStructPtr);
+	var _k = 0;
+	repeat(array_length(_textArray)) {
+		if (is_struct(_textStructPtr[$ _textArray[_k]])) {
+			__lexicon_text_struct_to_string(_textArray[_k], _textStructPtr[$ _textArray[_k]]);
+		} else {
+			__LEXICON_STRUCT.textEntries[$ _textArray[_k]] = _textStructPtr[$ _textArray[_k]];	
+		}
+		++_k;
 	}
 }

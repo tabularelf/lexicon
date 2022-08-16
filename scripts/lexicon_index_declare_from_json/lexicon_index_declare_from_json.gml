@@ -27,18 +27,20 @@ function lexicon_index_declare_from_json(_filePath) {
 	if is_array(_locale) {
 		var _i = 0;
 		repeat(array_length(_locale)) {
-			if !variable_struct_exists(__LEXICON_STRUCT.localeMap, _locale[_i]) && (variable_struct_exists(__LEXICON_STRUCT.languageMap, _language)) {
+			if (!variable_struct_exists(__LEXICON_STRUCT.localeMap, _locale[_i]) && (variable_struct_exists(__LEXICON_STRUCT.languageMap, _language))) {
 				_langStruct = __LEXICON_STRUCT.languageMap[$ _language];
 				__LEXICON_STRUCT.localeMap[$ _locale[_i]] = _langStruct;
-				_file = new __lexicon_file(_language, _locale, LEXICON_FILE_TYPES.json.parser, _filePath);
-				_langStruct.files[array_length(_langStruct.files)] = _file;
-			} else if !(variable_struct_exists(__LEXICON_STRUCT.localeMap, _locale[_i])) {
+			} else if (!variable_struct_exists(__LEXICON_STRUCT.localeMap, _locale[_i])) {
 				lexicon_index_declare(_language, _locale);
 				_langStruct = __LEXICON_STRUCT.languageMap[$ _language];	
-				_file = new __lexicon_file(_language, _locale, LEXICON_FILE_TYPES.json.parser, _filePath);
-				_langStruct.files[array_length(_langStruct.files)] = _file;
+			} else {
+				_langStruct = __LEXICON_STRUCT.localeMap[$ _locale[_i]];
 			}
+			++_i;
 		}
+		
+		_file = new __lexicon_file(_language, _locale[0], LEXICON_FILE_TYPES.json.parser, _filePath);
+		_langStruct.files[array_length(_langStruct.files)] = _file;
 	} else {
 		if (!(is_undefined(_language) || is_undefined(_locale))) && (variable_struct_exists(__LEXICON_STRUCT.languageMap, _language) || 
 		variable_struct_exists(__LEXICON_STRUCT.localeMap, _locale)) {
