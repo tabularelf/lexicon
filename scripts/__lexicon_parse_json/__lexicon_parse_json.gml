@@ -1,5 +1,5 @@
-/// @func __lexicon_parse_json(json)
-/// @param json
+/// Feather ignore all
+/// @ignore
 function __lexicon_parse_json(_json) {
 	
 	try {

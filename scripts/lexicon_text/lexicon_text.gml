@@ -1,8 +1,9 @@
-/// @func lexicon_text(text_pointer, [substring], [...]
-/// @param text_pointer
-/// @param [substring]
-/// @param [...]
-function lexicon_text(_text) {
+/// @func lexicon_text(textEntry, [substring], [...]
+/// @param {String} _textEntry
+/// @param {Any*} [substring]
+/// @param {Any*} [...]
+/// @return {String}
+function lexicon_text(_textEntry) {
 	gml_pragma("forceinline");
 	// Ensure that it's loaded first!
 	__lexicon_init();
@@ -20,24 +21,25 @@ function lexicon_text(_text) {
 	if (localeMap[$ locale] == undefined) {
 		// Fallback to language
 		if (languageMap[$ language] == undefined) {
-			return locale + "." + _text;	
+			return locale + "." + _textEntry;	
 		}
 	}
 	
-	var _str = textEntries[$ _text];
+	var _str = textEntries[$ _textEntry];
 	if (_str == undefined) {
+		/* Feather ignore once GM2047 */
 		if (LEXICON_DEBUG) {
-			return "Missing text pointer: " + _text;	
+			return "Missing text pointer: " + _textEntry;	
 		}
 		
-		return _text;
+		return _textEntry;
 	}
 
 	#region Cache
 	// Check against Cache
 	if (LEXICON_USE_CACHE) {
 		if (argument_count-1 >= LEXICON_CACHE_ARG_THRESHOLD) {
-			var _cacheStr = locale+"."+_text;
+			var _cacheStr = locale+"."+_textEntry;
 			if (LEXICON_USE_ADVANCE_CACHE) {
 				// Substring replacement loop
 				var _count = string_count(_replchr,_str);
@@ -49,7 +51,7 @@ function lexicon_text(_text) {
 					_cacheStr += string(_args);
 			}
 
-			if ds_map_exists(cacheMap, _cacheStr) {
+			if (ds_map_exists(cacheMap, _cacheStr)) {
 				var _struct = cacheMap[? _cacheStr];
 				if _struct.cacheStr == _cacheStr {
 					// Update timestamp
@@ -62,6 +64,7 @@ function lexicon_text(_text) {
 						}
 					}*/
 					_struct.timeStamp = current_time;
+					/* Feather ignore once GM1035 */
 					return _struct.str;
 				}
 			}

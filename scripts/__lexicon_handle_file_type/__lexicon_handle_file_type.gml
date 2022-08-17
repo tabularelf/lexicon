@@ -36,8 +36,5 @@ function __lexicon_handle_file_type(_lang, _fileStruct) {
 		// Potential error
 		} catch(_ex) {
 			__lexicon_throw("an unintentional error has occurred. Please let the developer know. " + string(_ex.message));	
-			if (LEXICON_DEBUG) {
-				__lexicon_throw(_ex.longMessage);
-			}
 		}
 }

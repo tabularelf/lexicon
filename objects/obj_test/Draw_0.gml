@@ -1,5 +1,5 @@
 /// @description Draw event
-
+// Feather ignore all
 draw_set_font(fn_fontWithJapanese);
 draw_text(32,32,"Normal Version: " + lexicon_text_array("text.test",array));
 draw_text(32,64,"Struct Version: " + lexicon_text_struct("text.test2",struct));

@@ -1,11 +1,11 @@
 /// @func lexicon_index_definitions(file_name)
-/// @param file_path
+/// @param {String} _filePath
 function lexicon_index_definitions(_filePath) {
 	// Ensure that it's loaded first!
 	__lexicon_init();
 	
 	var _buffer = buffer_load(_filePath);
-	if (_buffer == -1) {
+	if (!buffer_exists(_buffer)) {
 		__lexicon_throw("File " + string(_filePath) + " doesn't exist.");
 		return;
 	}
@@ -36,6 +36,7 @@ function lexicon_index_definitions(_filePath) {
 		lexicon_index_declare(_languages[_i], _locale);
 		if (_fallbackLocale != undefined) {
 			if (is_array(_locale)) {
+					/* Feather ignore once GM1061 */
 					lexicon_index_fallback_locale_set(_fallbackLocale, _locale[0]);	
 			} else {
 				lexicon_index_fallback_locale_set(_fallbackLocale, _locale);		
@@ -45,6 +46,7 @@ function lexicon_index_definitions(_filePath) {
 		if (is_array(_files)) {
 			var _fileLen = array_length(_files);
 			for(var _j = 0; _j < _fileLen; ++_j) {
+					/* Feather ignore once GM1061 */
 					__lexicon_handle_file_type(_languages[_i], _files[_j]);
 			}
 		} else {

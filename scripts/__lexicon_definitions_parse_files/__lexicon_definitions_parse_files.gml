@@ -1,3 +1,6 @@
+/// Feather ignore all
+/// @ignore
+
 function __lexicon_definitions_parse_files(_definitionsFilePath, _fileStruct) {
 	var _lastSlash = (string_count("\\", _definitionsFilePath) > 0) ? "\\" : ((string_count("/", _definitionsFilePath) > 0) ? "/" : undefined);
 	var _filePath = "";

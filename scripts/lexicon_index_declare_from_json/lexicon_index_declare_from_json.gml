@@ -1,5 +1,6 @@
 /// @func lexicon_index_declare_from_json(filePath)
-/// @param filePath
+/// @param {String} _filePath
+// Feather ignore all
 function lexicon_index_declare_from_json(_filePath) {
 	// Ensure that it's loaded first!
 	__lexicon_init();
@@ -27,13 +28,17 @@ function lexicon_index_declare_from_json(_filePath) {
 	if is_array(_locale) {
 		var _i = 0;
 		repeat(array_length(_locale)) {
+			/* Feather ignore once GM1061 */
 			if (!variable_struct_exists(__LEXICON_STRUCT.localeMap, _locale[_i]) && (variable_struct_exists(__LEXICON_STRUCT.languageMap, _language))) {
 				_langStruct = __LEXICON_STRUCT.languageMap[$ _language];
+				/* Feather ignore once GM1061 */
 				__LEXICON_STRUCT.localeMap[$ _locale[_i]] = _langStruct;
+				/* Feather ignore once GM1061 */
 			} else if (!variable_struct_exists(__LEXICON_STRUCT.localeMap, _locale[_i])) {
 				lexicon_index_declare(_language, _locale);
 				_langStruct = __LEXICON_STRUCT.languageMap[$ _language];	
 			} else {
+				/* Feather ignore once GM1061 */
 				_langStruct = __LEXICON_STRUCT.localeMap[$ _locale[_i]];
 			}
 			++_i;

@@ -1,6 +1,6 @@
 /// @func lexicon_language_set
-/// @param language
-/// @param [force_flush]
+/// @param {String} _language
+/// @param {Bool} [_forceFlush=true]
 function lexicon_language_set(_language, _forceFlush = true) {
 	// Clear entries
 	__lexicon_reset();

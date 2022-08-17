@@ -1,7 +1,8 @@
 /// @func lexicon_text_struct(text_pointer, struct)
-/// @param text_pointer
-/// @param struct
-function lexicon_text_struct(_text, _struct) {
+/// @param {String} _textEntry
+/// @param {Struct} _struct
+/// @return {String}
+function lexicon_text_struct(_textEntry, _struct) {
 	gml_pragma("forceinline");
 	// Auto GC
 	if (LEXICON_USE_CACHE && LEXICON_AUTO_GC_CACHE) __lexicon_handle_cache();
@@ -20,18 +21,19 @@ function lexicon_text_struct(_text, _struct) {
 		if (localeMap[$ __lexicon.locale] == undefined) {
 				// Fallback to language
 				if (languageMap[$ __lexicon.language] == undefined) {
-					return __lexicon.locale + "." + _text;	
+					return __lexicon.locale + "." + _textEntry;	
 				}
 			}
 
 		// Check to see if text exists
-		var _str = textEntries[$ _text];
+		var _str = textEntries[$ _textEntry];
 		if (_str == undefined) {
+			/* Feather ignore once GM2047 */
 			if (LEXICON_DEBUG) {
-				return "Missing text pointer: " + _text;	
+				return "Missing text pointer: " + _textEntry;	
 			}
 				
-			return _text;
+			return _textEntry;
 		}
 
 		#region Cache
@@ -39,7 +41,7 @@ function lexicon_text_struct(_text, _struct) {
 			if (LEXICON_USE_CACHE) {
 				static _crc32Buffer = buffer_create(1, buffer_grow, 1);
 				var _keys = variable_struct_get_names(_struct);
-					var _cacheStr = __lexicon.locale+"."+_text;
+					var _cacheStr = __lexicon.locale+"."+_textEntry;
 					if (LEXICON_USE_ADVANCE_CACHE) {
 							_cacheStr += string(_struct);
 					}

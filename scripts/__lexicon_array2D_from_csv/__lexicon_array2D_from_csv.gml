@@ -10,13 +10,15 @@
 /// Modified snap_from_csv for the purposes of having a BOM check
 /// @returns {Mixed}
 
+/// Feather ignore all
+/// @ignore
 function __lexicon_array2D_from_csv()
 {
     var _string           = argument[0];
-    var _cell_delimiter   = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : ",";
+    var _cellDelimiter   = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : ",";
     var _string_delimiter = ((argument_count > 2) && (argument[2] != undefined))? argument[2] : "\"";
     
-    var _cell_delimiter_ord      = ord(_cell_delimiter);
+    var _cellDelimiter_ord      = ord(_cellDelimiter);
     var _string_delimiter_double = _string_delimiter + _string_delimiter;
     var _string_delimiter_ord    = ord(_string_delimiter);
     
@@ -57,7 +59,7 @@ function __lexicon_array2D_from_csv()
                 _in_string = false;
                 
                 var _prev_value = buffer_peek(_buffer, buffer_tell(_buffer)-2, buffer_u8);
-                if ((_prev_value != _cell_delimiter_ord) && (_prev_value != 10) && (_prev_value != 13))
+                if ((_prev_value != _cellDelimiter_ord) && (_prev_value != 10) && (_prev_value != 13))
                 {
                     _read = true;
                 }
@@ -71,7 +73,7 @@ function __lexicon_array2D_from_csv()
                     if ((_prev_value != 10) && (_prev_value != 13))
                     {
                         _newline = true;
-                        if (_prev_value != _cell_delimiter_ord)
+                        if (_prev_value != _cellDelimiter_ord)
                         {
                             _read = true;
                         }
@@ -86,7 +88,7 @@ function __lexicon_array2D_from_csv()
                     }
                 }
             
-                if (_read || (_value == _cell_delimiter_ord))
+                if (_read || (_value == _cellDelimiter_ord))
                 {
                     _read = false;
                 

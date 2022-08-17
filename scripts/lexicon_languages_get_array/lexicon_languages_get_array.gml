@@ -6,6 +6,7 @@ function lexicon_languages_get_array() {
 	var _i = 0;
 	while(_i < array_length(_key)) {
 		_array[_i][0] = _map[$ _key[_i]].language;
+		/* Feather ignore once GM1043 */
 		_array[_i][1] = _map[$ _key[_i]].locale;
 		_i++;
 	}

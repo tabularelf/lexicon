@@ -1,11 +1,12 @@
 /// @func lexicon_locale_set
-/// @param locale
-/// @param [force_flush]
+/// @param {String} _locale
+/// @param {Bool} [_forceFlush=true]
 function lexicon_locale_set(_locale, _forceFlush = true) {
 	// Clear entries
 	__lexicon_reset();
 	
 	if (is_array(_locale)) {
+		/* Feather ignore once GM1061 */
 		_locale = _locale[0];
 	}
 	var _struct = __LEXICON_STRUCT.localeMap[$ _locale];

@@ -1,6 +1,8 @@
 /// @func lexicon_index_declare(language, locale)
-/// @param language
-/// @param locale
+/// @param {String} _language
+/// @param {Any*} _locale
+/// @param {Any*} [_fallbackLocale=undefined]
+// Feather ignore all
 function lexicon_index_declare(_language, _locale, _fallbackLocale = undefined) {
 	// Ensure that it's loaded first!
 	__lexicon_init();
@@ -16,10 +18,14 @@ function lexicon_index_declare(_language, _locale, _fallbackLocale = undefined) 
 	__LEXICON_STRUCT.languageMap[$ _language] = _struct;
 	if is_array(_locale) {
 			var _len = array_length(_locale);
-			for(var _i = 0; _i < _len; ++_i) {
+			var _i = 0;
+			repeat(_len) {
+				/* Feather ignore all GM1061 */
 				__LEXICON_STRUCT.localeMap[$ _locale[_i]] = _struct;
+				++_i;
 			}
 			
+			/* Feather ignore once GM1061 */
 			_locale = _locale[0];
 	} else {
 		__LEXICON_STRUCT.localeMap[$ _locale] = _struct;
