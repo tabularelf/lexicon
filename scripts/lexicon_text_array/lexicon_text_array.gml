@@ -1,6 +1,7 @@
 /// @func lexicon_text_array(text_pointer, array)
 /// @param {String} _textEntry
 /// @param {Array} _array
+/// @return {String}
 function lexicon_text_array(_textEntry, _array) {
 	var _arrayCopy;
 	_arrayCopy[array_length(_array)-1] = 0;
