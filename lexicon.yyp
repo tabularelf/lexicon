@@ -23,6 +23,7 @@
     {"id":{"name":"__lexicon_array2D_from_csv","path":"scripts/__lexicon_array2D_from_csv/__lexicon_array2D_from_csv.yy",},"order":1,},
     {"id":{"name":"__lexicon_cache_text","path":"scripts/__lexicon_cache_text/__lexicon_cache_text.yy",},"order":0,},
     {"id":{"name":"lexicon_locale_get","path":"scripts/lexicon_locale_get/lexicon_locale_get.yy",},"order":8,},
+    {"id":{"name":"lexicon_index_fallback_language_set","path":"scripts/lexicon_index_fallback_language_set/lexicon_index_fallback_language_set.yy",},"order":7,},
     {"id":{"name":"__lexicon_file_types","path":"scripts/__lexicon_file_types/__lexicon_file_types.yy",},"order":0,},
     {"id":{"name":"lexicon_entry_remove","path":"scripts/lexicon_entry_remove/lexicon_entry_remove.yy",},"order":9,},
     {"id":{"name":"lexicon_entry_add","path":"scripts/lexicon_entry_add/lexicon_entry_add.yy",},"order":10,},

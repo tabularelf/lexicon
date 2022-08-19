@@ -18,6 +18,7 @@ function __lexicon_init() {
 		languageMap: {},
 		localeMap: {},
 		fallbackLocaleMap: {},
+		fallbackLanguage: "",
 		textEntries: {},
 		language: "unknown",
 		locale: "unknown",

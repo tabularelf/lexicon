@@ -25,8 +25,16 @@ function lexicon_locale_set(_locale, _forceFlush = true) {
 		}
 	}
 	
+	// Lets try finding a fallback language
+	if (_struct == undefined) {
+		var _fallbackLanguage = __LEXICON_STRUCT.languageMap[$ __LEXICON_STRUCT.fallbackLanguage];
+		if (_fallbackLanguage != undefined) {
+			_struct = _fallbackLanguage;	
+		}
+	}
+	
 	if (_struct != undefined) {
-		__LEXICON_STRUCT.locale = _locale;	
+		__LEXICON_STRUCT.locale = is_array(_struct.locale) ? _struct.locale[0] : _struct.locale;	
 		__LEXICON_STRUCT.language = _struct.language;	
 	
 		// Load entries

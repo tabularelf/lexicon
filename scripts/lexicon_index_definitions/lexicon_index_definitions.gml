@@ -23,8 +23,10 @@ function lexicon_index_definitions(_filePath) {
 	var _len = array_length(_languages);
 	for(var _i = 0; _i < _len; ++_i) {
 		
+		var _language = _languages[_i];
 		var _locale = _struct[$ _languages[_i]].locale;
 		var _fallbackLocale = (_struct[$ _languages[_i]][$ "fallbackLocale"]  != undefined) ? _struct[$ _languages[_i]].fallbackLocale : undefined;
+		var _fallbackLanguage = (_struct[$ _languages[_i]][$ "fallbackLanguage"]  != undefined) ? _struct[$ _languages[_i]].fallbackLanguage : undefined;
 		var _files;
 		
 		if _struct[$ _languages[_i]][$ "files"] != undefined {
@@ -33,7 +35,7 @@ function lexicon_index_definitions(_filePath) {
 			_files = __lexicon_definitions_parse_files(_filePath, _struct[$ _languages[_i]].file);
 		}
 		
-		lexicon_index_declare(_languages[_i], _locale);
+		lexicon_index_declare(_language, _locale);
 		if (_fallbackLocale != undefined) {
 			if (is_array(_locale)) {
 					/* Feather ignore once GM1061 */
@@ -47,10 +49,10 @@ function lexicon_index_definitions(_filePath) {
 			var _fileLen = array_length(_files);
 			for(var _j = 0; _j < _fileLen; ++_j) {
 					/* Feather ignore once GM1061 */
-					__lexicon_handle_file_type(_languages[_i], _files[_j]);
+					__lexicon_handle_file_type(_language, _files[_j]);
 			}
 		} else {
-			__lexicon_handle_file_type(_languages[_i], _files);	
+			__lexicon_handle_file_type(_language, _files);	
 		}
 	}
 }
