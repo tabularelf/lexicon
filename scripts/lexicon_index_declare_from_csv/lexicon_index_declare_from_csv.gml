@@ -40,16 +40,17 @@ function lexicon_index_declare_from_csv(_filePath, _cellDelimiter = ",", _string
 					/* Feather ignore once GM1061 */
 					__LEXICON_STRUCT.localeMap[$ _locale[_i]] = _langStruct;
 					/* Feather ignore once GM1041 */
-					_file = new __lexicon_file(_language, _locale, LEXICON_FILE_TYPES.csv.parser, _filePath);
-					_langStruct.files[array_length(_langStruct.files)] = _file;
 					/* Feather ignore once GM1061 */
 				} else if (!variable_struct_exists(__LEXICON_STRUCT.localeMap, _locale[_i])) {
 					lexicon_index_declare(_language, _locale);	
 					_langStruct = __LEXICON_STRUCT.languageMap[$ _language];
-					/* Feather ignore once GM1041 */
-					_file = new __lexicon_file(_language, _locale, LEXICON_FILE_TYPES.csv.parser, _filePath);
-					_langStruct.files[array_length(_langStruct.files)] = _file;
+				} else {
+					/* Feather ignore once GM1061 */
+					_langStruct = __LEXICON_STRUCT.localeMap[$ _locale[_i]];
 				}
+				
+				_file = new __lexicon_file(_language, _locale[0], LEXICON_FILE_TYPES.csv.parser, _filePath);
+				_langStruct.files[array_length(_langStruct.files)] = _file;
 			}	
 		} else {
 			if (!(is_undefined(_language) || is_undefined(_locale))) && (variable_struct_exists(__LEXICON_STRUCT.languageMap, _language) || 
@@ -59,6 +60,7 @@ function lexicon_index_declare_from_csv(_filePath, _cellDelimiter = ",", _string
 				lexicon_index_declare(_language, _locale);	
 				_langStruct = __LEXICON_STRUCT.languageMap[$ _language];
 			}
+			
 			_file = new __lexicon_file(_language, _locale, LEXICON_FILE_TYPES.csv.parser, _filePath);
 			_langStruct.files[array_length(_langStruct.files)] = _file;
 		}
