@@ -12,11 +12,7 @@ function lexicon_index_declare(_language, _locale, _fallbackLocale = undefined) 
 		exit;	
 	}
 	
-	var _struct = {
-		language: _language,
-		locale: _locale,
-		files: [],	
-	}
+	var _struct = new __lexicon_definition_class(_language, _locale);
 	
 	static _firstEntry = LEXICON_USE_FIRST_ENTRY_ADDED == true ? false : true;
 	

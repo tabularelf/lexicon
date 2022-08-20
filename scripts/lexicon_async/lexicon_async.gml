@@ -8,6 +8,7 @@ function lexicon_async() {
 		if (_arrayFiles[_i][0] == _id) {
 			if async_load[? "status"] == false {
 				/* Feather ignore once GM1061 */
+				/* Feather ignore once GM1010 */
 				__lexicon_throw(_arrayFiles[_i][2].filePath + " async load failed!");
 				/* Feather ignore once GM1061 */
 				buffer_delete(_arrayFiles[_i][1]);

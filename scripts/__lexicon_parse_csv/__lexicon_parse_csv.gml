@@ -43,7 +43,11 @@ for(var _j = 1; _j < _height;  ++_j) {
 		if (_array[_i][0] == LEXICON_ROW_SEPERATOR) continue;
 		var _entry = _array[_i][_j];
 		var _textPointer = _array[_i][0]
-		lexicon_entry_add(_textPointer, _entry); 	
+		if ((LEXICON_REPLACE_ENTRIES) && (variable_struct_exists(__LEXICON_STRUCT.textEntries, _textPointer))) {
+				lexicon_entry_add(_textPointer, _entry); 	
+		} else if (!variable_struct_exists(__LEXICON_STRUCT.textEntries, _textPointer)) {
+			lexicon_entry_add(_textPointer, _entry); 		
+		}
 	}
 	break;
 }

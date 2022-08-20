@@ -8,7 +8,7 @@ function __lexicon_parse_json(_json) {
 		__lexicon_throw("Language JSON invalid! " + _ex.message);
 	}
 	
-	if (__LEXICON_STRUCT.language != _map.language) {
+	if (__LEXICON_STRUCT.language != _map.language) && (!__LEXICON_STRUCT.forceLoadFile) {
 			__lexicon_trace("language is " + __LEXICON_STRUCT.language + " where it expected " + _map.language);
 		return;
 	}
@@ -24,16 +24,16 @@ function __lexicon_parse_json(_json) {
 				}
 			}
 			
-			if (!_validLocale) {
+			/*if (!_validLocale) {
 				// No locale found?
 				__lexicon_trace("locale is " + __LEXICON_STRUCT.locale + " where it expected one of these " + string(_locale));
 				exit;
-			}
+			}*/
 	} else {
-		if (__LEXICON_STRUCT.locale != _locale) {
+		/*if (__LEXICON_STRUCT.locale != _locale) {
 				__lexicon_trace("locale is " + __LEXICON_STRUCT.locale + " where it expected " + _map.locale);
 			return;	
-		}
+		}*/
 	}
 	
 	
@@ -44,7 +44,11 @@ function __lexicon_parse_json(_json) {
 		if (is_struct(_textStructPtr[$ _textArray[_k]])) {
 			__lexicon_text_struct_to_string(_textArray[_k], _textStructPtr[$ _textArray[_k]]);
 		} else {
-			__LEXICON_STRUCT.textEntries[$ _textArray[_k]] = _textStructPtr[$ _textArray[_k]];	
+			if ((LEXICON_REPLACE_ENTRIES) && (variable_struct_exists(__LEXICON_STRUCT.textEntries, _textArray[_k]))) {
+					__LEXICON_STRUCT.textEntries[$ _textArray[_k]] = _textStructPtr[$ _textArray[_k]];	
+			} else if (!variable_struct_exists(__LEXICON_STRUCT.textEntries, _textArray[_k])) {
+				__LEXICON_STRUCT.textEntries[$ _textArray[_k]] = _textStructPtr[$ _textArray[_k]];	
+			}
 		}
 		++_k;
 	}

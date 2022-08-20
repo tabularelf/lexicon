@@ -2,7 +2,7 @@
 /// @ignore
 function __lexicon_file_load(_file) {
 	var _buffer = -1;
-	if (_file.isLoaded == true) return;
+	if (_file.isFileLoaded() == true) return;
 	if (_file.isAsync == true) {
 		_buffer = buffer_create(1, buffer_grow, 1);
 		var _id = buffer_load_async(_buffer, _file.fileName, 0, -1);

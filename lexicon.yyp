@@ -38,6 +38,7 @@
     {"id":{"name":"__lexicon_handle_file_type","path":"scripts/__lexicon_handle_file_type/__lexicon_handle_file_type.yy",},"order":1,},
     {"id":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},"order":0,},
     {"id":{"name":"lexicon_index_definitions","path":"scripts/lexicon_index_definitions/lexicon_index_definitions.yy",},"order":2,},
+    {"id":{"name":"__lexicon_definition_class","path":"scripts/__lexicon_definition_class/__lexicon_definition_class.yy",},"order":12,},
     {"id":{"name":"lexicon_index_declare","path":"scripts/lexicon_index_declare/lexicon_index_declare.yy",},"order":0,},
     {"id":{"name":"lexicon_text_struct","path":"scripts/lexicon_text_struct/lexicon_text_struct.yy",},"order":1,},
     {"id":{"name":"__lexicon_reset","path":"scripts/__lexicon_reset/__lexicon_reset.yy",},"order":4,},

@@ -44,6 +44,13 @@ function lexicon_locale_set(_locale, _forceFlush = true) {
 		__LEXICON_STRUCT.language =  "unknown";
 	}
 	
+	if (LEXICON_FORECE_LOAD_FALLBACK_LANGUAGE) {
+		var _fallbackLocale = is_array(__LEXICON_STRUCT.languageMap[$ __LEXICON_STRUCT.fallbackLanguage].locale) ? __LEXICON_STRUCT.languageMap[$ __LEXICON_STRUCT.fallbackLanguage].locale[0] : __LEXICON_STRUCT.languageMap[$ __LEXICON_STRUCT.fallbackLanguage].locale;
+		__LEXICON_STRUCT.forceLoadFile = true;
+		__lexicon_load_entries(_fallbackLocale);
+		__LEXICON_STRUCT.forceLoadFile = false;
+	}
+	
 	__LEXICON_STRUCT.cacheUpdate = true;
 	
 	if (_forceFlush) lexicon_flush_cache();
