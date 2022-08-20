@@ -21,7 +21,9 @@ function lexicon_index_definitions(_filePath) {
 	var _languages = variable_struct_get_names(_struct);
 	
 	var _len = array_length(_languages);
-	for(var _i = 0; _i < _len; ++_i) {
+	var _i = 0;
+	var _j = 0;
+	repeat(_len) {
 		
 		var _language = _languages[_i];
 		var _locale = _struct[$ _languages[_i]].locale;
@@ -47,12 +49,14 @@ function lexicon_index_definitions(_filePath) {
 		
 		if (is_array(_files)) {
 			var _fileLen = array_length(_files);
-			for(var _j = 0; _j < _fileLen; ++_j) {
-					/* Feather ignore once GM1061 */
-					__lexicon_handle_file_type(_language, _files[_j]);
+			repeat(_fileLen) {
+				/* Feather ignore once GM1061 */
+				__lexicon_handle_file_type(_language, _files[_j]);
+				++_j
 			}
 		} else {
 			__lexicon_handle_file_type(_language, _files);	
 		}
+		++_i;
 	}
 }
