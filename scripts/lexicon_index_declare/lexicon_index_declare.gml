@@ -7,6 +7,11 @@ function lexicon_index_declare(_language, _locale, _fallbackLocale = undefined) 
 	// Ensure that it's loaded first!
 	__lexicon_init();
 	
+	if (variable_struct_exists(__LEXICON_STRUCT.languageMap, _language)) {
+		__lexicon_trace(_language + " already exists!");
+		exit;	
+	}
+	
 	var _struct = {
 		language: _language,
 		locale: _locale,

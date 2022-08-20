@@ -1,3 +1,4 @@
+/// @ignore
 // General
 #macro LEXICON_DEBUG								false // Enables Lexicons debugging (outputs specific errors or extra info to console).
 #macro LEXICON_USE_FIRST_ENTRY_ADDED				false // Uses the first entry added automatically
@@ -12,4 +13,5 @@
 #macro LEXICON_CACHE_ARG_THRESHOLD					2 // How many arguments before it starts caching. This doesn't apply to lexicon_text_struct.
 #macro LEXICON_GC_NEXT_TICK							60 // Controller to ensure that the cache garbage collector triggers only when necessary. 
 #macro LEXICON_STRUCT_REPLACE_CHR_SYMBOLS			["%", "%"] // Tells Lexicon what characters are used to determine a variable with lexicon_text_struct(). In previous versions it was {{ }} by default.
-#macro LEXICON_TEXT_JSON_BREAK						"."	// Tells Lexicon what character it should return for when a struct is defined within one of the text entries. i.e. "generic": {"foo": "bar"} would become "generic.foo".		
+#macro LEXICON_TEXT_JSON_BREAK						"."	// Tells Lexicon what character it should return for when a struct is defined within one of the text entries. i.e. "generic": {"foo": "bar"} would become "generic.foo".	
+#macro LEXICON_REPLACE_ENTRIES						false // Tells Lexicon that it can replace duplicate entries with new ones.

@@ -6,8 +6,8 @@ font = fn_fontWithJapanese;
 draw_set_font(font);
 
 lexicon_index_definitions("definitions.json");
-lexicon_index_declare_from_csv("locale.csv");
 lexicon_index_declare_from_json("locale.json");
+lexicon_index_declare_from_csv("locale.csv");
 lexicon_index_fallback_language_set("English")
 
 lexicon_locale_set(lexicon_get_os_locale());
