@@ -1,4 +1,3 @@
-/// @ignore
 #macro __LEXICON_STRUCT global.__lexicon_struct
 #macro LEXICON_VERSION "2.1.2"
 #macro LEXICON_CREDITS "TabularElf - https://tabelf.link/"
@@ -9,6 +8,7 @@
 
 __lexicon_init();
 
+/// @ignore
 function __lexicon_init() {
 	static _init = false;
 	if (_init == false) {
