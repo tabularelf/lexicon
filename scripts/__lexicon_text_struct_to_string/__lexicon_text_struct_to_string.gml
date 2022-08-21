@@ -1,3 +1,4 @@
+/// @ignore
 function __lexicon_text_struct_to_string(_textName, _textStruct) {
 	gml_pragma("forceinline");
 	var _i = 0;

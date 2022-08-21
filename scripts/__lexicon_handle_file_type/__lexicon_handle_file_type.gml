@@ -1,3 +1,4 @@
+/// @ignore
 function __lexicon_handle_file_type(_lang, _fileStruct) {
 		var _string = "";
 		var _filePath = is_struct(_fileStruct) ? _fileStruct.filePath : _fileStruct;

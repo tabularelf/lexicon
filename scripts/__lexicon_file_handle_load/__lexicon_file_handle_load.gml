@@ -1,5 +1,4 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+/// @ignore
 function __lexicon_file_handle_load(_file, _string) {
 		var _args;
 		_args[0] = _string;
