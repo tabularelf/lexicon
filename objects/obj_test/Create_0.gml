@@ -16,7 +16,3 @@ struct = {playerName: "TabularElf", loveMeter: "100%", dateTime: string(date_get
 array = ["100%", "TabularElf", string( date_get_year(date_current_datetime()))+"/"+string(date_get_month(date_current_datetime()))];
 languages_array = lexicon_languages_get_array();
 language_index = 0;
-
-
-
-

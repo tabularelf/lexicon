@@ -2,7 +2,7 @@
 // General
 #macro LEXICON_DEBUG								false // Enables Lexicons debugging (outputs specific errors or extra info to console).
 #macro LEXICON_USE_FIRST_ENTRY_ADDED				false // Uses the first entry added automatically
-#macro LEXICON_ROW_SEPERATOR						"------------------" // Tells Lexicon which rows  in a CSV format are comments and discards them.
+#macro LEXICON_ROW_SEPERATOR						"------------------" // Tells Lexicon which rows in a CSV format are comments and discards them.
 
 // Cache related
 #macro LEXICON_USE_CACHE							true // Uses the cache system. Searching for strings that match the same arguments as they were called.
