@@ -1,4 +1,4 @@
-//Need a font supporting weird glyph (from an roman alphabet user's point of view ;) )
+// Need a font supporting weird glyph (from an roman alphabet user's point of view ;) )
 font = fn_fontWithJapanese;
 draw_set_font(font);
 

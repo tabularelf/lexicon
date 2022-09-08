@@ -55,14 +55,6 @@ function lexicon_text(_textEntry) {
 				var _struct = cacheMap[? _cacheStr];
 				if _struct.cacheStr == _cacheStr {
 					// Update timestamp
-					/*if (_struct.str != _struct.memStr) {
-						if (_struct.cacheStr != _cacheStr) {
-							// Recache
-							var _newStruct = new _lexiconCacheText(_str, _cacheStr);
-							delete _struct;
-							ds_map_delete(_cacheStr
-						}
-					}*/
 					_struct.timeStamp = current_time;
 					/* Feather ignore once GM1035 */
 					return _struct.str;

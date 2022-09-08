@@ -19,16 +19,23 @@ function __lexicon_handle_cache() {
 	with(__LEXICON_STRUCT) {
 		var _length = ds_list_size(cacheList);
 		var _i = 0;
-		/*for(var _i = 0; _i < _length; ++_i)*/ repeat(_length) {
+		repeat(_length) {
 			var _deleteStruct = false;
 			var _ref = cacheList[| _i];
-			if !weak_ref_alive(_ref.ref) {
+			if (is_undefined(_ref)) || (!weak_ref_alive(_ref.ref)) {
 				_deleteStruct=  true;
 			}
-			if (current_time > cacheList[? _ref.cacheStr].timeStamp+LEXICON_CACHE_TIMEOUT) {
-				_deleteStruct = true;
+			
+			if (is_undefined(_ref)) {
+				var _cache = cacheMap[? _ref.cacheStr];
+				if (!is_undefined(_cache)) {
+					if (current_time > _cache.timeStamp+LEXICON_CACHE_TIMEOUT) {
+					_deleteStruct = true;
+					}
+				} else {
+					_deleteStruct = true;	
+				}
 			}
-
 
 			if (_deleteStruct) {
 				ds_list_delete(cacheList,_i);
@@ -43,4 +50,3 @@ function __lexicon_handle_cache() {
 
 	_cFrame = current_time+1000;
 }
-
