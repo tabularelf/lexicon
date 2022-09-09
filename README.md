@@ -1,11 +1,11 @@
-# Lexicon v2.1.2
+# Lexicon v2.1.3
 
 Lexicon is a localization system focused around on simplifying implementation of adding translation to your GameMaker Studio 2.3+ project, all the while allowing specific sections to be replaced on the fly!
 It supports the following:
 
 * Substring Replacement/s. (Replacing `%s` with `Hello World!`)
-* Substring Replacement/s via struct variables https://github.com/tabularelf/lexicon/wiki/Functions-(Text)#lexicon_text_struct
+* Substring Replacement/s via struct variables 
 * Adding/removing languages through built-in functionality.
 * Supports CSV/JSON parsing. (As well as functions to help easily add more parsers)
 
-For more information, check out the wiki! https://github.com/tabularelf/lexicon/wiki/
+For more information, check out the documentation! https://tabularelf.com/docs/lexicon/
