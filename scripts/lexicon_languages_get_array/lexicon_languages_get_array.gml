@@ -1,8 +1,7 @@
 /// @func lexicon_languages_get_array()
 /// @param {Bool} returnStruct
-/// @param {Bool} sort
 /* feather ignore all */
-function lexicon_languages_get_array(_returnStruct = false, _sort = true) {
+function lexicon_languages_get_array(_returnStruct = false) {
 	static _structSort = function(_left, _right) {
 		if (_left.language < _right.language) {
 		    return -1;
@@ -43,12 +42,10 @@ function lexicon_languages_get_array(_returnStruct = false, _sort = true) {
 		}	
 	}
 	
-	if (_sort) {
-		if (_returnStruct) {
-			array_sort(_array, _structSort);
-		} else {
-			array_sort(_array, _arraySort);
-		}
+	if (_returnStruct) {
+		array_sort(_array, _structSort);
+	} else {
+		array_sort(_array, _arraySort);
 	}
 	return _array;
 }
