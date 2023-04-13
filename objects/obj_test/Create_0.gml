@@ -1,6 +1,7 @@
 // Need a font supporting weird glyph (from an roman alphabet user's point of view ;) )
 font = fn_fontWithJapanese;
 draw_set_font(font);
+show_debug_overlay(true);
 
 lexicon_index_definitions("definitions.json");
 lexicon_index_declare_from_json("locale.json");

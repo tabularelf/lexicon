@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "__lexicon_reset",
+  "name": "__lexicon_localization_class",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

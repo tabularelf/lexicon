@@ -5,7 +5,7 @@
 function lexicon_text_struct(_textEntry, _struct) {
 	gml_pragma("forceinline");
 	// Auto GC
-	if (LEXICON_USE_CACHE && LEXICON_AUTO_GC_CACHE) __lexicon_handle_cache();
+	__lexicon_handle_cache();
 	static __lexicon = __LEXICON_STRUCT;
 	static localeMap = __lexicon.localeMap;
 	static languageMap = __lexicon.languageMap;
@@ -38,28 +38,24 @@ function lexicon_text_struct(_textEntry, _struct) {
 
 		#region Cache
 		// Check against Cache
-			if (LEXICON_USE_CACHE) {
-				static _crc32Buffer = buffer_create(1, buffer_grow, 1);
-				var _keys = variable_struct_get_names(_struct);
-					var _cacheStr = __lexicon.locale+"."+_textEntry;
-					if (LEXICON_USE_ADVANCE_CACHE) {
-							_cacheStr += string(_struct);
-					}
-					
-					buffer_seek(_crc32Buffer, buffer_seek_start, 0);
-					buffer_resize(_crc32Buffer, string_byte_length(_cacheStr));
-					buffer_write(_crc32Buffer, buffer_text, _cacheStr);
-					var _cacheStr = buffer_crc32(_crc32Buffer, 0, buffer_tell(_crc32Buffer));
-					buffer_resize(_crc32Buffer, 1);
+		static _crc32Buffer = buffer_create(1, buffer_grow, 1);
+		var _keys = variable_struct_get_names(_struct);
+		var _cacheStr = __lexicon.locale+"."+_textEntry;
+		_cacheStr += string(_struct);
+		
+		buffer_seek(_crc32Buffer, buffer_seek_start, 0);
+		buffer_resize(_crc32Buffer, string_byte_length(_cacheStr));
+		buffer_write(_crc32Buffer, buffer_text, _cacheStr);
+		var _cacheStr = buffer_crc32(_crc32Buffer, 0, buffer_tell(_crc32Buffer));
+		buffer_resize(_crc32Buffer, 1);
 
-					if ds_map_exists(cacheMap, _cacheStr) {
-						var _structCache = cacheMap[? _cacheStr];
-						//if _structCache.cacheStr == _cacheStr {
-							_structCache.timeStamp = current_time;
-							return _structCache.str;
-						//}
-					}
-			}
+		if ds_map_exists(cacheMap, _cacheStr) {
+			var _structCache = cacheMap[? _cacheStr];
+			//if _structCache.cacheStr == _cacheStr {
+				_structCache.timeStamp = current_time;
+				return _structCache.str;
+			//}
+		}
 		#endregion
 
 		// Lets loop through struct-based stuff
@@ -86,12 +82,9 @@ function lexicon_text_struct(_textEntry, _struct) {
 
 	//}
 
-	if (LEXICON_USE_CACHE) {
-		var _structEntry = new __lexicon_cache_text(_str, _cacheStr);
-		cacheMap[? _cacheStr] = _structEntry;
-		ds_list_add(cacheList, {cacheStr: _cacheStr, ref: weak_ref_create(_structEntry)});
-		//return _struct;
-	}
+	var _structEntry = new __lexicon_cache_text(_str, _cacheStr);
+	cacheMap[? _cacheStr] = _structEntry;
+	ds_list_add(cacheList, {cacheStr: _cacheStr, ref: weak_ref_create(_structEntry)});
 
 	return _str;
 }

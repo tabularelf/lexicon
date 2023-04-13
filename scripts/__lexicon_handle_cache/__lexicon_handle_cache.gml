@@ -3,17 +3,15 @@
 function __lexicon_handle_cache() {
 
 	// Keep track of frame
-	if (LEXICON_USE_CACHE) && (LEXICON_AUTO_GC_CACHE) {
-		static _frame = 0;
-		static _cFrame = 0;
+	static _frame = 0;
+	static _cFrame = 0;
 
-		// Perform first check
-		if (_cFrame >= current_time) exit;
+	// Perform first check
+	if (_cFrame >= current_time) exit;
 
-		// Perform second check
-		_frame = ++_frame mod LEXICON_GC_NEXT_TICK;
-		if (_frame != 0) exit;
-	}
+	// Perform second check
+	_frame = ++_frame mod LEXICON_GC_NEXT_TICK;
+	if (_frame != 0) exit;
 
 
 	with(__LEXICON_STRUCT) {

@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "__lexicon_reset",
+  "name": "__lexicon_get_date_format",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

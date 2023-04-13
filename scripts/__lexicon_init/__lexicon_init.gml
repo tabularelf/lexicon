@@ -1,4 +1,4 @@
-#macro __LEXICON_STRUCT global.__lexicon_struct
+#macro __LEXICON_STRUCT (__lexicon_init())
 #macro LEXICON_VERSION "2.1.4"
 #macro LEXICON_CREDITS "TabularElf - https://tabelf.link/"
 
@@ -10,12 +10,7 @@ __lexicon_init();
 
 /// @ignore
 function __lexicon_init() {
-	static _init = false;
-	if (_init == false) {
-		_init = true;
-	
-	
-	__LEXICON_STRUCT = {
+	static _inst =  {
 		languageMap: {},
 		localeMap: {},
 		fallbackLocaleMap: {},
@@ -31,7 +26,8 @@ function __lexicon_init() {
 		cacheMap: ds_map_create(),
 		cacheList: ds_list_create()
 	}
-
-	__lexicon_trace("v" + LEXICON_VERSION + " initialized! Created by " + LEXICON_CREDITS);
-	}
+	
+	return _inst;
 }
+
+__lexicon_trace("v" + LEXICON_VERSION + " initialized! Created by " + LEXICON_CREDITS);
