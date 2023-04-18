@@ -1,13 +1,8 @@
 /// @ignore
 function __lexicon_cache_text(_text, _cacheStr) constructor {
-	//static memStr = "";
+	static _global = __lexicon_init();
 	str = _text;
-	//memStr = _text;
+	finalStr = _text;
 	cacheStr = _cacheStr;
-	timeStamp = current_time;
-	
-	static toString = function() {
-		timeStamp = current_time;
-		return str;
-	}
+	timeStamp = _global.frame;
 }

@@ -2,7 +2,7 @@
 	"English": { 
 		"region": "en",
 		"locale": "", 
-		"alternatives": [{
+		"children": [{
 			"name": "English (Australian)",
 			"locale": "AU",
 			"format": {
@@ -104,7 +104,7 @@
 	"French": { 
 		"region": "fr",
 		"locale": "FR", 
-		"alternatives": [{
+		"children": [{
 			"name": "French (Canada)",
 			"locale": "CA",
 			"format": {
@@ -150,7 +150,7 @@
 	"Template": { 
 		"region": "tm",
 		"locale": "PL", 
-		"alternatives": [],
+		"children": [],
 		"format": {
 			"firstDayOfWeek": 0,
 			"dateTimePattern": {
@@ -190,7 +190,7 @@
 	"Turkish": { 
 		"region": "tr",
 		"locale": "", 
-		"alternatives": [{
+		"children": [{
 			"name": "Turkish (Turkey)",
 			"locale": "TR"
 		},
@@ -238,7 +238,7 @@
 	"Czech": { 
 		"region": "cs",
 		"locale": "CZ", 
-		"alternatives": [],
+		"children": [],
 		"format": {
 			"firstDayOfWeek": 1,
 			"dateTimePattern": {
@@ -278,20 +278,16 @@
 	"Russian": { 
 		"region": "ru",
 		"locale": "", 
-		"alternatives": [{
+		"children": [{
 			"name": "Russian (Russia)",
 			"locale": "RU"
-		},
-		{
-			"name": "Russian (Ukraine)",
-			"locale": "UA"
 		}],
 		"format": {}
 	},
 	"Korean": { 
 		"region": "ko",
 		"locale": "", 
-		"alternatives": [{
+		"children": [{
 			"name": "Korean (North Korea)",
 			"locale": "KP"
 		},

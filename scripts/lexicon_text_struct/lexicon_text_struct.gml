@@ -61,8 +61,8 @@ function lexicon_text_struct(_textEntry, _struct) {
 		// Lets loop through struct-based stuff
 		var _keys = variable_struct_get_names(_struct);
 		var _i = 0;
-		static _replChr0 = __lexicon.replaceChrStruct[0];
-		static _replChr1 = __lexicon.replaceChrStruct[1];
+		static _replChr0 = __lexicon.replaceChr[0];
+		static _replChr1 = __lexicon.replaceChr[1];
 		repeat(array_length(_keys)) {
 			_str = string_replace_all(_str, _replChr0 + _keys[_i] + _replChr1, _struct[$ _keys[_i]]);
 			++_i;

@@ -1,50 +1,43 @@
 /// Feather ignore all
 /// @ignore
 function __lexicon_handle_cache() {
-
+	static _global = __lexicon_init();
+	static _i = 0;
 	// Keep track of frame
-	static _frame = 0;
-	static _cFrame = 0;
-
-	// Perform first check
-	if (_cFrame >= current_time) exit;
-
-	// Perform second check
-	_frame = ++_frame mod LEXICON_GC_NEXT_TICK;
+	var _frame = _global.frame % LEXICON_GC_NEXT_TICK;
 	if (_frame != 0) exit;
 
 
-	with(__LEXICON_STRUCT) {
-		var _length = ds_list_size(cacheList);
-		var _i = 0;
-		repeat(_length) {
-			var _deleteStruct = false;
-			var _ref = cacheList[| _i];
-			if (is_undefined(_ref)) || (!weak_ref_alive(_ref.ref)) {
-				_deleteStruct=  true;
-			}
-			
-			if (is_undefined(_ref)) {
-				var _cache = cacheMap[? _ref.cacheStr];
-				if (!is_undefined(_cache)) {
-					if (current_time > _cache.timeStamp+LEXICON_CACHE_TIMEOUT) {
-					_deleteStruct = true;
-					}
-				} else {
-					_deleteStruct = true;	
+	var _length = ds_list_size(_global.cacheList);
+	if (_length == 0) exit;
+	_i = _i % _length;
+	var _totalTime = get_timer() + 50;
+	repeat(_length) {
+		var _deleteStruct = false;
+		var _ref = _global.cacheList[| _i];
+		if (is_undefined(_ref)) || (!weak_ref_alive(_ref.ref)) {
+			_deleteStruct=  true;
+		}
+		
+		if (is_undefined(_ref)) {
+			var _cache = _global.cacheMap[? _ref.cacheStr];
+			if (!is_undefined(_cache)) {
+				if (current_time > _cache.timeStamp+LEXICON_CACHE_TIMEOUT) {
+				_deleteStruct = true;
 				}
-			}
-
-			if (_deleteStruct) {
-				ds_list_delete(cacheList,_i);
-				delete cacheMap[? _ref.cacheStr];
-				ds_map_delete(cacheList, _ref.cacheStr);
-				--_i;
-				//--_length;
-				if (LEXICON_DEBUG) __lexicon_trace(_ref.cacheStr + " has been removed!");
+			} else {
+				_deleteStruct = true;	
 			}
 		}
-	}
 
-	_cFrame = current_time+1000;
+		if (_deleteStruct) {
+			ds_list_delete(_global.cacheList,_i);
+			ds_map_delete(_global.cacheList, _ref.cacheStr);
+			--_length;
+			if (LEXICON_DEBUG) __lexicon_trace(_ref.cacheStr + " has been removed!");
+		}
+		if (_length == 0) break;
+		if (get_timer() >= _totalTime) break;
+		_i = (_i+1) % _length;
+	}
 }

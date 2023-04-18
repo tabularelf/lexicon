@@ -19,12 +19,17 @@ function __lexicon_init() {
 		textEntries: {},
 		language: "unknown",
 		locale: "unknown",
-		replaceChr: "%s",
-		replaceChrStruct: LEXICON_STRUCT_REPLACE_CHR_SYMBOLS,
+		replaceChrLegacy: "%s",
+		replaceChr: LEXICON_STRUCT_REPLACE_CHR_SYMBOLS,
 		fileAsyncList: [],
 		cacheUpdate: true,
 		cacheMap: ds_map_create(),
-		cacheList: ds_list_create()
+		cacheList: ds_list_create(),
+		langDB: __lexicon_localization_map_init()[$ lexicon_get_os_locale()] ?? __lexicon_localization_map_init()[$ "en"],
+		dateTimeFunc: undefined,
+		dateLength: lexicon_length.SHORT,
+		timeLength: lexicon_length.SHORT,
+		frame: 0
 	}
 	
 	return _inst;

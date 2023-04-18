@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "__lexicon_date_format_class",
+  "name": "__lexicon_localization_map_init",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

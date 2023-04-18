@@ -15,7 +15,7 @@ function lexicon_text(_textEntry) {
 	with(__LEXICON_STRUCT) {
 
 	// Failsafe before everything else!
-	var _replchr = replaceChr;
+	var _replchr = replaceChrLegacy;
 	
 	// Correct for any potential errors
 	if (localeMap[$ locale] == undefined) {

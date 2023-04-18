@@ -4,7 +4,7 @@
   "name": "lexicon",
   "resources": [
     {"id":{"name":"obj_test","path":"objects/obj_test/obj_test.yy",},"order":0,},
-    {"id":{"name":"__lexicon_localization_map","path":"scripts/__lexicon_localization_map/__lexicon_localization_map.yy",},"order":15,},
+    {"id":{"name":"__lexicon_localization_map_init","path":"scripts/__lexicon_localization_map_init/__lexicon_localization_map_init.yy",},"order":15,},
     {"id":{"name":"lexicon_flush_cache","path":"scripts/lexicon_flush_cache/lexicon_flush_cache.yy",},"order":0,},
     {"id":{"name":"__lexicon_file_handle_load","path":"scripts/__lexicon_file_handle_load/__lexicon_file_handle_load.yy",},"order":0,},
     {"id":{"name":"__lexicon_parse_json","path":"scripts/__lexicon_parse_json/__lexicon_parse_json.yy",},"order":2,},
@@ -38,7 +38,6 @@
     {"id":{"name":"__lexicon_file_load","path":"scripts/__lexicon_file_load/__lexicon_file_load.yy",},"order":1,},
     {"id":{"name":"lexicon_get_os_locale","path":"scripts/lexicon_get_os_locale/lexicon_get_os_locale.yy",},"order":7,},
     {"id":{"name":"lexicon_locale_set","path":"scripts/lexicon_locale_set/lexicon_locale_set.yy",},"order":7,},
-    {"id":{"name":"__lexicon_date_format_class","path":"scripts/__lexicon_date_format_class/__lexicon_date_format_class.yy",},"order":17,},
     {"id":{"name":"__lexicon_localization","path":"scripts/__lexicon_localization/__lexicon_localization.yy",},"order":19,},
     {"id":{"name":"lexicon_language_exists","path":"scripts/lexicon_language_exists/lexicon_language_exists.yy",},"order":2,},
     {"id":{"name":"__lexicon_throw","path":"scripts/__lexicon_throw/__lexicon_throw.yy",},"order":1,},
@@ -106,9 +105,9 @@
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"locale.json","CopyToMask":3035461389054378222,"filePath":"datafiles",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"definitions.json","CopyToMask":-1,"filePath":"datafiles",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"locale.csv","CopyToMask":-1,"filePath":"datafiles",},
-    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"lexicon_db.json","CopyToMask":-1,"filePath":"datafiles",},
+    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"lexicon_db.json","CopyToMask":3035426170322551022,"filePath":"datafiles",},
   ],
   "MetaData": {
-    "IDEVersion": "2022.0.0.19",
+    "IDEVersion": "2022.0.1.31",
   },
 }
