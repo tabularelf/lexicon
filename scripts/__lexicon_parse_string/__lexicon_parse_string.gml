@@ -11,7 +11,6 @@ function __lexicon_parse_string(_lexiconTextCache) {
 	static _replaceChrStart = _global.replaceChr[0];
 	static _replaceChrEnd = _global.replaceChr[1];
 	static _replaceChrLegacy = _global.replaceChrLegacy;
-	var _dt = _global.dateTimeFunc != undefined ? _global.dateTimeFunc() : date_current_datetime(); 
 	var _dynamicArray = undefined;
 	//static _cacheStr = "";
 	//static _cacheStr2 = "";
@@ -33,7 +32,6 @@ function __lexicon_parse_string(_lexiconTextCache) {
 				_newStr = string_replace_all(_newStr, _replaceChrStart + string(_ii) + _replaceChrEnd, argument[_i]);
 				++_i;
 				++_ii;
-				break;
 			}
 			
 			if (LEXICON_USE_LEGACY_ARRAY) {
@@ -60,36 +58,50 @@ function __lexicon_parse_string(_lexiconTextCache) {
 				var _leftReplaceChrLen = string_length(_replaceChrStart);
 				//var _rightReplaceChrLen = string_length(_replaceChrEnd);
 				for(_i = 0; _i < _remaining; _i += 2) {
-					_posStart = string_pos_ext(_replaceChrStart, _newStr, _posStart)+_leftReplaceChrLen;
+					_posStart = string_pos_ext(_replaceChrStart, _newStr, _posStart);
 					_posEnd = string_pos_ext(_replaceChrEnd, _newStr, _posEnd);
-					var _strKey = string_copy(_newStr, _posStart, _posEnd-_posStart);
+					var _strKey = string_copy(_newStr, _posStart+_leftReplaceChrLen, _posEnd-_posStart-_leftReplaceChrLen);
 					if (_strKey == "") break;
-					if (string_pos(",", _strKey) > 0) && ((string_delete(_strKey, 1, string_pos(",", _strKey)) == "dynamic") || (string_delete(_strKey, 1, string_pos(",", _strKey)) == " dynamic")) {
+
 						if (_dynamicArray == undefined) _dynamicArray = [];
-						var _addDynamic = true;
 						var _iii = 0;
+						var _alreadyPushed = false;
 						repeat(array_length(_dynamicArray)) {
-							if (_dynamicArray[_iii][1] == _strKey) {
-								_addDynamic = false;
+							if (_dynamicArray[_iii][0] == _strKey) {
+								_alreadyPushed = true;
 								break;
 							}
+							++_iii;
 						}
-						if (_addDynamic) array_push(_dynamicArray, [string_delete(_strKey, string_pos(",", _strKey), string_length(_strKey)), _strKey, undefined]);
-						continue;
-					}
-					
-					_ii = 1;
-					repeat(argument_count-1) {
-						if (!is_struct(argument[_ii])) {
+						
+						if (_alreadyPushed) {
 							++_ii;
 							continue;
 						}
 						
-						if (variable_struct_exists(argument[_ii], _strKey)) {
-							_newStr = string_replace_all(_newStr, _replaceChrStart + _strKey + _replaceChrEnd, argument[_ii][$ _strKey]);	
+						if (_global.dynamicMap[$ _strKey] != undefined) {
+							_lexiconTextCache.isDynamicGlobal = true;
+							array_push(_dynamicArray, [_strKey, undefined]);
+						} else {
+							_ii = 1;
+							repeat(argument_count-1) {
+							if (!is_struct(argument[_ii])) {
+								++_ii;
+								continue;
+							}
+								
+							if (variable_struct_exists(argument[_ii], _strKey)) {
+								_lexiconTextCache.isDynamic = true;
+								array_push(_dynamicArray, [_strKey, weak_ref_create(argument[_ii])]);
+								++_ii;
+								break;
+								//_newStr = string_replace_all(_newStr, _replaceChrStart + _strKey + _replaceChrEnd, argument[_ii][$ _strKey]);	
+							}
+							++_ii;
 						}
-						++_ii;
 					}
+					_posStart++;
+					_posEnd++;
 				}
 				
 			}
@@ -109,7 +121,24 @@ function __lexicon_parse_string(_lexiconTextCache) {
 		return _lexiconTextCache.finalStr;	
 	}
 	
-	if (string_count(_replaceChrStart + "Date" + _replaceChrEnd, _newStr) > 0) {
+	if (_dynamicArray != undefined) {
+		_i = 0;
+		repeat(array_length(_dynamicArray)) {
+			if (_dynamicArray[_i][1] == undefined) {
+				_newStr = string_replace_all(_newStr, _replaceChrStart + _dynamicArray[_i][0] + _replaceChrEnd, _global.dynamicMap[$ _dynamicArray[_i][0]]());
+			} else if (weak_ref_alive(_dynamicArray[_i][1])) {
+				_newStr = string_replace_all(_newStr, _replaceChrStart + _dynamicArray[_i][0] + _replaceChrEnd, _dynamicArray[_i][1].ref[$ _dynamicArray[_i][0]]);	
+			}
+			++_i;
+		}
+	}
+	
+	return _newStr;
+}
+
+/*
+
+if (string_count(_replaceChrStart + "Date" + _replaceChrEnd, _newStr) > 0) {
 		_newStr = string_replace_all(_newStr, _replaceChrStart + "Date" + _replaceChrEnd, _global.langDB.__GetDateString(_dt));
 		_lexiconTextCache.isDynamicGlobal = true;
 	}
@@ -123,32 +152,7 @@ function __lexicon_parse_string(_lexiconTextCache) {
 		_newStr = string_replace_all(_newStr, _replaceChrStart + "DateTime" + _replaceChrEnd, _global.langDB.__GetDateTimeString(_dt));
 		_lexiconTextCache.isDynamicGlobal = true;
 	}
-	
-	if (_dynamicArray != undefined) {
-		_i = 0;
-		repeat(array_length(_dynamicArray)) {
-			_ii = 1;
-			repeat(argument_count-1) {
-				if (!is_struct(argument[_ii])) {
-					++_ii;
-					continue;
-				}
-				
-				if (variable_struct_exists(argument[_ii], _dynamicArray[_i][0])) {
-					_newStr = string_replace_all(_newStr, _replaceChrStart + _dynamicArray[_i][1] + _replaceChrEnd, argument[_ii][$ _dynamicArray[_i][0]]);
-					_dynamicArray[_i][2] = weak_ref_create(argument[_ii]);
-					_lexiconTextCache.isDynamic = true;
-				}
-				++_ii;
-			}
-			if (_dynamicArray[_i][2] == undefined) array_delete(_dynamicArray, _i, 1);
-			--_i;
-			++_i;
-		}
-	}
-	
-	return _newStr;
-}
+*/
 
 /// @ignore
 function __lexicon_cache_text_new(_text, _cacheStr) constructor {
@@ -168,7 +172,7 @@ function __lexicon_cache_text_new(_text, _cacheStr) constructor {
 	}
 }
 
-var _str = "{{Rawr}} {{Rawr,dynamic}} {{Rawr,dynamic}} {{Rawr}} {{DateTime}} {{0}} %s {{1}} %s {{3}} %s {{2}}";//"{{Rawr,dynamic}} " + string_repeat("{{DateTime}}", 100);
+var _str = "{{Rawr}} {{0}} %s {{1}} %s {{3}} %s {{2}}";//"{{Rawr,dynamic}} " + string_repeat("{{DateTime}}", 100);
 var _struct = {Rawr: "Nice"};
 var _args = [_struct, 2, 5, 3];
 var _cacheStr = "";

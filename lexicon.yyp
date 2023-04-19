@@ -3,6 +3,7 @@
   "resourceVersion": "1.6",
   "name": "lexicon",
   "resources": [
+    {"id":{"name":"lexicon_define_global","path":"scripts/lexicon_define_global/lexicon_define_global.yy",},"order":9,},
     {"id":{"name":"obj_test","path":"objects/obj_test/obj_test.yy",},"order":0,},
     {"id":{"name":"__lexicon_localization_map_init","path":"scripts/__lexicon_localization_map_init/__lexicon_localization_map_init.yy",},"order":15,},
     {"id":{"name":"lexicon_flush_cache","path":"scripts/lexicon_flush_cache/lexicon_flush_cache.yy",},"order":0,},
