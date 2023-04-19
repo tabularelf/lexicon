@@ -7,10 +7,12 @@ function __lexicon_parse_string(_lexiconTextCache) {
 		"Time": true,
 		"DateTime": true
 	}
+    _lexiconTextCache.timeStamp = _global.frame;
 	//static _replaceChrs = _global.replaceChr;
 	static _replaceChrStart = _global.replaceChr[0];
 	static _replaceChrEnd = _global.replaceChr[1];
 	static _replaceChrLegacy = _global.replaceChrLegacy;
+    static _hashAvailable = _global.hashAvailable;
 	var _dynamicArray = undefined;
 	//static _cacheStr = "";
 	//static _cacheStr2 = "";
@@ -62,25 +64,26 @@ function __lexicon_parse_string(_lexiconTextCache) {
 					_posEnd = string_pos_ext(_replaceChrEnd, _newStr, _posEnd);
 					var _strKey = string_copy(_newStr, _posStart+_leftReplaceChrLen, _posEnd-_posStart-_leftReplaceChrLen);
 					if (_strKey == "") break;
-
-						if (_dynamicArray == undefined) _dynamicArray = [];
+                    
 						var _iii = 0;
 						var _alreadyPushed = false;
-						repeat(array_length(_dynamicArray)) {
-							if (_dynamicArray[_iii][0] == _strKey) {
-								_alreadyPushed = true;
-								break;
-							}
-							++_iii;
-						}
-						
-						if (_alreadyPushed) {
-							++_ii;
-							continue;
-						}
-						
+                        if (_dynamicArray != undefined) {
+						    repeat(array_length(_dynamicArray)) {
+						    	if (_dynamicArray[_iii][0] == _strKey) {
+						    		_alreadyPushed = true;
+						    		break;
+						    	}
+						    	++_iii;
+						    }
+						    
+						    if (_alreadyPushed) {
+						    	++_ii;
+						    	continue;
+						    }
+                        }
 						if (_global.dynamicMap[$ _strKey] != undefined) {
-							_lexiconTextCache.isDynamicGlobal = true;
+                            if (_dynamicArray == undefined) _dynamicArray = [];
+							_lexiconTextCache.isDynamic = true;
 							array_push(_dynamicArray, [_strKey, undefined]);
 						} else {
 							_ii = 1;
@@ -92,7 +95,8 @@ function __lexicon_parse_string(_lexiconTextCache) {
 								
 							if (variable_struct_exists(argument[_ii], _strKey)) {
 								_lexiconTextCache.isDynamic = true;
-								array_push(_dynamicArray, [_strKey, weak_ref_create(argument[_ii])]);
+                                if (_dynamicArray == undefined) _dynamicArray = [];
+								array_push(_dynamicArray, [_strKey, weak_ref_create(argument[_ii]), _hashAvailable ? variable_get_hash(_strKey) : undefined]);
 								++_ii;
 								break;
 								//_newStr = string_replace_all(_newStr, _replaceChrStart + _strKey + _replaceChrEnd, argument[_ii][$ _strKey]);	
@@ -108,26 +112,30 @@ function __lexicon_parse_string(_lexiconTextCache) {
 		}
 	
 		// Store current string contents
-		_lexiconTextCache.finalStrDynamic = _newStr;
-		_lexiconTextCache.finalStr = _newStr;
+         _lexiconTextCache.str = _newStr;
+
 		_lexiconTextCache.dynamicArray = _dynamicArray;
 		_lexiconTextCache.isCompiled = true;
-	} else if (_lexiconTextCache.isDynamic) {
-		var _newStr = _lexiconTextCache.finalStrDynamic;	
-		var _dynamicArray = _lexiconTextCache.dynamicArray;
-	} else if (_lexiconTextCache.isDynamicGlobal) {
-		var _newStr = _lexiconTextCache.finalStrDynamic;
 	} else {
-		return _lexiconTextCache.finalStr;	
-	}
+        var _newStr = _lexiconTextCache.str;	
+        
+        if (_lexiconTextCache.isDynamic) || (_lexiconTextCache.isDynamicGlobal) {
+		    var _dynamicArray = _lexiconTextCache.dynamicArray;
+	    } else {
+            return _newStr;   
+        }
+    }
 	
 	if (_dynamicArray != undefined) {
 		_i = 0;
+        var _entry = _dynamicArray[_i];
+        var _strKey = _entry[0];
+        var _id = _entry[1];
 		repeat(array_length(_dynamicArray)) {
-			if (_dynamicArray[_i][1] == undefined) {
-				_newStr = string_replace_all(_newStr, _replaceChrStart + _dynamicArray[_i][0] + _replaceChrEnd, _global.dynamicMap[$ _dynamicArray[_i][0]]());
-			} else if (weak_ref_alive(_dynamicArray[_i][1])) {
-				_newStr = string_replace_all(_newStr, _replaceChrStart + _dynamicArray[_i][0] + _replaceChrEnd, _dynamicArray[_i][1].ref[$ _dynamicArray[_i][0]]);	
+			if (_id == undefined) {
+				_newStr = string_replace_all(_newStr, _replaceChrStart + _strKey + _replaceChrEnd, _global.dynamicMap[$ _strKey]());
+			} else if (weak_ref_alive(_id)) {
+				_newStr = string_replace_all(_newStr, _replaceChrStart + _strKey + _replaceChrEnd, _hashAvailable ? struct_get_from_hash(_id.ref, _entry[2]) : _id.ref[$ _strKey]); //_global.hashAvailable ? variable_get_hash(_strKey) : undefined	
 			}
 			++_i;
 		}
@@ -135,64 +143,3 @@ function __lexicon_parse_string(_lexiconTextCache) {
 	
 	return _newStr;
 }
-
-/*
-
-if (string_count(_replaceChrStart + "Date" + _replaceChrEnd, _newStr) > 0) {
-		_newStr = string_replace_all(_newStr, _replaceChrStart + "Date" + _replaceChrEnd, _global.langDB.__GetDateString(_dt));
-		_lexiconTextCache.isDynamicGlobal = true;
-	}
-	
-	if (string_count(_replaceChrStart + "Time" + _replaceChrEnd, _newStr) > 0) {
-		_newStr = string_replace_all(_newStr, _replaceChrStart + "Time" + _replaceChrEnd, _global.langDB.__GetTimeString(_dt));
-		_lexiconTextCache.isDynamicGlobal = true;
-	}
-	
-	if (string_count(_replaceChrStart + "DateTime" + _replaceChrEnd, _newStr) > 0) {
-		_newStr = string_replace_all(_newStr, _replaceChrStart + "DateTime" + _replaceChrEnd, _global.langDB.__GetDateTimeString(_dt));
-		_lexiconTextCache.isDynamicGlobal = true;
-	}
-*/
-
-/// @ignore
-function __lexicon_cache_text_new(_text, _cacheStr) constructor {
-	static _global = __lexicon_init();
-	str = _text;
-	isCompiled = false;
-	dynamicArray = undefined;
-	isDynamic = false;
-	isDynamicGlobal = false;
-	finalStr = "";
-	finalStrDynamic = _text;
-	cacheStr = _cacheStr;
-	timeStamp = _global.frame;
-	
-	static toString = function() {
-		return cacheStr;	
-	}
-}
-
-var _str = "{{Rawr}} {{0}} %s {{1}} %s {{3}} %s {{2}}";//"{{Rawr,dynamic}} " + string_repeat("{{DateTime}}", 100);
-var _struct = {Rawr: "Nice"};
-var _args = [_struct, 2, 5, 3];
-var _cacheStr = "";
-var _i = 0;
-repeat(array_length(_args)) {
-	if (is_struct(_args[_i])) {
-		_cacheStr += string(ptr(_args[_i]));	
-	} else {
-		_cacheStr += string(_args[_i]);	
-	}
-	++_i;
-}
-_str = new __lexicon_cache_text_new(_str, _str+_cacheStr);
-
-var _t = get_timer();
-repeat(10000) {
-	__lexicon_parse_string(_str, _struct, 2, 5, 3);	
-}
-show_debug_message(__lexicon_parse_string(_str, _struct, 2, 5, 3));
-show_debug_message(string((get_timer() - _t) / 1000) + "ms"); 
-show_debug_message(_str);
-//show_debug_message(__lexicon_parse_string("{{Rawr, dynamic}} {{DateTime}}", {Rawr: "good job"}));
-
