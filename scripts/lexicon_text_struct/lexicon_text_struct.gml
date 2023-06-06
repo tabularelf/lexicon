@@ -1,7 +1,8 @@
-/// @func lexicon_text_struct(text_pointer, struct)
-/// @param {String} _textEntry
-/// @param {Struct} _struct
+/// @func lexicon_text_struct(textEntry, struct)
+/// @param {String} textEntry
+/// @param {Struct} struct
 /// @return {String}
+/// feather ignore all
 function lexicon_text_struct(_textEntry, _struct) {
 	gml_pragma("forceinline");
 	// Auto GC

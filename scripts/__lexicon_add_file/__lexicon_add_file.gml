@@ -1,4 +1,5 @@
 /// @ignore
+/// feather ignore all
 function __lexicon_file(_language, _locale, _fileType, _fileName, _isAsync = false, _args = undefined) constructor{
 		fileType = _fileType;
 		fileName = _fileName;

@@ -1,6 +1,7 @@
 /// @func lexicon_language_set
-/// @param {String} _language
-/// @param {Bool} [_forceFlush=true]
+/// @param {String} language
+/// @param {Bool} [forceFlush=true]
+/// feather ignore all
 function lexicon_language_set(_language, _forceFlush = true) {
 	// Clear entries
 	__lexicon_reset();

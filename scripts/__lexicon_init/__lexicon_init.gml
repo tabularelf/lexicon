@@ -9,6 +9,7 @@
 __lexicon_init();
 
 /// @ignore
+/// feather ignore all
 function __lexicon_init() {
 	static _init = false;
 	if (_init == false) {

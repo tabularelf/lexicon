@@ -1,6 +1,7 @@
 /// @func lexicon_locale_set
-/// @param {String} _locale
-/// @param {Bool} [_forceFlush=true]
+/// @param {String} locale
+/// @param {Bool} [forceFlush=true]
+/// feather ignore all
 function lexicon_locale_set(_locale, _forceFlush = true) {
 	// Clear entries
 	__lexicon_reset();

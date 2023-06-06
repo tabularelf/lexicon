@@ -1,9 +1,10 @@
 /// @func lexicon_index_add_csv(language/locale, file_name, [is_async], [cell_delimiter], [string_delimiter])
-/// @param {String} _langLocale 
-/// @param {String} _fileName
-/// @param {Bool} [_isAsync=false]
-/// @param {String} [_cellDelimiter=","]
-/// @param {String} [_stringDelimiter="\""]
+/// @param {String} langLocale 
+/// @param {String} fileName
+/// @param {Bool} [isAsync=false]
+/// @param {String} [cellDelimiter=","]
+/// @param {String} [stringDelimiter="\""]
+/// feather ignore all
 function lexicon_index_add_csv(_langLocale, _fileName, _isAsync = false, _cellDelimiter = ",", _stringDelimiter = "\"") {
 	// Ensure that it's loaded first!
 	__lexicon_init();

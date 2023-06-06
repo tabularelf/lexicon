@@ -1,4 +1,5 @@
 /// @ignore
+/// feather ignore all
 function __lexicon_file_handle_load(_file, _string) {
 		var _args;
 		_args[0] = _string;

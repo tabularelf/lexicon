@@ -1,4 +1,5 @@
 /// @ignore
+/// feather ignore all
 function __lexicon_reset() {
 	
 	if (__LEXICON_STRUCT.localeMap[$ __LEXICON_STRUCT.locale] == undefined) {

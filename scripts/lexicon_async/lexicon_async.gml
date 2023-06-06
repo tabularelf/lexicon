@@ -1,4 +1,5 @@
 /// @func lexicon_async()
+/// feather ignore all
 function lexicon_async() {
 	var _arrayFiles = __LEXICON_STRUCT.fileAsyncList;
 	var _len = array_length(_arrayFiles);

@@ -1,4 +1,5 @@
 /// @ignore
+/// feather ignore all
 function __lexicon_cache_text(_text, _cacheStr) constructor {
 	//static memStr = "";
 	str = _text;

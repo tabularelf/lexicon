@@ -1,5 +1,5 @@
-/// Feather ignore all
 /// @ignore
+/// feather ignore all
 function __lexicon_load_entries(_locale = __LEXICON_STRUCT.locale) {
 	// Load entries
 	var _files = __LEXICON_STRUCT.localeMap[$ _locale].files;

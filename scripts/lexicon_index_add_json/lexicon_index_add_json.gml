@@ -1,8 +1,8 @@
 /// @func lexicon_index_add_json(language/locale, file_name, [is_async])
-/// @param {String} _langLocale
-/// @param {String} _fileName
-/// @param {Bool} [_isAsync=false]
-/* Feather ignore once GM1042 */
+/// @param {String} langLocale
+/// @param {String} fileName
+/// @param {Bool} [isAsync=false]
+/// feather ignore all
 function lexicon_index_add_json(_langLocale, _fileName, _isAsync = false) { 
 	// Ensure that it's loaded first!
 	__lexicon_init();

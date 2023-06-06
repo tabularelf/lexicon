@@ -1,7 +1,7 @@
 /// @func lexicon_index_declare(language, locale)
-/// @param {String} _language
-/// @param {Any*} _locale
-/// @param {Any*} [_fallbackLocale=undefined]
+/// @param {String} language
+/// @param {Any*} locale
+/// @param {Any*} [fallbackLocale=undefined]
 // Feather ignore all
 function lexicon_index_declare(_language, _locale, _fallbackLocale = undefined) {
 	// Ensure that it's loaded first!

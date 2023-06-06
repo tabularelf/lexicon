@@ -1,7 +1,7 @@
-/// @func lexicon_index_declare_from_csv(filePath)
-/// @param {String} _filePath
-/// @param {String} [_cellDelimiter=","]
-/// @param {String} [_stringDelimiter="\""]
+/// @func lexicon_index_declare_from_csv(filePath, cellDelimiter, stringDelimiter)
+/// @param {String} filePath
+/// @param {String} [cellDelimiter=","]
+/// @param {String} [stringDelimiter="\""]
 // Feather ignore all
 function lexicon_index_declare_from_csv(_filePath, _cellDelimiter = ",", _stringDelimiter = "\"") {
 	// Ensure that it's loaded first!

@@ -1,5 +1,5 @@
-/// Feather ignore all
 /// @ignore
+/// feather ignore all
 function __lexicon_file_load(_file) {
 	var _buffer = -1;
 	if (_file.isFileLoaded() == true) return;

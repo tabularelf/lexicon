@@ -1,5 +1,5 @@
-/// Feather ignore all
 /// @ignore
+/// feather ignore all
 function __lexicon_handle_cache() {
 
 	// Keep track of frame

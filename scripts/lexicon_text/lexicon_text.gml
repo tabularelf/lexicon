@@ -1,8 +1,9 @@
 /// @func lexicon_text(textEntry, [substring], [...]
-/// @param {String} _textEntry
+/// @param {String} textEntry
 /// @param {Any*} [substring]
 /// @param {Any*} [...]
 /// @return {String}
+/// feather ignore all
 function lexicon_text(_textEntry) {
 	gml_pragma("forceinline");
 	// Ensure that it's loaded first!
