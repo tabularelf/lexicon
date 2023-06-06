@@ -46,6 +46,7 @@
     {"id":{"name":"lexicon_text_struct","path":"scripts/lexicon_text_struct/lexicon_text_struct.yy",},"order":1,},
     {"id":{"name":"__lexicon_reset","path":"scripts/__lexicon_reset/__lexicon_reset.yy",},"order":4,},
     {"id":{"name":"lexicon_text_array","path":"scripts/lexicon_text_array/lexicon_text_array.yy",},"order":2,},
+    {"id":{"name":"lexicon_entry_exists","path":"scripts/lexicon_entry_exists/lexicon_entry_exists.yy",},"order":11,},
     {"id":{"name":"lexicon_replace_chr_set","path":"scripts/lexicon_replace_chr_set/lexicon_replace_chr_set.yy",},"order":4,},
     {"id":{"name":"__lexicon_handle_cache","path":"scripts/__lexicon_handle_cache/__lexicon_handle_cache.yy",},"order":1,},
     {"id":{"name":"__lexicon_text_struct_to_string","path":"scripts/__lexicon_text_struct_to_string/__lexicon_text_struct_to_string.yy",},"order":10,},
@@ -99,6 +100,6 @@
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"locale.csv","CopyToMask":-1,"filePath":"datafiles",},
   ],
   "MetaData": {
-    "IDEVersion": "2022.0.0.19",
+    "IDEVersion": "2022.0.1.31",
   },
 }

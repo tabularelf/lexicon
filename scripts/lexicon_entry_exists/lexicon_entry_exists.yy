@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "lexicon_text",
+  "name": "lexicon_entry_exists",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "General",
-    "path": "folders/Lexicon/General.yy",
+    "name": "Language",
+    "path": "folders/Lexicon/Language.yy",
   },
 }

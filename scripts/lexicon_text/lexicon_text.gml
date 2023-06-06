@@ -44,9 +44,9 @@ function lexicon_text(_textEntry) {
 				// Substring replacement loop
 				var _count = string_count(_replchr,_str);
 				var _args = array_create(_count);
-				for(var _i = 1; _i < _count; ++_i) {
+				for(var _i = 1; _i <= _count; ++_i) {
 					if (_i > argument_count) break;
-					_args[_i-1] = argument[_i-1];
+					_args[_i-1] = argument[_i]; 
 				}
 					_cacheStr += string(_args);
 			}
