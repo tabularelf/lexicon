@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "lexicon_language_set",
+  "name": "__lexicon_resolve_dynamic",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Language",
-    "path": "folders/Lexicon/Language.yy",
+    "name": "Internal",
+    "path": "folders/Lexicon/Internal.yy",
   },
 }

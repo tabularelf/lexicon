@@ -9,6 +9,7 @@ function lexicon_text_array(_textEntry, _array) {
 	array_copy(_arrayCopy,1,_array,0,_len);
 	/* Feather ignore once GM1043 */
 	_arrayCopy[0] = string(_textEntry);
-	var _value = script_execute_ext(lexicon_text, _arrayCopy, 0, _len);
+	var _ar = _arrayCopy;
+	var _value = script_execute_ext(lexicon_text, _arrayCopy, 0, _len+1);
 	return _value;
 }

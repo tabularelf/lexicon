@@ -1,6 +1,6 @@
 /// @func lexicon_languages_get_array()
 /// @param {Bool} returnStruct
-/* feather ignore all */
+/// feather ignore all
 function lexicon_languages_get_array(_returnStruct = false) {
 	static _structSort = function(_left, _right) {
 		if (_left.language < _right.language) {

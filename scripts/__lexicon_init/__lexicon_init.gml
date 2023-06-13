@@ -29,35 +29,44 @@ function __lexicon_init() {
 			cacheList: ds_list_create(),
 			langDB: __lexicon_localization_map_init()[$ lexicon_get_os_locale()] ?? __lexicon_localization_map_init()[$ "en"],
 			dateTimeFunc: undefined,
-			dateLength: lexicon_length.SHORT,
-			timeLength: lexicon_length.SHORT,
+			dateLength: lexicon_length.FULL,
+			timeLength: lexicon_length.FULL,
 			frame: 0,
 			dynamicMap: {},
-			hashAvailable: false
+			hashAvailable: true
 		}
+		
+		// Check if hash is available
 		try {
-			_inst.hashAvailable = variable_get_hash("foo");	
-			_inst.hashAvailable = true;
+			variable_get_hash("foo");	
 		} catch(_ex) {
 			_inst.hashAvailable = false;	
 		}
 		
-		lexicon_define_global("DateTime", function() {
+		
+		time_source_start(time_source_create(time_source_global, 1, time_source_units_frames, method(undefined, __lexicon_gc_cache), [], -1));
+		
+		lexicon_callback_define("DateTime", true, function() {
 			static _global = __lexicon_init();
 			var _dt = _global.dateTimeFunc != undefined ? _global.dateTimeFunc() : date_current_datetime();
-			return _global.langDB.__GetDateTimeString(_dt);
+			return _global.langDB.__GetDateTimeString(_dt, _global.dateLength, _global.timeLength);
 		});
 		
-		lexicon_define_global("Date", function() {
+		lexicon_callback_define("Date", true, function() {
 			static _global = __lexicon_init();
 			var _dt = _global.dateTimeFunc != undefined ? _global.dateTimeFunc() : date_current_datetime();
-			return _global.langDB.__GetDateString(_dt);
+			return _global.langDB.__GetDateString(_dt, _global.dateLength);
 		});
 		
-		lexicon_define_global("Time", function() {
+		lexicon_callback_define("Time", true, function() {
 			static _global = __lexicon_init();
 			var _dt = _global.dateTimeFunc != undefined ? _global.dateTimeFunc() : date_current_datetime();
-			return _global.langDB.__GetTimeString(_dt);
+			return _global.langDB.__GetTimeString(_dt, _global.timeLength);
+		});
+		
+		lexicon_callback_define("Currency", false, function() {
+			static _global = __lexicon_init();
+			return "$";
 		});
 	}
 	

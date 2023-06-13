@@ -1,81 +1,75 @@
 /// @func lexicon_text(textEntry, [substring], [...]
 /// @param {String} _textEntry
-/// @param {Any*} [substring]
-/// @param {Any*} [...]
+/// @param {Any} [substring]
+/// @param {Any} [...]
 /// @return {String}
 function lexicon_text(_textEntry) {
 	gml_pragma("forceinline");
 	// Ensure that it's loaded first!
-	__lexicon_init();
-
-	// Auto GC
-	__lexicon_handle_cache();
+	static _global = __lexicon_init();
+	static _cacheMap = _global.cacheMap;
+	static _staticArray = [];
+	static _replaceChrStart = _global.replaceChr[0];
+	static _replaceChrEnd = _global.replaceChr[1];
+	static _replchr = _global.replaceChrLegacy;
+	var _str = _textEntry;
+	
+	if (argument_count > array_length(_staticArray)) array_resize(_staticArray, argument_count);
+	var _cacheStruct = undefined;
 	
 	// We'll check to see if it already exists in the cache before processing the string at hand.
-	with(__LEXICON_STRUCT) {
-
+	
 	// Failsafe before everything else!
-	var _replchr = replaceChrLegacy;
-	
-	// Correct for any potential errors
-	if (localeMap[$ locale] == undefined) {
+	if (_global.localeMap[$ _global.locale] == undefined) {
 		// Fallback to language
-		if (languageMap[$ language] == undefined) {
-			return locale + "." + _textEntry;	
+		if (_global.languageMap[$ _global.language] == undefined) {
+			return _global.locale + "." + _textEntry;	
 		}
 	}
 	
-	var _str = textEntries[$ _textEntry];
-	if (_str == undefined) {
-		/* Feather ignore once GM2047 */
-		if (LEXICON_DEBUG) {
-			return "Missing text pointer: " + _textEntry;	
+	// Treat as a text entry!
+	if ((string_count(_replaceChrStart, _str) == 0) || (string_count(_replaceChrEnd, _str) == 0)) {
+		_str = _global.textEntries[$ _textEntry];
+		if (_str == undefined) {
+			/* Feather ignore once GM2047 */
+			
+			if (LEXICON_DEBUG) {
+				return "Missing text pointer: " + _textEntry;	
+			}
+			
+			return _textEntry;
 		}
-		
-		return _textEntry;
 	}
+	
 
 	#region Cache
 	// Check against Cache
-	if (argument_count-1 >= LEXICON_CACHE_ARG_THRESHOLD) {
-		var _cacheStr = locale+"."+_textEntry;
-		// Substring replacement loop
-		var _count = string_count(_replchr,_str);
-		var _args = array_create(_count);
-		for(var _i = 1; _i < _count; ++_i) {
-			if (_i > argument_count) break;
-			_args[_i-1] = argument[_i-1];
+	var _cacheStr = _global.locale+"."+_textEntry;
+	
+	// Get arguments
+	var _i = 1;
+	repeat(argument_count-1) {
+		if (is_struct(argument[_i])) {
+			_cacheStr += string(ptr(argument[_i]));	
+		} else {
+			_cacheStr += string(argument[_i]);	
 		}
-		_cacheStr += string(_args);
+		// Store arguments
+		_staticArray[_i] = argument[_i];
+		++_i;
+	}
 
-		if (ds_map_exists(cacheMap, _cacheStr)) {
-			var _struct = cacheMap[? _cacheStr];
-			if _struct.cacheStr == _cacheStr {
-				// Update timestamp
-				_struct.timeStamp = current_time;
-				/* Feather ignore once GM1035 */
-				return _struct.str;
-			}
-		}
+	if (ds_map_exists(_cacheMap, _cacheStr)) {
+		_cacheStruct = _cacheMap[? _cacheStr];
+	} else {
+		_cacheStruct = new __lexicon_cache_text(_str, _cacheStr);
+		_global.cacheMap[? _cacheStr] = _cacheStruct;
+		ds_list_add(_global.cacheList, {cacheStr: _cacheStr, ref: weak_ref_create(_cacheStruct)});
 	}
 	#endregion
-
-	if (argument_count > 1) {
-			var _count = string_count(_replchr,_str);
-			for(var _i = 0; _i < _count; ++_i) {
-				if (_i > argument_count-2) break;
-				var _arg = argument[_i+1];
-				_str = string_replace(_str, _replchr, _arg);
-			}
-
-			if (argument_count-1 >= LEXICON_CACHE_ARG_THRESHOLD) {
-				var _struct = new __lexicon_cache_text(_str, _cacheStr);
-				__LEXICON_STRUCT.cacheMap[? _cacheStr] = _struct;
-				ds_list_add(__LEXICON_STRUCT.cacheList, {cacheStr: _cacheStr, ref: weak_ref_create(_struct)});
-				//return _struct;
-			}
-		}
-	}
-
-	return _str;
+	var _newStr;
+	_staticArray[0] = _cacheStruct;
+	_newStr = script_execute_ext(__lexicon_parse_string, _staticArray, 0, argument_count);
+	
+	return _newStr;
 }

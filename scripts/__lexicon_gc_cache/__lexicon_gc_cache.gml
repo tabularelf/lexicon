@@ -1,11 +1,10 @@
 /// Feather ignore all
 /// @ignore
-function __lexicon_handle_cache() {
+function __lexicon_gc_cache() {
 	static _global = __lexicon_init();
 	static _i = 0;
 	// Keep track of frame
-	var _frame = _global.frame % LEXICON_GC_NEXT_TICK;
-	if (_frame != 0) exit;
+	var _frame = ++_global.frame;
 
 
 	var _length = ds_list_size(_global.cacheList);

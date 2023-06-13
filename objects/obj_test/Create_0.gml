@@ -7,11 +7,17 @@ lexicon_index_definitions("definitions.json");
 lexicon_index_declare_from_json("locale.json");
 lexicon_index_declare_from_csv("locale.csv");
 lexicon_index_fallback_language_set("English")
-
+latestTime = 0;
 lexicon_locale_set(lexicon_get_os_locale());
-
 struct = {playerName: "TabularElf", loveMeter: "100%", dateTime: string(date_get_year(date_current_datetime()))+"/"+string(date_get_month(date_current_datetime()))};
-array = ["100%", "TabularElf", string( date_get_year(date_current_datetime()))+"/"+string(date_get_month(date_current_datetime()))];
+array = [struct, 100, 100];
 languages_array = lexicon_languages_get_array();
 language_index = 0;
 incr = 0;
+loveMeter = 100;
+
+
+
+lexicon_define_global("loveMeter", function(_min = 0, _max = 100) {
+	return string((real(_min) / real(_max)) * 100) + "%";
+});

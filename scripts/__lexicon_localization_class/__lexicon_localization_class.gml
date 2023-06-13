@@ -57,12 +57,24 @@ function __lexicon_localization_class(_langName, _region, _locale = "", _format)
 	__nameShort = _name;
 	_map[$ _name + "_" + _region + (_locale != "" ? "-" + _locale : "")] = self;
 	
-	static __GetDateString = function(_date = date_current_datetime(), _format = lexicon_length.SHORT) {
+	static __GetDateString = function(_date = date_current_datetime(), _format = undefined) {
+		static _global = __lexicon_init();
+		static _currentYear = -1;
+		static _currentMonth = -1;
+		static _currentDay = -1;
+		static _currentString = "";
+		
 		var _year = date_get_year(_date);
 		var _month = date_get_month(_date);
 		var _day = date_get_day(_date);
+		
+				
+		if (_currentYear == _year) && (_currentMonth == _month) && (_currentDay == _day) {
+			return _currentString;
+		}
+		
 		var _string;
-		switch(_format) {
+		switch(_format ?? _global.dateLength) {
 			case lexicon_length.SHORT:
 				_string = string_replace_all(__format.datePattern.short, "Y", string(_year));
 				_string = string_replace_all(_string, "M", string(_month));
@@ -89,13 +101,28 @@ function __lexicon_localization_class(_langName, _region, _locale = "", _format)
 			break;
 		}
 		
+		_currentString = _string;
+		_currentYear = _year;
+		_currentMonth = _month;
+		_currentDay = _day;
 		return _string;
 	}
 	
-	static __GetTimeString = function(_date = date_current_datetime(), _format = lexicon_length.SHORT) {
+	static __GetTimeString = function(_date = date_current_datetime(), _format = undefined) {
+		static _global = __lexicon_init();
+		static _currentHour = -1;
+		static _currentMinute = -1;
+		static _currentSecond = -1;
+		static _currentString = "";
+		
 		var _hour = date_get_hour(_date);
 		var _minute = date_get_minute(_date);
 		var _second = date_get_second(_date);
+		
+		if (_currentHour == _hour) && (_currentMinute == _minute) && (_currentSecond == _second) {
+			return _currentString;
+		}
+		
 		var _isPM = false;
 		var _useMilitaryTime = false;
 		if (!_useMilitaryTime) || (!__forceMilitaryTime) {
@@ -109,7 +136,7 @@ function __lexicon_localization_class(_langName, _region, _locale = "", _format)
 		var _minuteString = string_replace(string_format(round(_minute), 2, 0), " ", "0");
 		var _secondString =	string_replace(string_format(round(_second), 2, 0), " ", "0");
 		var _string;
-		switch(_format) {
+		switch(_format ?? _global.timeLength) {
 			case lexicon_length.SHORT:
 				_string = string_replace_all(__format.timePattern.short, "h", string(_hour));
 			break;
@@ -124,23 +151,54 @@ function __lexicon_localization_class(_langName, _region, _locale = "", _format)
 			
 			case lexicon_length.FULL:
 				_string = string_replace_all(__format.timePattern.full, "h", string(_hour));
+				_string = string_replace_all(_string, "zzzz", "UTC");
+			_string = string_replace_all(_string, "z", "UTC");
 			break;
 		}
 		
 		_string = string_replace_all(_string, "mm", _minuteString);
 		_string = string_replace_all(_string, "ss", _secondString);
 		_string = string_replace_all(_string, " a", (!_useMilitaryTime ? " " + string(__format.amPM[_isPM]) : ""));
-		_string = string_replace_all(_string, "zzzz", "UTC");
-		_string = string_replace_all(_string, "z", "UTC");
+		_currentHour = _hour;
+		_currentMinute = _minute;
+		_currentSecond = _second;
+		_currentString = _string;
 		return _string;
 	}
 	
 	static __GetDateTimeString = function(_date = date_current_datetime(), _formatA = lexicon_length.SHORT, _formatB = lexicon_length.SHORT) {
 		static _results = ["", ""];
+		static _currentString = "";
+		static _currentYear = -1;
+		static _currentMonth = -1;
+		static _currentDay = -1;
+		static _currentHour = -1;
+		static _currentMinute = -1;
+		static _currentSecond = -1;
+		
+		var _year = date_get_year(_date);
+		var _month = date_get_month(_date);
+		var _day = date_get_day(_date);
+		var _hour = date_get_hour(_date);
+		var _minute = date_get_minute(_date);
+		var _second = date_get_second(_date);
+
+		if (_year == _currentYear) && (_month == _currentMonth) && (_day == _currentDay) &&
+			(_hour == _currentHour) && (_minute == _currentMinute) && (_second == _currentSecond) {
+			return _currentString;	
+		}
+		
 		_results[__format.dateTimePattern.date] = __GetDateString(_date, _formatA);
 		_results[__format.dateTimePattern.time] = __GetTimeString(_date, _formatB);
 		
-		return __ArrayToString(__format.dateTimePattern.str, _results);
+		_currentYear = _year;
+		_currentMonth = _month;
+		_currentDay = _day;
+		_currentHour = _hour;
+		_currentMinute = _minute;
+		_currentSecond = _second;
+		_currentString = __ArrayToString(__format.dateTimePattern.str, _results);
+		return _currentString;
 	}
 	
 	static __ArrayToString = function(_str, _array) {

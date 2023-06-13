@@ -1,9 +1,8 @@
 /// @description Draw event
-
 draw_set_font(fn_fontWithJapanese);
-draw_text(32,32,"Normal Version: " + lexicon_text_array("text.test",array));
-draw_text(32,64,"Struct Version: " + lexicon_text_struct("text.test2",struct));
-draw_text(32,96,"Struct within Struct Version (JSON only): " + lexicon_text_struct("generic.foo",struct));
+draw_text(32,32,"Normal Version: " + lexicon_text("text.test", struct, 100, 100));
+draw_text(32,64,"Array Version: " + lexicon_text_array("text.test",array));
+draw_text(32,96,"Struct within Struct Version (JSON only): " + lexicon_text("generic.foo",struct));
 draw_text(32,160,string(languages_array));
 draw_text(32,192,lexicon_locale_get());
 

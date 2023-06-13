@@ -119,9 +119,9 @@
 				"str": "{0} {1}"
 			},
 			"dayNames": {
-				"short": ["S", "M", "T", "W", "T", "F", "S"],
-				"medium": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-				"long": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+				"short": ["D", "L", "M", "M", "J", "V", "S"],
+				"medium": ["dim.", "lun.", "mar.", "mer.", "jeu.", "ven.", "sam."],
+				"long": ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"]
 			},
 			"monthNames": {
 				"short": ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],

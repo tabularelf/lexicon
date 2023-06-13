@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "lexicon_define_global",
+  "name": "lexicon_callback_define",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
