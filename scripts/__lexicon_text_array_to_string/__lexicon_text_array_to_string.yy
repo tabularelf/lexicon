@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "Script56",
+  "name": "__lexicon_text_array_to_string",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "General",
-    "path": "folders/Lexicon/General.yy",
+    "name": "Internal",
+    "path": "folders/Lexicon/Internal.yy",
   },
 }

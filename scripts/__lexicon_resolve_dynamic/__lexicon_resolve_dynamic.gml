@@ -35,7 +35,7 @@ function __lexicon_resolve_dynamic(_strKeyStripped, _args) {
 		}
 		
 		with(_self) {
-			_strResult = script_execute_ext(_index, _staticArray);
+			_strResult = script_execute_ext(_index, _staticArray, 0, array_length(_args));
 		}
 	}
 	

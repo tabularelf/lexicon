@@ -14,6 +14,5 @@ function __lexicon_reset() {
 	}
 	
 	_global.textEntries = {};
-	
-	
+	_global.textEntriesArray = {};
 }

@@ -7,6 +7,8 @@ function __lexicon_text_struct_to_string(_textName, _textStruct) {
 		var _textKey = _textName + LEXICON_TEXT_JSON_BREAK + _textArray[_i];
 		if (is_struct(_textStruct[$ _textArray[_i]])) {
 			__lexicon_text_struct_to_string(_textKey, _textStruct[$ _textArray[_i]]);
+		} else if (is_array(_textStruct[$ _textArray[_i]])) {
+			__lexicon_text_array_to_string(_textKey, _textStruct[$ _textArray[_i]]);
 		} else {
 			if ((!LEXICON_REPLACE_ENTRIES) && (variable_struct_exists(__LEXICON_STRUCT.textEntries, _textKey))) continue;
 			__LEXICON_STRUCT.textEntries[$ _textKey] = _textStruct[$ _textArray[_i]];
