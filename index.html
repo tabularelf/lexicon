@@ -1,0 +1,379 @@
+<!--INFORMATION
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title></title>
+    <link id="favicon" rel="shortcut icon" type="image/jpg" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
+    <script type="text/javascript" src="config.js"></script>
+</head>
+<body>
+    <div id="app">
+        <script>
+            document.title = config.name + ' Documentation';
+            // SET META DESCRIPTION
+            document.querySelector('meta[name="description"]').setAttribute('content', config.description);
+            const appName = config.name;
+            /* Docsify config specific */
+            window.$docsify = {
+                name: '<a id="home-link" class="app-name-link" data-nosearch href="/"><span id="home-text" title="' +
+                    config.description + '">' + appName +
+                    ' Docs</span><br></a>' +
+                    '<select id="version-selector" name="version">' +
+                    '</select>',
+                search: {
+                    paths: 'auto',
+                    hideOtherSidebarContent: false
+                },
+                nameLink: false,
+                loadSidebar: true,
+                subMaxLevel: 3,
+                sidebarDisplayLevel: 0,
+                relativePath: true,
+                loadNavbar: true,
+                auto2top: true,
+                footer: {
+                    pre: '<br><hr>',
+                    copy: '<span>' + appName + ' &copy; ' + new Date().getFullYear() + '</span>',
+                    auth:
+                        'by <a href="https://tabelf.link/" target="_blank">TabularElf</a>' +
+                        '<br>Docs help by <a href="https://twitter.com/faultyfunctions/" target="_blank">Faulty</a> ' +
+                        'with <a href="https://github.com/docsifyjs/docsify/" target="_blank">Docsify</a>',
+                    style: 'text-align: right;',
+                },
+                copyCode: {
+                    buttonText: 'Copy to clipboard 📋',
+                    errorText: 'Error',
+                    successText: 'Copied'
+                },
+                tabs: {
+                    persist: false,
+                    sync: false,
+                    theme: 'classic',
+                    tabComments: false,
+                    tabHeadings: true,
+                },
+                namespaces: [
+                    {
+                        id: 'version',
+                        values: [config.latestVersion, ...config.otherVersions],
+                        optional: true,
+                        default: config.latestVersion,
+                        selector: '#version-selector',
+                    },
+                ],
+                plugins: [
+                    function (hook, vm) {
+                        // ENSURE CLICKING THE LOGO TAKES US TO THE CORRECT VERSION DOCS
+                        hook.doneEach(() => {
+                            var appNameLink = Docsify.dom.find('#home-link');
+
+                            if (appNameLink) {
+                                appNameLink.href = vm.config.currentNamespace;
+                            }
+
+                            // ENSURE ANCHOR LINKS WILL STILL SCROLL INTO VIEW AS MANY TIMES AS NEEDED
+                            var sidebarLinks = document.getElementsByTagName('a');
+                            for (let link of sidebarLinks) {
+                                if (Docsify.util.isExternal(link.href) === false) {
+                                    link.addEventListener('click', e => {
+                                        // Only trigger hash changes on parent "A" link elements
+                                        if (e.target.tagName == 'A') {
+                                            location.hash = '#dummy-hash'; // Dummy hash to change URL
+                                            history.replaceState(null, null, e.currentTarget.href); // Replace dummy hash so the browser can jump to actual target
+                                        } else {
+                                            e.preventDefault();
+                                            e.stopPropagation();
+                                            e.currentTarget.click(); // Manually trigger a click event for the current target.
+                                        }
+                                    });
+                                }
+                            }
+                        });
+
+                        hook.mounted(() => {
+                            const versionSelector = Docsify.dom.find('#version-selector');
+
+                            // CONSTRUCT DATA FOR OUR VERSION SELECTOR
+                            const versionSelections = [];
+                            versionSelections.push({ text: 'v' + config.latestVersion, value: config.latestVersion, isDefault: true });
+                            for (const version of config.otherVersions) {
+                                versionSelections.push({
+                                    text: 'v' + version,
+                                    value: version,
+                                    isDefault: false,
+                                });
+                            }
+
+                            // POPULATE VERSION SELECTOR DROP DOWN
+                            versionSelections.map((version, index) => {
+                                versionSelector.options[index] = new Option(
+                                    version.text,
+                                    version.value,
+                                    version.isDefault
+                                );
+                            });
+
+                            // SET FAVICON
+                            document.querySelector('#favicon').href = config.favicon;
+                        });
+                    },
+                ],
+            }
+        </script>
+    </div>
+    <!-- Docsify v4 -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+
+    <!-- Plugins -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/external-script.min.js"></script>
+    <script src="https://unpkg.com/docsify-namespaced"></script>
+    <script src="https://unpkg.com/docsify-footer-enh/dist/docsify-footer-enh.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
+    <script src="https://unpkg.com/prismjs@1.24.0/components/prism-gml.min.js"></script>
+    <script src="https://unpkg.com/docsify-copy-code@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
+
+    <!-- Style -->
+    <style>
+        /* App
+        ============================================================================= */
+        :root {
+            /* Color
+            ------------------------------------------------------------------------- */
+            /* Monochrome */
+            --mono-hue: 50;
+            --mono-saturation: 10%;
+            /* Monochrome shades (darker) and tints (lighter) */
+            --mono-shade3: hsl(var(--mono-hue), var(--mono-saturation), 100%); /* #333333 */
+            --mono-shade2: hsl(var(--mono-hue), var(--mono-saturation), 100%); /* #4d4d4d */
+            --mono-shade1: hsl(var(--mono-hue), var(--mono-saturation), 1%); /* #666666 */
+            --mono-base: hsl(var(--mono-hue), var(--mono-saturation), 1%); /* #808080 */
+            --mono-tint1: hsl(var(--mono-hue), var(--mono-saturation), 70%); /* #b3b3b3 */
+            --mono-tint2: hsl(var(--mono-hue), var(--mono-saturation), 89%); /* #e3e3e3 */
+            --mono-tint3: hsl(var(--mono-hue), var(--mono-saturation), 97%); /* #f7f7f7 */
+            --theme-color: #72E58E; /*hsl(var(--theme-hue), var(--theme-saturation), var(--theme-lightness));*/
+            --docsifytabs-border-color: #ededed;
+            --docsifytabs-tab-highlight-color: green;
+            --docsifytabs-tab-color--active: inherit;
+            --docsifytabs-tab-color: #FFFFFF;
+            --docsifytabs-tab-background: #2A2A2A;
+            /* Typography
+            ------------------------------------------------------------------------- */
+            /* Modular Scale */
+            --modular-scale: 1.333;
+            /* Module Scale Calculations (do not edit these) */
+            --modular-scale--2: calc(var(--modular-scale--1) / var(--modular-scale));
+            --modular-scale--1: calc(var(--modular-scale-1) / var(--modular-scale));
+            --modular-scale-1: 1rem;
+            --modular-scale-2: calc(var(--modular-scale-1) * var(--modular-scale));
+            --modular-scale-3: calc(var(--modular-scale-2) * var(--modular-scale));
+            --modular-scale-4: calc(var(--modular-scale-3) * var(--modular-scale));
+            --modular-scale-5: calc(var(--modular-scale-4) * var(--modular-scale));
+            /* Font size */
+            --font-size-xxxl: var(--modular-scale-5);
+            --font-size-xxl: var(--modular-scale-4);
+            --font-size-xl: var(--modular-scale-3);
+            --font-size-l: var(--modular-scale-2);
+            --font-size-m: var(--modular-scale-1);
+            --font-size-s: var(--modular-scale--1);
+            --font-size-xs: var(--modular-scale--2);
+            /* Utility
+            ------------------------------------------------------------------------- */
+            /* Borders */
+            --border-radius-s:;
+            --border-radius-m:;
+            --border-radius-l:;
+            /* Animations and transitions */
+            --duration-slow: 1s;
+            --duration-medium: 0.5s;
+            --duration-fast: 0.25s;
+            /* Misc
+            ------------------------------------------------------------------------- */
+            /* Spinner */
+            --spinner-size: 60px;
+            --spinner-track-width: 4px;
+            --spinner-track-color: rgba(0, 0, 0, 0.15);
+            --spinner-transition-duration: var(--duration-medium);
+        }
+
+        /* Base
+        ============================================================================= */
+        :root {
+            --base-background-color: #1F1F1F;
+            --base-color: var(--mono-shade2);
+            --base-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            --base-font-size: 16px;
+            --base-font-weight: normal;
+            --base-letter-spacing:;
+            --base-line-height: 1.7;
+            /* Emoji */
+            --emoji-size: calc(var(--base-line-height) * 1em);
+            /* Horizontal Rule */
+            --hr-border: 1px solid var(--mono-tint2);
+            /* Mark */
+            --mark-background: #ffecb3;
+            --mark-color:;
+            /* Preformatted */
+            --pre-font-family: var(--code-font-family);
+            --pre-font-size: var(--code-font-size);
+            --pre-font-weight: normal;
+            --pre-line-height:;
+            /* Selection */
+            --selection-color: #b4d5fe;
+            /* Small */
+            --small-font-size: var(--font-size-s);
+            /* Strong */
+            --strong-color: var(--heading-color);
+            --strong-font-weight: 600;
+            /* Sub/Sup */
+            --subsup-font-size: var(--font-size-s);
+        }
+
+        /* Content============================================================================= */
+        :root {
+            --content-max-width: 70em;
+            /* Blockquote */
+            --blockquote-background: #282A36;
+            --blockquote-border-style: solid;
+            --blockquote-border-radius: var(--border-radius-m);
+            --blockquote-em-font-weight: normal;
+            --blockquote-font-weight: normal;
+            /* Code */
+            --code-font-family: Inconsolata, Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+            --code-font-size: calc(var(--font-size-m) * 0.95);
+            --code-font-weight: normal;
+            --code-tab-size: 4;
+            --code-block-border-radius: var(--border-radius-m);
+            --code-block-line-height: var(--base-line-height);
+            --code-block-margin: 1em 0;
+            --code-block-padding: 1.75em 1.5em 1.5em 1.5em;
+            --code-inline-background: var(--code-theme-background);
+            --code-inline-border-radius: var(--border-radius-s);
+            --code-inline-color: var(--code-theme-text);
+            --code-inline-margin: 0 0.15em;
+            --code-inline-padding: 0.125em 0.4em;
+            --code-theme-background: #2a2a2a;
+            --code-theme-comment: #6272A4;
+            --code-theme-function: #72E58E;
+            --code-theme-keyword: #BD93F9;
+            --code-theme-operator: #8BE9FD;
+            --code-theme-punctuation: #FFB86C;
+            --code-theme-selection: #181A1F;
+            --code-theme-selector: #F1FA8C;
+            --code-theme-tag: #8BE9FD;
+            --code-theme-text: #8cff93;
+            --code-theme-variable: #8BE9FD;
+            /* Headings */
+            --heading-color: #72E58E;
+            --heading-margin: 2.5rem 0 0;
+            /* Keyboard */
+            --kbd-background: var(--mono-tint3);
+            --kbd-border-radius: var(--border-radius-m);
+            --kbd-margin: 0 0.3em;
+            --kbd-min-width: 2.5em;
+            --kbd-padding: 0.65em 0.5em;
+            /* Links */
+            --link-text-decoration: underline;
+            /* Notice */
+            --notice-background: var(--mono-tint3);
+            --notice-border-color:;
+            --notice-border-radius: var(--border-radius-m);
+            --notice-border-style: solid;
+            --notice-border-width:;
+            --notice-color:;
+            --notice-font-family:;
+            --notice-font-weight: normal;
+            /* Notice - Pseudo */
+            --notice-important-background: #141414;
+            --notice-important-border-color: #2B703C;
+            --notice-important-border-width: 2px;
+            /* Notice - Tip */
+            --notice-tip-background: #141414;
+            --notice-tip-border-width: 0px;
+            /* Tables */
+            --table-body-border-color: #FFFFFF;
+            --table-body-border-width: 0.1px;
+            --table-cell-border-color: #FFFFFF;
+            --table-cell-border-width: 0.1px;
+            --table-cell-padding: 0.75em 0.5em;
+            --table-head-border-color: var(--table-cell-border-color);
+            --table-head-border-width: 0.1px;
+            --table-head-font-weight: var(--strong-font-weight);
+            --table-row-even-background: #2F2F2F;
+            --table-row-odd-background: #1A1A1A;
+        }
+
+        /* Sidebar
+        ============================================================================= */
+        :root {
+            --sidebar-background: #1A1A1A;
+            --sidebar-border-color: #4a4a4a;
+            --sidebar-padding: 0 25px;
+            --sidebar-transition-duration: var(--duration-medium);
+            --sidebar-width: 17rem;
+            /* Name */
+            --sidebar-name-background:;
+            --sidebar-name-color: #FFFFFF;
+            --sidebar-name-font-family:;
+            --sidebar-name-font-size: var(--font-size-l);
+            --sidebar-name-font-weight: normal;
+            --sidebar-name-margin: 1.5rem 0 0;
+            --sidebar-name-padding:;
+            --sidebar-name-text-align: center;
+            /* Nav Headings */
+            --sidebar-nav-strong-border-color: #FFFFFF;
+            --sidebar-nav-strong-border-width:;
+            --sidebar-nav-strong-color: var(--heading-color);
+            --sidebar-nav-strong-font-size:;
+            --sidebar-nav-strong-font-weight: var(--strong-font-weight);
+            --sidebar-nav-strong-margin: 1.5em 0 0.5em;
+            --sidebar-nav-strong-padding: 0.25em 0;
+            --sidebar-nav-strong-text-transform:;
+            /* Nav Container */
+            /* Search */
+            --search-input-background-color: #141414;
+            --search-input-placeholder-color: #FFFFFF;
+            --search-input-background-image: url("data:image/svg+xml,%3Csvg height='20px' width='20px' viewBox='0 0 24 24' fill='none' stroke='rgba(255, 255, 255, 1)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' preserveAspectRatio='xMidYMid meet' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='10.5' cy='10.5' r='7.5' vector-effect='non-scaling-stroke'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='15.8' y2='15.8' vector-effect='non-scaling-stroke'%3E%3C/line%3E%3C/svg%3E");
+            --search-result-keyword-color: #72E58E;
+            /* Navbar */
+            --navbar-root-border-color: var(--theme-color);
+            --navbar-root-color: var(--theme-color);
+            --navbar-root-color--hover: var(--background);
+            --navbar-root-background--hover: var(--theme-color);
+            --navbar-root-border-width: 1px;
+            --navbar-root-border-radius: 5px;
+            --navbar-root-padding: 5px;
+            --navbar-root-margin: 0 0 0 1em;
+        }
+
+        .sidebar-nav li.active > a[href^="/"]:not([href*="?id="]):not(:only-child), .sidebar-nav li.active > a[href^="#/"]:not([href*="?id="]):not(:only-child) {
+            background: var(--sidebar-nav-pagelink-background--active, var(--sidebar-nav-pagelink-background--loaded, var(--sidebar-nav-pagelink-background)));
+        }
+
+        #version-selector {
+            background: var(--base-background-color);
+            color: var(--theme-color);
+            border-color: var(--blockquote-border-color);
+            border-radius: 5px;
+            margin-top: 0.75em;
+            padding: 0 5px;
+        }
+
+
+        footer a {
+            text-decoration: none !important;
+            font-weight: bold;
+        }
+    </style>
+</body>
+</html>
