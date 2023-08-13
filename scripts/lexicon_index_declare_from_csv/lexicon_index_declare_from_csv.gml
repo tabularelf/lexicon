@@ -12,6 +12,7 @@ function lexicon_index_declare_from_csv(_filePath, _cellDelimiter = ",", _string
 	var _width = array_length(_array);
 	var _height = array_length(_array[0]);
 	var _file;
+	buffer_delete(_buffer);
 	
 	for(var _j = 1; _j < _height;  ++_j) {
 		// Early exit
@@ -65,7 +66,6 @@ function lexicon_index_declare_from_csv(_filePath, _cellDelimiter = ",", _string
 			_langStruct.files[array_length(_langStruct.files)] = _file;
 		}
 	}
-	buffer_delete(_buffer);
 }
 
 

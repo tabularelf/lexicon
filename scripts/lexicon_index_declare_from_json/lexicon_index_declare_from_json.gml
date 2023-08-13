@@ -7,6 +7,7 @@ function lexicon_index_declare_from_json(_filePath) {
 	
 	var _buffer = buffer_load(_filePath);
 	var _json = buffer_read(_buffer, buffer_text);
+	buffer_delete(_buffer);
 	var _struct = undefined;
 	
 	try {
@@ -58,7 +59,6 @@ function lexicon_index_declare_from_json(_filePath) {
 		_file = new __lexicon_file(_language, _locale, LEXICON_FILE_TYPES.json.parser, _filePath);
 		_langStruct.files[array_length(_langStruct.files)] = _file;
 	}
-	buffer_delete(_buffer);
 }
 
 

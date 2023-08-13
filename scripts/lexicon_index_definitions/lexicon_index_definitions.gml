@@ -16,7 +16,7 @@ function lexicon_index_definitions(_filePath) {
 	try {
 		var _struct = json_parse(_json);
 	} catch(_ex) {
-			__lexicon_throw("Definitions JSON invalid! " + string(_ex.message));	
+		__lexicon_throw("Definitions JSON invalid! " + string(_ex.message));	
 	}
 	
 	var _languages = variable_struct_get_names(_struct);
@@ -25,7 +25,6 @@ function lexicon_index_definitions(_filePath) {
 	var _i = 0;
 	var _j = 0;
 	repeat(_len) {
-		
 		var _language = _languages[_i];
 		var _locale = _struct[$ _languages[_i]].locale;
 		var _fallbackLocale = (_struct[$ _languages[_i]][$ "fallbackLocale"]  != undefined) ? _struct[$ _languages[_i]].fallbackLocale : undefined;
@@ -38,7 +37,30 @@ function lexicon_index_definitions(_filePath) {
 			_files = __lexicon_definitions_parse_files(_filePath, _struct[$ _languages[_i]].file);
 		}
 		
-		lexicon_index_declare(_language, _locale);
+		if (!variable_struct_exists(__LEXICON_STRUCT.languageMap, _language)) {
+			lexicon_index_declare(_language, _locale);
+		} else {
+			var _languageStruct = __LEXICON_STRUCT.languageMap[$ _language];
+			
+			// Check and add new locale to language
+			if (is_array(_languageStruct.locale)) {
+				array_push(_languageStruct.locale, _locale);	
+			} else {
+				_languageStruct.locale = [_languageStruct.locale];
+				array_push(_languageStruct.locale, _locale);	
+			}
+			
+			if (is_array(_locale)) {
+				var _i = 0;
+				repeat(array_length(_locale)) {
+					__LEXICON_STRUCT.localeMap[$ _locale[0]] = _languageStruct;
+					++_i;
+				}
+			} else {
+				__LEXICON_STRUCT.localeMap[$ _locale] = _languageStruct;	
+			}
+		}
+		
 		if (_fallbackLocale != undefined) {
 			if (is_array(_locale)) {
 					/* Feather ignore once GM1061 */

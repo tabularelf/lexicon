@@ -9,7 +9,7 @@ function lexicon_index_declare(_language, _locale, _fallbackLocale = undefined) 
 	
 	if (variable_struct_exists(__LEXICON_STRUCT.languageMap, _language)) {
 		__lexicon_trace(_language + " already exists!");
-		exit;	
+		return;	
 	}
 	
 	var _struct = new __lexicon_definition_class(_language, _locale);
