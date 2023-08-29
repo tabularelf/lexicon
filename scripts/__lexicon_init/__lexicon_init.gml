@@ -1,6 +1,6 @@
 #macro __LEXICON_STRUCT (__lexicon_init())
-#macro LEXICON_VERSION "2.1.4"
-#macro LEXICON_CREDITS "TabularElf - https://tabelf.link/"
+#macro __LEXICON_VERSION "3.0.0-alpha"
+#macro __LEXICON_CREDITS "@TabularElf - https://tabelf.link/"
 
 // Setup Lexicon well before anything else
 
@@ -89,4 +89,4 @@ function __lexicon_init() {
 	return _inst;
 }
 
-__lexicon_trace("v" + LEXICON_VERSION + " initialized! Created by " + LEXICON_CREDITS);
+__lexicon_trace("v" + __LEXICON_VERSION + " initialized! Created by " + __LEXICON_CREDITS);
