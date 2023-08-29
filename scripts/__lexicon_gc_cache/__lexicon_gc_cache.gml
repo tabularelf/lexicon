@@ -18,11 +18,11 @@ function __lexicon_gc_cache() {
 			_deleteStruct=  true;
 		}
 		
-		if (is_undefined(_ref)) {
+		if (!is_undefined(_ref)) {
 			var _cache = _global.cacheMap[? _ref.cacheStr];
 			if (!is_undefined(_cache)) {
-				if (current_time > _cache.timeStamp+LEXICON_CACHE_TIMEOUT) {
-				_deleteStruct = true;
+				if (_frame > _cache.timeStamp+60) {
+				    _deleteStruct = true;
 				}
 			} else {
 				_deleteStruct = true;	
@@ -33,7 +33,7 @@ function __lexicon_gc_cache() {
 			ds_list_delete(_global.cacheList,_i);
 			ds_map_delete(_global.cacheList, _ref.cacheStr);
 			--_length;
-			if (LEXICON_DEBUG) __lexicon_trace(_ref.cacheStr + " has been removed!");
+			if (LEXICON_VERBOSE) __lexicon_trace(_ref.cacheStr + " has been removed!");
 		}
 		if (_length == 0) break;
 		if (get_timer() >= _totalTime) break;

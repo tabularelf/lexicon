@@ -3,14 +3,15 @@
 // Enables Lexicons debugging (outputs specific errors or extra info to console).
 #macro LEXICON_DEBUG								(GM_build_type == "run") 
 
+// Whether Lexicon should be verbose about what's it removing or not.
+#macro LEXICON_VERBOSE								false
+
 // Uses the first entry added automatically
 #macro LEXICON_USE_FIRST_ENTRY_ADDED				false 
 
 // Tells Lexicon which rows in a CSV format are comments and discards them.
 #macro LEXICON_ROW_SEPERATOR						"------------------" 
-																				
-// How long before it gets removed from the cache system, in milliseconds
-#macro LEXICON_CACHE_TIMEOUT						1000 
+																			
 
 // Tells Lexicon what characters are used to determine a variable with lexicon_text_struct(). In previous versions it was { } by default.
 #macro LEXICON_STRUCT_REPLACE_CHR_SYMBOLS			["{", "}"] 
