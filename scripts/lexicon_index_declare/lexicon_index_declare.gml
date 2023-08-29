@@ -14,7 +14,7 @@ function lexicon_index_declare(_language, _locale, _fallbackLocale = undefined) 
 	
 	var _struct = new __lexicon_definition_class(_language, _locale);
 	
-	static _firstEntry = LEXICON_USE_FIRST_ENTRY_ADDED == true ? false : true;
+	static _firstEntry = __LEXICON_USE_FIRST_ENTRY_ADDED == true ? false : true;
 	
 	__LEXICON_STRUCT.languageMap[$ _language] = _struct;
 	if is_array(_locale) {

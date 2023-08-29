@@ -28,7 +28,7 @@ function __lexicon_parse_string(_lexiconTextCache) {
 				++_ii;
 			//}
 			
-			if (LEXICON_ALLOW_LEGACY_ACCESSOR) {
+			if (__LEXICON_ALLOW_LEGACY_ACCESSOR) {
 				_i = 1;
 				repeat(string_count("%s", _newStr)) {
 					if (_i >= argument_count) break;
@@ -226,7 +226,7 @@ function __lexicon_parse_string(_lexiconTextCache) {
 		}
 	}
 	
-	if (!LEXICON_UPDATE_DYNAMIC_VALUES) {
+	if (!__LEXICON_UPDATE_DYNAMIC_VALUES) {
 		_lexiconTextCache.isDynamic = false;	
 		_lexiconTextCache.str = _newStr;
 	}

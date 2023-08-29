@@ -33,7 +33,7 @@ function lexicon_text(_textEntry) {
 		if (_str == undefined) {
 			/* Feather ignore once GM2047 */
 			
-			if (LEXICON_DEBUG) {
+			if (__LEXICON_DEBUG) {
 				return "Missing text entry: \"" + _textEntry + "\"";	
 			}
 			

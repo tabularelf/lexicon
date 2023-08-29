@@ -1,5 +1,5 @@
 #macro __LEXICON_STRUCT (__lexicon_init())
-#macro __LEXICON_VERSION "3.0.0-alpha"
+#macro __LEXICON_VERSION "3.0.0"
 #macro __LEXICON_CREDITS "@TabularElf - https://tabelf.link/"
 
 // Setup Lexicon well before anything else
@@ -24,7 +24,7 @@ function __lexicon_init() {
 			locale: "unknown",
 			isReady: false,
 			replaceChrLegacy: "%s",
-			replaceChr: LEXICON_STRUCT_REPLACE_CHR_SYMBOLS,
+			replaceChr: __LEXICON_STRUCT_REPLACE_CHR_SYMBOLS,
 			fileAsyncList: [],
 			cacheUpdate: true,
 			cacheMap: ds_map_create(),

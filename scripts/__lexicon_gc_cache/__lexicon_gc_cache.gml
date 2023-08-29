@@ -33,7 +33,7 @@ function __lexicon_gc_cache() {
 			ds_list_delete(_global.cacheList,_i);
 			ds_map_delete(_global.cacheList, _ref.cacheStr);
 			--_length;
-			if (LEXICON_VERBOSE) __lexicon_trace(_ref.cacheStr + " has been removed!");
+			if (__LEXICON_VERBOSE) __lexicon_trace(_ref.cacheStr + " has been removed!");
 		}
 		if (_length == 0) break;
 		if (get_timer() >= _totalTime) break;

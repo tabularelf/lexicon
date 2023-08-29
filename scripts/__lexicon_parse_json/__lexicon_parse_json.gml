@@ -35,7 +35,7 @@ function __lexicon_parse_json(_json) {
 		} else if (is_array(_textStructPtr[$ _textArray[_k]])) {
 			__lexicon_text_array_to_string(_textArray[_k], _textStructPtr[$ _textArray[_k]]);
 		} else {
-			if ((LEXICON_REPLACE_ENTRIES) && (variable_struct_exists(_global.textEntries, _textArray[_k]))) {
+			if ((__LEXICON_REPLACE_ENTRIES) && (variable_struct_exists(_global.textEntries, _textArray[_k]))) {
 					_global.textEntries[$ _textArray[_k]] = _textStructPtr[$ _textArray[_k]];	
 			} else if (!variable_struct_exists(_global.textEntries, _textArray[_k])) {
 				_global.textEntries[$ _textArray[_k]] = _textStructPtr[$ _textArray[_k]];	

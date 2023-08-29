@@ -40,11 +40,11 @@ for(var _j = 1; _j < _height;  ++_j) {
 	for(var _i = 2; _i < _width; ++_i) {
 		var _length = array_length(_array[_i])-1;
 		if (_j > _length) continue;
-		if (_array[_i][0] == LEXICON_ROW_SEPERATOR) continue;
+		if (_array[_i][0] == __LEXICON_ROW_SEPERATOR) continue;
 		var _entry = _array[_i][_j];
 		var _textPointer = _array[_i][0]
         if (_textPointer == "") continue; // Skipping any and all blank entries
-		if ((LEXICON_REPLACE_ENTRIES) && (variable_struct_exists(__LEXICON_STRUCT.textEntries, _textPointer))) {
+		if ((__LEXICON_REPLACE_ENTRIES) && (variable_struct_exists(__LEXICON_STRUCT.textEntries, _textPointer))) {
 			lexicon_entry_add(_textPointer, _entry); 	
 		} else if (!variable_struct_exists(__LEXICON_STRUCT.textEntries, _textPointer)) {
 			lexicon_entry_add(_textPointer, _entry); 		
