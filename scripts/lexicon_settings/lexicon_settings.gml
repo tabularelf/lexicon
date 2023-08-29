@@ -24,8 +24,8 @@
 // Tells Lexicon to include the fallback language as well when switching languages.
 #macro LEXICON_FORECE_LOAD_FALLBACK_LANGUAGE		false 
 
-// Whether to use the old legacy array feature "%s" or not.
-#macro LEXICON_ALLOW_LEGACY_ARRAY					false
+// Whether to use the old legacy accessor feature "%s" or not.
+#macro LEXICON_ALLOW_LEGACY_ACCESSOR				false
 
 // Whether Lexicon should allow dynamic functions to update existing texte entries
 #macro LEXICON_UPDATE_DYNAMIC_VALUES				true

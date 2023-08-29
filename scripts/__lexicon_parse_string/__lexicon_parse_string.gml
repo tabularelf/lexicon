@@ -28,7 +28,7 @@ function __lexicon_parse_string(_lexiconTextCache) {
 				++_ii;
 			//}
 			
-			if (LEXICON_ALLOW_LEGACY_ARRAY) {
+			if (LEXICON_ALLOW_LEGACY_ACCESSOR) {
 				_i = 1;
 				repeat(string_count("%s", _newStr)) {
 					if (_i >= argument_count) break;
