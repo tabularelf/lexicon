@@ -34,7 +34,7 @@ function lexicon_text(_textEntry) {
 			/* Feather ignore once GM2047 */
 			
 			if (LEXICON_DEBUG) {
-				return "Missing text pointer: " + _textEntry;	
+				return "Missing text entry: \"" + _textEntry + "\"";	
 			}
 			
 			return _textEntry;

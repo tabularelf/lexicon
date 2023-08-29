@@ -1,5 +1,5 @@
 ﻿Language,English,Comments,French,Japanese,
 Locale,"[""en-UK"", ""en-AU""]",,fr-FR,ja-JP,
-text.test,"I love you {{loveMeter,{{0}},{{1}}}} more since you used Lexicon. {{playerName}} - {{DateTime}}. Thank you!",This is a comment,"Je vous aime {{loveMeter,{{0}},{{1}}}} plus depuis que vous utilisez Lexicon. {{playerName}} - le {{DateTime}}. Merci !utilisez Lexicon. %s - le %s. Merci !","君が「lexicon」を使ってる前より{{loveMeter,{{0}},{{1}}}}回好きです。{{playerName}} - {{DateTime}}。ありがとうございます !",
+text.test,"I love you {loveMeter,{0}},{1}} more since you used Lexicon. {playerName} - {DateTime}. Thank you!",This is a comment,"Je vous aime {loveMeter,{0},{1}} plus depuis que vous utilisez Lexicon. {playerName} - le {DateTime}. Merci !utilisez Lexicon. %s - le %s. Merci !","君が「lexicon」を使ってる前より{loveMeter,{0},{1}}回好きです。{playerName} - {DateTime}。ありがとうございます !",
 ------------------,test,test2t,test3,test4,test5
 text.test2,,This is a comment,Je vous aime %loveMeter% plus depuis que vous utilisez Lexicon. %playerName% - le %dateTime%. Merci !utilisez Lexicon. %s - le %s. Merci !,君が「lexicon」を使ってる前より%loveMeter% 回好きです。%playerName% - %dateTime%。ありがとうございます !,
