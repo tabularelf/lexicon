@@ -47,6 +47,7 @@ function lexicon_index_definitions(_filePath) {
 			}
 		}
 		
+		_j = 0;
 		if (is_array(_files)) {
 			var _fileLen = array_length(_files);
 			repeat(_fileLen) {
