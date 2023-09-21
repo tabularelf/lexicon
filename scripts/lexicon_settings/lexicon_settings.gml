@@ -22,7 +22,8 @@
 																			
 
 /*
-    Tells Lexicon what characters are used to determine a variable with lexicon_text_struct(). In previous versions it was { } by default.
+    Tells Lexicon what characters are used to determine a variable with lexicon_text_struct(). 
+	In previous versions it was { } by default.
 */
 #macro __LEXICON_STRUCT_REPLACE_CHR_SYMBOLS ["{", "}"] 
 
