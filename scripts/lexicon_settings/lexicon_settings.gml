@@ -23,7 +23,7 @@
 
 /*
     Tells Lexicon what characters are used to determine a variable with lexicon_text_struct(). 
-	By default it is ["{", "}"] .
+	By default it is ["{", "}"].
 */
 #macro __LEXICON_STRUCT_REPLACE_CHR_SYMBOLS ["{", "}"] 
 
