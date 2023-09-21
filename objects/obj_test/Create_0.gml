@@ -18,7 +18,7 @@ loveMeter = 100;
 
 
 
-lexicon_callback_define("loveMeter", function(_min = 0, _max = 100) {
+lexicon_dynamic_define("loveMeter", function(_min = 0, _max = 100) {
 	return string((real(_min) / real(_max)) * 100) + "%";
 });
 

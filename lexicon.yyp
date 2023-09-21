@@ -3,7 +3,7 @@
   "resourceVersion": "1.6",
   "name": "lexicon",
   "resources": [
-    {"id":{"name":"lexicon_callback_define","path":"scripts/lexicon_callback_define/lexicon_callback_define.yy",},"order":9,},
+    {"id":{"name":"lexicon_dynamic_define","path":"scripts/lexicon_dynamic_define/lexicon_dynamic_define.yy",},"order":9,},
     {"id":{"name":"obj_test","path":"objects/obj_test/obj_test.yy",},"order":0,},
     {"id":{"name":"__lexicon_localization_map_init","path":"scripts/__lexicon_localization_map_init/__lexicon_localization_map_init.yy",},"order":15,},
     {"id":{"name":"lexicon_flush_cache","path":"scripts/lexicon_flush_cache/lexicon_flush_cache.yy",},"order":0,},
