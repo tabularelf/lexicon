@@ -58,6 +58,6 @@ function lexicon_locale_set(_locale, _forceFlush = true) {
 	
 	if (_forceFlush) lexicon_flush_cache();
 	
-	_global.langDB = __lexicon_localization_map_init()[$ _global.locale] ?? __lexicon_localization_map_init()[$ "en"];
+	//_global.langDB = __lexicon_localization_map_init()[$ _global.locale] ?? __lexicon_localization_map_init()[$ "en"];
 }
 
