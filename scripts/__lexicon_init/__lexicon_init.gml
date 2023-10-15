@@ -1,5 +1,5 @@
 #macro __LEXICON_STRUCT (__lexicon_init())
-#macro __LEXICON_VERSION "3.0.0"
+#macro __LEXICON_VERSION "3.0.1"
 #macro __LEXICON_CREDITS "@TabularElf - https://tabelf.link/"
 
 // Setup Lexicon well before anything else
