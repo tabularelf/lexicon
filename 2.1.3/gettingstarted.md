@@ -136,7 +136,7 @@ As for fetching text, you just need to do.
 ```gml
 // For fetching text
 // i.e. lexicon_text("game_intro_text");
-var _text = lexicon_text("text.entry");
+var _text = lexicon_text("dialogue.NPCBob.Greeting");
 ```
 
 You can see more examples of [`lexicon_text()`](text.md) and it's other functions.
