@@ -22,13 +22,13 @@ To:
 Example:<br>
 ```gml
 // Returns the specific string/pointer
-lexicon_text("text.introduction1");
+lexicon_text("dialogue.introduction1");
 
 // Returns the specific string/pointer. Replacing a single `%s`.
-lexicon_text("text.introduction1", current_time/1000);
+lexicon_text("dialogue.introduction1", current_time/1000);
 
 // Returns the specific string/pointer. Replacing two+ `%s`.
-lexicon_text("text.introduction1", current_time/1000, "This was added in");
+lexicon_text("dialogue.introduction1", current_time/1000, "This was added in");
 ```
 
 ### `lexicon_text_array(textEntry, array)`
@@ -46,7 +46,7 @@ Example:<br>
 ```gml
 // Returns the specific string/pointer with array entries replacing the replace character.
 var _array = [current_time/1000, fps, fps_real];
-lexicon_text_array("text.introduction1", array);
+lexicon_text_array("dialogue.introduction1", array);
 ```
 
 ### `lexicon_text_struct(textEntry, struct)`
@@ -65,5 +65,5 @@ Example:<br>
 ```gml
 // Returns the specific string/pointer, with struct modifiers
 var _struct = {playerName: "TabulerElf"};
-lexicon_text_struct("text.introduction1", _struct);
+lexicon_text_struct("dialogue.introduction1", _struct);
 ```
