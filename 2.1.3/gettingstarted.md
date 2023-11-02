@@ -14,7 +14,7 @@
 Once added to your project, Lexicon will automatically initialise its core functionality when you run the game.
 Lexicon requires your language files to be in either JSON or CSV format. 
 
-The format of these files are as follows:
+The format of these files are as follows (and all of these are interchangeable):
 
 <!-- tabs:start -->
 
@@ -78,6 +78,22 @@ Once you have your language files created, you can set it up as one of three way
 
 <!-- tabs:start -->
 
+### **The new way**
+
+Note: These will add additional files if the language is already declared.
+
+```gml
+// i.e. lexicon_index_declare_from_json("english.json");
+lexicon_index_declare_from_json("english.json");
+```
+
+
+```gml
+// Which will declare multiple languages within the CSV.
+// i.e. lexicon_index_declare_from_csv("locale.csv");
+lexicon_index_declare_from_csv("locale.csv");
+```
+
 ### **The old way**
 
 ```gml
@@ -98,22 +114,6 @@ lexicon_index_add_json("en-US", "english.json")
 // i.e. lexicon_index_add_csv("en-US", "locale.csv");
 // i.e. lexicon_index_add_csv("English", "locale.csv");
 lexicon_index_add_csv("en-US", "locale.csv");
-```
-
-### **The new way**
-
-Note: These will add additional files if the language is already declared.
-
-```gml
-// i.e. lexicon_index_declare_from_json("english.json");
-lexicon_index_declare_from_json("english.json");
-```
-
-
-```gml
-// Which will declare multiple languages within the CSV.
-// i.e. lexicon_index_declare_from_csv("locale.csv");
-lexicon_index_declare_from_csv("locale.csv");
 ```
 
 ### **Definitions File**
