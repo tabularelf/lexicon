@@ -5,7 +5,8 @@
 // Feather ignore all
 function lexicon_index_declare_from_csv(_filePath, _cellDelimiter = ",", _stringDelimiter = "\"") {
 	// Ensure that it's loaded first!
-	__lexicon_init();
+	static _fileTypes = ___fileTypes();
+	static _global = __lexicon_init();
 	var _buffer = buffer_load(_filePath);
 	var _string = buffer_read(_buffer, buffer_text);
 	var _array = __lexicon_array2D_from_csv(_string, _cellDelimiter, _stringDelimiter);
@@ -49,7 +50,7 @@ function lexicon_index_declare_from_csv(_filePath, _cellDelimiter = ",", _string
 					_langStruct = __LEXICON_STRUCT.localeMap[$ _locale[_i]];
 				}
 				
-				_file = new __lexicon_file(_language, _locale[0], LEXICON_FILE_TYPES.csv.parser, _filePath);
+				_file = new __lexicon_file(_language, _locale[0], _fileTypes.csv.parser, _filePath);
 				_langStruct.files[array_length(_langStruct.files)] = _file;
 			}	
 		} else {
@@ -61,7 +62,7 @@ function lexicon_index_declare_from_csv(_filePath, _cellDelimiter = ",", _string
 				_langStruct = __LEXICON_STRUCT.languageMap[$ _language];
 			}
 			
-			_file = new __lexicon_file(_language, _locale, LEXICON_FILE_TYPES.csv.parser, _filePath);
+			_file = new __lexicon_file(_language, _locale, _fileTypes.csv.parser, _filePath);
 			_langStruct.files[array_length(_langStruct.files)] = _file;
 		}
 	}
