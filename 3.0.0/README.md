@@ -12,8 +12,7 @@ Lexicon is a localization system focused around on simplifying implementation of
 
 # Features
 
-* Substring Replacement/s. (Replacing `%s`)
-* Substring Replacement/s via [structs](general?id=lexicon_text_structtextentry-struct). (Allowing `%variable%` instead of `%s` for increased flexibility.)
+* Substring Replacement/s. (Replacing `{0-9999}`, or `{name_of_variable}` via structs!)
 * String caching. (for Substring replacement/s)
 * Supports CSV/JSON parsing right out of the box.
 * Language/Locale fallback.

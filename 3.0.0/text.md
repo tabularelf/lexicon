@@ -7,9 +7,9 @@ Returns: `String`
 |Name|Datatype|Purpose|
 |---|---|---|
 |`textEntry`| `String`| The textEntry you want to fetch.|
-|`[value]`| `Any`| The text you want to replace, as per the Lexicon template string format `{name}` or `{0-99999}`. If a struct is provided as one of those arguments, then it'll fetch any potential template strings directly.|
+|`[value]`| `Any`| The text you want to replace, as per the Lexicon template string format `{0-99999}`, or `{name_of_variable}` via structs!|
 
-The bread and butter of the main system. Takes a text pointer (a string), such as `dialogue.introduction1`, `dialogue_introduction1`, `dialogueIntroduction1` or any kind of flavour. So long as it's a string, it works.
+The bread and butter of the main system. Takes a text entry (a string), such as `dialogue.introduction1`, `dialogue_introduction1`, `dialogueIntroduction1` or any kind of flavour. So long as it's a string, it works.
 
 The additional optional arguments replace `{0-9999}` or `{name_of_variable}` with each and every subsequent argument, depending on the value placed. i.e.
 
