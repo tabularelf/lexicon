@@ -1,24 +1,43 @@
 # Language/Locale
 
-### `lexicon_entry_add()`
+### `lexicon_entry_add(textEntry, string)`
 
 Returns: `N/A`
 
 |Name|Datatype|Purpose|
 |---|---|---|
-|`N/A`|||
+|`textEntry`|`String`|Name of text entry.|
+|`string`| `String` |Contents of text entry.|
 
 Used for Lexicon mostly. Allows you to add text entries to the current language/locale.
 
-### `lexicon_entry_remove()`
+### `lexicon_entry_remove(textEntry)`
 
 Returns: `N/A`
 
 |Name|Datatype|Purpose|
 |---|---|---|
-|`N/A`|||
+|`textEntry`|`String`|Name of text entry.|
 
 Allows you to remove a text entry from the current language/locale.
+
+### `lexicon_entry_exists(textEntry)`
+
+Returns: `Boolean`
+
+|Name|Datatype|Purpose|
+|---|---|---|
+|`textEntry`|`String`|Name of text entry.|
+
+Checks whether a particular text entry exists or not.
+
+Returns: `Boolean`
+
+|Name|Datatype|Purpose|
+|---|---|---|
+|`textEntry`|`String`|Name of text entry.|
+
+Checks whether a particular text entry exists or not.
 
 ### `lexicon_language_exists(language)`
 
