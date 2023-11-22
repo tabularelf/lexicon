@@ -14,7 +14,7 @@
 Once added to your project, Lexicon will automatically initialise its core functionality when you run the game.
 Lexicon requires your language files to be in either JSON or CSV format. 
 
-The format of these files are as follows:
+The format of these files are as follows (and all of these are interchangeable):
 
 <!-- tabs:start -->
 
@@ -78,6 +78,22 @@ Once you have your language files created, you can set it up as one of three way
 
 <!-- tabs:start -->
 
+### **The new way**
+
+Note: These will add additional files if the language is already declared.
+
+```gml
+// i.e. lexicon_index_declare_from_json("english.json");
+lexicon_index_declare_from_json("english.json");
+```
+
+
+```gml
+// Which will declare multiple languages within the CSV.
+// i.e. lexicon_index_declare_from_csv("locale.csv");
+lexicon_index_declare_from_csv("locale.csv");
+```
+
 ### **The old way**
 
 ```gml
@@ -100,22 +116,6 @@ lexicon_index_add_json("en-US", "english.json")
 lexicon_index_add_csv("en-US", "locale.csv");
 ```
 
-### **The new way**
-
-Note: These will add additional files if the language is already declared.
-
-```gml
-// i.e. lexicon_index_declare_from_json("english.json");
-lexicon_index_declare_from_json("english.json");
-```
-
-
-```gml
-// Which will declare multiple languages within the CSV.
-// i.e. lexicon_index_declare_from_csv("locale.csv");
-lexicon_index_declare_from_csv("locale.csv");
-```
-
 ### **Definitions File**
 
 [Click here](definitions.md) for more on how the definitions format works.
@@ -136,7 +136,7 @@ As for fetching text, you just need to do.
 ```gml
 // For fetching text
 // i.e. lexicon_text("game_intro_text");
-var _text = lexicon_text("text.entry");
+var _text = lexicon_text("dialogue.NPCBob.Greeting");
 ```
 
 You can see more examples of [`lexicon_text()`](text.md) and it's other functions.

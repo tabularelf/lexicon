@@ -67,3 +67,4 @@ Example:<br>
 var _struct = {playerName: "TabulerElf"};
 lexicon_text_struct("dialogue.introduction1", _struct);
 ```
+
