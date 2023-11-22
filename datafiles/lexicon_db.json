@@ -2,30 +2,32 @@
 	"English": { 
 		"region": "en",
 		"locale": "", 
-		"children": [{
-			"name": "English (Australian)",
-			"locale": "AU",
-			"format": {
-				"firstDayOfWeek": 1,
-				"datePattern": {
-					"full": "EEEE D MMMM, Y",
-					"long": "D MMMM, Y",
-					"medium": "D MMM, Y",
-					"short": "D/M/Y"
-				},
+		"children": [
+			{
+				"name": "English (Australian)",
+				"locale": "AU",
+				"format": {
+					"firstDayOfWeek": 1,
+					"datePattern": {
+						"full": "EEEE D MMMM, Y",
+						"long": "D MMMM, Y",
+						"medium": "D MMM, Y",
+						"short": "D/M/Y"
+					},
+				}
+			},
+			{
+				"name": "English (United Kingdom)",
+				"locale": "GB",
+				"format": {
+					"firstDayOfWeek": 1
+				}
+			},
+			{
+				"name": "English (United States)",
+				"locale": "US",
 			}
-		},
-		{
-		"name": "English (United Kingdom)",
-			"locale": "GB",
-			"format": {
-				"firstDayOfWeek": 1
-			}
-		},
-		{
-		"name": "English (United States)",
-			"locale": "US",
-		}],
+		],
 		"format": {
 			"firstDayOfWeek": 0,
 			"dateTimePattern": {

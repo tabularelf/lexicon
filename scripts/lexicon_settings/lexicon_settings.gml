@@ -52,3 +52,8 @@
     Whether Lexicon should allow dynamic functions to update existing texte entries
 */
 #macro __LEXICON_UPDATE_DYNAMIC_VALUES true
+
+/*
+	Whether to resolve newlines (\n) upon loading in language\s
+*/
+#macro __LEXICON_RESOLVE_NEWLINES false

@@ -42,13 +42,10 @@ for(var _j = 1; _j < _height;  ++_j) {
 		if (_j > _length) continue;
 		if (_array[_i][0] == __LEXICON_ROW_SEPERATOR) continue;
 		var _entry = _array[_i][_j];
+		if (_entry == "") continue;
 		var _textPointer = _array[_i][0]
         if (_textPointer == "") continue; // Skipping any and all blank entries
-		if ((__LEXICON_REPLACE_ENTRIES) && (variable_struct_exists(__LEXICON_STRUCT.textEntries, _textPointer))) {
-			lexicon_entry_add(_textPointer, _entry); 	
-		} else if (!variable_struct_exists(__LEXICON_STRUCT.textEntries, _textPointer)) {
-			lexicon_entry_add(_textPointer, _entry); 		
-		}
+		lexicon_entry_add(_textPointer, _entry); 	
 	}
 	break;
 }
