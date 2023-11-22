@@ -47,6 +47,8 @@
     {"id":{"name":"__lexicon_add_file","path":"scripts/__lexicon_add_file/__lexicon_add_file.yy",},"order":5,},
     {"id":{"name":"__lexicon_load_entries","path":"scripts/__lexicon_load_entries/__lexicon_load_entries.yy",},"order":2,},
     {"id":{"name":"__lexicon_text_array_to_string","path":"scripts/__lexicon_text_array_to_string/__lexicon_text_array_to_string.yy",},"order":22,},
+    {"id":{"name":"lexicon_text_get_utf8_range","path":"scripts/lexicon_text_get_utf8_range/lexicon_text_get_utf8_range.yy",},"order":11,},
+    {"id":{"name":"lexicon_text_get_utf8_array","path":"scripts/lexicon_text_get_utf8_array/lexicon_text_get_utf8_array.yy",},"order":10,},
     {"id":{"name":"__lexicon_handle_file_type","path":"scripts/__lexicon_handle_file_type/__lexicon_handle_file_type.yy",},"order":1,},
     {"id":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},"order":0,},
     {"id":{"name":"lexicon_index_definitions","path":"scripts/lexicon_index_definitions/lexicon_index_definitions.yy",},"order":2,},

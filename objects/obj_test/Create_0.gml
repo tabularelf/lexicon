@@ -24,3 +24,6 @@ lexicon_dynamic_define("loveMeter", function(_min = 0, _max = 100) {
 
 // Cache removal test (via GC)
 lexicon_text("{loveMeter, 100, 200}");
+
+show_debug_message(lexicon_text_get_utf8_range("The quick brown fox jumps over the lazy dog"));
+show_debug_message(lexicon_text_get_utf8_array("The quick brown fox jumps over the lazy dog"));
