@@ -1,4 +1,4 @@
-function lexicon_text_get_utf8_array(_str) {
+function lexicon_text_get_utf8_array(_str, _includeDuplicates = false) {
 	static _strBuff = buffer_create(1024, buffer_fixed, 1);
 	var _byteLen = string_byte_length(_str);
 	
@@ -16,14 +16,18 @@ function lexicon_text_get_utf8_array(_str) {
 	
 	repeat(string_length(_str)) {
 		var _charCode = __lexicon_buffer_read_utf8(_strBuff);
+		if (_charCode < 32) continue;
+		
 		var _i = 0;
 		var _found = false;
-		repeat(array_length(_array)) {
-			if (_array[_i] == _charCode) {
-				_found = true;
-				break;
+		if (!_includeDuplicates) {
+			repeat(array_length(_array)) {
+				if (_array[_i] == _charCode) {
+					_found = true;
+					break;
+				}
+				++_i;
 			}
-			++_i;
 		}
 		
 		if (!_found) {
