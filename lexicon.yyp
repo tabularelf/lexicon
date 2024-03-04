@@ -12,6 +12,7 @@
     {"id":{"name":"__lexicon_parse_json","path":"scripts/__lexicon_parse_json/__lexicon_parse_json.yy",},"order":2,},
     {"id":{"name":"__lexicon_init","path":"scripts/__lexicon_init/__lexicon_init.yy",},"order":0,},
     {"id":{"name":"lexicon_async","path":"scripts/lexicon_async/lexicon_async.yy",},"order":6,},
+    {"id":{"name":"lexicon_language_get_index","path":"scripts/lexicon_language_get_index/lexicon_language_get_index.yy",},"order":11,},
     {"id":{"name":"__lexicon_parse_string","path":"scripts/__lexicon_parse_string/__lexicon_parse_string.yy",},"order":13,},
     {"id":{"name":"lexicon_language_set","path":"scripts/lexicon_language_set/lexicon_language_set.yy",},"order":3,},
     {"id":{"name":"lexicon_locale_exists","path":"scripts/lexicon_locale_exists/lexicon_locale_exists.yy",},"order":1,},
@@ -109,10 +110,10 @@
     {"resourceType":"GMTextureGroup","resourceVersion":"1.3","name":"Default","isScaled":true,"compressFormat":"bz2","loadType":"default","directory":"","autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":-1,},
   ],
   "IncludedFiles": [
-    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"locale.json","CopyToMask":3035461389054378222,"filePath":"datafiles",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"definitions.json","CopyToMask":-1,"filePath":"datafiles",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"lexicon_db.json","CopyToMask":3035426170322550958,"filePath":"datafiles",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"locale.csv","CopyToMask":-1,"filePath":"datafiles",},
+    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"locale.json","CopyToMask":3035461389054378222,"filePath":"datafiles",},
   ],
   "MetaData": {
     "IDEVersion": "2022.0.2.51",

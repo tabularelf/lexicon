@@ -52,7 +52,7 @@ function lexicon_text(_textEntry) {
 		if (is_struct(argument[_i])) {
 			_cacheStr += string(ptr(argument[_i]));	
 		} else {
-			_cacheStr += string(argument[_i]);	
+			_cacheStr += is_string(argument[_i]) ? argument[_i] : string(argument[_i]);	
 		}
 		// Store arguments
 		_staticArray[_i] = argument[_i];

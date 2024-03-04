@@ -13,5 +13,7 @@ draw_text(32, 192+32, string(lexicon_entry_get_variations("test.array"))+
 
 draw_text(32, 192+128, lexicon_text("newline_test"));
 
+draw_text(32, 192+128+32, lexicon_language_get_index());
+
 draw_text(room_width div 2, room_height div 2, "Press spacebar to cycle languages");
 
