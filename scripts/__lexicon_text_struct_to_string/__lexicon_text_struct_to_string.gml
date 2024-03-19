@@ -12,7 +12,7 @@ function __lexicon_text_struct_to_string(_textName, _textStruct) {
 		} else {
 			//if ((!__LEXICON_REPLACE_ENTRIES) && (variable_struct_exists(__LEXICON_STRUCT.textEntries, _textKey))) continue;
 			//__LEXICON_STRUCT.textEntries[$ _textKey] = _textStruct[$ _textArray[_i]];
-			lexicon_entry_add(_textKey, _textArray[_i]);
+			lexicon_entry_add(_textKey, _textStruct[$ _textArray[_i]]);
 		}
 		++_i;
 	}
