@@ -8,7 +8,7 @@
                 "Goodbye": "Goodbye you!"
             },
 			"NPCBob2": {
-                "Greeting": "Hello there! I am {npc.bob.name}! Nioce to meet you!",
+                "Greeting": "Hello there! I am {npc.bob.name}! Nice to meet you!",
                 "Goodbye": "Goodbye!"
             }
         },
