@@ -119,12 +119,27 @@ function __lexicon_parse_string(_lexiconTextCache) {
 					if (variable_struct_exists(_global.dynamicMap, _strKeyStripped)) {
 						var _callback = _global.dynamicMap[$ _strKeyStripped];
 						if (_callback[1]) {
+							// Parse inner system
 							if (_dynamicArray == undefined) _dynamicArray = [];
 							_lexiconTextCache.isDynamic = true;
 							array_push(_dynamicArray, [_strKeyStripped, undefined, _strKey, _args]);
 						} else {
 							_newStr = string_replace_all(_newStr, _replaceChrStart + _strKey + _replaceChrEnd, __lexicon_resolve_dynamic(_strKeyStripped, _args)); 
+						} 
+					} else if (lexicon_entry_exists(_strKeyStripped)) {
+						// Parse text entries
+						var _textEntryResult = _strKeyStripped;
+							if (string_count(_strKeyStripped, _global.textEntries[$ _strKeyStripped]) > 0) {
+								__lexicon_throw("Recursive entry found in " + _strKeyStripped + "!\nPlease remove any recursive entries before proceeding!");	
+							}
+						
+						
+						if (is_array(_args)) {
+							_textEntryResult = lexicon_text_array(_strKeyStripped, _args);
+						} else {
+							_textEntryResult = lexicon_text(_strKeyStripped);
 						}
+						_newStr = string_replace_all(_newStr, _replaceChrStart + _strKey + _replaceChrEnd, _textEntryResult);
 					} else {
 						_ii = 1;
 						repeat(argument_count-1) {

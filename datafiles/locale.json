@@ -6,6 +6,10 @@
             "NPCBob": {
                 "Greeting": "Hello there you!",
                 "Goodbye": "Goodbye you!"
+            },
+			"NPCBob2": {
+                "Greeting": "Hello there! I am {npc.bob.name}! Nioce to meet you!",
+                "Goodbye": "Goodbye!"
             }
         },
 		"text.test": "I love you {loveMeter,{0},{1}} more since you used Lexicon. {playerName} - {DateTime}. Thank you!",
@@ -22,6 +26,11 @@
 				"nice",
 				"very nice"
 			]
+		},
+		"npc": {
+			"bob": {
+				"name": "Bob"
+			}
 		}
 	}
 }
