@@ -12,7 +12,7 @@ function lexicon_text(_textEntry) {
 	static _replaceChrStart = _global.replaceChr[0];
 	static _replaceChrEnd = _global.replaceChr[1];
 	static _replchr = _global.replaceChrLegacy;
-	static _recursionStack = ds_list_create();
+	static _recursionStack = (__LEXICON_ENTRY_RECURSION_DETECTION) ? ds_list_create() : undefined;
 	var _str = _textEntry;
 	
 	if (argument_count > array_length(_staticArray)) array_resize(_staticArray, argument_count);
