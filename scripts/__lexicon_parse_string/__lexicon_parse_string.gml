@@ -129,9 +129,9 @@ function __lexicon_parse_string(_lexiconTextCache) {
 					} else if (lexicon_entry_exists(_strKeyStripped)) {
 						// Parse text entries
 						var _textEntryResult = _strKeyStripped;
-							if (string_count(_strKeyStripped, _global.textEntries[$ _strKeyStripped]) > 0) {
-								__lexicon_throw("Recursive entry found in " + _strKeyStripped + "!\nPlease remove any recursive entries before proceeding!");	
-							}
+						if (__LEXICON_ENTRY_RECURSION_DETECTION) && (string_count(_strKeyStripped, _global.textEntries[$ _strKeyStripped]) > 0) {
+							__lexicon_throw("Recursive entry found in " + _strKeyStripped + "!\nPlease remove any recursive entries before proceeding!");	
+						}
 						
 						
 						if (is_array(_args)) {

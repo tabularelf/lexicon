@@ -29,7 +29,7 @@
 		},
 		"npc": {
 			"bob": {
-				"name": "Bob"
+				"name": "Bob {dialogue.NPCBob2.Greeting}"
 			}
 		}
 	}
