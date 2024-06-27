@@ -1,6 +1,5 @@
 /// @func lexicon_index_fallback_language_set(language)
-/// @param {String} language
-/// feather ignore all
+/// @param {String} _language
 function lexicon_index_fallback_language_set(_language) {
 	// Ensure that it's loaded first!
 	__lexicon_init();

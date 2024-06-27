@@ -1,6 +1,6 @@
 /// @ignore
-/// feather ignore all
 function __lexicon_handle_file_type(_lang, _fileStruct) {
+		static _fileTypes = ___fileTypes();
 		var _string = "";
 		var _filePath = is_struct(_fileStruct) ? _fileStruct.filePath : _fileStruct;
 		
@@ -14,8 +14,8 @@ function __lexicon_handle_file_type(_lang, _fileStruct) {
 				_string = string_lower(string_copy(_filePath, _dotPos, string_length(_filePath)-_dotPos+1));
 			}
 			
-			if (LEXICON_FILE_TYPES[$ _string] != undefined) {
-				var _type = LEXICON_FILE_TYPES[$ _string];
+			if (_fileTypes[$ _string] != undefined) {
+				var _type = _fileTypes[$ _string];
 				var _args = undefined;
 				
 				if (is_struct(_fileStruct)) {

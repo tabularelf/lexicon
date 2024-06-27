@@ -13,8 +13,14 @@ function __lexicon_definitions_parse_files(_definitionsFilePath, _fileStruct) {
 	if (is_array(_fileStruct)) {
 		var _i = 0;
 		repeat(array_length(_fileStruct)) {
-			if (string_char_at(_fileStruct[_i][$ "filePath"], 1) == ".") {
-				_fileStruct[_i][$ "filePath"] = _filePath + string_copy(_fileStruct[_i][$ "filePath"], 3, string_length(_fileStruct[_i][$ "filePath"]));
+			if (is_string(_fileStruct[_i])) {
+				if (string_char_at(_fileStruct[_i], 1) == ".") {
+					_fileStruct[_i] = _filePath + string_copy(_fileStruct[_i], 3, string_length(_fileStruct[_i]));	
+				}
+			} else {
+				if (string_char_at(_fileStruct[_i][$ "filePath"], 1) == ".") {
+					_fileStruct[_i][$ "filePath"] = _filePath + string_copy(_fileStruct[_i][$ "filePath"], 3, string_length(_fileStruct[_i][$ "filePath"]));
+				}
 			}
 			++_i;
 		}

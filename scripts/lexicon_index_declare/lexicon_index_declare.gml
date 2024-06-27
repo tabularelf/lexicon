@@ -1,7 +1,7 @@
 /// @func lexicon_index_declare(language, locale)
-/// @param {String} language
-/// @param {Any*} locale
-/// @param {Any*} [fallbackLocale=undefined]
+/// @param {String} _language
+/// @param {Any*} _locale
+/// @param {Any*} [_fallbackLocale=undefined]
 // Feather ignore all
 function lexicon_index_declare(_language, _locale, _fallbackLocale = undefined) {
 	// Ensure that it's loaded first!
@@ -9,12 +9,12 @@ function lexicon_index_declare(_language, _locale, _fallbackLocale = undefined) 
 	
 	if (variable_struct_exists(__LEXICON_STRUCT.languageMap, _language)) {
 		__lexicon_trace(_language + " already exists!");
-		return;	
+		exit;	
 	}
 	
 	var _struct = new __lexicon_definition_class(_language, _locale);
 	
-	static _firstEntry = LEXICON_USE_FIRST_ENTRY_ADDED == true ? false : true;
+	static _firstEntry = __LEXICON_USE_FIRST_ENTRY_ADDED == true ? false : true;
 	
 	__LEXICON_STRUCT.languageMap[$ _language] = _struct;
 	if is_array(_locale) {

@@ -1,13 +1,13 @@
 /// @func lexicon_index_add_csv(language/locale, file_name, [is_async], [cell_delimiter], [string_delimiter])
-/// @param {String} langLocale 
-/// @param {String} fileName
-/// @param {Bool} [isAsync=false]
-/// @param {String} [cellDelimiter=","]
-/// @param {String} [stringDelimiter="\""]
-/// feather ignore all
+/// @param {String} _langLocale 
+/// @param {String} _fileName
+/// @param {Bool} [_isAsync=false]
+/// @param {String} [_cellDelimiter=","]
+/// @param {String} [_stringDelimiter="\""]
 function lexicon_index_add_csv(_langLocale, _fileName, _isAsync = false, _cellDelimiter = ",", _stringDelimiter = "\"") {
 	// Ensure that it's loaded first!
-	__lexicon_init();
+	static _fileTypes = ___fileTypes();
+	static _global = __lexicon_init();
 	
 	if (!file_exists(_fileName)) {
 			__lexicon_throw(_fileName + " does not exist!");
@@ -22,6 +22,6 @@ function lexicon_index_add_csv(_langLocale, _fileName, _isAsync = false, _cellDe
 		return;
 	}
 	
-	var _file = new __lexicon_file(_struct.language, _struct.locale, LEXICON_FILE_TYPES.csv.parser, _fileName, _isAsync, [_cellDelimiter, _stringDelimiter]);
+	var _file = new __lexicon_file(_struct.language, _struct.locale, _fileTypes.csv.parser, _fileName, _isAsync, [_cellDelimiter, _stringDelimiter]);
 	_struct.files[array_length(_struct.files)] = _file;
 }

@@ -1,18 +1,18 @@
 /// @ignore
-/// feather ignore all
 function __lexicon_reset() {
-	
-	if (__LEXICON_STRUCT.localeMap[$ __LEXICON_STRUCT.locale] == undefined) {
+	static _global = __lexicon_init();
+	if (_global.localeMap[$ _global.locale] == undefined) {
 		return;
 	}
 	
 	// Unload files
-	var _files = __LEXICON_STRUCT.localeMap[$ __LEXICON_STRUCT.locale].files;
+	var _files = _global.localeMap[$ _global.locale].files;
 	var _i = 0;
 	repeat(array_length(_files)) {
 		_files[_i].isLoaded = false;	
 		++_i;
 	}
 	
-	__LEXICON_STRUCT.textEntries = {};
+	_global.textEntries = {};
+	_global.textEntriesArray = {};
 }

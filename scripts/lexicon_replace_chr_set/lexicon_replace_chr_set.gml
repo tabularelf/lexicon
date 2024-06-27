@@ -1,6 +1,5 @@
-/// @func lexicon_replace_chr_set(chr)
-/// @param {String} chr
-/// feather ignore all
+/// @func lexicon_replace_chr_set(string)
+/// @param {String} _chr
 function lexicon_replace_chr_set(_chr) {
 	// Ensure that it's loaded first!
 	__lexicon_init();

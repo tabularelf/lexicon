@@ -3,11 +3,11 @@
 // Feather ignore all
 function lexicon_index_declare_from_json(_filePath) {
 	// Ensure that it's loaded first!
-	__lexicon_init();
+	static _fileTypes = ___fileTypes();
+	static _global = __lexicon_init();
 	
 	var _buffer = buffer_load(_filePath);
 	var _json = buffer_read(_buffer, buffer_text);
-	buffer_delete(_buffer);
 	var _struct = undefined;
 	
 	try {
@@ -45,7 +45,7 @@ function lexicon_index_declare_from_json(_filePath) {
 			++_i;
 		}
 		
-		_file = new __lexicon_file(_language, _locale[0], LEXICON_FILE_TYPES.json.parser, _filePath);
+		_file = new __lexicon_file(_language, _locale[0], _fileTypes.json.parser, _filePath);
 		_langStruct.files[array_length(_langStruct.files)] = _file;
 	} else {
 		if (!(is_undefined(_language) || is_undefined(_locale))) && (variable_struct_exists(__LEXICON_STRUCT.languageMap, _language) || 
@@ -56,9 +56,10 @@ function lexicon_index_declare_from_json(_filePath) {
 			_langStruct = __LEXICON_STRUCT.languageMap[$ _language];
 		}
 		
-		_file = new __lexicon_file(_language, _locale, LEXICON_FILE_TYPES.json.parser, _filePath);
+		_file = new __lexicon_file(_language, _locale, _fileTypes.json.parser, _filePath);
 		_langStruct.files[array_length(_langStruct.files)] = _file;
 	}
+	buffer_delete(_buffer);
 }
 
 

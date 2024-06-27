@@ -1,0 +1,302 @@
+{
+	"English": { 
+		"region": "en",
+		"locale": "", 
+		"children": [
+			{
+				"name": "English (Australian)",
+				"locale": "AU",
+				"format": {
+					"firstDayOfWeek": 1,
+					"datePattern": {
+						"full": "EEEE D MMMM, Y",
+						"long": "D MMMM, Y",
+						"medium": "D MMM, Y",
+						"short": "D/M/Y"
+					},
+				}
+			},
+			{
+				"name": "English (United Kingdom)",
+				"locale": "GB",
+				"format": {
+					"firstDayOfWeek": 1
+				}
+			},
+			{
+				"name": "English (United States)",
+				"locale": "US",
+			}
+		],
+		"format": {
+			"firstDayOfWeek": 0,
+			"dateTimePattern": {
+				"time": 0,
+				"date": 1,
+				"str": "{1}, {0}"
+			},
+			"dayNames": {
+				"short": ["S", "M", "T", "W", "T", "F", "S"],
+				"medium": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+				"long": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+			},
+			"monthNames": {
+				"short": ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
+				"medium": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+				"long": ["January", "Feb", "March", "April", "May", "Jun", "July", "August", "September", "October", "November", "December"]
+			},
+			"amPM": ["AM", "PM"],
+			"era": {
+				"bc": ["B", "BC", "Before Christ"],
+				"ad": ["A", "AD", "Anno Domini"]
+			},
+			"datePattern": {
+				"full": "EEEE MMMM D, Y",
+				"long": "MMMM D, Y",
+				"medium": "MMM D, Y",
+				"short": "M/D/Y"
+			},
+			"timePattern": {
+				"full": "h:mm:ss a zzzz",
+				"long": "h:mm:ss a z",
+				"medium": "h:mm:ss a",
+				"short": "h:mm a"
+			}
+		}
+	},
+	"Japanese": { 
+		"region": "jp",
+		"locale": "JP", 
+		"format": {
+			"firstDayOfWeek": 1,
+			"dateTimePattern": {
+				"time": 0,
+				"date": 1,
+				"str": "{0} {1}"
+			},
+			"dayNames": {
+				"short": ["日", "月", "火", "水", "T", "F", "S"],
+				"medium": ["日", "月", "火", "水", "木", "金", "土"],
+				"long": ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"]
+			},
+			"monthNames": {
+				"short": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+				"medium": ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+				"long": ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
+			},
+			"amPM": ["午前", "午後"],
+			"era": {
+				"bc": ["B", "紀元前", "紀元前"],
+				"ad": ["A", "西暦", "西暦"]
+			},
+			"datePattern": {
+				"full": "Y年MMMMD日EEEE",
+				"long": "Y年MMMMD日",
+				"medium": "Y/MMM/D",
+				"short": "Y/M/D"
+			},
+			"timePattern": {
+				"full": "h:mm:ss a zzzz",
+				"long": "h:mm:ss a z",
+				"medium": "h:mm:ss a",
+				"short": "h:mm a"
+			}
+		}
+	},
+	"French": { 
+		"region": "fr",
+		"locale": "FR", 
+		"children": [{
+			"name": "French (Canada)",
+			"locale": "CA",
+			"format": {
+				"firstDayOfWeek": 1
+			}
+		}],
+		"format": {
+			"firstDayOfWeek": 0,
+			"dateTimePattern": {
+				"time": 0,
+				"date": 1,
+				"str": "{0} {1}"
+			},
+			"dayNames": {
+				"short": ["D", "L", "M", "M", "J", "V", "S"],
+				"medium": ["dim.", "lun.", "mar.", "mer.", "jeu.", "ven.", "sam."],
+				"long": ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"]
+			},
+			"monthNames": {
+				"short": ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
+				"medium": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+				"long": ["January", "Feb", "March", "April", "May", "Jun", "July", "August", "September", "October", "November", "December"]
+			},
+			"amPM": ["AM", "PM"],
+			"era": {
+				"bc": ["B", "BC", "Before Christ"],
+				"ad": ["A", "AD", "Anno Domini"]
+			},
+			"datePattern": {
+				"full": "EEEE D MMMM, Y",
+				"long": "D MMMM, Y",
+				"medium": "D MMM, Y",
+				"short": "D/M/Y"
+			},
+			"timePattern": {
+				"full": "h:mm:ss a zzzz",
+				"long": "h:mm:ss a z",
+				"medium": "h:mm:ss a",
+				"short": "h:mm a"
+			}
+		}
+	},
+	"Template": { 
+		"region": "tm",
+		"locale": "PL", 
+		"children": [],
+		"format": {
+			"firstDayOfWeek": 0,
+			"dateTimePattern": {
+				"time": 0,
+				"date": 1,
+				"str": "{1}, {0}"
+			},
+			"dayNames": {
+				"short": ["S", "M", "T", "W", "T", "F", "S"],
+				"medium": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+				"long": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+			},
+			"monthNames": {
+				"short": ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
+				"medium": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+				"long": ["January", "Feb", "March", "April", "May", "Jun", "July", "August", "September", "October", "November", "December"]
+			},
+			"amPM": ["AM", "PM"],
+			"era": {
+				"bc": ["B", "BC", "Before Christ"],
+				"ad": ["A", "AD", "Anno Domini"]
+			},
+			"datePattern": {
+				"full": "EEEE MMMM D, Y",
+				"long": "MMMM D, Y",
+				"medium": "MMM D, Y",
+				"short": "M/D/Y"
+			},
+			"timePattern": {
+				"full": "h:mm:ss a zzzz",
+				"long": "h:mm:ss a z",
+				"medium": "h:mm:ss a",
+				"short": "h:mm a"
+			}
+		}
+	},
+	"Turkish": { 
+		"region": "tr",
+		"locale": "", 
+		"children": [{
+			"name": "Turkish (Turkey)",
+			"locale": "TR"
+		},
+		{
+			"name": "Turkish (Cyprus)",
+			"region": "tr",
+			"locale": "CY"
+		}],
+		"format": {
+			"firstDayOfWeek": 1,
+			"dateTimePattern": {
+				"time": 0,
+				"date": 1,
+				"str": "{1} {0}"
+			},
+			"dayNames": {
+				"short": ["P", "P", "S", "Ç", "P", "C", "C"],
+				"medium": ["Paz", "Pzt", "Sal", "Çar", "Per", "Cum", "Cmt"],
+				"long": ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"]
+			},
+			"monthNames": {
+				"short": ["O", "Ş", "M", "N", "M", "H", "T", "A", "E", "E", "K", "A"],
+				"medium": ["Oca", "Şub", "Mar", "Nis", "May", "Haz", "Tem", "Ağu", "Eyl", "Eki", "Kas", "Ara"],
+				"long": ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
+			},
+			"amPM": ["ÖÖ", "ÖS"],
+			"era": {
+				"bc": ["MÖ", "MÖ", "Milattan Önce"],
+				"ad": ["MS", "MS", "Milattan Sonra"]
+			},
+			"datePattern": {
+				"full": "MMMM D, Y EEEE",
+				"long": "D MMMM Y",
+				"medium": "D MMM Y",
+				"short": "D.M.Y"
+			},
+			"timePattern": {
+				"full": "h:mm:ss a zzzz",
+				"long": "h:mm:ss a z",
+				"medium": "h:mm:ss a",
+				"short": "h:mm a"
+			}
+		}
+	},
+	"Czech": { 
+		"region": "cs",
+		"locale": "CZ", 
+		"children": [],
+		"format": {
+			"firstDayOfWeek": 1,
+			"dateTimePattern": {
+				"time": 0,
+				"date": 1,
+				"str": "{1} {0}"
+			},
+			"dayNames": {
+				"short": ["N", "P", "Ú", "S", "Č", "P", "S"],
+				"medium": ["ne", "po", "út", "st", "čt", "pá", "so"],
+				"long": ["neděle", "pondělí", "úterý", "středa", "čtvrtek", "pátek", "sobota"]
+			},
+			"monthNames": {
+				"short": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+				"medium": ["led", "úno", "bře", "dub", "kvě", "čvn", "čvc", "srp", "zář", "říj", "lis", "pro"],
+				"long": ["ledna", "února", "březen", "duben", "květen", "červen", "červenec", "srpen", "září", "říjen", "listopad", "prosinec"]
+			},
+			"amPM": ["dop.", "odp."],
+			"era": {
+				"bc": ["př.n.l.", "př. n. l.", "před naším letopočtem"],
+				"ad": ["n.l.", "n. l.", "našeho letopočtu"]
+			},
+			"datePattern": {
+				"full": "EEEE D. MMMM Y",
+				"long": "D. MMMM Y",
+				"medium": "D. MMM Y",
+				"short": "D.M.Y"
+			},
+			"timePattern": {
+				"full": "h:mm:ss a, zzzz",
+				"long": "h:mm:ss a, z",
+				"medium": "h:mm:ss a",
+				"short": "h:mm a"
+			}
+		}
+	},
+	"Russian": { 
+		"region": "ru",
+		"locale": "", 
+		"children": [{
+			"name": "Russian (Russia)",
+			"locale": "RU"
+		}],
+		"format": {}
+	},
+	"Korean": { 
+		"region": "ko",
+		"locale": "", 
+		"children": [{
+			"name": "Korean (North Korea)",
+			"locale": "KP"
+		},
+		{
+			"name": "Korean (South Korea)",
+			"locale": "KR"
+		}],
+		"format": {}
+	}
+}

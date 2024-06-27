@@ -1,14 +1,14 @@
 /// @ignore
-/// feather ignore all
 function __lexicon_cache_text(_text, _cacheStr) constructor {
-	//static memStr = "";
+	static _global = __lexicon_init();
 	str = _text;
-	//memStr = _text;
+	isCompiled = false;
+	dynamicArray = undefined;
+	isDynamic = false;
 	cacheStr = _cacheStr;
-	timeStamp = current_time;
+	timeStamp = _global.frame;
 	
 	static toString = function() {
-		timeStamp = current_time;
-		return str;
+		return cacheStr;	
 	}
 }
