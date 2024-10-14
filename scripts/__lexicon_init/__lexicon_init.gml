@@ -40,7 +40,10 @@ function __lexicon_init() {
 		
 		// Check if hash is available
 		try {
-			variable_get_hash("foo");	
+            // Prevents GM from just optimizing this out.
+            // Which is weird, but for genuine valid reasons!
+            var _key = "foo";
+			variable_get_hash(_key);	
 		} catch(_) {
 			_inst.hashAvailable = false;	
 		}
