@@ -33,7 +33,7 @@ Checks whether a particular text entry exists or not.
 
 ### `lexicon_entry_get_variations(textEntry)`
 
-Returns: `Array or undefined`
+Returns: `Array of strings` or `undefined`
 
 |Name|Datatype|Purpose|
 |---|---|---|

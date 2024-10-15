@@ -14,7 +14,7 @@
 Once added to your project, Lexicon will automatically initialise its core functionality when you run the game.
 Lexicon requires your language files to be in either JSON or CSV format. 
 
-The format of these files are as follows:
+The format of these files are as follows (and all of these are interchangeable):
 
 <!-- tabs:start -->
 
@@ -25,8 +25,8 @@ The format of these files are as follows:
 	"language": "English",
 	"locale": "en-US",
 	"text": {
-		"dialogue.NPCBob.Greeting": "Hello there %player%!",
-		"dialogue.NPCBob.Goodbye": "Goodbye %player%!"
+		"dialogue.NPCBob.Greeting": "Hello there {player}!",
+		"dialogue.NPCBob.Goodbye": "Goodbye {player}!"
 	}
 }
 ```
@@ -38,8 +38,8 @@ The format of these files are as follows:
 	"language": "English",
 	"locale": ["en-US", "en-AU"],
 	"text": {
-		"dialogue.NPCBob.Greeting": "Hello there %player%!",
-		"dialogue.NPCBob.Goodbye": "Goodbye %player%!"
+		"dialogue.NPCBob.Greeting": "Hello there {player}!",
+		"dialogue.NPCBob.Goodbye": "Goodbye {player}!"
 	}
 }
 ```
@@ -53,8 +53,8 @@ The format of these files are as follows:
 	"text": {
 		"dialogue": {
 			"NPCBob": {
-				"Greeting": "Hello there %player%!",
-				"Goodbye": "Goodbye %player%!"
+				"Greeting": "Hello there {player}!",
+				"Goodbye": "Goodbye {player}!"
 			}
 		}
 	}
@@ -67,16 +67,32 @@ CSV:
 
 | Language | Comments | English | French |
 |------|------|------|------|
-| Locale |  | ["en-US", "en-AU"] |  |
-| dialogue.NPCBob.Greeting | Anything under here won't be declared. | Hello there %player%! | TextB |
+| Locale |  | ["en-US", "en-AU"] | fr-fR |
+| dialogue.NPCBob.Greeting | Anything under here won't be declared. | Hello there {player}! | TextB |
 | ------------------ | This cell is forcefully ignored as of [`LEXICON_ROW_SEPERATOR`](configuration.md) | |
-| dialogue.NPCBob.Goodbye | | Goodbye %player%! | TextD |
+| dialogue.NPCBob.Goodbye | | Goodbye {player}! | TextD |
 
 Lexicon will assign all locales in an array to the same Language Name. 
 
 Once you have your language files created, you can set it up as one of three ways.
 
 <!-- tabs:start -->
+
+### **The new way**
+
+Note: These will add additional files if the language is already declared.
+
+```gml
+// i.e. lexicon_index_declare_from_json("english.json");
+lexicon_index_declare_from_json("english.json");
+```
+
+
+```gml
+// Which will declare multiple languages within the CSV.
+// i.e. lexicon_index_declare_from_csv("locale.csv");
+lexicon_index_declare_from_csv("locale.csv");
+```
 
 ### **The old way**
 
@@ -98,22 +114,6 @@ lexicon_index_add_json("en-US", "english.json")
 // i.e. lexicon_index_add_csv("en-US", "locale.csv");
 // i.e. lexicon_index_add_csv("English", "locale.csv");
 lexicon_index_add_csv("en-US", "locale.csv");
-```
-
-### **The new way**
-
-Note: These will add additional files if the language is already declared.
-
-```gml
-// i.e. lexicon_index_declare_from_json("english.json");
-lexicon_index_declare_from_json("english.json");
-```
-
-
-```gml
-// Which will declare multiple languages within the CSV.
-// i.e. lexicon_index_declare_from_csv("locale.csv");
-lexicon_index_declare_from_csv("locale.csv");
 ```
 
 ### **Definitions File**

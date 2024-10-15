@@ -2,6 +2,9 @@
 
 
 ### `lexicon_index_declare_from_csv(filePath)`
+
+Returns: `N/A`
+
 | Name| Datatype| Purpose |
 | ------------- | ------------- |------------- |
 | filePath |`String`| Path to csv file |
@@ -16,6 +19,9 @@ lexicon_index_declare_from_csv("locale.csv");
 ```
 
 ### `lexicon_index_declare_from_json(filePath)`
+
+Returns: `N/A`
+
 | Name| Datatype| Purpose |
 | ------------- | ------------- |------------- |
 | filePath |`String`| Path to csv file |
@@ -51,6 +57,9 @@ lexicon_index_declare("English", "en-US", "en");
 ```
 
 ### `lexicon_index_add_json`
+
+Returns: `N/A`
+
 | Name| Datatype| Purpose |
 | ------------- | ------------- |------------- |
 | `language/locale`| `String`| language or locale name
@@ -75,6 +84,9 @@ lexicon_index_add_json("English", "English.json", true);
 ```
 
 ### `lexicon_index_add_csv`
+
+Returns: `N/A`
+
 | Name| Datatype| Purpose |
 | ------------- | ------------- |------------- |
 | `language/locale`| `String`| language or locale name
@@ -110,6 +122,9 @@ lexicon_index_add_json("English", "locale.csv", true, ";", "'");
 ```
 
 ### `lexicon_index_definitions(filename)`
+
+Returns: `N/A`
+
 | Name| Datatype| Purpose |
 | ------------- | ------------- |------------- |
 | `filename`| `String`| file path to "definitions" json file.
@@ -126,7 +141,10 @@ Example:
 lexicon_index_definitions("definitions.json"); 
 ```
 
-### `lexicon_index_fallback_locale_set`
+### `lexicon_index_fallback_locale_set(fallbackLocale, locale)`
+
+Returns: `N/A`
+
 | Name| Datatype| Purpose |
 | ------------- | ------------- |------------- |
 | fallbackLocale| string| Name for fallbackLocale.|
@@ -142,7 +160,10 @@ Example:
 lexicon_index_fallback_locale_set("en", "en-AU");
 ```
 
-### `lexicon_index_fallback_language_set`
+### `lexicon_index_fallback_language_set(language)`
+
+Returns: `N/A`
+
 | Name| Datatype| Purpose |
 | ------------- | ------------- |------------- |
 | language| string| Name for language you want to fallback upon to.|
