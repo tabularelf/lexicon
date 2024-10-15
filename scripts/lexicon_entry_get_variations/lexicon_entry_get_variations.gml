@@ -1,3 +1,6 @@
+/// @param {any} name
+/// @returns {Array<String>} 
+/// feather ignore all
 function lexicon_entry_get_variations(_name) {
 	static _global = __lexicon_init();
 	var _entry = _global.textEntriesArray[$ _name];

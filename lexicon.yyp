@@ -59,7 +59,6 @@
     {"id":{"name":"__lexicon_enums","path":"scripts/__lexicon_enums/__lexicon_enums.yy",},"order":18,},
     {"id":{"name":"lexicon_text_struct","path":"scripts/lexicon_text_struct/lexicon_text_struct.yy",},"order":1,},
     {"id":{"name":"__lexicon_reset","path":"scripts/__lexicon_reset/__lexicon_reset.yy",},"order":4,},
-    {"id":{"name":"lexicon_get_os_language","path":"scripts/lexicon_get_os_language/lexicon_get_os_language.yy",},"order":8,},
     {"id":{"name":"lexicon_text_array","path":"scripts/lexicon_text_array/lexicon_text_array.yy",},"order":2,},
     {"id":{"name":"lexicon_entry_exists","path":"scripts/lexicon_entry_exists/lexicon_entry_exists.yy",},"order":9,},
     {"id":{"name":"lexicon_replace_chr_set","path":"scripts/lexicon_replace_chr_set/lexicon_replace_chr_set.yy",},"order":4,},

@@ -1,3 +1,7 @@
+/// @param {String} string
+/// @param {Bool} [includeDuplicates]
+/// @returns {Array, Undefined} 
+/// feather ignore all
 function lexicon_text_get_utf8_array(_str, _includeDuplicates = false) {
 	static _strBuff = buffer_create(1024, buffer_fixed, 1);
 	var _byteLen = string_byte_length(_str);

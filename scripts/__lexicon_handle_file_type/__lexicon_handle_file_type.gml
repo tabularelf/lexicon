@@ -1,4 +1,5 @@
 /// @ignore
+/// feather ignore all
 function __lexicon_handle_file_type(_lang, _fileStruct) {
 		static _fileTypes = ___fileTypes();
 		var _string = "";

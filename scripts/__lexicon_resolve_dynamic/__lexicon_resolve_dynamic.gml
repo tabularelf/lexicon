@@ -1,5 +1,5 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+/// @ignore
+/// feather ignore all
 function __lexicon_resolve_dynamic(_strKeyStripped, _args) {
 	static _global = __lexicon_init();
 	static _staticArray = [];
@@ -17,25 +17,10 @@ function __lexicon_resolve_dynamic(_strKeyStripped, _args) {
 			array_resize(_staticArray, _len);
 		}
 		array_copy(_staticArray, 0, _args, 0, _len);
-		var _i = 0;
-		repeat(_len) {
-			var _str = _staticArray[_i];
-			if (string_count(_replaceChrStart, _str) > 0 && string_count(_replaceChrEnd, _str) > 0) {
-				_staticArray[_i] = undefined;	
-			} else {
-				// Digits check
-				var _digitLen = string_length(string_digits(_str));
-				
-				if (_digitLen > 0 && _digitLen - (string_ord_at(_str, 1) == ord("-")) - (string_pos(".", _str) != 0)) {
-					_staticArray[_i] = real(_str);
-				}
-			}
-			
-			++_i;
-		}
 		
 		with(_self) {
 			_strResult = script_execute_ext(_index, _staticArray, 0, array_length(_args));
+            _strResult = !is_string(_strResult) ? string(_strResult) : _strResult;
 		}
 	}
 	

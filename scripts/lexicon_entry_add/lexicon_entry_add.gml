@@ -1,6 +1,7 @@
 /// @func lexicon_entry_add(text_pointer, string)
 /// @param _textEntry
 /// @param _string
+/// feather ignore all
 function lexicon_entry_add(_textEntry, _string) {
 	static _global = __lexicon_init();
 	if (_textEntry == "") __lexicon_throw("Text entry shouldn't be a blank string in lexicon_entry_add!");

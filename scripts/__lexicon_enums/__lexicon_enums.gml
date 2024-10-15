@@ -1,3 +1,5 @@
+/// @ignore
+/// feather ignore all
 enum lexicon_date_format {
 	YEAR_MONTH_DAY_DASHES,
 	MONTH_DAY_YEAR_DASHES,

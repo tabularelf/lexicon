@@ -4,6 +4,7 @@
 /// @param {Bool} [_isAsync=false]
 /// @param {String} [_cellDelimiter=","]
 /// @param {String} [_stringDelimiter="\""]
+/// feather ignore all
 function lexicon_index_add_csv(_langLocale, _fileName, _isAsync = false, _cellDelimiter = ",", _stringDelimiter = "\"") {
 	// Ensure that it's loaded first!
 	static _fileTypes = ___fileTypes();

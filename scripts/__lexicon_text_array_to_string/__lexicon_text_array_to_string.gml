@@ -1,4 +1,5 @@
 /// @ignore
+/// feather ignore all
 function __lexicon_text_array_to_string(_textName, _textArray) {
 	static _global = __lexicon_init();
 	gml_pragma("forceinline");

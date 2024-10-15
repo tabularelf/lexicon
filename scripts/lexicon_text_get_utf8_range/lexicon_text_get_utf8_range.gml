@@ -1,3 +1,6 @@
+/// @param {String} string
+/// @returns {Struct, Undefined} 
+/// feather ignore all
 function lexicon_text_get_utf8_range(_str) {
 	static _strBuff = buffer_create(1024, buffer_fixed, 1);
 	var _byteLen = string_byte_length(_str);
@@ -21,5 +24,8 @@ function lexicon_text_get_utf8_range(_str) {
 		if (_charCode > _max) _max = _charCode;
 	}
 	
-	return [_min, _max];
+	return {
+        min: _min,
+        max: _max,
+    };
 }

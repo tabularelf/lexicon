@@ -1,4 +1,5 @@
 /// @ignore
+/// feather ignore all
 function ___fileTypes() {
 	static _types = {
 		json: {

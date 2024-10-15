@@ -2,6 +2,7 @@
 /// @param {String} _textEntry
 /// @param {Array} _array
 /// @return {String}
+/// feather ignore all
 function lexicon_text_array(_textEntry, _array) {
 	static _arrayCopy = [];
 	var _len = array_length(_array);

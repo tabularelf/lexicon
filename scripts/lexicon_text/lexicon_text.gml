@@ -3,8 +3,8 @@
 /// @param {Any} [substring]
 /// @param {Any} [...]
 /// @return {String}
+/// feather ignore all
 function lexicon_text(_textEntry) {
-	gml_pragma("forceinline");
 	// Ensure that it's loaded first!
 	static _global = __lexicon_init();
 	static _cacheMap = _global.cacheMap;

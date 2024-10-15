@@ -38,6 +38,8 @@
 		}
 	}
 */
+/// @ignore
+/// feather ignore all
 function __lexicon_localization_class(_langName, _region, _locale = "", _format) constructor {
 	static _map = __lexicon_localization_map_init();
 	static _global = __lexicon_init();
