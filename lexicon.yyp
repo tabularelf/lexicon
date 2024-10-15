@@ -113,6 +113,7 @@
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"lexicon_db.json","CopyToMask":3035426170322550958,"filePath":"datafiles",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"locale.csv","CopyToMask":-1,"filePath":"datafiles",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"locale.json","CopyToMask":3035461389054378222,"filePath":"datafiles",},
+    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"lexicon_license.txt","CopyToMask":-1,"filePath":"datafiles",},
   ],
   "MetaData": {
     "IDEVersion": "2022.0.2.51",
