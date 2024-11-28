@@ -50,7 +50,7 @@ function lexicon_index_declare_from_csv(_filePath, _cellDelimiter = ",", _string
 					_langStruct = __LEXICON_STRUCT.localeMap[$ _locale[_i]];
 				}
 				
-				_file = new __lexicon_file(_language, _locale[0], _fileTypes.csv.parser, _filePath);
+				_file = new __lexicon_file(_language, _locale[0], _fileTypes.csv.parser, _filePath, false, [_cellDelimiter, _stringDelimiter]);
 				_langStruct.files[array_length(_langStruct.files)] = _file;
 			}	
 		} else {
@@ -62,7 +62,7 @@ function lexicon_index_declare_from_csv(_filePath, _cellDelimiter = ",", _string
 				_langStruct = __LEXICON_STRUCT.languageMap[$ _language];
 			}
 			
-			_file = new __lexicon_file(_language, _locale, _fileTypes.csv.parser, _filePath);
+			_file = new __lexicon_file(_language, _locale, _fileTypes.csv.parser, _filePath, false, [_cellDelimiter, _stringDelimiter]);
 			_langStruct.files[array_length(_langStruct.files)] = _file;
 		}
 	}
