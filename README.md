@@ -8,4 +8,4 @@ It supports the following:
 * Adding/removing languages through built-in functionality.
 * Supports CSV/JSON parsing. (As well as functions to help easily add more parsers)
 
-For more information, check out the documentation! https://tabularelf.com/docs/lexicon/
+For more information, check out the documentation! https://docs.tabularelf.com/lexicon/
