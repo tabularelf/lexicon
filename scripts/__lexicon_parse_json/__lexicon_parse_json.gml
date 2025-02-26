@@ -29,6 +29,7 @@ function __lexicon_parse_json(_json) {
 	var _textStructPtr = _map.text;
 	var _textArray = variable_struct_get_names(_textStructPtr);
 	var _k = 0;
+
 	repeat(array_length(_textArray)) {
 		if (is_struct(_textStructPtr[$ _textArray[_k]])) {
 			__lexicon_text_struct_to_string(_textArray[_k], _textStructPtr[$ _textArray[_k]]);
@@ -43,4 +44,10 @@ function __lexicon_parse_json(_json) {
 		}
 		++_k;
 	}
+    
+    // Clearing in preparation for setting up jsonData
+    variable_struct_remove(_map, "text");
+    variable_struct_remove(_map, "locale");
+    variable_struct_remove(_map, "language");
+    _global.jsonData = _map;
 }

@@ -17,6 +17,7 @@ draw_text(32, 192+128+32, lexicon_text("dialogue.NPCBob.Goodbye"));
 
 draw_text(32, 192+128+64, lexicon_language_get_index());
 draw_text(32, 192+128+64+64, lexicon_text("dialogue.NPCBob2.Greeting"));
+draw_text(32, 192+128+160, string(lexicon_get_json_data()));
 
 draw_text(room_width div 2, room_height div 2, "Press spacebar to cycle languages");
 

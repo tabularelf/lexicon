@@ -1,6 +1,7 @@
 {
 	"language": "English",
 	"locale": ["en-US", "en-AU", "en-UK"],
+	"fontToUse": "apple",
 	"text": {
 		"dialogue": {
             "NPCBob": {

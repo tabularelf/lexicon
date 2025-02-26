@@ -25,6 +25,7 @@ function __lexicon_init() {
 			locale: "unknown",
 			isReady: false,
 			replaceChrLegacy: "%s",
+            jsonData: undefined,
 			replaceChr: __LEXICON_STRUCT_REPLACE_CHR_SYMBOLS,
 			fileAsyncList: [],
 			cacheUpdate: true,

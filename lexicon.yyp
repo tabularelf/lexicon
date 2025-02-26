@@ -22,6 +22,7 @@
     {"id":{"name":"__lexicon_parse_csv","path":"scripts/__lexicon_parse_csv/__lexicon_parse_csv.yy",},"order":0,},
     {"id":{"name":"lexicon_index_fallback_locale_set","path":"scripts/lexicon_index_fallback_locale_set/lexicon_index_fallback_locale_set.yy",},"order":4,},
     {"id":{"name":"__lexicon_trace","path":"scripts/__lexicon_trace/__lexicon_trace.yy",},"order":2,},
+    {"id":{"name":"lexicon_get_json_data","path":"scripts/lexicon_get_json_data/lexicon_get_json_data.yy",},"order":12,},
     {"id":{"name":"lexicon_index_declare_from_csv","path":"scripts/lexicon_index_declare_from_csv/lexicon_index_declare_from_csv.yy",},"order":6,},
     {"id":{"name":"__lexicon_struct_merge","path":"scripts/__lexicon_struct_merge/__lexicon_struct_merge.yy",},"order":20,},
     {"id":{"name":"lexicon_language_get","path":"scripts/lexicon_language_get/lexicon_language_get.yy",},"order":4,},
@@ -116,6 +117,6 @@
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"lexicon_license.txt","CopyToMask":-1,"filePath":"datafiles",},
   ],
   "MetaData": {
-    "IDEVersion": "2022.0.3.83",
+    "IDEVersion": "2022.0.3.85",
   },
 }

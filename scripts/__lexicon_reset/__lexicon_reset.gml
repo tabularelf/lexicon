@@ -2,6 +2,8 @@
 /// feather ignore all
 function __lexicon_reset() {
 	static _global = __lexicon_init();
+    delete _global.jsonData;
+    
 	if (_global.localeMap[$ _global.locale] == undefined) {
 		return;
 	}
