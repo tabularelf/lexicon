@@ -104,4 +104,4 @@ Returns: `Struct` or `undefined`, if the loaded file isn't json.
 |---|---|---|
 |`N/A`||
 
-Returns the struct that Lexicon parses from JSON, minus `languages`, `locale` and `text`.
+Returns the struct that Lexicon parses from JSON, minus `language`, `locale` and `text`.
