@@ -95,3 +95,13 @@ Returns: `Array` of `Reals`, or `undefined`.
 |`String`|`String`|The string of characters you wish to fetch.|
 
 Returns an array of reals, making up every single character. If the string is empty, it will return `undefined`.
+
+### `lexicon_get_json_data()`
+
+Returns: `Struct` or `undefined`, if the loaded file isn't json.
+
+|Name|Datatype|Purpose|
+|---|---|---|
+|`N/A`||
+
+Returns the struct that Lexicon parses from JSON, minus `languages`, `locale` and `text`.
