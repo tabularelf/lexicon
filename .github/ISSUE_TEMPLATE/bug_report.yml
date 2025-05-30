@@ -1,0 +1,23 @@
+name: Bug Report
+description: File a bug with a specific issue in regards to Lexicon!
+labels: ["bug"]
+body:
+  - type: input
+    attributes:
+      label: What version of Lexicon are you using?
+      description: If you aren't on the latest version of Lexicon, double check the release notes! It might have been fixed already!
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Description
+      description: Please provide an extensive description and or provide images here.
+    validations:
+      required: true
+  - type: input
+    id: expected
+    attributes:
+      label: Expected Change
+      description: If it is not obvious from your Description text, what difference would you expect to see once this is fixed?
+    validations:
+      required: false

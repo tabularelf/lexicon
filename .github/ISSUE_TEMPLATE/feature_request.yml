@@ -1,0 +1,23 @@
+name: Feature Request
+description: Got a new feature you'd like to suggest for Lexicon?
+labels: ["feature request"]
+body:
+  - type: textarea
+    attributes:
+      label: Is your feature request in relation to a problem?
+      description: Preferably a clear description of what the problem is.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Describe the solution you'd like
+      description: Preferably a clear description of what should happen.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Alternatives
+      description: Describe alternatives you've considered.
+    validations:
+      required: false
