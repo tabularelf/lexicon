@@ -13,7 +13,7 @@ for(var _j = 1; _j < _height;  ++_j) {
 	var _localeEntry = _array[1][_j];
 	
 	// Lets make sure that the language exists first
-	if (_languageEntry != _language) {
+	if (_languageEntry != _language) || (__LEXICON_STRUCT.fallbackLanguage != _languageEntry) {
 		if (string_pos("[",_localeEntry) != 0) {
 			var _localeArray = json_parse(_localeEntry);
 			var _len = array_length(_localeArray);

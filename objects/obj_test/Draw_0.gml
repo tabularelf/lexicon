@@ -6,5 +6,6 @@ draw_text(32,64,"Struct Version: " + lexicon_text_struct("text.test2",struct));
 draw_text(32,96,"Struct within Struct Version (JSON only): " + lexicon_text_struct("generic.foo",struct));
 draw_text(32,160,string(languages_array));
 draw_text(32,192,lexicon_locale_get());
+draw_text(32,214,lexicon_text("text.test3"));
 
 draw_text(room_width div 2, room_height div 2, "Press spacebar to cycle languages");
