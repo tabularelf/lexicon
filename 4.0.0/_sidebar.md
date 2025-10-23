@@ -3,10 +3,11 @@
 - [Changes from v3](changes-from-v3.md)
 - [v3 Equivilants](v3-equivilants.md)
 ---
-Explanations
+**Concepts**
 - [Text Elements](text-elements.md)
 --- 
-- [Configuration](configuration.md)
+- [General Configuration](configuration.md)
+- [CSV Configuration](csv-config.md)
 ---
 **Functions**
 
@@ -19,3 +20,5 @@ Explanations
 - [Language](language.md)
 - [Plug-In](plugin.md)
 - [Unic-Specific](unic.md)
+---
+**Plug-Ins**

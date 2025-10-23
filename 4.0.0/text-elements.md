@@ -19,7 +19,7 @@ This means that a dynamic callback called `foo`, and a text entry contains `{foo
 	"item": "{GLOBAL.foo}",
 ```
 
-Doing `Lexicon("foo")` and will do the following:
+Doing `Lexicon("foo")` will do the following:
 - Sees `bar` as a text entry, which calls `Lexicon("bar")` and stores it within the root text element.
 - Sees `item` as a text entry, which calls `Lexicon("item")` and stores it within the root text element of `bar`.
 - If `foo` exists as a global, it will then store a reference to the global struct and variable.
@@ -36,11 +36,16 @@ This will result in this hierachy.
           └─►"LexiconGlobal.foo" - Global variable
 ```
 
+While this example is unlikely to be seen in most text entries, the intended idea to allow referencing multiple text entries within one text element, allowing for carrying the translation of certain text entries around. i.e. `"Hello {playerName}, would you care for an {TEXT.item.apple.name}?`.
+
 ### Number templates
-Number templates strings are parsed separately, and are considered non-mutable by the text element, if non-struct values are passed initially to `Lexicon(entry, ...)` or the array within `LexiconExt(entry, array)`. If `__LEXICON_ADJUST_UNUSED_STRING_TEMPLATES` is set to `true`, Lexicon will adjust any text that has number templates unused. Take for example this text `"Hello {0}, I hope {1} is well!"`. If it was under the text entry `npc.bob.greeting`, passing `Lexicon("npc.bob.greeting", "Alice")` will bake the results in directly as `"Hello Alice, I hope {0} is well!"`, allowing you to update the number template strings via `.Get()` without altering your argument order. Any unused number string templates will be corrected based on when they were found in order. Otherwise if `__LEXICON_ADJUST_UNUSED_STRING_TEMPLATES` is set to `false`, the text will remain as `"Hello Alice, I hope {1} is well!"`, and all `.Get()` calls will need to account for the argument differences. Number templates can be passed to dynamic callbacks. However, there is one exception as of writing where this is not possible, and that is variable modifiers. Any left over nummber template strings will follow the same rules as `string()` when calling `.Get(...)`.
+Number templates strings are parsed separately, and are considered non-mutable by the text element, if non-struct values are passed initially to `Lexicon(entry, ...)` or the array within `LexiconExt(entry, array)`. If `__LEXICON_ADJUST_UNUSED_STRING_TEMPLATES` is set to `true`, Lexicon will adjust any text that has number templates unused. Take for example this text `"Hello {0}, I hope {1} is well!"`. If it was under the text entry `npc.bob.greeting`, passing `Lexicon("npc.bob.greeting", "Alice")` will bake the results in directly as `"Hello Alice, I hope {0} is well!"`, allowing you to update the number template strings via `.Get()` without altering your argument order. Any unused number string templates will be corrected based on when they were found in order. Otherwise if `__LEXICON_ADJUST_UNUSED_STRING_TEMPLATES` is set to `false`, the text will remain as `"Hello Alice, I hope {1} is well!"`, and all `.Get()` calls will need to account for the argument differences. Number templates can be passed to dynamic callbacks. However, there is one exception as of writing where this is not possible, and that is variable modifiers. Any left over number template strings will follow the same rules as `string()` when calling `.Get(...)`.
+
+### Dynamic callbacks
+Dynamic callbacks are functions that are exposed to Lexicon, and allow calling any arbitary code and returning a result. Dynamic callbacks are defined by `LexiconPlugInSetDynamic()`, where they take a name, a callback function and an optional state to determine if they should be static or not.
 
 ### Variable Modifiers
-Variable modifiers are a new feature, aimed at simplifying dynamic callback calls, for primarily variable lookups. This means text can have something like `"The price is {price, currency}."`, where `price` is the variable lookup and `currency` is the variable modifier. And it will call a variable modifier that will modify and return the results directly on a local or global variable. These are treated as separately from dynamic callbacks, as the first argument is always a variable result. (This means the first argument of `currency` will be the result of `price` lookup.)
+Variable modifiers are a new feature, aimed at simplifying dynamic callback calls, for primarily variable lookups. This means text can have something like `"The price is {price, currency}."`, where `price` is the variable lookup and `currency` is the variable modifier. And it will call a variable modifier that will modify and return the results directly on a local or global variable. These are treated as separately from dynamic callbacks, as the first argument is always a variable result. (This means the first argument of `currency` will be the result of `price` lookup.) And as such, are exposed separate from dynamic callbacks.
 
 ## Local vs Global
 
