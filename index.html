@@ -102,7 +102,7 @@
 
                             // CONSTRUCT DATA FOR OUR VERSION SELECTOR
                             const versionSelections = [];
-                            versionSelections.push({ text: config.latestVersion, value: config.latestVersion, isDefault: true });
+                            versionSelections.push({ text: 'Latest', value: config.latestVersion, isDefault: true });
                             for (const version of config.otherVersions) {
                                 versionSelections.push({
                                     text: version,
