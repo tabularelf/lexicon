@@ -2,21 +2,13 @@
 
 |Name|<nobr>Default Value</nobr>|Purpose|
 |---|---|---|
-|`__LEXICON_DEBUG`|`(GM_build_type == "run")`|Enables Lexicons debugging (outputs specific errors or extra info to console).|
-|`__LEXICON_VERBOSE`|`false`|Verbose output for Lexicon.|
-|`__LEXICON_USE_FIRST_ENTRY_ADDED`|`false`|Uses the first entry added automatically.|
-|`__LEXICON_ROW_SEPERATOR`|`"------------------"`|Tells Lexicon which rows in a CSV format are row separators and ignores them.|
-|`__LEXICON_USE_CACHE`|`true`|Uses the cache system. Searching for strings that match the same arguments as they were called.|
-|`__LEXICON_AUTO_GC_CACHE`|`true`|Whether to automatically run the cache garbage collection system or not.|
-|`__LEXICON_USE_ADVANCE_CACHE`|`true`|Used for `lexicon_text_struct()`. Whether to include caching changing structs. Setting deprecated.|
-|`__LEXICON_CACHE_TIMEOUT`|`4000`|How long before it gets removed from the cache system, in milliseconds.|
-|`__LEXICON_CACHE_ARG_THRESHOLD`|`2`|How many arguments before it starts caching. This doesn't apply to `lexicon_text_struct()`.|
-|`__LEXICON_GC_NEXT_TICK`|`60`|Controller to ensure that the cache garbage collector triggers only when necessary. |
-|`__LEXICON_STRUCT_REPLACE_CHR_SYMBOLS`|`["{", "}"]`|Tells Lexicon what characters are used to determine a variable with `lexicon_text_struct()`. In previous versions it was `%text%` and `{{text}}` by default.|
-|`__LEXICON_TEXT_JSON_BREAK`|`"."`|Tells Lexicon what character it should return for when a struct is defined within one of the text entries. i.e. `"generic": {"foo": "bar"}` would become `"generic.foo"`.|
-|`__LEXICON_REPLACE_ENTRIES`|`false`|Tells Lexicon that it can replace duplicate entries with new ones.|
-|`__LEXICON_FORCE_LOAD_FALLBACK_LANGUAGE`|`false`|Tells Lexicon to include the fallback language as well when switching languages.|
-|`__LEXICON_ALLOW_LEGACY_ACCESSOR`|`false`|Revives the old legacy accessor that was previously used `%s`.|
-|`__LEXICON_RESOLVE_NEWLINES`|`false`|Whether Lexicon resolves newlines upon loading in any languages.|
-|`__LEXICON_UPDATE_DYNAMIC_VALUES`|`true`|Whether Lexicon should allow dynamic functions to update existing text entries.|
-|`__LEXICON_ENTRY_RECURSION_DETECTION`|`true`|Whether Lexicon should verify that no recursion is occuring in dynamic callbacks.|
+|`__LEXICON_VERBOSE`|`false`|When enabled, prints out additional information for debugging purposes.|
+|`__LEXICON_ERROR_ON_LOAD_FAILURE_ON_RELEASE`|`false`|When enabled, any loading failures will throw an exception.|
+|`__LEXICON_REFER_TO_BUNDLE_AREA`|`true`|When enabled, Lexicon will attempt to refer to the bundle area, if sandbox is enabled. If this is ran from the IDE while this is enabled, but sandbox is disabled, an error will be thrown. On release, this will print a message to the output window.|
+|`__LEXICON_DEFAULT_FONT`|`__LexiconFontFallback`| The default font Lexicon should refer to when `LexiconFontGet()` fails to find a suitable font.|
+|`__LEXICON_ENABLE_APPROXIMATE_FONT_SEARCH`|`true`| Whether Lexicon should attempt to find the closest possible font it can utilise, if the initial searches fail. This system isn't strictly perfect, but it's a good enough "catch-all" solution for having most text render correctly.|
+|`__LEXICON_ADJUST_UNUSED_STRING_TEMPLATES`|`true`|  Whether Lexicon should adjust unused string templates when calling Lexicon() or LexiconExt() and passing non-struct arguments. This will turn text like "Hello, {0}. Would you like {1}!", assuming the second argument is "Bob" passed to Lexicon(), as "Hello, Bob. Would you like {0}!".|
+|`__LEXICON_ASYNC_LOAD_PER_FILE_TIME_MS`|`1_000`| How much time should Lexicon spend time between parsing files. This only occurs when loading asynchronously.|
+|`__LEXICON_ALLOW_ENTRY_REFERENCING_IN_TEXT`|`true`| Whether Lexicon should allow variable templates to look up text entries. This enables both "foo" and "TEXT.foo" to both look up text entries. Note: This option isn't strictly necessary, as both global and local lookups can reference and fetch the results from a Lexicon Text Element, if it's assigned to a variable.|
+|`__LEXICON_ENFORCE_TEXT_ENTRY_EXPLICIT_ACCESSOR`|`true`| Whether Lexicon should have it mandatory to use "TEXT." when it comes to looking up text entries.|
+|`__LEXICON_TEXT_PARSER_MAX_REFERENCE_STACK`|`10`| How many text entry references should Lexicon be allowed to make before it throws an exception. This is primarily to prevent text entries from recursing eachother indefinitely. i.e. "foo" referes to "bar" which refers to "foo" which refers to "bar", so forth.|

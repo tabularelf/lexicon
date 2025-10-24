@@ -1,9 +1,17 @@
 # Text Elements
-Upon calling `Lexicon(entry, ...)` or `LexiconExt(entry, array)` whatever is passed to the first argument is considered a text entry, and it will find/create an entry class and store that alongside with the Lexicon text element, and returns the text element instance directly to you. These text element instances do not get cached at all by Lexicon, but are garbage collectible friendly as they only contain structs (the ones you passed in, text entries referenced, or the global struct) and arrays (for arguments passed in, and for when text entries are dynamic for the simplified structure). If the text entry own text is `undefined`, it is considered not loaded by all intents and purposes by Lexicon, and will be treated as completely static.
+Upon calling `Lexicon(entry, ...)` or `LexiconExt(entry, array)` whatever is passed to the first argument is considered a text entry, and it will find/create an entry class and store that alongside with the Lexicon text element, and returns the text element instance directly to you. These text element instances do not get cached at all by Lexicon, but are garbage collectible friendly as they only contain structs (the ones you passed in, text entries referenced, or the global struct) and arrays (for arguments passed in, and for when text entries are dynamic for the simplified structure). If the text entry own text is `undefined`, it is considered not loaded by all intents and purposes by Lexicon, and will be treated as completely static. If a text entry is considered dynamic, it will instead regenerate the text itself. Or if `.ToStatic()` was called directly from the text element itself.
+
+The following cases where regeneration occurs:
+
+- On text element creation.
+- Upon text entry language change.
+- Upon calling `.Refresh()`.
+- Upon calling `.SetKey(entry)`.
+- Upon calling `.Update(...)` and passing in different arguments.
 
 ## What does Lexicon parse the text entries for?
 
-Lexicon by default will not parse any text entries, if they do not contain at least one pair of `{}`. This is by design as an early out optimization. In the event that a pair (whether valid or not) does exist, Lexicon will parse it and validate. You can read more about the specifics from [here](text-elements.md#how-do-they-parse-text-entries-anyway). Lexicon will be looking out for dynamic callbacks, number template strings, variable template strings and text entry strings (if enabled). This will be broken down into two sections.
+Lexicon by default will not parse any text entries, if they do not contain at least one pair of `{}`. This is by design as an early out optimization. In the event that a pair (whether valid or not) does exist, Lexicon will parse it and validate. Lexicon will be looking out for dynamic callbacks, number template strings, variable template strings and text entry strings (if enabled). This will be broken down into two sections. 
 
 ### Dynamic templates
 The following hierarchy that Lexicon will follow in terms of searching, from top to bottom:
@@ -74,35 +82,4 @@ show_message(text.Get()); // "Apple"
 
 Variable template strings also allow accessing structs from within structs, allowing you to point to a specific entry. i.e. `itemDb.apple.name` will treat it as multiple structs in, if they are all structs, and stores the most right value struct. (`apple` in this example is the right value struct under this assumption.)
 
-!> Variable template strings are treated as always dynamic, so these will update whenever the structs (and the frame cooldown, if disabled on the text element) is passed. The results are also cached for the future, until the value changes again.
-
-## How do they parse text entries, anyway?
-All text elements have a regeneration phase, where the text elements themselves will parse the text (if necessary) to generate a simplified structure for allowing variable and dynamic callback updates to occur. By default, Lexicon will attempt to handle and resolve strings that may be completely static. i.e. If you have `"Hello, Alice! Nice to meet you!"`, then the text element will just contain that, and no parsing is done to simplify the structure. Whereas if you were to have this instead `"Hello, {playerName}! The time is {TIME}!"`. (In Lexicon, `TIME` is a default dynamic callback that formats a datetime based on the current main locale, and `playerName` is a custom user defined variable.) The text element will fire up the parser, and attempt to generate a simplified structure to work with. With the example above, that structure may look like this under the hood.
-
-```gml
-[
-    "Hello, ",
-    "{playerName}",
-    "! The time is ",
-    "{TIME}",
-    "!"
-]
-```
-
-This is to ensure that Lexicon can replace the relevant fields as it needs. Lexicon will assume this structure and refer to it, until it considers itself in a state where it is completely static. 
-Lexicon will usually determine the text is static if certain conditions are met, such as in cases where a dynamic callback is marked as static, and all of its arguments are variable, entry or dynamic callbacks.
-
-i.e. If we have this as our text `"Hello {concat, {playerName}, ' the ' , {title}}."`, and the following dynamic callback is setup as 
-```gml
-// name_of_dynamic_callback, callback, isStatic
-LexiconPlugInSetDynamic("concat", string_concat, true);
-```
-Upon the first fetching of the string itself from `.Get()`, Lexicon will initialise and run the contents of the string. Future `.Get()` calls will reevaluate the static nature, and attempt to collapse everything within, until there is nothing left that is dynamic, and then staticifies it. Alternatively, a user may force explicit staticify a text element instance with `.ToStatic()`. Lexicon may also treat a text as static, if the underlying layout itself. The static nature will not change until regeneration occurs again.
-
-The following cases where regeneration occurs:
-
-- On text element creation.
-- Upon text entry language change.
-- Upon calling `.Refresh()`.
-- Upon calling `.SetKey(entry)`.
-- Upon calling `.Update(...)` and passing in different arguments.
+!> Variable template strings are treated as always dynamic, so these will update whenever the structs `.Get()` is called (minus frame cooldown.). The results are also cached for the future, until the value changes again.
