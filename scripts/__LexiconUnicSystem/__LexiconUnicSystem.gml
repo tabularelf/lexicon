@@ -13,44 +13,74 @@ function __LexiconUnicSystem() {
 
 LexiconPlugInSetDynamic("TIME", function(_length = "full") {
 	static _inst = __LexiconUnicSystem();
+	static _cache = [
+		"",
+		"",
+	];
+	static _cacheTime = -1;
+
 	var _time = _inst.datetime ?? date_current_datetime();
 	var _locale = (_inst.autoLocale ? _inst.locale : UnicGetLocale());
-
+	var _second = date_get_second(_time);
 	var _result;
+
+	if (_second != _cacheTime) {
+		_cacheTime = _second;
+		_cache[0] = UnicClock(_time, false, _locale);
+		_cache[1] = UnicClock(_time, false, _locale);
+	}
+
 	switch(_length) {
 		case "short":
-			_result = UnicClock(_time, false, _locale);
+			_result = _cache[0];
 		break;
 		default:
-			_result = UnicClock(_time, true, _locale);
+			_result = _cache[1];
 		break;
 	}
 
 	return _result;
 });
 
-LexiconPlugInSetDynamic("DATE", function(_length = "3") {
+LexiconPlugInSetDynamic("DATE", function(_length = "full") {
 	static _inst = __LexiconUnicSystem();
+	static _cache = [
+		"",
+		"",
+		"",
+		"",
+	];
+	static _cacheTime = -1;
+
 	var _time = _inst.datetime ?? date_current_datetime();
 	var _locale = (_inst.autoLocale ? _inst.locale : UnicGetLocale());
-
+	var _second = date_get_second(_time);
 	var _result;
+
+	if (_second != _cacheTime) {
+		_cacheTime = _second;
+		_cache[0] = UnicDate(_time, 0, _locale);
+		_cache[1] = UnicDate(_time, 1, _locale);
+		_cache[2] = UnicDate(_time, 2, _locale);
+		_cache[3] = UnicDate(_time, 3, _locale);
+	}
+
 	switch(_length) {
 		case "short":
-			_result = UnicDate(_time, 0, _locale);
+			_result = _cache[0];
 		break;
 
 		case "medium":
 		case "narrow":
-			_result = UnicDate(_time, 1, _locale);
+			_result = _cache[1];
 		break;
 
 		case "long":
-			_result = UnicDate(_time, 2, _locale);
+			_result = _cache[2];
 		break;
 
 		case "full":
-			_result = UnicDate(_time, 3, _locale);
+			_result = _cache[3];
 		break;
 		
 		default:
@@ -68,28 +98,44 @@ LexiconPlugInSetDynamic("DATE", function(_length = "3") {
 	return _result;
 });
       
-LexiconPlugInSetDynamic("DATETIME", function(_length = "3") {
+LexiconPlugInSetDynamic("DATETIME", function(_length = "full") {
 	static _inst = __LexiconUnicSystem();
+	static _cache = [
+		"",
+		"",
+		"",
+		"",
+	];
+	static _cacheTime = -1;
+
 	var _time = _inst.datetime ?? date_current_datetime();
 	var _locale = (_inst.autoLocale ? _inst.locale : UnicGetLocale());
-
+	var _second = date_get_second(_time);
 	var _result;
+
+	if (_second != _cacheTime) {
+		_cacheTime = _second;
+		_cache[0] = UnicDateTime(_time, 0, true, _locale);
+		_cache[1] = UnicDateTime(_time, 1, true, _locale);
+		_cache[2] = UnicDateTime(_time, 2, true, _locale);
+		_cache[3] = UnicDateTime(_time, 3, true, _locale);
+	}
 	switch(_length) {
 		case "short":
-			_result = UnicDateTime(_time, 0, false, _locale);
+			_result = _cache[0];
 		break;
 
 		case "medium":
 		case "narrow":
-			_result = UnicDateTime(_time, 1, true, _locale);
+			_result = _cache[1];
 		break;
 
 		case "long":
-			_result = UnicDateTime(_time, 2, true, _locale);
+			_result = _cache[2];
 		break;
 
 		case "full":
-			_result = UnicDateTime(_time, 3, true, _locale);
+			_result = _cache[3];
 		break;
 		
 		default:

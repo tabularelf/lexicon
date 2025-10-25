@@ -59,3 +59,11 @@
  Default: 10
 */
 #macro __LEXICON_TEXT_PARSER_MAX_REFERENCE_STACK 10
+/*
+ The max amount of frame time that Lexicon should scan for changes in dynamic entries.
+ Lexicon text elements include a small timer between checks to ensure that it isn't constantly checking for non-changing values.
+ This value can be modified per text element.
+ This is ignored if the text element in question has any dynamic callbacks.
+ Default: 3
+*/
+#macro __LEXICON_MAX_DYNAMIC_ENTRY_FRAME_CAP 3
