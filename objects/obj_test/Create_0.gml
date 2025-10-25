@@ -26,7 +26,7 @@ variation_index = 0;
 keyboard_string = "Alice";
 
 playerData = {
-	money: 0,
+	money: 0.00005,
 };
 
 priceData = {

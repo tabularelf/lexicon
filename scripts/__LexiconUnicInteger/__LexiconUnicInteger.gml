@@ -5,7 +5,7 @@ function __LexiconUnicInteger(_num) {
 	var _locale = (_inst.autoLocale ? _inst.locale : UnicGetLocale());
 
 	try {
-		_num = real(_num);
+		_num = is_real(_num) ? _num: real(_num);
 	} catch(_) {
 		_num = NaN;
 	}

@@ -448,8 +448,7 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 							var _structRef = is_undefined(_nameEntry.structRef) ? _globalVars : _nameEntry.structRef;
 							var _valueResult = struct_get_from_hash(_structRef, _nameEntry.hash);
 							if (_nameEntry.weakValue != _valueResult)  {
-								var _stringValueResult = is_string(_valueResult) ? _valueResult : string(_valueResult);
-								_nameEntry.cacheResult = _stringValueResult;
+								_nameEntry.cacheResult = _valueResult;
 								_nameEntry.weakValue = _valueResult;
 							}
 
@@ -461,8 +460,7 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 							var _structRef = is_undefined(_nameEntry.structRef) ? __args[_nameEntry.pos] : _nameEntry.structRef;
 							var _valueResult = struct_get_from_hash(_structRef, _nameEntry.hash);
 							if (_nameEntry.weakValue !=  _valueResult) {  
-								var _stringValueResult = is_string(_valueResult) ? _valueResult : string(_valueResult);
-								_nameEntry.cacheResult = _stringValueResult;
+								_nameEntry.cacheResult = _valueResult;
 								_nameEntry.weakValue = _valueResult;
 							}
 
@@ -475,8 +473,7 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 							if (!_structRef.IsStatic()) {
 								var _valueResult = _structRef.Get();
 								if (_nameEntry.weakValue !=  _valueResult) {  
-									var _stringValueResult = is_string(_valueResult) ? _valueResult : string(_valueResult);
-									_nameEntry.cacheResult = _stringValueResult;
+									_nameEntry.cacheResult = _valueResult;
 									_nameEntry.weakValue = _valueResult;
 								}
 								
