@@ -368,7 +368,7 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 					//_nameEntry.weakValue = _structResult;
 					_dynamicUpdate = true;
 					break;
-				} else if (_nameEntry.type == __LEXICON_TYPE.DYNAMIC) {
+				} else if (_nameEntry.type == __LEXICON_TYPE.DYNAMIC) || (_nameEntry.type == __LEXICON_TYPE.VARIABLE_MODIFIER){
 					if ((!_nameEntry.isStatic) || (!_nameEntry.isExecuted)) {
 						_dynamicUpdate = true;
 						break;

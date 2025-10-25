@@ -18,14 +18,16 @@ LexiconPlugInSetDynamic("TIME", function(_length = "full") {
 		"",
 	];
 	static _cacheTime = -1;
+	static _cacheLocale = "";
 
 	var _time = _inst.datetime ?? date_current_datetime();
 	var _locale = (_inst.autoLocale ? _inst.locale : UnicGetLocale());
 	var _second = date_get_second(_time);
 	var _result;
 
-	if (_second != _cacheTime) {
+	if (_second != _cacheTime) || (_locale != _cacheLocale) {
 		_cacheTime = _second;
+		_cacheLocale = _locale;
 		_cache[0] = UnicClock(_time, false, _locale);
 		_cache[1] = UnicClock(_time, false, _locale);
 	}
@@ -51,14 +53,16 @@ LexiconPlugInSetDynamic("DATE", function(_length = "full") {
 		"",
 	];
 	static _cacheTime = -1;
+	static _cacheLocale = "";
 
 	var _time = _inst.datetime ?? date_current_datetime();
 	var _locale = (_inst.autoLocale ? _inst.locale : UnicGetLocale());
 	var _second = date_get_second(_time);
 	var _result;
 
-	if (_second != _cacheTime) {
+	if (_second != _cacheTime) || (_locale != _cacheLocale) {
 		_cacheTime = _second;
+		_cacheLocale = _locale;
 		_cache[0] = UnicDate(_time, 0, _locale);
 		_cache[1] = UnicDate(_time, 1, _locale);
 		_cache[2] = UnicDate(_time, 2, _locale);
@@ -107,14 +111,16 @@ LexiconPlugInSetDynamic("DATETIME", function(_length = "full") {
 		"",
 	];
 	static _cacheTime = -1;
+	static _cacheLocale = "";
 
 	var _time = _inst.datetime ?? date_current_datetime();
 	var _locale = (_inst.autoLocale ? _inst.locale : UnicGetLocale());
 	var _second = date_get_second(_time);
 	var _result;
 
-	if (_second != _cacheTime) {
+	if (_second != _cacheTime) || (_locale != _cacheLocale) {
 		_cacheTime = _second;
+		_cacheLocale = _locale;
 		_cache[0] = UnicDateTime(_time, 0, true, _locale);
 		_cache[1] = UnicDateTime(_time, 1, true, _locale);
 		_cache[2] = UnicDateTime(_time, 2, true, _locale);
