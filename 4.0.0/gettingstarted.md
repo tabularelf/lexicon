@@ -4,7 +4,9 @@
 3. Press "Add All" and press "Import".
 
 ## Updating to a new version
-?> If you've made changes to `lexicon_settings`, consider backing it up (preferably with source control) before updating!
+?> If you've made changes to `__LexiconConfig`, consider backing it up (preferably with source control) before updating!
+
+!> If you are updating from v3 or earlier to v4, please consider reading [Changes from v3](changes-from-v3.md) and looking at [v3 equivalent](v3-equivalent.md).
 
 1. Delete `Lexicon`'s folder (with all scripts inside.)
 2. Follow the steps through [Installing](#installing), but with the latest version.
@@ -37,6 +39,7 @@ The format of these files are as follows (and all of these are interchangeable):
 {
 	"language": "English",
 	"locale": ["en-US", "en-AU"],
+	"fallback": ["en"],
 	"text": {
 		"dialogue.NPCBob.Greeting": "Hello there {player}!",
 		"dialogue.NPCBob.Goodbye": "Goodbye {player}!"
@@ -50,6 +53,7 @@ The format of these files are as follows (and all of these are interchangeable):
 {
 	"language": "English",
 	"locale": "en-US",
+	"fallback": "en",
 	"text": {
 		"dialogue": {
 			"NPCBob": {
@@ -67,76 +71,76 @@ CSV:
 
 | Language | Comments | English | French |
 |------|------|------|------|
-| Locale |  | ["en-US", "en-AU"] | fr-fR |
-| dialogue.NPCBob.Greeting | Anything under here won't be declared. | Hello there {player}! | TextB |
-| ------------------ | This cell is forcefully ignored as of [`LEXICON_ROW_SEPERATOR`](configuration.md) | |
+| Locale | Anything under here won't be declared. | en-US, en-AU | fr-fR |
+| Fallback | | en | fr |
+| dialogue.NPCBob.Greeting |  | Hello there {player}! | TextB |
+| ------------------ | This cell is forcefully ignored as of [`__LEXICON_ROW_SEPERATOR`](configuration.md) | |
 | dialogue.NPCBob.Goodbye | | Goodbye {player}! | TextD |
 
 Lexicon will assign all locales in an array to the same Language Name. 
 
-Once you have your language files created, you can set it up as one of three ways.
+!> Rows A1 through A3 may be named whatever you like.
+
+Once you have your language files created, you can set it up as one of two ways.
 
 <!-- tabs:start -->
 
-### **The new way**
+### **Declaring languages directly from files**
 
 Note: These will add additional files if the language is already declared.
 
 ```gml
-// i.e. lexicon_index_declare_from_json("english.json");
-lexicon_index_declare_from_json("english.json");
+// i.e. LexiconIndexDeclareFromFile("english.json");
+LexiconIndexDeclareFromFile("english.json");
 ```
 
 
 ```gml
 // Which will declare multiple languages within the CSV.
-// i.e. lexicon_index_declare_from_csv("locale.csv");
-lexicon_index_declare_from_csv("locale.csv");
+// i.e. LexiconIndexDeclareFromFile("locale.csv");
+LexiconIndexDeclareFromFile("locale.csv");
 ```
 
-### **The old way**
+### **Declaring languages manually**
 
 ```gml
 // To declare a language
-// i.e. lexicon_index_declare("English", "en-US");
-lexicon_index_declare("English", "en-US");
+// i.e. LexiconIndexDeclare("English", "en_US");
+LexiconIndexDeclare("English", "en_US");
 ```
 
 ```gml
 // To add JSON
-// i.e. lexicon_index_add_json("en-US", "english.json")
-// i.e. lexicon_index_add_json("English", "english.json")
-lexicon_index_add_json("en-US", "english.json")
+// i.e. LexiconIndexAddFile("english.json", "en_-_US")
+// i.e. LexiconIndexAddFile("english.json", "English")
+LexiconIndexAddFile("english.json", "en_US");
 ```
 
 ```gml
 // To add CSV
-// i.e. lexicon_index_add_csv("en-US", "locale.csv");
-// i.e. lexicon_index_add_csv("English", "locale.csv");
-lexicon_index_add_csv("en-US", "locale.csv");
-```
-
-### **Definitions File**
-
-[Click here](definitions.md) for more on how the definitions format works.
-
-```gml
-lexicon_index_definitions("definitions.json");
+// i.e. LexiconIndexAddFile("locale.csv", "en_US");
+// i.e. LexiconIndexAddFile("locale.csv", "English");
+LexiconIndexAddFile("locale.csv", "en_US");
 ```
 
 <!-- tabs:end -->
 
 ```gml
 // Set Language
-lexicon_language_set("English");
+LexiconLanguageSet("English");
+// Set Language by locale
+LexiconLanguageSet("en_US");
 ```
 
 
 As for fetching text, you just need to do.
 ```gml
-// For fetching text
-// i.e. lexicon_text("game_intro_text");
-var _text = lexicon_text("text.entry");
+// Create Event
+// i.e. Lexicon("game.intro.text");
+text = Lexicon("text.entry");
+
+// Draw Event
+draw_text(8, 8, text.Get());
 ```
 
-You can see more examples of [`lexicon_text()`](text.md) and it's other functions.
+You can see more examples of [`Lexicon()`](general.md) and Lexicon text elements various methods [here](text-elements-methods.md).

@@ -16,12 +16,15 @@ Lexicon is a localization system focused around on simplifying implementation of
 ## Features
 
 * Substring Replacement/s. (Replacing `{0-9999}`, or `{name_of_variable}` via structs!)
-* String caching. (for Substring replacement/s)
 * Supports CSV/JSON parsing right out of the box.
 * Language/Locale fallback.
 * Synchronous or Asynchronous file loading for each individual file.
 * Native plug-in system.
 * Self-optimizing text elements.
+* Support for various of language formating via the [Unic](https://github.com/TabularElf/Unic) library. Including datetime, time, date, number, currency, percentage, integer, and more!
+* Automatic font resolution between languages.
+* Support for setting per-language fonts w/ categories.
+* Support for setting per-language assets.
 
 You're free to use, modify and contribute at your own will.
 
@@ -37,6 +40,8 @@ Lexicon is under the [MIT License](https://github.com/tabularelf/Lexicon/blob/ma
 
 ## Credits
 
-Created by: [TabularElf](https://github.com/TabularElf)
+Created by [TabularElf](https://github.com/TabularElf).
+
+Using the [Unic](https://github.com/TabularElf/Unic) library by [TabularElf](https://github.com/TabularElf) and [JujuAdams](https://github.com/jujuadams).
 
 Code adapted from `snap_from_csv` via [SNAP](https://github.com/jujuadams/snap) by [JujuAdams](https://github.com/jujuadams) for Lexicons csv parser.

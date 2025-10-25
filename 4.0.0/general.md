@@ -13,7 +13,7 @@ Returns: Instance of `__LexiconTextElementClass`.
 |`...`|`Any`|The value/s you wish to pass to the Lexicon text element instance.|
 
 This function returns a Lexicon Text Element Class instance. This instance will contain info about the entry provided, and the arguments (if any) that were provided. Whether the text entry has any text or not, Lexicon will treat it as if it does.
-If the text entry does not exist, Lexicon will store the text entry itself. These text elements are dynamic in nature, in which they can be used to fetch the same text repeatedly. If the text entry language has changed, these text elements will update.
+If the text entry does not exist, Lexicon will generate it as a new entry that is not set, and refer to the key as static text. These text elements are dynamic in nature, in which they can be used to fetch the same text repeatedly. If the text entry language has changed, these text elements will update.
 You can see how Lexicon text elements work [here](text-elements.md).
 
 #### **Example**

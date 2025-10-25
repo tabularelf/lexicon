@@ -9,7 +9,7 @@ Lexicon 4 is a complete rewrite from the ground up. With major improvements made
 
 Lexicon v3 had began the ground work with dynamic variable fetching, variable fetching and a barebones, although not initially exposed, custom file parsers. But as Lexicon v3 was built on previous compatibility from v2 and v1 respectively, Lexicon was not able to achieve it's absolute best as a localisation system. As apart of this rewrite, Lexicon v4 has been not only been able to achieve all of these goals, but provide with even more control and tools for you to completely customize Lexicon. With all of the new major improvements made to Lexicon, as well as a restructure in how Lexicon previously handled text, and moving the caching to the end users responsibility, Lexicon has been able to achieve all of its goals.
 
-!> As this is a complete rewrite of Lexicon v4, a list of compatibility functions can be found here.
+!> As this is a complete rewrite of Lexicon v4, a list of compatibility functions can be found [here](v3-equivalent.md).
 
 The following features have been included in Lexicon to allow the following customization.
 
@@ -37,6 +37,7 @@ The following plug-ins that have been implemented currently:
 - Existing features separated into plug-ins.
 - Locale-based functions are now merged with Language functions.
 - Languages can no longer be changed before the first room is loaded. (Due to plug-in system support.)
+- Dynamic callback arguments are no longer converted from strings as needed. They are left as strings outright.
 
 ## Removed features
 
