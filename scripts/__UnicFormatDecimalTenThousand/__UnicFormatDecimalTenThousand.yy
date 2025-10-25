@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__UnicFormatDecimalTenThousand",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__UnicFormatDecimalTenThousand",
+  "parent":{
+    "name":"(System)",
+    "path":"folders/Unic/(System).yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

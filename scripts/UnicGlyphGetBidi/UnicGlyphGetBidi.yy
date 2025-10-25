@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"UnicGlyphGetBidi",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"UnicGlyphGetBidi",
+  "parent":{
+    "name":"Glyph",
+    "path":"folders/Unic/Glyph.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

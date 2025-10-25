@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"LexiconUnicDatetimeGet",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"LexiconUnicDatetimeGet",
+  "parent":{
+    "name":"Unic-Specific",
+    "path":"folders/Lexicon/Unic-Specific.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,43 @@
+{
+  "language":"English",
+  "locale":"en",
+  "text":{
+	"language.switch.reminder": "Press space to toggle language!",
+	"multiplayer": {
+		"game": {
+			"status": {
+			   "start": "Start",
+			   "paused": "Paused",
+			   "end": "End",
+			}
+		}
+	},
+	"start": {
+		"select_name": "What is {TEXT.foo} your name?\n\nName: {0}",
+		"selected_name":"You are now {playerName}!",
+	},
+	"foo": "{TEXT.bar}",
+	"bar": "{TEXT.item}",
+	"item": "{GLOBAL.foo.bar.rawr.uwu}",
+	"datetime": "{DATETIME}",
+	"npc": {
+	  "bob": {
+		"greeting": "Hello {playerName}, welcome to my shop! Would you like to buy an apple for {applePrice, currency}?\n\nSilver coins: {money, currency}",	
+		"buy_fail": [
+			"Oh I'm so sorry {playerName}, you seem to not have enough!\n\nSilver coins: {money, currency}",
+			"Unfortunately you do not have enough money to make that purchase!\n\nSilver coins: {money, currency}",
+			"Oh dear {playerName}, you appear to be short on change.\n\nSilver coins: {money, currency}",
+		],	
+		"buy_success": [
+			"Oh goodie! Thank you! You now have {money, currency} left!",
+			"Here you go! You now have {money, currency} left!",
+		],
+		"goodbye": [
+			"Goodbye {playerName}, safe travels!",
+			"Goodbye {playerName}, keep safe!",
+			"Farewell friend! Take care!",
+		],	
+	  }
+	}
+  },
+}

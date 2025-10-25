@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"LexiconIndexLoadBuffer",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"LexiconIndexLoadBuffer",
+  "parent":{
+    "name":"Index",
+    "path":"folders/Lexicon/Index.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

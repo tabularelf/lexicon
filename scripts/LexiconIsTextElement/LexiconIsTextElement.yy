@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"LexiconIsTextElement",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"LexiconIsTextElement",
+  "parent":{
+    "name":"General",
+    "path":"folders/Lexicon/General.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

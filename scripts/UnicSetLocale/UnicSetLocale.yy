@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"UnicSetLocale",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"UnicSetLocale",
+  "parent":{
+    "name":"Unic",
+    "path":"folders/Unic.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__LexiconTextElementClass",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__LexiconTextElementClass",
+  "parent":{
+    "name":"Classes",
+    "path":"folders/Lexicon/(System)/Classes.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

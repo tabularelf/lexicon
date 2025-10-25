@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__UnicDatabaseUnicodeData",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__UnicDatabaseUnicodeData",
+  "parent":{
+    "name":"(System)",
+    "path":"folders/Unic/(System).yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

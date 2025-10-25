@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"UnicStringLower",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"UnicStringLower",
+  "parent":{
+    "name":"String",
+    "path":"folders/Unic/String.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

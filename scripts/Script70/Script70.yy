@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Script70",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Script70",
+  "parent":{
+    "name":"lexicon",
+    "path":"lexicon.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
