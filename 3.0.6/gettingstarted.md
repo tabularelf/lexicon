@@ -67,12 +67,14 @@ CSV:
 
 | Language | Comments | English | French |
 |------|------|------|------|
-| Locale |  | ["en-US", "en-AU"] | fr-fR |
+| Locale |  | ['en-US', 'en-AU'] | fr-fR |
 | dialogue.NPCBob.Greeting | Anything under here won't be declared. | Hello there {player}! | TextB |
 | ------------------ | This cell is forcefully ignored as of [`LEXICON_ROW_SEPERATOR`](configuration.md) | |
 | dialogue.NPCBob.Goodbye | | Goodbye {player}! | TextD |
 
 Lexicon will assign all locales in an array to the same Language Name. 
+
+!> Multiple locales require to be quoted via single quotes as they use `json_parse()` under the hood.
 
 Once you have your language files created, you can set it up as one of three ways.
 
