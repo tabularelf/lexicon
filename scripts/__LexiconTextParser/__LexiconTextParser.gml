@@ -210,6 +210,9 @@ function __LexiconTextParser(_key, _buffStr, _args) constructor {
 							__AddText("{" + _oldEntry + _lastChar);
 						} else {
 							__finalText[array_length(__finalText)-1] += "{" + _oldEntry + _lastChar;
+							if (__IsWhitespace(buffer_peek(__buffStr, buffer_tell(__buffStr), buffer_u8))) {
+								__finalText[array_length(__finalText)-1] += __GetStr(buffer_tell(__buffStr), buffer_tell(__buffStr)+1);
+							}
 						}
 						__lastEntryWasDynamic = false;
 						__lastEntryWasTemplate = false;

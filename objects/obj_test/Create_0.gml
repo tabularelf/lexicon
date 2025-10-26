@@ -42,7 +42,3 @@ langIndex = 0;
 
 text = Lexicon("start.select_name");
 datetime = Lexicon("datetime");
-
-var _t = get_timer();
-var _entry = Lexicon("npc.bob.greeting");
-var _text = _entry.Get();

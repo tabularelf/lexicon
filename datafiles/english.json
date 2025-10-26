@@ -13,7 +13,7 @@
 		}
 	},
 	"start": {
-		"select_name": "What is {TEXT.foo} your name?\n\nName: {0}",
+		"select_name": "What is your name?\n\nName:  {0}",
 		"selected_name":"You are now {playerName}!",
 	},
 	"foo": "{TEXT.bar}",
