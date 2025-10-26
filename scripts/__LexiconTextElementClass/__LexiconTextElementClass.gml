@@ -13,8 +13,8 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 	__argsOriginal = variable_clone(_args, 0);
 	__argsDynamic = undefined;
 	__isDynamic = false;
-	__dynamicEntryNames = undefined;
-	__dynamicEntryNamesLength = 0;
+	__dynamicEntries = undefined;
+	__dynamicEntriesLength = 0;
 	__key = _key;
 	__language = __entry.__language;
 	__entryDynamicLength = 0;
@@ -126,6 +126,21 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 		return self;
 	};
 
+	static GetChildElements = function() {
+		var _result = undefined;
+		if (is_array(__dynamicEntries)) {
+			_result = array_filter(__dynamicEntries, function(_elm) {
+				return LexiconIsTextElement(_elm.structRef);
+			});
+
+			array_map_ext(_result, function(_elm) {
+				return _elm.structRef;
+			});
+		}
+
+		return _result;
+	};
+
 	/// @param {Any} ...
 	/// @return {String} 
 	static Get = function() {
@@ -142,7 +157,7 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 			// Self optimising
 			__isDynamic = false;
 			delete __entryDynamic;
-			if (is_array(__dynamicEntryNames)) delete __dynamicEntryNames;
+			if (is_array(__dynamicEntries)) delete __dynamicEntries;
 			if (__stringsLeftToTemplate > 0) {
 				Get = __FastGet;
         
@@ -251,9 +266,9 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 		static _structScan = [_dynamics, LexiconGlobalStructGet()];
 		static _entries = __LexiconSystem().__entries;
 		__entryDynamic = undefined;
-		__dynamicEntryNames = undefined;
+		__dynamicEntries = undefined;
 		__isDynamic = false;
-		__dynamicEntryNamesLength = 0;
+		__dynamicEntriesLength = 0;
 		__entryCache = __entry.__text ?? _key;
 		__hasExecuted = false;
 		__variablesToCheck = 0;
@@ -297,12 +312,12 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 			var _parser = new __LexiconTextParser(_key,_buffStr, __args);
 			_parser.__ParseStr();
 			__stringsLeftToTemplate = _parser.__stringTemplates;
-			__dynamicEntryNames = _parser.__dynamicEntries;
+			__dynamicEntries = _parser.__dynamicEntries;
 			__variablesToCheck = _parser.__variablesToCheck;
 			__dynamicsToCall = _parser.__dynamicsToCall;
 			__entriesLeftToCheck = _parser.__entriesToCheck;
-			if (is_array(__dynamicEntryNames)) {
-				__dynamicEntryNamesLength = array_length(__dynamicEntryNames);
+			if (is_array(__dynamicEntries)) {
+				__dynamicEntriesLength = array_length(__dynamicEntries);
 				__isDynamic = true;
 			}
 			if (is_array(_parser.__finalText)) {
@@ -312,13 +327,13 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 				} else {
 					// Worse case scenario something went wrong
 					// we treat it as if there is no dynamic variables or callbacks.
-					__dynamicEntryNamesLength = 0;
+					__dynamicEntriesLength = 0;
 					__variablesToCheck = 0;
 					__dynamicsToCall = 0;
 					__entriesLeftToCheck = 0;
 					__isDynamic = false;
 
-					delete __dynamicEntryNames;
+					delete __dynamicEntries;
 				}
 			}
 			
@@ -355,8 +370,8 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 			var _i = 0;
 			var _dynamicUpdate = false;
 			var _nameEntry = undefined;
-			repeat (__dynamicEntryNamesLength) {
-				_nameEntry = __dynamicEntryNames[_i];
+			repeat (__dynamicEntriesLength) {
+				_nameEntry = __dynamicEntries[_i];
 				var _structResult;
 				if (_nameEntry.type == __LEXICON_TYPE.NORMAL) {
 					_structResult = struct_get_from_hash(is_undefined(_nameEntry.structRef) ? __args[_nameEntry.pos] : _nameEntry.structRef, _nameEntry.hash);
@@ -386,8 +401,8 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 				array_copy(_entryDynamicCopy, 0, __entryDynamic, 0, array_length(__entryDynamic));
 				var _len = array_length(__entryDynamic);
 				var _dynamicNamesPos = 0;
-				while (_dynamicNamesPos < __dynamicEntryNamesLength) {
-					var _nameEntry = __dynamicEntryNames[_dynamicNamesPos];
+				while (_dynamicNamesPos < __dynamicEntriesLength) {
+					var _nameEntry = __dynamicEntries[_dynamicNamesPos];
 					var _pos = _nameEntry.textPos;
 					//var _sampleText = _entryDynamicCopy[_pos];
 					switch(_nameEntry.type) {
@@ -403,12 +418,12 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 										_nameEntry.args[_argPos] = _ref.cacheResult;
 										if (!_ref.isRemoved) && (((_ref.isStatic) && (_ref.isExecuted)) || 
 											(!_ref.isStatic && _nameEntry.isStatic && _nameEntry.isExecuted)) {
-											var _dynamicPos = array_get_index(__dynamicEntryNames, _nameEntry.dynamicArgs[_j].ref);
+											var _dynamicPos = array_get_index(__dynamicEntries, _nameEntry.dynamicArgs[_j].ref);
 											if (_dynamicPos != -1) {
 												_ref.isRemoved = true;
-												array_delete(__dynamicEntryNames, _dynamicPos, 1);
+												array_delete(__dynamicEntries, _dynamicPos, 1);
 												_dynamicNamesPos--;
-												__dynamicEntryNamesLength--;
+												__dynamicEntriesLength--;
 											}
                                             
 											if (!_ref.isStatic && _nameEntry.isStatic) {
