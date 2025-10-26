@@ -352,7 +352,7 @@ function __LexiconTextParser(_key, _buffStr, _args) constructor {
 						if (LexiconPlugInExistsEntry(_entry)) {
 							array_push(_stackKeys, $" '{__key}' from locale '{LexiconPlugInGetEntry(__key).GetLanguage().GetLocale()}' ");
 							var _textElement = is_array(__args) ? LexiconExt(_entry, __args) : Lexicon(_entry);
-							_textElement.SetMaxUpdateCap(__LEXICON_MAX_DYNAMIC_ENTRY_FRAME_ITERATOR_CHILDREN_CAP);
+							//_textElement.SetMaxUpdateCap(__LEXICON_MAX_DYNAMIC_ENTRY_FRAME_ITERATOR_CHILDREN_CAP);
 							array_pop(_stackKeys);
 							__AddText("{" + _oldEntry + _lastChar);
 							__AddDynamic(_entry, __LEXICON_TYPE.ENTRY, array_length(__finalText)-1, -1, undefined, undefined, _textElement);

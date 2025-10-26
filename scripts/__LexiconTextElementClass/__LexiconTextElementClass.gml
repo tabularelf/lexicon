@@ -28,25 +28,8 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 	__initialised = false;
 	__bypassFrameCooldown = false;
 	__dynamicUpdateTimer = 1;
-	__maxUpdateCap = __LEXICON_MAX_DYNAMIC_ENTRY_FRAME_ITERATOR_CAP;
 
 	__Regenerate(_entry, _key, _args);
-
-	/// @param {Real} value
-	static SetMaxUpdateCap = function(_value) {
-		if (!is_numeric(_value)) {
-			__LexiconError($"Expected \"number\", got \"{typeof(_value)}\"!");
-			return;
-		}
-		
-		__maxUpdateCap = max(1, _value);
-		return self;
-	};
-
-	/// @return {Real}
-	static GetMaxUpdateCap = function() {
-		return __maxUpdatecap;
-	};
 
 	/// @return {Function}
 	static GetCallback = function() {
@@ -170,7 +153,7 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 							++_i;
 						}
         		
-						return string_ext(__isDynamic ? _text : (__entry.__text ?? __key), _argArray);
+						return string_ext(_text, _argArray);
 					} finally {
 						array_resize(_argArray, 0);
 					}
@@ -181,7 +164,9 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 			return _text;
 		}
 
-		if (!__bypassFrameCooldown) && (__frame == LexiconPlugInGetFrame()) {
+		var _frame = LexiconPlugInGetFrame();
+
+		if (!__bypassFrameCooldown) && (__frame == _frame) {
 			return _text;
 		}
 
@@ -196,23 +181,22 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 					++_i;
 				}
         
-				if (__isDynamic) && ((__dynamicsToCall > 0) || (__variablesToCheck > 0) || (__entriesLeftToCheck > 0)) && 
-					(LexiconPlugInGetFrame() % __dynamicUpdateTimer == 0) {
+				if (__isDynamic) && ((__dynamicsToCall > 0) || (__variablesToCheck > 0) || (__entriesLeftToCheck > 0)) {
 					_text = __GetDynamic(_argArray);
 				}
         
-				_text = string_ext(__isDynamic ? _text : (__entry.__text ?? __key), _argArray);
+				_text = string_ext(_text, _argArray);
 				return _text;
 			} finally {
 				array_resize(_argArray, 0);
 			}
 		}
 
-		if (__isDynamic) && (LexiconPlugInGetFrame() % __dynamicUpdateTimer == 0) {
+		if (__isDynamic) {
 			_text = __GetDynamic();
 		}
 
-		__frame = LexiconPlugInGetFrame();
+		__frame = _frame;
 		
 		return _text;
 	};
@@ -276,7 +260,6 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 		__stringsLeftToTemplate = 0;
 		__dynamicsToCall = 0;
 		__initialised = false;
-		__dynamicUpdateTimer = max(1, __LEXICON_MAX_DYNAMIC_ENTRY_FRAME_ITERATOR_CAP);
 
 		if (is_undefined(__entry.__text)) {
 			return;
@@ -415,7 +398,7 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 									repeat(array_length(_nameEntry.dynamicArgs)) {
 										var _argPos = _nameEntry.dynamicArgs[_j].argPos;
 										var _ref = _nameEntry.dynamicArgs[_j].ref;
-										_nameEntry.args[_argPos] = _ref.cacheResult;
+										_nameEntry.args[_argPos] = _ref.weakValue;
 										if (!_ref.isRemoved) && (((_ref.isStatic) && (_ref.isExecuted)) || 
 											(!_ref.isStatic && _nameEntry.isStatic && _nameEntry.isExecuted)) {
 											var _dynamicPos = array_get_index(__dynamicEntries, _nameEntry.dynamicArgs[_j].ref);
@@ -462,6 +445,7 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 						case __LEXICON_TYPE.GLOBAL:
 							var _structRef = is_undefined(_nameEntry.structRef) ? _globalVars : _nameEntry.structRef;
 							var _valueResult = struct_get_from_hash(_structRef, _nameEntry.hash);
+							_valueResult = is_string(_valueResult) ? _valueResult : string(_valueResult);
 							if (_nameEntry.weakValue != _valueResult)  {
 								_nameEntry.cacheResult = _valueResult;
 								_nameEntry.weakValue = _valueResult;
@@ -474,6 +458,7 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 						case __LEXICON_TYPE.NORMAL:
 							var _structRef = is_undefined(_nameEntry.structRef) ? __args[_nameEntry.pos] : _nameEntry.structRef;
 							var _valueResult = struct_get_from_hash(_structRef, _nameEntry.hash);
+							_valueResult = is_string(_valueResult) ? _valueResult : string(_valueResult);
 							if (_nameEntry.weakValue !=  _valueResult) {  
 								_nameEntry.cacheResult = _valueResult;
 								_nameEntry.weakValue = _valueResult;
@@ -487,10 +472,8 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 							var _structRef = _nameEntry.structRef;
 							if (!_structRef.IsStatic()) {
 								var _valueResult = _structRef.Get();
-								if (_nameEntry.weakValue !=  _valueResult) {  
-									_nameEntry.cacheResult = _valueResult;
-									_nameEntry.weakValue = _valueResult;
-								}
+								_nameEntry.cacheResult = _valueResult;
+								_nameEntry.weakValue = _valueResult;
 								
 								if (_structRef.IsStatic()) {
 									__entriesLeftToCheck--;
@@ -507,11 +490,7 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 				}
                	__staticDynamicGenerated = true;
 				__entryCache = string_join_ext("", _entryDynamicCopy, 0, array_length(_entryDynamicCopy));
-				__dynamicUpdateTimer = 1;
-			} else {
-				__dynamicUpdateTimer++;
-				__dynamicUpdateTimer = min(__dynamicUpdateTimer, __maxUpdateCap);
-			}
+			} 
 			
 			return __entryCache;
 		} finally {

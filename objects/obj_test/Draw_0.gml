@@ -1,3 +1,9 @@
+var _t = get_timer();
+repeat(1000) {
+	text.Get();
+}
+show_debug_message($"text {(get_timer() - _t) / 1000}ms");
+
 draw_set_font(LexiconFontGet("default"));
 
 draw_set_halign(fa_right);

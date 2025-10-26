@@ -59,19 +59,3 @@
  Default: 10
 */
 #macro __LEXICON_TEXT_PARSER_MAX_REFERENCE_STACK 10
-/*
- The max amount of frame time that Lexicon should scan for changes in dynamic entries.
- Lexicon text elements include a small timer between checks to ensure that it isn't constantly checking for non-changing values.
- This is done via frame iterations. The longer it's been without a change in any variable or text entry, the timer will increase until it reaches the max cap.
- This value can be modified per text element via .SetMaxFrameCap(value). If the value is set 1 or less, then this is checked every time .Get() is called.
- This is ignored if the text element in question has any non-static dynamic callbacks or variable modifiers, as they execute on every .Get() call.
- (This includes any child text elements with non-static dynamic callbacks or variable modifiers.)
- Default: 1
-*/
-#macro __LEXICON_MAX_DYNAMIC_ENTRY_FRAME_ITERATOR_CAP 1
-/*
- The max amount of frame time of children text elements that are referenced from existing text entries.
- Fundamentally the same as __LEXICON_MAX_DYNAMIC_ENTRY_FRAME_ITERATOR_CAP, but this is applied to children instead.
- Default: 3
-*/
-#macro __LEXICON_MAX_DYNAMIC_ENTRY_FRAME_ITERATOR_CHILDREN_CAP 3
