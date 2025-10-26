@@ -28,7 +28,7 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 	__initialised = false;
 	__bypassFrameCooldown = false;
 	__dynamicUpdateTimer = 1;
-	__maxUpdateCap = __LEXICON_MAX_DYNAMIC_ENTRY_FRAME_CAP;
+	__maxUpdateCap = __LEXICON_MAX_DYNAMIC_ENTRY_FRAME_ITERATOR_CAP;
 
 	__Regenerate(_entry, _key, _args);
 
@@ -39,7 +39,7 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 			return;
 		}
 		
-		__maxUpdateCap = _value;
+		__maxUpdateCap = max(1, _value);
 		return self;
 	};
 
@@ -276,7 +276,7 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 		__stringsLeftToTemplate = 0;
 		__dynamicsToCall = 0;
 		__initialised = false;
-		__dynamicUpdateTimer = 1;
+		__dynamicUpdateTimer = max(1, __LEXICON_MAX_DYNAMIC_ENTRY_FRAME_ITERATOR_CAP);
 
 		if (is_undefined(__entry.__text)) {
 			return;
