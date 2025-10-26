@@ -64,6 +64,6 @@
  Lexicon text elements include a small timer between checks to ensure that it isn't constantly checking for non-changing values.
  This value can be modified per text element.
  This is ignored if the text element in question has any dynamic callbacks.
- Default: 3
+ Default: 1
 */
 #macro __LEXICON_MAX_DYNAMIC_ENTRY_FRAME_CAP 1
