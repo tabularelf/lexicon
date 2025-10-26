@@ -66,4 +66,4 @@
  This is ignored if the text element in question has any dynamic callbacks.
  Default: 3
 */
-#macro __LEXICON_MAX_DYNAMIC_ENTRY_FRAME_CAP 3
+#macro __LEXICON_MAX_DYNAMIC_ENTRY_FRAME_CAP 1
