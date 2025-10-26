@@ -38,7 +38,7 @@ function __LexiconDefaultPlugInDefine() {
 			}
                
         	var _fallback = LexiconLanguageGet(LexiconGlobalFallbackGet());
-			if (!is_undefined(_fallback)) && (UnicLocaleExists(_fallback.GetLocale())) {
+			if (LexiconIsLanguage(_fallback)) && (UnicLocaleExists(_fallback.GetLocale())) {
 				_global.locale = _fallback.GetLocale();
 				return;
 			}
