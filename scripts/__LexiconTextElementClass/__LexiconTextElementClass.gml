@@ -178,7 +178,7 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 				}
         
 				if (__isDynamic) && ((__dynamicsToCall > 0) || (__variablesToCheck > 0) || (__entriesLeftToCheck > 0)) 
-					&& (__bypassFrameCooldown) || (__frame != _frame) {
+					&& ((__bypassFrameCooldown) || (__frame != _frame)) {
 					_text = __GetDynamic(_argArray);
 				}
         
