@@ -5,7 +5,7 @@ function __LexiconUpdateLanguageFallbacks(_newLang, _async) {
 	var _len = array_length(_newLang.__fallbacks)
 	for(var _i = 0; _i < _len; ++_i) {
 		var _langResult = __LexiconGetLocale(_fallbacks[_i]) ?? __LexiconGetLanguage(_fallbacks[_i]);
-		if (LexiconIsLanguage(_langResult) && !_langResult.IsLoaded()) {
+		if (!is_undefined(_langResult) && !_langResult.IsLoaded()) {
 			__LexiconUpdateEntries(_langResult, _async);
 			if (!_async) {
 				_langResult.__loaded = true;

@@ -27,7 +27,6 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 	__dynamicsToCall = 0;
 	__initialised = false;
 	__bypassFrameCooldown = false;
-	__dynamicUpdateTimer = 1;
 
 	__Regenerate(_entry, _key, _args);
 
@@ -185,7 +184,7 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 					_text = __GetDynamic(_argArray);
 				}
         
-				_text = string_ext(_text, _argArray);
+				_text = string_ext(__isDynamic ? _text : (__entry.__text ?? __key), _argArray);
 				return _text;
 			} finally {
 				array_resize(_argArray, 0);

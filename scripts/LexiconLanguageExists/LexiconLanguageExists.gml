@@ -1,5 +1,5 @@
 // feather ignore all
 /// @param {String} language
 function LexiconLanguageExists(_lang) {
-	return LexiconIsLanguage(LexiconLanguageGet(_lang));
+	return !is_undefined(LexiconLanguageGet(_lang));
 }

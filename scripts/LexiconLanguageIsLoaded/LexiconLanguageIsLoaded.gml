@@ -9,7 +9,7 @@ function LexiconLanguageIsLoaded(_lang = LexiconLanguageGetCurrent()) {
 		return false;
 	}
 
-	if (!LexiconIsLanguage(_lang)) {
+	if (is_undefined(_lang)) {
 		__LexiconError($"Invalid language was passed in.\nGot \"{_lang}\"!");
 		return;
 	}

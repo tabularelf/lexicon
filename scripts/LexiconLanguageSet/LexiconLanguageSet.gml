@@ -6,7 +6,7 @@ function LexiconLanguageSet(_lang, _async = false) {
 	}
 	
 	var _foundLang = is_string(_lang) ? LexiconLanguageGet(_lang) : _lang;
-	if (!LexiconIsLanguage(_foundLang)) {
+	if (is_undefined(_foundLang)) {
 		__LexiconTrace($"Language \"{_lang}\" not found.");
 		return;
 	}

@@ -20,7 +20,7 @@ function __LexiconUpdateLanguage(_newLang, _async = true) {
 
 	__LexiconUpdateLanguageFallbacks(_newLang, _async);
 	var _globalFallback = LexiconLanguageGet(LexiconGlobalFallbackGet());
-	if (LexiconIsLanguage(_globalFallback) && (!_globalFallback.IsLoaded())) {
+	if (!is_undefined(_globalFallback) && (!_globalFallback.IsLoaded())) {
 		// Check if it exists as a targeted fallback.
 		if (array_get_index(_newLang.GetFallbacks(), LexiconGlobalFallbackGet()) == -1) {
 			__LexiconUpdateEntries(_globalFallback, _async);
