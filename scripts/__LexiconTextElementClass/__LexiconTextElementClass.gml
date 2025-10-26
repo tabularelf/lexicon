@@ -166,10 +166,6 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 
 		var _frame = LexiconPlugInGetFrame();
 
-		if (!__bypassFrameCooldown) && (__frame == _frame) {
-			return _text;
-		}
-
 		__hasExecuted = true;
 
 		if (argument_count > 0) {
@@ -181,7 +177,8 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 					++_i;
 				}
         
-				if (__isDynamic) && ((__dynamicsToCall > 0) || (__variablesToCheck > 0) || (__entriesLeftToCheck > 0)) {
+				if (__isDynamic) && ((__dynamicsToCall > 0) || (__variablesToCheck > 0) || (__entriesLeftToCheck > 0)) 
+					&& (__bypassFrameCooldown) || (__frame != _frame) {
 					_text = __GetDynamic(_argArray);
 				}
         
@@ -190,6 +187,10 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 			} finally {
 				array_resize(_argArray, 0);
 			}
+		}
+
+		if (!__bypassFrameCooldown) && (__frame == _frame) {
+			return _text;
 		}
 
 		if (__isDynamic) {
