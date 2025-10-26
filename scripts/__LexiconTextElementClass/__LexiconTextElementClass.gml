@@ -373,7 +373,8 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 						break;
 					}		
 				} else if (_nameEntry.type == __LEXICON_TYPE.ENTRY) {
-					if (!_nameEntry.structRef.IsStatic()) && (_nameEntry.weakValue != _nameEntry.structRef.Get()) {
+					if ((!_nameEntry.structRef.IsStatic()) && (_nameEntry.weakValue != _nameEntry.structRef.Get())) 
+						|| (is_undefined(_nameEntry.weakValue)) {
 						_dynamicUpdate = true;
 						break;
 					}		
@@ -471,7 +472,7 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 						break;
 						case __LEXICON_TYPE.ENTRY:
 							var _structRef = _nameEntry.structRef;
-							if (!_structRef.IsStatic()) {
+							if (!_structRef.IsStatic()) || (is_undefined(_nameEntry.weakValue)) {
 								var _valueResult = _structRef.Get();
 								_nameEntry.cacheResult = _valueResult;
 								_nameEntry.weakValue = _valueResult;
