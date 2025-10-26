@@ -1,15 +1,18 @@
 // feather ignore all
 /// @ignore
-function __LexiconLanguageDummyClass(_language, _locale) : __LexiconLanguageClass(_language, _locale) constructor {
+function __LexiconLanguageDummyClass(_language, _locale) constructor {
 	/// @ignore
 	static __NULLFUNC__ = function() {
 		__LexiconError("A language was not set. Please set the language via \"LexiconLanguageSet()\"!");		
 	};
 
-	delete __fallbacks;
-	delete __files;
-	delete __remapAsset;
-	delete __fonts;
+	__language = _language;
+	__locale = _locale;
+	__fallbacks = undefined;
+	__files = undefined;
+	__remapAsset = undefined;
+	__fonts = undefined;
+	__loaded = false;
 
 	static IsLoaded = __NULLFUNC__;
 	static AddFile = __NULLFUNC__;
