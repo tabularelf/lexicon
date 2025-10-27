@@ -9,6 +9,10 @@ function __LexiconParserCsv(_buff, _file, _langEntry) {
 		}
 
 		var _language = _grid[0][_j];
+		if (_j >= array_length(_grid[1])) {
+			__LexiconTrace($"CSV Parser - Cannot process language remaining languages. Invalid {_grid[0][_j]} locale.");
+			return;
+		}
 		var _locale = _grid[1][_j];
 	
 		if (string_pos(",", _locale) > 0) {
