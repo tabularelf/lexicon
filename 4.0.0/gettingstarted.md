@@ -69,12 +69,13 @@ The format of these files are as follows (and all of these are interchangeable):
 
 CSV:
 
-| Language | Comments | English | French |
+| Keys | Language A | Language B | ... |
 |------|------|------|------|
+| Language | Comments | English | French |
 | Locale | Anything under here won't be declared. | en-US, en-AU | fr-fR |
 | Fallback | | en | fr |
 | dialogue.NPCBob.Greeting |  | Hello there {player}! | TextB |
-| ------------------ | This cell is forcefully ignored as of [`__LEXICON_CSV_ROW_SEPERATOR`](csv-config.md | |
+| ------------------ | This cell is forcefully ignored as of [`__LEXICON_CSV_ROW_SEPERATOR`](csv-config.md) | |
 | dialogue.NPCBob.Goodbye | | Goodbye {player}! | TextD |
 
 Lexicon will assign all locales in an array to the same Language Name. 

@@ -1,0 +1,9 @@
+﻿Language,English,Comments,French,Japanese,Spanish,Chinese
+Locale,"en_UK, en_AU",,fr_FR,ja_JP,,
+Fallbacks,en,,,jp,,
+text.test,"I love you {loveMeter,{getNum},{num2} } more since you used Lexicon. {playerName} - {DATETIME}. Thank you!",This is a comment,"Je vous aime {loveMeter,{getNum}, {num2} } plus depuis que vous utilisez Lexicon. {playerName} - le {DATETIME}. Merci !utilisez Lexicon. %s - le %s. Merci !","君が「lexicon」を使ってる前より{loveMeter,{getNum},{num2} }回好きです。{playerName} - {DATETIME}。ありがとうございます !",,
+ ------------------ items,test,test2t,test3,test4,test5,
+text.test2,,This is a comment,Je vous aime %loveMeter% plus depuis que vous utilisez Lexicon. %playerName% - le %dateTime%. Merci !utilisez Lexicon. %s - le %s. Merci !,君が「lexicon」を使ってる前より%loveMeter% 回好きです。%playerName% - %dateTime%。ありがとうございます !,,
+newline_test,Hello\nWorld!,,,,,
+multiplayer.game.status.unsure,,,,Reeee,,
+W,,,,,,
