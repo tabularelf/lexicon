@@ -10,7 +10,7 @@
 
 1. Delete `Lexicon`'s folder (with all scripts inside.)
 2. Follow the steps through [Installing](#installing), but with the latest version.
-3. Reimport your `lexicon_settings` (if changes were made)
+3. Reimport your `__LexiconConfig` (if changes were made)
 
 ## Using Lexicon
 Once added to your project, Lexicon will automatically initialise its core functionality when you run the game.
