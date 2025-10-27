@@ -1,8 +1,5 @@
 {
   "FolderOrderSettings":[
-    {"name":"REPO_DO_NOT_IMPORT","order":14,"path":"folders/REPO_DO_NOT_IMPORT.yy",},
-    {"name":"Lexicon Experimental Plug-Ins","order":10,"path":"folders/REPO_DO_NOT_IMPORT/Lexicon Experimental Plug-Ins.yy",},
-    {"name":"LexiconText","order":3,"path":"folders/REPO_DO_NOT_IMPORT/Lexicon Experimental Plug-Ins/LexiconText.yy",},
     {"name":"Lexicon Plug-Ins","order":5,"path":"folders/Lexicon Plug-Ins.yy",},
     {"name":"Lexicon-Force-Entry","order":4,"path":"folders/Lexicon Plug-Ins/Lexicon-Force-Entry.yy",},
     {"name":"Lexicon-Replace-Newlines","order":1,"path":"folders/Lexicon Plug-Ins/Lexicon-Replace-Newlines.yy",},
@@ -26,6 +23,9 @@
     {"name":"Language","order":12,"path":"folders/Lexicon/Language.yy",},
     {"name":"Plug-In","order":1,"path":"folders/Lexicon/Plug-In.yy",},
     {"name":"Unic-Specific","order":5,"path":"folders/Lexicon/Unic-Specific.yy",},
+    {"name":"REPO_DO_NOT_IMPORT","order":14,"path":"folders/REPO_DO_NOT_IMPORT.yy",},
+    {"name":"Lexicon Experimental Plug-Ins","order":10,"path":"folders/REPO_DO_NOT_IMPORT/Lexicon Experimental Plug-Ins.yy",},
+    {"name":"LexiconText","order":3,"path":"folders/REPO_DO_NOT_IMPORT/Lexicon Experimental Plug-Ins/LexiconText.yy",},
     {"name":"Unic","order":10,"path":"folders/Unic.yy",},
     {"name":"(System)","order":1,"path":"folders/Unic/(System).yy",},
     {"name":"Blocks","order":2,"path":"folders/Unic/Blocks.yy",},

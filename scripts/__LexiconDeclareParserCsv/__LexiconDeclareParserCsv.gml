@@ -9,10 +9,20 @@ function __LexiconDeclareParserCsv(_buff, _file) {
 		}
 
 		var _lang = _grid[0][_j];
+		if (_j >= array_length(_grid[1])) {
+			__LexiconTrace($"CSV Parser - Cannot process language remaining languages. Invalid {_grid[0][_j]} locale.");
+			return;
+		}
+
 		var _locale = _grid[1][_j];
 		var _fallbacks = _grid[2][_j];
 		if (_fallbacks == "") {
 			_fallbacks = undefined;
+		}
+
+		if (string_length(_locale) == 0) || (_locale == "") {
+			__LexiconTrace($"CSV Parser - Cannot process language {_grid[0][_j]}.");
+			continue;
 		}
 	
 		if (string_pos(",", _locale) > 0) {
@@ -22,11 +32,13 @@ function __LexiconDeclareParserCsv(_buff, _file) {
 			});
 		}
 
-		if (string_pos(",", _fallbacks) > 0) {
-			_fallbacks = string_split(_fallbacks, ",");
-			array_map_ext(_fallbacks, function(_elm, _index) {
-				return string_trim(_elm);
-			});
+		if (!is_undefined(_fallbacks)) {
+			if (string_pos(",", _fallbacks) > 0) {
+				_fallbacks = string_split(_fallbacks, ",");
+				array_map_ext(_fallbacks, function(_elm, _index) {
+					return string_trim(_elm);
+				});
+			}
 		}
 
 		var _langEntry = LexiconLanguageGet(_lang);
