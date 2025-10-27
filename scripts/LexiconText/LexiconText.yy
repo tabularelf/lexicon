@@ -6,7 +6,7 @@
   "name":"LexiconText",
   "parent":{
     "name":"LexiconText",
-    "path":"folders/Lexicon Experimental Plug-Ins/LexiconText.yy",
+    "path":"folders/REPO_DO_NOT_IMPORT/Lexicon Experimental Plug-Ins/LexiconText.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

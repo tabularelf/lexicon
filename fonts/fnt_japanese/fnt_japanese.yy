@@ -157,8 +157,8 @@
   "maintainGms1Font":false,
   "name":"fnt_japanese",
   "parent":{
-    "name":"lexicon",
-    "path":"lexicon.yyp",
+    "name":"REPO_DO_NOT_IMPORT",
+    "path":"folders/REPO_DO_NOT_IMPORT.yy",
   },
   "pointRounding":0,
   "ranges":[
@@ -198,17 +198,14 @@
     {"lower":36913,"upper":36913,},
     {"lower":37329,"upper":37329,},
   ],
-  "regenerateBitmap":true,
+  "regenerateBitmap":false,
   "resourceType":"GMFont",
   "resourceVersion":"2.0",
   "sampleText":"君が「lexicon」を使ってる前より%s回好きです。%s - %s。ありがとうございます\r\n",
   "sdfSpread":16,
   "size":16.0,
   "styleName":"Regular",
-  "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
-  },
+  "textureGroupId":null,
   "TTFName":"",
   "usesSDF":false,
 }

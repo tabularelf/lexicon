@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"Script4",
   "parent":{
-    "name":"lexicon",
-    "path":"lexicon.yyp",
+    "name":"REPO_DO_NOT_IMPORT",
+    "path":"folders/REPO_DO_NOT_IMPORT.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

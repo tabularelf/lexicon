@@ -17,8 +17,8 @@
   ],
   "name":"rm_main_test",
   "parent":{
-    "name":"lexicon",
-    "path":"lexicon.yyp",
+    "name":"REPO_DO_NOT_IMPORT",
+    "path":"folders/REPO_DO_NOT_IMPORT.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

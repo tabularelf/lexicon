@@ -10,8 +10,8 @@
   "name":"Object1",
   "overriddenProperties":[],
   "parent":{
-    "name":"lexicon",
-    "path":"lexicon.yyp",
+    "name":"REPO_DO_NOT_IMPORT",
+    "path":"folders/REPO_DO_NOT_IMPORT.yy",
   },
   "parentObjectId":null,
   "persistent":false,

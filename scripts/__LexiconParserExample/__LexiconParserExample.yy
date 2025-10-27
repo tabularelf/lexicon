@@ -6,7 +6,7 @@
   "name":"__LexiconParserExample",
   "parent":{
     "name":"Lexicon Experimental Plug-Ins",
-    "path":"folders/Lexicon Experimental Plug-Ins.yy",
+    "path":"folders/REPO_DO_NOT_IMPORT/Lexicon Experimental Plug-Ins.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

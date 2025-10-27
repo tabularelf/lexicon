@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"lexicon",
-    "path":"lexicon.yyp",
+    "name":"REPO_DO_NOT_IMPORT",
+    "path":"folders/REPO_DO_NOT_IMPORT.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
