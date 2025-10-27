@@ -1,3 +1,5 @@
+// feather ignore all
+/// @ignore
 function __LexiconIndexLoopStruct(_name,_element, _language) {
 	var _i = 0;
 	var _names = struct_get_names(_element);
