@@ -6,7 +6,8 @@
 function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor {
 	static _global = __LexiconSystem();
 	static _globalDynamic = _global.__globalDynamic;
-	__entry = _entry;
+	static _entryDummy = new __LexiconEntryClass("$$__LEXICON_ENTRY_DUMMY__$$", undefined, true);
+	__entry = _entry ?? _entryDummy;
 	__entryCache = "";
 	__entryDynamic = undefined;
 	__args = undefined;
@@ -262,11 +263,11 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 		__dynamicsToCall = 0;
 		__initialised = false;
 
-		if (is_undefined(__entry.__text)) {
+		if (__entry != _entryDummy) && (is_undefined(__entry.__text)) {
 			return;
 		}
 
-		if (__entry.__isStatic) {
+		if (__entry != _entryDummy) && (__entry.__isStatic) {
 			return;
 		}
 

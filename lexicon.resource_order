@@ -139,6 +139,8 @@
     {"name":"LexiconLanguageIsLoaded","order":5,"path":"scripts/LexiconLanguageIsLoaded/LexiconLanguageIsLoaded.yy",},
     {"name":"LexiconLanguageReload","order":6,"path":"scripts/LexiconLanguageReload/LexiconLanguageReload.yy",},
     {"name":"LexiconLanguageSet","order":7,"path":"scripts/LexiconLanguageSet/LexiconLanguageSet.yy",},
+    {"name":"LexiconParse","order":5,"path":"scripts/LexiconParse/LexiconParse.yy",},
+    {"name":"LexiconParseExt","order":6,"path":"scripts/LexiconParseExt/LexiconParseExt.yy",},
     {"name":"LexiconPlugInAddEntry","order":3,"path":"scripts/LexiconPlugInAddEntry/LexiconPlugInAddEntry.yy",},
     {"name":"LexiconPlugInAddVariation","order":4,"path":"scripts/LexiconPlugInAddVariation/LexiconPlugInAddVariation.yy",},
     {"name":"LexiconPlugInAssert","order":9,"path":"scripts/LexiconPlugInAssert/LexiconPlugInAssert.yy",},

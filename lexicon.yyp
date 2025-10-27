@@ -188,6 +188,8 @@
     {"id":{"name":"LexiconLanguageIsLoaded","path":"scripts/LexiconLanguageIsLoaded/LexiconLanguageIsLoaded.yy",},},
     {"id":{"name":"LexiconLanguageReload","path":"scripts/LexiconLanguageReload/LexiconLanguageReload.yy",},},
     {"id":{"name":"LexiconLanguageSet","path":"scripts/LexiconLanguageSet/LexiconLanguageSet.yy",},},
+    {"id":{"name":"LexiconParse","path":"scripts/LexiconParse/LexiconParse.yy",},},
+    {"id":{"name":"LexiconParseExt","path":"scripts/LexiconParseExt/LexiconParseExt.yy",},},
     {"id":{"name":"LexiconPlugInAddEntry","path":"scripts/LexiconPlugInAddEntry/LexiconPlugInAddEntry.yy",},},
     {"id":{"name":"LexiconPlugInAddVariation","path":"scripts/LexiconPlugInAddVariation/LexiconPlugInAddVariation.yy",},},
     {"id":{"name":"LexiconPlugInAssert","path":"scripts/LexiconPlugInAssert/LexiconPlugInAssert.yy",},},

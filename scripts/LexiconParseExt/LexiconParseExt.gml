@@ -4,7 +4,7 @@
 /// @param {Real} offset
 /// @param {Real} length
 /// @return {Struct.__LexiconTextElementClass}
-function LexiconExt(_key, _args, _offset = 0, _len = infinity) {
+function LexiconParseExt(_key, _args, _offset = 0, _len = infinity) {
 	static _argsArray = [];
 	try {
 		_len = clamp(_len, 0, array_length(_args)+1);
@@ -13,7 +13,7 @@ function LexiconExt(_key, _args, _offset = 0, _len = infinity) {
 		_argsArray[0] = _key;
 	
 
-		return script_execute_ext(Lexicon, _argsArray, _offset, _len);
+		return script_execute_ext(LexiconParse, _argsArray, _offset, _len);
 	} finally {
 		array_resize(_argsArray, 0);
 	}

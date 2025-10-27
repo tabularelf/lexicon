@@ -1,6 +1,6 @@
 // feather ignore all
 /// @ignore
-function __LexiconEntryClass(_entry, _language = __LexiconLanguageDummy()) constructor {
+function __LexiconEntryClass(_entry, _language = __LexiconLanguageDummy(), _skipCallbacks = false) constructor {
 	static _plugInCallbacks = __LexiconSystem().__plugInCallbacks;
 	static _ctx = {
 		entry: undefined,
@@ -11,8 +11,11 @@ function __LexiconEntryClass(_entry, _language = __LexiconLanguageDummy()) const
 		text = _elm.callback(text, entry);
 	});
 	
+	
 	_ctx.entry = _entry;
-	array_foreach(_plugInCallbacks[LexiconCallbackType.ENTRY_CREATED], _callback);
+	if (!_skipCallbacks) {
+		array_foreach(_plugInCallbacks[LexiconCallbackType.ENTRY_CREATED], _callback);	
+	}
 
 	__entry = _ctx.entry;
 	__text = (is_string(_ctx.text) || is_undefined(_ctx.text)) ? _ctx.text : string(_ctx.text);

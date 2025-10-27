@@ -3,10 +3,14 @@
 
 /// @param {String} entry
 /// @return {Struct.__LexiconTextElementClass}
-function __LexiconGetEntry(_entry) {
+function __LexiconGetEntry(_key) {
 	static _global = __LexiconSystem();
 	static _entries = _global.__entries;
-	_entries[$ _entry] ??= new __LexiconEntryClass(_entry);
+	if (_key == "") {
+		__LexiconError("Invalid key. Key cannot be null or empty. Got \"\"!");
+		return undefined;
+	}
+	_entries[$ _key] ??= new __LexiconEntryClass(_key);
 
 	//if (__LEXICON_ADD_TEXT_AS_ENTRIES) {
 	//	if (_global.__languageLoaded) && (_global.__mainLanguage.language == __LEXICON_DEFAULT_LANGUAGE) {
@@ -24,5 +28,5 @@ function __LexiconGetEntry(_entry) {
 	//	}
 	//}
 
-	return _entries[$ _entry];
+	return _entries[$ _key];
 }

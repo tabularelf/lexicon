@@ -38,26 +38,6 @@ LexiconPlugInSetDynamic("collapse", function() {
 	return _str;
 }, true);
 
-LexiconPlugInSetDynamic("random", function(_str) {
-	var _length = string_length(_str);
-	repeat(_length) {
-		var _random1 = irandom(_length)+1;
-		var _random2 = irandom(_length)+1;
-		if (_random2 == _random1) {
-			while(_random2 == _random1) {
-				_random2 = irandom(_length)+1;	
-			}
-		}
-		_str = string_insert(string_char_at(_str, _random1), _str, _random2);
-		if (_random2 == _length) {
-			_str = string_delete(_str, _random2-1, 1);
-		} else {
-			_str = string_delete(_str, _random2+1, 1);	
-		}
-	}
-	return _str;
-});
-
 LexiconPlugInSetDynamic("superExpensiveLoop", function() {
 	var _i = 0;
 	while(_i < 10_000_000) {

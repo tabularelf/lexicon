@@ -2,7 +2,7 @@
 /// @param {String} key
 /// @param {Any} ...
 /// @return {Struct.__LexiconTextElementClass}
-function Lexicon(_key) {
+function LexiconParse(_key) {
 	static _argArray = [];
 	
 	if (argument_count > 1) {
@@ -14,11 +14,11 @@ function Lexicon(_key) {
 				++_i;
 			}
 			
-			return __LexiconInner(__LexiconGetEntry(_key), _key, _argArray);
+			return __LexiconInner(undefined, _key, _argArray);
 		} finally {
 			array_resize(_argArray, 0);	
 		}
 	}
 	
-	return __LexiconInner(__LexiconGetEntry(_key), _key);
+	return __LexiconInner(undefined, _key);
 }

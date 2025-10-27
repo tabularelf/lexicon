@@ -42,3 +42,5 @@ langIndex = 0;
 
 text = Lexicon("start.select_name");
 datetime = Lexicon("datetime");
+
+show_debug_message(LexiconParse("Hello {GLOBAL.foo.bar.rawr.uwu}!"));
