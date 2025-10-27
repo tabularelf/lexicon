@@ -31,7 +31,7 @@ function __LexiconParserCsv(_buff, _file, _langEntry) {
 		for(var _i = 3; _i < _width; ++_i) {
 			var _length = array_length(_grid[_i])-1;
 			if (_j > _length) continue;
-			if ((_grid[_i][0] == __LEXICON_CSV_ROW_SEPERATOR) || (string_length(_grid[_i][0]) == 0)) continue;
+			if (string_starts_with(_grid[_i][0], __LEXICON_CSV_ROW_SEPERATOR)) || (string_length(_grid[_i][0]) == 0)) continue;
 			var _text = _grid[_i][_j];
 			if (_text == "") continue;
 			var _key = _grid[_i][0];
