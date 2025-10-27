@@ -74,7 +74,7 @@ CSV:
 | Locale | Anything under here won't be declared. | en-US, en-AU | fr-fR |
 | Fallback | | en | fr |
 | dialogue.NPCBob.Greeting |  | Hello there {player}! | TextB |
-| ------------------ | This cell is forcefully ignored as of [`__LEXICON_ROW_SEPERATOR`](configuration.md) | |
+| ------------------ | This cell is forcefully ignored as of [`__LEXICON_CSV_ROW_SEPERATOR`](csv-config.md | |
 | dialogue.NPCBob.Goodbye | | Goodbye {player}! | TextD |
 
 Lexicon will assign all locales in an array to the same Language Name. 
