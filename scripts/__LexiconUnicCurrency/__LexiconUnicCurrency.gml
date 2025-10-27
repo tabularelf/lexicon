@@ -3,14 +3,17 @@
 function __LexiconUnicCurrency(_num, _places = "2", _symbol = "$") {
 	static _inst = __LexiconUnicSystem();
 	var _locale = (_inst.autoLocale ? _inst.locale : UnicGetLocale());
-
+	var _numReal;
+	var _placesReal;
+	
 	try {
-		_num = is_real(_num) ? _num: real(_num);
-		_places = real(_places);
+		_numReal = is_real(_num) ? _num: real(_num);
+		_placesReal = real(_places);
 	} catch(_) {
-		_num = NaN;
-		_places = 2;
+		_numReal = NaN;
+		_placesReal = 2;
 	}
+	
 
-	return UnicCurrency(_symbol, _num, _places, _locale);
+	return UnicCurrency(_symbol, _numReal, _placesReal, _locale);
 }
