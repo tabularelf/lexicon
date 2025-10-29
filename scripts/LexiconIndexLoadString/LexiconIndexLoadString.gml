@@ -1,4 +1,7 @@
 // feather ignore all
+/// @param {String} string
+/// @param {String} extension
+/// @param {String | Struct.__LexiconLanguageClass} language_or_locale
 function LexiconIndexLoadString(_str, _ext, _lang = LexiconLanguageGetCurrent()) {
 	var _buff;
 	try {

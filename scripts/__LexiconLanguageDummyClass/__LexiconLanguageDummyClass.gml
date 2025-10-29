@@ -30,4 +30,10 @@ function __LexiconLanguageDummyClass(_language, _locale) constructor {
 	static SetRemapAsset = __NULLFUNC__;
 	static GetRemapAsset = __NULLFUNC__;
 	static HasFallback = __NULLFUNC__;
+	static GetLanguage = function() {
+		return __language;
+	};
+	static GetLocale = function() {
+		return __locale;
+	};
 }

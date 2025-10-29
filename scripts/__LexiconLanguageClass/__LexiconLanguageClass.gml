@@ -10,18 +10,22 @@ function __LexiconLanguageClass(_language, _locale) constructor {
 	__fonts = {};
 	__loaded = false;
 
+	/// @return {String}
 	static GetLanguage = function() {
 		return __language;
 	}
 	
+	/// @return {String}
 	static GetLocale = function() {
 		return __locale;
 	}
 
+	/// @return {Bool}
 	static IsLoaded = function() {
 		return __loaded;
 	}
 
+	/// @param {String} file
 	static AddFile = function() {
 		for(var _i = 0; _i < argument_count; ++_i) {
 			var _filepath = argument[_i];
@@ -47,10 +51,14 @@ function __LexiconLanguageClass(_language, _locale) constructor {
 		return self;
 	}
 
+	/// @param {array} files
+	/// @self
 	static AddFileExt = function(_args) {
-		return method_call(AddFile, _args);
+		method_call(AddFile, _args);
+		return self;
 	}
 
+	/// @param {String} filepath
 	static RemoveFile = function(_filepath) {
 		for(var _i = array_length(__files)-1; _i >= 0; --_i) {
 			if (__files[_i].filepath == _filepath) {
@@ -68,22 +76,27 @@ function __LexiconLanguageClass(_language, _locale) constructor {
 		array_resize(__fallbacks, 0);
 	};
 
+	/// @return {Array<Struct.__LexiconFileClass>}
 	static GetFiles = function() {
 		return __files;
 	}
 
+	/// @return {Real}
 	static FilesCount = function() {
 		return array_length(__files);
 	} 
 
+	/// @return {Real}
 	static FallbacksCount = function() {
 		return array_length(__fallbacks);
 	}
 
+	/// @return {Array<String>}
 	static GetFallbacks = function() {
 		return __fallbacks;
 	}
 
+	/// @param {String} fallback
 	static AddFallback = function() {
 		var _i = 0;
 		repeat(argument_count) {
@@ -96,6 +109,7 @@ function __LexiconLanguageClass(_language, _locale) constructor {
 		return self;
 	}
 
+	/// @param {Array<String>} fallbacks
 	static AddFallbackExt = function(_args) {
 		var _i = 0;
 		repeat(array_length(_args)) {
@@ -107,17 +121,22 @@ function __LexiconLanguageClass(_language, _locale) constructor {
 		return self;
 	}
 
+	/// @param {String} category
+	/// @param {Asset.GMFont} font
 	static SetFont = function(_fontDir, _font) {
 		__fonts[$ _fontDir] = _font;
 		return self;
 	}
 
+	/// @param {String} category
+	/// @return {Asset.GMFont | undefined} 
 	static GetFont = function(_fontDir) {
 		return __fonts[$ _fontDir];
 	}
 
 	/// @param {Any} asset_src
 	/// @param {Any} asset_dest
+	/// @param {Any} ...
 	static AddRemapAsset = function(_assetA, _assetB) {
 		var _assetAName = is_string(_assetA) ? _assetA : __LexiconGetAssetName(_assetA);
 		
@@ -139,6 +158,7 @@ function __LexiconLanguageClass(_language, _locale) constructor {
 
 	/// @param {Any} asset_src
 	/// @param {Any} asset_dest
+	/// @param {Any} ...
 	static SetRemapAsset = function(_assetA, _assetB) {
 		var _assetAName = is_string(_assetA) ? _assetA : __LexiconGetAssetName(_assetA);
 		_assetA = is_string(_assetA) ? (handle_parse(_assetA) ?? asset_get_index(_assetA)) : _assetA;
@@ -159,15 +179,20 @@ function __LexiconLanguageClass(_language, _locale) constructor {
 		return self;
 	}
 
+	/// @param {String} asset
+	/// @return {Any}
 	static GetRemapAsset = function(_asset) {
 		var _assetName = is_string(_asset) ? _asset : __LexiconGetAssetName(_asset);
 		return __remapAsset[$ _assetName] ?? (is_string(_asset) ? (handle_parse(_asset) ?? asset_get_index(_asset)) : _asset); 
 	}
 
+	/// @param {String} language_or_locale
+	/// @return {Bool}
 	static HasFallback = function(_lang) {
 		return array_get_index(__fallbacks, _lang) != -1;
 	}
 
+	/// @return {String}
 	static toString = function() {
 		return GetLanguage() + "-" + GetLocale();
 	}

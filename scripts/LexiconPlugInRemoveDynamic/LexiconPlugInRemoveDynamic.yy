@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"LexiconPlugInAssert",
+  "%Name":"LexiconPlugInRemoveDynamic",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"LexiconPlugInAssert",
+  "name":"LexiconPlugInRemoveDynamic",
   "parent":{
     "name":"Plug-In",
     "path":"folders/Lexicon/Plug-In.yy",

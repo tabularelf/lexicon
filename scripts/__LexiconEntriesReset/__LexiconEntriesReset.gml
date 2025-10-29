@@ -11,6 +11,7 @@ function __LexiconEntriesReset(_oldLang){
 		}
 		_value.__text = undefined;
 		_value.__language = _dummy;
+		_value.__isStatic = false;
 	});
 
 	var _asyncListLen = array_length(_asyncList);

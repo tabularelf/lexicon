@@ -6,7 +6,7 @@
 function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor {
 	static _global = __LexiconSystem();
 	static _globalDynamic = _global.__globalDynamic;
-	static _entryDummy = new __LexiconEntryClass("$$__LEXICON_ENTRY_DUMMY__$$", undefined, true);
+	static _entryDummy = new __LexiconEntryClass("$$__LEXICON_ENTRY_DUMMY__$$", __LexiconLanguageDummy());
 	__entry = _entry ?? _entryDummy;
 	__entryCache = "";
 	__entryDynamic = undefined;
@@ -28,7 +28,6 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 	__dynamicsToCall = 0;
 	__initialised = false;
 	__bypassFrameCooldown = false;
-	__dynamicUpdateTimer = 1;
 
 	__Regenerate(_entry, _key, _args);
 
@@ -245,6 +244,7 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 		return Get();
 	};
 
+	#region Internals
 	static __Get = Get;
 
 	static __Regenerate = function(_entry = __entry, _key = __key, _args = __argsOriginal) {
@@ -564,4 +564,6 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 		__language = __entry.__language;
 		__Regenerate();
 	};
+
+	#endregion
 }

@@ -1,4 +1,7 @@
 // feather ignore all
+/// @param {String | Struct.__LexiconEntryClass} key 
+/// @param {String | Undefined} text
+/// @param {Struct.__LexiconLanguageClass} languageInstance
 function LexiconPlugInSetEntry(_entry, _text, _language) {
 	static _plugInCallbacks = __LexiconSystem().__plugInCallbacks;
 	static _ctx = {
@@ -14,10 +17,7 @@ function LexiconPlugInSetEntry(_entry, _text, _language) {
 		text = _elm.callback(text, entry);
 	});
 
-	if (is_string(_entry)) {
-		_entry = __LexiconGetEntry(_entry);
-	}
-
+	_entry = LexiconIsEntry(_entry) ? _entry : __LexiconGetEntry(_entry);
 
 	var _textFinal = is_string(_text) || is_undefined(_text) ? _text : string(_text);
 	_ctx.text = _textFinal;

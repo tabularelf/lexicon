@@ -1,3 +1,5 @@
+// feather ignore all
+/// @ignore
 function __LexiconParserCsv(_buff, _file, _langEntry) {
 	var _grid = __LexiconArray2DFromCsv(buffer_read(_buff, buffer_text), __LEXICON_CSV_CELL_DELIMITER, __LEXICON_CSV_STRING_DELIMITER);
 	var _width = array_length(_grid);

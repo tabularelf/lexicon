@@ -353,7 +353,14 @@ function __LexiconTextParser(_key, _buffStr, _args) constructor {
 						}
                      	
 						if (LexiconPlugInExistsEntry(_entry)) {
-							array_push(_stackKeys, $" '{__key}' from locale '{LexiconPlugInGetEntry(__key).GetLanguage().GetLocale()}' ");
+							var _keyEntry = LexiconPlugInGetEntry(__key);
+							if (is_undefined(_keyEntry)) {
+								var _lang = _keyEntry.GetLanguage().GetLocale();
+							} else {
+								var _lang = __LexiconLanguageDummy().GetLocale();								
+							}
+
+							array_push(_stackKeys, $" '{__key}' from locale '{_lang}' ");
 							var _textElement = is_array(__args) ? LexiconExt(_entry, __args) : Lexicon(_entry);
 							array_pop(_stackKeys);
 							__AddText("{" + _oldEntry + _lastChar);
