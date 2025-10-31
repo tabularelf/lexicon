@@ -1,4 +1,8 @@
 // feather ignore all
+/// @param {String} fontDirectory
+/// @param {Function | Undefined} searchCallback
+/// @param {Bool} searchAllFonts
+/// @param {Struct.__LexiconLanguageClass} language
 /// @return {Asset.GMFont}
 function LexiconFontGet(_fontDir, _searchCallback = undefined, _searchAllFontsIfFailed = false, _lang = LexiconLanguageGetCurrent()) {
 	static _global = __LexiconSystem();

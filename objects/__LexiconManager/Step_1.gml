@@ -16,11 +16,13 @@ if (array_length(__LexiconFileAsyncList()) == 0) {
 		}
 
 		try {
-			_file.entry.parser(_file.entry.buff, _file.entry.fileRef.filepath, _file.entry.language);
-			if (_file.entry.fileRef.hash == -1) {
-				_file.entry.fileRef.hash = buffer_sha1(_file.entry.buff, 0, buffer_get_size(_file.entry.buff));
+			if (!_file.cancelled) {
+				_file.entry.parser(_file.entry.buff, _file.entry.fileRef.filepath, _file.entry.language);
+				if (_file.entry.fileRef.hash == -1) {
+					_file.entry.fileRef.hash = buffer_sha1(_file.entry.buff, 0, buffer_get_size(_file.entry.buff));
+				}
+				_file.entry.language.__loaded = true;
 			}
-			_file.entry.language.__loaded = true;
 		} catch(_ex) {
 			if (__LEXICON_ERROR_ON_LOAD_FAILURE_ON_RELEASE) && (GM_build_type == "exe") {
 				__LexiconError($"File \"{_file.entry.fileRef.filepath}\" failed to load.\n\n{_ex.longMessage}");

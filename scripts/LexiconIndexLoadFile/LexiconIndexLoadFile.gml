@@ -4,5 +4,5 @@
 /// @param {Bool} async
 /// @param {String | Struct.__LexiconLanguageClass} language_or_locale
 function LexiconIndexLoadFile(_filepath, _async = false, _lang = LexiconLanguageGetCurrent()) {
-	__LexiconLoadFile(new __LexiconFileClass(_filepath), _lang, _async);
+	__LexiconLoadFile(new __LexiconFileClass(_filepath), LexiconIsLanguage(_lang) ? _lang : LexiconLanguageGet(_lang), _async);
 }

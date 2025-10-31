@@ -1,4 +1,6 @@
 // feather ignore all
+/// @param {String} language_or_locale
+/// @param {Bool} async
 function LexiconLanguageSet(_lang, _async = false) {
 	static _global = __LexiconSystem();
 	if (!_async && !LexiconPlugInsAreLoaded()) {

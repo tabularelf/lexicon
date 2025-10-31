@@ -23,7 +23,7 @@ function __LexiconDeclareParserCsv(_buff, _file) {
 		}
 
 		if (string_length(_locale) == 0) || (_locale == "") {
-			__LexiconTrace($"CSV Parser - Cannot process language {_grid[0][_j]}.");
+			__LexiconTrace($"CSV Parser - Cannot process language {_grid[0][_j]}. Missing locale.");
 			continue;
 		}
 	

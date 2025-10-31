@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"__LexiconHotReloadTS",
+  "%Name":"__LexiconForceAddSystem",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__LexiconHotReloadTS",
+  "name":"__LexiconForceAddSystem",
   "parent":{
     "name":"(System)",
-    "path":"folders/Lexicon Plug-Ins/LexiconHotReload/(System).yy",
+    "path":"folders/Lexicon Plug-Ins/Lexicon-Force-Entry/(System).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

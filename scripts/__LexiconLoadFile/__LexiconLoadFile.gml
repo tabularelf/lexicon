@@ -70,7 +70,6 @@ function __LexiconLoadFile(_file, _lang, _async = true) {
 		id: buffer_load_async(_buff, _file.filepath, 0, -1),
 		buff: _buff,
 		parser: _parser.parser,
-		cancelled: false,
 		language: _lang,
 		fileRef: _file,
 		slot: ++_global.__asyncSlot,

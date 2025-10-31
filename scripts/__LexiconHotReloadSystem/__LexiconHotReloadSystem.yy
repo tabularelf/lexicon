@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__LexiconHotReloadSystem",
   "parent":{
-    "name":"LexiconHotReload",
-    "path":"folders/Lexicon Plug-Ins/LexiconHotReload.yy",
+    "name":"(System)",
+    "path":"folders/Lexicon Plug-Ins/LexiconHotReload/(System).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

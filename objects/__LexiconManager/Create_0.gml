@@ -1,6 +1,6 @@
 filesList = [];
 
-__LexiconManagerCleanUp = function() {
+__LexiconManagerCleanUp = function(_runPostUpdate = true) {
 	static _global = __LexiconSystem();
 	// ┏━┓┏━╸┏━┓╺┳┓   ╺┳╸╻ ╻╻┏━┓   ┏━╸╻┏━┓┏━┓╺┳╸
 	// ┣┳┛┣╸ ┣━┫ ┃┃    ┃ ┣━┫┃┗━┓   ┣╸ ┃┣┳┛┗━┓ ┃ 
@@ -13,7 +13,7 @@ __LexiconManagerCleanUp = function() {
 	time_source_stop(_global.__asyncTs);
 	__canDestroy = true;
 	_global.__languageLoaded = true;
-	__LexiconCallbackFire(LexiconCallbackType.LANGUAGE_POST_UPDATE, _global.__mainLanguage);
+	if (_runPostUpdate) __LexiconCallbackFire(LexiconCallbackType.LANGUAGE_POST_UPDATE, _global.__mainLanguage);
 	instance_destroy();
 }
 

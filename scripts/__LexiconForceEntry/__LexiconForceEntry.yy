@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__LexiconForceEntry",
   "parent":{
-    "name":"Lexicon-Force-Entry",
-    "path":"folders/Lexicon Plug-Ins/Lexicon-Force-Entry.yy",
+    "name":"(System)",
+    "path":"folders/Lexicon Plug-Ins/Lexicon-Force-Entry/(System).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

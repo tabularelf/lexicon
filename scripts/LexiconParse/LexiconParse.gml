@@ -1,6 +1,7 @@
 // feather ignore all
 /// @param {String} key
 /// @param {Any} ...
+/// @desc The same as Lexicon(), except this does not generate a new entry and treats the string as if it were loaded.
 /// @return {Struct.__LexiconTextElementClass}
 function LexiconParse(_key) {
 	static _argArray = [];

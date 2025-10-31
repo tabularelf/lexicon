@@ -1,4 +1,7 @@
 // feather ignore all
+/// @param {String} name
+/// @param {Function} callback
+/// @param {Bool} static
 function LexiconPlugInSetDynamic(_name, _callback, _static = false) {
 	static _dynamics = __LexiconSystem().__globalDynamic;
 	_dynamics[$ _name]	= {

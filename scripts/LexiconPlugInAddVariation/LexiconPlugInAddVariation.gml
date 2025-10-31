@@ -1,8 +1,9 @@
 // feather ignore all
-function LexiconPlugInAddVariation(_name, _key) {
-	static _global = __LexiconSystem();
-	var _entry = __LexiconGetEntry(_name);
+/// @param {String} keyA
+/// @param {String} keyB
+function LexiconPlugInAddVariation(_keyA, _keyB) {
+	var _entry = __LexiconGetEntry(_keyA);
 	_entry.__variations ??= [];
 
-	array_push(_entry.__variations, _key);
+	array_push(_entry.__variations, _keyB);
 }

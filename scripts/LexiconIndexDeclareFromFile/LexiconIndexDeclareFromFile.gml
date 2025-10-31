@@ -1,4 +1,5 @@
 // feather ignore all
+/// @param {String} filepath
 function LexiconIndexDeclareFromFile(_file) {
 	static _parsers = __LexiconSystem().__parsers;
 

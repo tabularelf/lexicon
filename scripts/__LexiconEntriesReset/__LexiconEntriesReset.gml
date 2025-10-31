@@ -19,6 +19,16 @@ function __LexiconEntriesReset(_oldLang){
 		_asyncList[_i].cancelled = true;
 	}
 
+	with(__LexiconManager) {
+		_asyncListLen += array_length(fileList);
+		array_foreach(fileList, function(_elm) {
+			_elm.cancelled = true;
+			buffer_delete(_elm.entry.buff);
+		});
+
+		__LexiconManagerCleanUp(false);
+	}
+
 	if (_asyncListLen > 0) {
 		__LexiconTrace($"Language was changed from {_oldLang} to {LexiconLanguageGetCurrent()} while files were loading! Preparing to cancel asynchronous jobs!");
 	}

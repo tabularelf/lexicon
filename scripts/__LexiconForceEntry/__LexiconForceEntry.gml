@@ -24,8 +24,3 @@ LexiconPlugInDefine("Lexicon.ForceAdd", "TabularElf", "1.0", "4.0", function() {
 		});
 	}
 });
-
-function __LexiconForceAddSystem() {
-	static _entries = [];
-	return _entries;
-}

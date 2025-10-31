@@ -3,6 +3,7 @@
 /// @param {Array} args
 /// @param {Real} offset
 /// @param {Real} length
+/// @desc The same as LexiconExt(), except this does not generate a new entry and treats the string as if it were loaded.
 /// @return {Struct.__LexiconTextElementClass}
 function LexiconParseExt(_key, _args, _offset = 0, _len = infinity) {
 	static _argsArray = [];

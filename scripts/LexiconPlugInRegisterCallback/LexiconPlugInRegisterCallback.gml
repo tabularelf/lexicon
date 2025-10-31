@@ -1,5 +1,8 @@
 // feather ignore all
-function LexiconPlugInRegisterCallback(_type, _priority = -1, _callback) {
+/// @param {Enum.LexiconCallbackType} type The type of callback event.
+/// @param {Real | Undefined} priority The priority of the callback it should run at from others.
+/// @param {Function} callback The callback to run.
+function LexiconPlugInRegisterCallback(_type, _priority, _callback = function(){}) {
 	static _global = __LexiconSystem();
 	if (!_global.__allowRegisteringCallbacks) {
 		__LexiconError("Cannot register callbacks outside of the plug-in initalization!");
@@ -8,6 +11,11 @@ function LexiconPlugInRegisterCallback(_type, _priority = -1, _callback) {
 
 	if (_type >= LexiconCallbackType.LENGTH) {
 		__LexiconError("Cannot register callbacks type beyond the length!");
+		return;
+	}
+
+	if (_type < 0) {
+		__LexiconError("Cannot register callbacks type below 0!");
 		return;
 	}
 

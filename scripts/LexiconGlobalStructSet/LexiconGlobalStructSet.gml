@@ -1,4 +1,5 @@
 // feather ignore all
+/// @param {Struct} struct The struct to set as the global struct.
 function LexiconGlobalStructSet(_struct) {
 	static _global = __LexiconSystem();
 	if (!is_struct(_struct)) {

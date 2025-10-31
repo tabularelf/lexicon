@@ -1,5 +1,5 @@
 // feather ignore all
-/// @param {String} entry
+/// @param {String} key
 /// @return {String}
 function LexiconEntryGetText(_entry) {
 	static _entries = __LexiconSystem().__entries;
