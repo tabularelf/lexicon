@@ -65,6 +65,31 @@ The format of these files are as follows (and all of these are interchangeable):
 }
 ```
 
+#### **JSON D**
+
+```json
+[
+	{
+		"language": "English",
+		"locale": ["en-US", "en-AU"],
+		"fallback": ["en"],
+		"text": {
+			"dialogue.NPCBob.Greeting": "Hello there {player}!",
+			"dialogue.NPCBob.Goodbye": "Goodbye {player}!"
+		}
+	},
+	{
+		"language": "Japanese",
+		"locale": ["ja_JP"],
+		"fallback": ["ja"],
+		"text": {
+			"dialogue.NPCBob.Greeting": "...",
+			"dialogue.NPCBob.Goodbye": "..."
+		}
+	}
+]
+```
+
 <!-- tabs:end -->
 
 CSV:
