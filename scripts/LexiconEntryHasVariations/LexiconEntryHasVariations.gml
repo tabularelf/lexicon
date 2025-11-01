@@ -1,4 +1,5 @@
 // feather ignore all
+/// @param {String} key
 /// @return {Bool}
 function LexiconEntryHasVariations(_entry){
 	var _variations = __LexiconGetVariations(_entry);

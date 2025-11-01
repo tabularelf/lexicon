@@ -1,4 +1,5 @@
 // feather ignore all
+/// @param {String} key
 /// @return {Real}
 function LexiconEntryGetVariationsCount(_entry){
 	var _variations = __LexiconGetVariations(_entry);
