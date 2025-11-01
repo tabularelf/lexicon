@@ -18,7 +18,7 @@ Lexicon is a localization system focused around on simplifying implementation of
 * Substring Replacement/s. (Replacing `{0-9999}`, or `{name_of_variable}` via structs!)
 * Supports CSV/JSON parsing right out of the box.
 * Language/Locale fallback.
-* Synchronous or Asynchronous file loading for each individual file.
+* Synchronous or Asynchronous file loading for files.
 * Native plug-in system.
 * Self-optimizing text elements.
 * Support for various of language formating via the [Unic](https://github.com/TabularElf/Unic) library. Including datetime, time, date, number, currency, percentage, integer, and more!

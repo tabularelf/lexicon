@@ -155,6 +155,34 @@ buffer_delete(buff);
 
 <!-- tabs:end -->
 
+### `LexiconIndexLoadBufferExt(buffer, extension, [offset], [length], [language])`
+
+<!-- tabs:start -->
+
+#### **Description**
+Returns: `N/A`.
+
+| Name| Datatype| Purpose |
+| ------------- | ------------- |------------- |
+| `buffer` |`Buffer`| Bufer contents of a file. i.e. JSON. |
+| `extension` |`String`| File extension of the parser you wish to use. i.e. JSON |
+| `offset` |`real`| The offset of the buffer. Defaults to `0` |
+| `length` |`real`| The length of the buffer. Defaults to the size of the buffer |
+| `language` |`String` or instance of `__LexiconLanguageClass`| Language to assign entries to. i.e. "en". Defaults to `LexiconGetCurrentLanguage()`. |
+
+This will load the buffer as if it were a file added to a language, but only from the offset to the specified length. If there is no matching parser extension added, Lexicon will output a message into the console and do nothing.
+
+!> The buffer sent to the parser is a copy of the buffer contents.
+
+#### **Example**
+```gml
+var buff = buffer_load("english.json");
+LexiconIndexLoadBufferExt(buff, "json");
+buffer_delete(buff);
+```
+
+<!-- tabs:end -->
+
 ### `LexiconIndexUnloadAll()`
 
 <!-- tabs:start -->
@@ -171,6 +199,28 @@ Unloads all text entries.
 #### **Example**
 ```gml
 LexiconIndexUnloadAll();
+```
+
+<!-- tabs:end -->
+
+### `LexiconIndexUndeclare(language)`
+
+<!-- tabs:start -->
+
+#### **Description**
+Returns: Instance of `__LexiconLanguageClass`.
+
+| Name| Datatype| Purpose |
+| ------------- | ------------- |------------- |
+| `language_or_locale` |`String` or instance of `__LexiconLanguageClass` | Name of the language or locale to unload. |
+
+Removes the language from Lexicon, resetting all known entries under the language.
+
+#### **Example**
+```gml
+LexiconIndexUndeclare(LexiconLanguageGetCurrent());
+LexiconIndexUndeclare("English");
+LexiconIndexUndeclare("en");
 ```
 
 <!-- tabs:end -->
