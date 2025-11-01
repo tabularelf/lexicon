@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__UnicLineBreak",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__UnicLineBreak",
+  "parent":{
+    "name":"Constants",
+    "path":"folders/Unic/Constants.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

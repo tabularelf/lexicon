@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"UnicGetCharacters",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"UnicGetCharacters",
+  "parent":{
+    "name":"Getters",
+    "path":"folders/Unic/Getters.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

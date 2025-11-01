@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__UnicFormatDecimalTokiPona",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__UnicFormatDecimalTokiPona",
+  "parent":{
+    "name":"(System)",
+    "path":"folders/Unic/(System).yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

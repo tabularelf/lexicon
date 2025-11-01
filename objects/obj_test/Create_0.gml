@@ -1,35 +1,46 @@
-// Need a font supporting weird glyph (from an roman alphabet user's point of view ;) )
-font = fn_fontWithJapanese;
-draw_set_font(font);
-show_debug_overlay(true);
+randomize();
 
-lexicon_index_definitions("definitions.json");
-lexicon_index_declare_from_json("locale.json");
-lexicon_index_declare_from_csv("locale.csv");
-lexicon_index_fallback_language_set("English")
-latestTime = 0;
-lexicon_locale_set(lexicon_get_os_locale());
-struct = {playerName: "TabularElf", loveMeter: "100%", dateTime: string(date_get_year(date_current_datetime()))+"/"+string(date_get_month(date_current_datetime()))};
-array = [struct, 100, 100];
-languages_array = lexicon_languages_get_array();
-language_index = 0;
-incr = 0;
-loveMeter = 100;
+LexiconGlobalFallbackSet("en");
+LexiconIndexDeclare("English", "en");
+
+LexiconIndexDeclare("Australian English", "en_AU");
+LexiconIndexDeclareFromFile("english.json");
+LexiconIndexDeclareFromFile("locale.csv")
 
 
+LexiconIndexDeclare("Portuguese", "pt");
+LexiconIndexDeclare("Brazilian Portuguese", "pt_BR", "pt");
 
-lexicon_dynamic_define("loveMeter", function(_min = 0, _max = 100) {
-	return string((real(_min) / real(_max)) * 100) + "%";
-});
+var _locale = LexiconGetOSLocale();
+LexiconLanguageSet("en_AU");
 
-lexicon_dynamic_define("DateTime", function() {
-   return date_datetime_string(date_current_datetime());
-});
+var _globals = LexiconGlobalStructGet();
+_globals.foo = {};
+_globals.foo.bar = {};
+_globals.foo.bar.rawr = {};
+_globals.foo.bar.rawr.uwu = 42;
+_globals.bar = Lexicon("item");
 
-// Cache removal test (via GC)
-lexicon_text("{loveMeter, 100, 200}");
+state = 0;
+variation_index = 0;
+keyboard_string = "Alice";
 
-var _str = "The quick brown fox jumps over the lazy dog";
+playerData = {
+	money: 0.00005,
+};
 
-show_debug_message(json_stringify(lexicon_text_get_utf8_range(_str)));
-show_debug_message(lexicon_text_get_utf8_array(_str));
+priceData = {
+	applePrice: 2,
+};
+
+languages = [
+	"en_AU",
+	"pt_BR",
+];
+
+langIndex = 0;
+
+text = Lexicon("start.select_name");
+datetime = Lexicon("datetime");
+
+show_debug_message(LexiconParse("Hello {GLOBAL.foo.bar.rawr.uwu}!"));

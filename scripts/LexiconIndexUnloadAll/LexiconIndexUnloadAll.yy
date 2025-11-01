@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"LexiconIndexUnloadAll",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"LexiconIndexUnloadAll",
+  "parent":{
+    "name":"Index",
+    "path":"folders/Lexicon/Index.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
