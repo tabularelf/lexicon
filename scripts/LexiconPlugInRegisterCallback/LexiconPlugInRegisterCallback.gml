@@ -2,7 +2,7 @@
 /// @param {Enum.LexiconCallbackType} type The type of callback event.
 /// @param {Real | Undefined} priority The priority of the callback it should run at from others.
 /// @param {Function} callback The callback to run.
-function LexiconPlugInRegisterCallback(_type, _priority, _callback = function(){}) {
+function LexiconPlugInRegisterCallback(_type, _priority = -1, _callback = function(){}) {
 	static _global = __LexiconSystem();
 	if (!_global.__allowRegisteringCallbacks) {
 		__LexiconError("Cannot register callbacks outside of the plug-in initalization!");
