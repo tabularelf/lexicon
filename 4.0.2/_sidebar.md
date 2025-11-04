@@ -6,6 +6,7 @@
 **Concepts**
 - [Text Elements](text-elements.md)
 - [Text Element Methods](text-elements-methods.md)
+- [Callback types](callback-types.md)
 --- 
 - [General Configuration](configuration.md)
 - [CSV Configuration](csv-config.md)
@@ -23,3 +24,8 @@
 - [Unic-Specific](unic.md)
 ---
 **Plug-Ins**
+- [Force Entry](force-entry.md)
+- [Hot Reload](hot-reload.md)
+- [Group](group.md)
+- [Undo Unicode](undo-unicode.md)
+- [Replace newlines](replace-newlines.md)
