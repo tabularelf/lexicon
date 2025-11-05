@@ -6,7 +6,7 @@ Starting with Lexicon v4, it has been made possible to support hot reloading to 
 
 !> Hot reloading from the IDE requires the sandbox to be disabled!
 
-|Name|<nobr>Default Value</nobr>|Purpose|
+|Name|Default Value|Purpose|
 |---|---|---|
 |`__LEXICON_HOT_RELOAD_ENABLED`|`true`| Whether hot reloading should be enabled or not. This will attempt to hot reload files every time they have been changed. If sandbox is disabled, an error will be thrown. Unless it's exported or ran on a non-desktop platform|
 |`__LEXICON_HOT_RELOAD_ALLOW_ON_EXPORT`|`false`|Whether hot reloading should be allowed on export. This mainly applies to desktop applications.|

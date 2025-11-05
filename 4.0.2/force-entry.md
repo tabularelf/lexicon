@@ -4,6 +4,6 @@ When it comes to Lexicon, Lexicon treats all text passed to `Lexicon()` and `Lex
 
 Force Entry comes with no functions and one singular config option.
 
-|Name|<nobr>Default Value</nobr>|Purpose|
+|Name|Default Value|Purpose|
 |---|---|---|
 |`__LEXICON_FORCE_ENTRY_ENABLED`|`false`|When enabling this, upon a language being set, Lexicon will force add any text as a valid entry. Even if it doesn't make sense from a practical standpoint.|

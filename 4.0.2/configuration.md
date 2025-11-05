@@ -1,6 +1,6 @@
 # Lexicon Configuration
 
-|Name|<nobr>Default Value</nobr>|Purpose|
+|Name|Default Value|Purpose|
 |---|---|---|
 |`__LEXICON_VERBOSE`|`false`|When enabled, prints out additional information for debugging purposes.|
 |`__LEXICON_ERROR_ON_LOAD_FAILURE_ON_RELEASE`|`false`|When enabled, any loading failures will throw an exception.|
