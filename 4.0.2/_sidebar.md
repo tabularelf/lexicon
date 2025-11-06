@@ -8,6 +8,7 @@
 - [Text Element Methods](text-elements-methods.md)
 - [Callback types](callback-types.md)
 --- 
+**Configuration**
 - [General Configuration](configuration.md)
 - [CSV Configuration](csv-config.md)
 ---

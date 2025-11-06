@@ -131,6 +131,28 @@ key = text.GetKey();
 
 <!-- tabs:end -->
 
+### `.SetKey()`
+
+<!-- tabs:start -->
+
+#### **Description**
+Returns: `self`.
+
+| Name| Datatype| Purpose |
+| ------------- | ------------- |------------- |
+| `key` |`String`|The key to set. |
+
+Sets the key that Lexicon should refer to.
+
+!> This is a regenerator function.
+
+#### **Example**
+```gml
+text.SetKey("foo.bar");
+```
+
+<!-- tabs:end -->
+
 ### `.Update(...)`
 
 <!-- tabs:start -->
@@ -143,11 +165,35 @@ Returns: `Self`.
 | `...` |`Any`| Values you wish to pass to the Lexicon text element.|
 Returns the text entry key that was passed to the Lexicon text element.
 
+!> This is a regenerator function, if the values have changed.
+
 #### **Example**
 ```gml
 text.Update("Hello, world!", 42, {
     foo: "bar"
 });
+```
+
+<!-- tabs:end -->
+
+### `.Refresh()`
+
+<!-- tabs:start -->
+
+#### **Description**
+Returns: `self`.
+
+| Name| Datatype| Purpose |
+| ------------- | ------------- |------------- |
+| `N/A` |||
+
+Refreshes the text element.
+
+!> This is a regenerator function.
+
+#### **Example**
+```gml
+text.Refresh();
 ```
 
 <!-- tabs:end -->
