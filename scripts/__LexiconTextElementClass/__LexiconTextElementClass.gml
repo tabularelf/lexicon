@@ -70,10 +70,15 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 		return self;
 	};
 
+	/// @return {Bool}
+	static HasDummyEntry = function() {
+		return __entry == _entryDummy;
+	};
+
 	/// @param {String} key
 	static SetKey = function(_value) {
 		_value = is_string(_value) ? _value : string(_value);
-		__entry = LexiconPlugInGetEntry(_value);
+		__entry = __LexiconGetEntry(_value);
 		__LanguageUpdate();
 		return self;
 	}
