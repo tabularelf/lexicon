@@ -169,6 +169,7 @@
     {"id":{"name":"LexiconEntryGetVariations","path":"scripts/LexiconEntryGetVariations/LexiconEntryGetVariations.yy",},},
     {"id":{"name":"LexiconEntryGetVariationsCount","path":"scripts/LexiconEntryGetVariationsCount/LexiconEntryGetVariationsCount.yy",},},
     {"id":{"name":"LexiconEntryHasVariations","path":"scripts/LexiconEntryHasVariations/LexiconEntryHasVariations.yy",},},
+    {"id":{"name":"LexiconEntryIsLoaded","path":"scripts/LexiconEntryIsLoaded/LexiconEntryIsLoaded.yy",},},
     {"id":{"name":"LexiconExt","path":"scripts/LexiconExt/LexiconExt.yy",},},
     {"id":{"name":"LexiconFontCacheFlush","path":"scripts/LexiconFontCacheFlush/LexiconFontCacheFlush.yy",},},
     {"id":{"name":"LexiconFontGet","path":"scripts/LexiconFontGet/LexiconFontGet.yy",},},

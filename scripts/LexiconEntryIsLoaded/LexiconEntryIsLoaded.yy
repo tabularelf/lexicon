@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"LexiconEntryIsLoaded",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"LexiconEntryIsLoaded",
+  "parent":{
+    "name":"Entry",
+    "path":"folders/Lexicon/Entry.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
