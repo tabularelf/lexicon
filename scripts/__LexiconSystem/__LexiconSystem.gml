@@ -76,18 +76,6 @@ function __LexiconSystem() {
 
 	time_source_start(_inst.__frameTs);
 
-	//if (__LEXICON_ADD_TEXT_AS_ENTRIES) && (__LEXICON_ON_DESKTOP) {
-	//	if (GM_build_type == "run") && (GM_is_sandboxed) {
-	//		show_error("Turn off sandbox pls thank", true);
-	//		return;
-	//	}
-	//	_inst.__fileModifyPath = filename_path(GM_project_filename) + $"datafiles/{__LEXICON_FILE_TO_ADD_ENTRIES}";
-    //
-	//	var _buff = buffer_load(_inst.__fileModifyPath);
-	//	_inst.__fileEntries = json_parse(buffer_read(_buff, buffer_text), function(_key, _value) {return _value});
-	//	buffer_delete(_buff);
-	//}
-
 	call_later(1, time_source_units_frames, __LexiconPlugInsLoad);
 	_inst.__fallback = __LexiconLanguageDummy();
 	return _inst;
