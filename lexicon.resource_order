@@ -123,6 +123,7 @@
     {"name":"LexiconEntryGetVariations","order":1,"path":"scripts/LexiconEntryGetVariations/LexiconEntryGetVariations.yy",},
     {"name":"LexiconEntryGetVariationsCount","order":2,"path":"scripts/LexiconEntryGetVariationsCount/LexiconEntryGetVariationsCount.yy",},
     {"name":"LexiconEntryHasVariations","order":3,"path":"scripts/LexiconEntryHasVariations/LexiconEntryHasVariations.yy",},
+    {"name":"LexiconEntryIsLoaded","order":4,"path":"scripts/LexiconEntryIsLoaded/LexiconEntryIsLoaded.yy",},
     {"name":"LexiconExt","order":1,"path":"scripts/LexiconExt/LexiconExt.yy",},
     {"name":"LexiconFontGet","order":1,"path":"scripts/LexiconFontGet/LexiconFontGet.yy",},
     {"name":"LexiconFontSet","order":2,"path":"scripts/LexiconFontSet/LexiconFontSet.yy",},

@@ -404,6 +404,7 @@ function __LexiconTextParser(_key, _buffStr, _args) constructor {
 				}
 			}
 			__AddText(_result);
+			_strArrayLen++;
 			if (_strArrayLen > 1) && (!__lastEntryWasDynamic) && (!is_array(_passedDynamicsArgs)) {
 				__finalText[@ _strArrayLen-2] += __finalText[@ _strArrayLen-1];
 				array_resize(__finalText, _strArrayLen-1);

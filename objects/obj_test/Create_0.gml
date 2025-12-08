@@ -44,3 +44,5 @@ text = Lexicon("start.select_name");
 datetime = Lexicon("datetime");
 
 show_debug_message(LexiconParse("Hello {GLOBAL.foo.bar.rawr.uwu}!"));
+
+show_debug_message(Lexicon("copyright", $"2020 - {current_year}", 124));

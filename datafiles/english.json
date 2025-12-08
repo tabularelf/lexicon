@@ -21,6 +21,7 @@
 	"bar": "{TEXT.item}",
 	"item": "{GLOBAL.foo.bar.rawr.uwu}",
 	"datetime": "{DATETIME}",
+	"copyright": "GAME (C) TABULARELF {0}\nTML WOLOLO - MODIFIED BY CHEETOS - {1}",
 	"npc": {
 	  "bob": {
 		"greeting": "Hello {playerName}, welcome to my shop! Would you like to buy an apple for {applePrice, currency}?\n\nSilver coins: {money, currency}",	
