@@ -1,4 +1,4 @@
-# Lexicon v4.0.2
+# Lexicon v4.0.3
 
 Lexicon is a localization system focused around on simplifying implementation of adding translation to your GameMaker project, whether it's on the developers end or the players end! As well as giving the flexibility in on the fly string replacement, and fallbacks to other languages/locales.
 It supports the following:
