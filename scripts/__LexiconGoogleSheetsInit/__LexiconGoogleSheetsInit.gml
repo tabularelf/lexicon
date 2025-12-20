@@ -1,13 +1,18 @@
 #macro __LEXICON_GOOGLE_SHEETS_VERSION "1.0.0"
 // feather ignore all
 LexiconPlugInDefine("Lexicon.GoogleSheets", "TabularElf", __LEXICON_GOOGLE_SHEETS_VERSION, "4.0", function() {
+	LexiconPlugInAssertDependencies("Lexicon.HotReload", "1.1");
 	if (GM_build_type == "run") || (__LEXICON_GOOGLE_SHEETS_ALLOW_IN_PRODUCTION) {
 		__LexiconGoogleSheetsPrepare();
 		
 		if (__LEXICON_ON_DESKTOP) && (GM_is_sandboxed) {
 			__LexiconError($"Lexicon.GoogleSheets - Sandbox is enabled! Please disable it as per your desktop target!");
 			return;
+		} else if (!__LEXICON_ON_DESKTOP) {
+			__LexiconGoogleSheetsTrace("Not on Desktop platform.");
 		}
+
+
 		__LexiconGoogleSheetsPrepare();
 
 		if (__LEXICON_GOOGLE_SHEETS_PERIODIC_UPDATE) {
