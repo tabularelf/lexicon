@@ -59,6 +59,6 @@ if (keyboard_check_released(vk_space)) {
 ## Config
 |Name|Default Value|Purpose|
 |---|---|---|
-|`__LEXICON_GOOGLE_SHEETS_PERIODIC_UPDATE `|`false`| Whether periodic file updates should occur every so often. Note: You may manually call `LexiconGSUpdate()` if you prefer instead.|
+|`__LEXICON_GOOGLE_SHEETS_PERIODIC_UPDATE `|`true`| Whether periodic file updates should occur every so often. Note: You may manually call `LexiconGSUpdate()` if you prefer instead.|
 |`__LEXICON_GOOGLE_SHEETS_PERIODIC_UPDATE_TIME_SECONDS `|`10`|If periodic file updates are enabled, how long between updates.|
 |`__LEXICON_GOOGLE_SHEETS_ALLOW_IN_PRODUCTION`|`false`|Whether Lexicon Google Sheets should behave as if it were being tested from the IDE. Note: `LexiconGSDeclare(filename, sheetId, sheetPage)` will call `LexiconIndexDeclareFromFile(filename)` if disabled in production builds.|
