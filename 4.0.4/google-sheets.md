@@ -1,0 +1,62 @@
+# Google Sheets
+
+Want to host your localisation as a Google Sheet for better collaboration, while syncing it up with your game files? Here is the plug-in for you!
+
+!> Google Sheets from the IDE requires the sandbox to be disabled!
+
+
+## Functions
+### `LexiconGSDeclare(filename, sheetId, sheetPage)`
+
+<!-- tabs:start -->
+
+#### **Description**
+Returns: `N/A`.
+
+| Name| Datatype| Purpose |
+| ------------- | ------------- |------------- |
+|`filename`|`String`|The name of the file to save & load as (in IDE), or to load only (in production).|
+|`sheetId`|`String`|The sheet id to load from publicly.|
+|`sheetPage`|`String`|The sheet page id to load from publicly.|
+
+If this function is called while being ran from IDE, this will download to your projects datafiles & declare the file contents directly. And additionally, if `__LEXICON_GOOGLE_SHEETS_PERIODIC_UPDATE` is enabled, it will redownload the files to update them.
+
+If this function is called while in production, it will just declare the file contents directly.
+
+#### **Example**
+```gml
+LexiconGSDeclare("translations.csv", "1asf3f4fqaf34f34", "6009008");
+```
+
+<!-- tabs:end -->
+
+## Functions
+### `LexiconGSUpdate()`
+
+<!-- tabs:start -->
+
+#### **Description**
+Returns: `N/A`.
+
+| Name| Datatype| Purpose |
+| ------------- | ------------- |------------- |
+|`N/A`|||
+
+Fetches all of the declared Google Sheet documents online and downloads them.
+
+#### **Example**
+```gml
+if (keyboard_check_released(vk_space)) {
+    LexiconGSUpdate();
+}
+```
+
+<!-- tabs:end -->
+
+
+## Config
+|Name|Default Value|Purpose|
+|---|---|---|
+|`__LEXICON_GOOGLE_SHEETS_PERIODIC_UPDATE `|`false`| Whether periodic file updates should occur every so often. Note: You may manually call `LexiconGSUpdate()` if you prefer instead.|
+|`__LEXICON_GOOGLE_SHEETS_PERIODIC_UPDATE_TIME_SECONDS `|`10`|If periodic file updates are enabled, how long between updates.|
+|`__LEXICON_GOOGLE_SHEETS_ALLOW_IN_PRODUCTION`|`false`|Whether Lexicon Google Sheets should behave as if it were being tested from the IDE. Note: `LexiconGSDeclare(filename, sheetId, sheetPage)` will call `LexiconIndexDeclareFromFile(filename)` if disabled in production builds.|
