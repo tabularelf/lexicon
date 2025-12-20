@@ -2,7 +2,14 @@
 
 Want to host your localisation as a Google Sheet for better collaboration, while syncing it up with your game files? Here is the plug-in for you!
 
-!> Google Sheets from the IDE requires the sandbox to be disabled!
+!> Google Sheets from the IDE requires the sandbox to be disabled, and requires hot reloading!
+
+## Setup
+
+0. Ensure that sandbox is disabled, if testing via desktop!
+1. Ensure that your google sheet is viewable from the public.
+2. Look at your URL `https://docs.google.com/spreadsheets/d/1asf3f4fqaf34f34/edit?gid=6009008#gid=6009008` and look for the sheet id (`1asf3f4fqaf34f34`) and sheet page id (`6009008`).
+3. Call `LexiconGSDeclare(filename, sheetId, sheetPage);` where you normally load in your files.
 
 
 ## Functions
