@@ -2,6 +2,7 @@
 
 Want to host your localisation as a Google Sheet for better collaboration, while syncing it up with your game files? Here is the plug-in for you!
 Lexicon Google Sheets will out of the box periodically update localisation files by default, provided that `LexiconGSDeclare(...)` has been called at least once to said provided files. You can configure both how often and whether they should periodically update or not.
+This plug-in is mainly designed in mind to sync changes between online to your project folder directly, with no manual work on your end whatsoever!
 
 !> Google Sheets from the IDE requires the sandbox to be disabled, and requires hot reloading!
 
