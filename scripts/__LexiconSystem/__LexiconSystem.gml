@@ -1,4 +1,4 @@
-#macro __LEXICON_VERSION "4.0.3"
+#macro __LEXICON_VERSION "4.0.4"
 
 enum __LEXICON_TYPE {
 	CONSTANT,
