@@ -47,6 +47,9 @@ function __LexiconLanguageClass(_language, _locale) constructor {
 			if (_foundFile) continue;
 
 			array_push(__files, new __LexiconFileClass(_filepath));
+			if (IsLoaded()) {
+				LexiconIndexLoadFile(_filepath, false, self);
+			}
 		}
 		return self;
 	}

@@ -42,6 +42,6 @@ function __LexiconHotReloadTS() {
 
 	if (_filesUpdated) {
 		LexiconLanguageReload(false);
-		__LexiconHotReload();
+		LexiconHotReload();
 	}
 }

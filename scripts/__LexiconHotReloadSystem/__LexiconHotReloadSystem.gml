@@ -1,5 +1,5 @@
 // feather ignore all
-LexiconPlugInDefine("Lexicon.HotReload", "TabularElf", "1.0", "4.0", function() {
+LexiconPlugInDefine("Lexicon.HotReload", "TabularElf", "1.1", "4.0", function() {
 	if ((__LEXICON_HOT_RELOAD_ENABLED) && (__LEXICON_ON_DESKTOP) && (GM_build_type == "run")) || 
 		(__LEXICON_HOT_RELOAD_ENABLED && __LEXICON_HOT_RELOAD_ALLOW_ON_EXPORT && __LEXICON_ON_DESKTOP && (GM_build_type == "exe")) {
 		LexiconPlugInRegisterCallback(LexiconCallbackType.TEXT_ELEMENT_CREATED, undefined, function(_element) {

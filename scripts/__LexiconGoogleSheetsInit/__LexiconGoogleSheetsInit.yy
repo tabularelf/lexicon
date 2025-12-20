@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"__LexiconHotReload",
+  "%Name":"__LexiconGoogleSheetsInit",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__LexiconHotReload",
+  "name":"__LexiconGoogleSheetsInit",
   "parent":{
     "name":"(System)",
-    "path":"folders/Lexicon Plug-Ins/LexiconHotReload/(System).yy",
+    "path":"folders/Lexicon Plug-Ins/LexiconGoogleSheets/(System).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

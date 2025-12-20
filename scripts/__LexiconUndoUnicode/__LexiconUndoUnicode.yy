@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__LexiconUndoUnicode",
   "parent":{
-    "name":"UndoUnicode",
-    "path":"folders/Lexicon Plug-Ins/UndoUnicode.yy",
+    "name":"LexiconUndoUnicode",
+    "path":"folders/Lexicon Plug-Ins/LexiconUndoUnicode.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
