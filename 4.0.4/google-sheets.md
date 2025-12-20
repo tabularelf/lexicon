@@ -23,6 +23,8 @@ If this function is called while being ran from IDE, this will download to your 
 
 If this function is called while in production, it will just declare the file contents directly.
 
+?> If this cannot be downloaded to the project files, it will instead be downloaded to a temporary location. On other platforms this may be `temp_directory + "./lexicon"`. Or in some rarer cases, just `".lexicon"`.
+
 #### **Example**
 ```gml
 LexiconGSDeclare("translations.csv", "1asf3f4fqaf34f34", "6009008");

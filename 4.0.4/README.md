@@ -1,7 +1,7 @@
 ﻿<center>
 <img src="./assets/logo.svg" style="width:250px;height:250px;">
 
-# Lexicon v4.0.2
+# Lexicon v4.0.4
 
 <p>Localization library for GameMaker<br>
 

@@ -27,7 +27,57 @@ LexiconPlugInAddEntry("foo.bar", "Goodbye, world!", lang); // No Change
 <!-- tabs:end -->
 
 ### `...AddVariation`
-### `...AssertDependencies`
+
+<!-- tabs:start -->
+
+#### **Description**
+Returns: `N/A`.
+
+| Name| Datatype| Purpose |
+| ------------- | ------------- |------------- |
+| `targetKey`|`String`| The key to add a variation for. |
+| `variationKey`|`String`| The key variation to add to the target. |
+
+Adds a key variation to the target key.
+
+#### **Example**
+```gml
+LexiconPlugInAddVariation("npc.bob.greeting", "Hello {playerName}, welcome to my store!");
+LexiconPlugInAddVariation("npc.bob.greeting", "Greetings, how has the weather been {playerName}?");
+```
+
+<!-- tabs:end -->
+
+### `...AssertDependencies(plugInName, targetVersion, ...)`
+
+<!-- tabs:start -->
+
+#### **Description**
+Returns: `N/A`.
+
+| Name| Datatype| Purpose |
+| ------------- | ------------- |------------- |
+| `plugInName`|`String`| The name of the plug-in to check. |
+| `targetVersion`|`String`| The target version to compare against. |
+| `[plugInName]`|`String`| The name of the plug-in to check. |
+| `[targetVersion]`|`String`| The target version to compare against. |
+| `[]...]` | `String` | Etc. |
+
+Asserts and ensures that the target version roughly matches the current plug-in version.
+
+#### **Example**
+```gml
+LexiconPlugInDefine("SpacularElf.NoTabs", "SpacularElf", "1.0", "4.0", function() {
+    LexiconPlugInAssertDependencies("TabularElf.YesTabs", "1.0");
+
+	LexiconPlugInRegisterCallback(LexiconCallbackType.ENTRY_UPDATE, undefined, function(_text) {
+        return string_replace_all(_text, "  ", " ");
+    });
+});
+```
+
+<!-- tabs:end -->
+
 ### `...Define(name, author, version, lexicon_version, init_callback)`
 
 <!-- tabs:start -->
