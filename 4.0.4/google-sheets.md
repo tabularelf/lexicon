@@ -8,7 +8,7 @@ Want to host your localisation as a Google Sheet for better collaboration, while
 
 0. Ensure that sandbox is disabled, if testing via desktop!
 1. Ensure that your google sheet is viewable from the public.
-2. Look at your URL `https://docs.google.com/spreadsheets/d/1asf3f4fqaf34f34/edit?gid=6009008#gid=6009008` and look for the sheet id (`1asf3f4fqaf34f34`) and sheet page id (`6009008`).
+2. Look at your URL `https://docs.google.com/spreadsheets/d/1asf3f4fqaf34f34/edit?gid=6009008#gid=6009008` and look for the sheet id (`1asf3f4fqaf34f34` for example) and sheet page id (`6009008` for example).
 3. Call `LexiconGSDeclare(filename, sheetId, sheetPage);` where you normally load in your files.
 
 
