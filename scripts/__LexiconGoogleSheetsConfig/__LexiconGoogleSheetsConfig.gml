@@ -1,6 +1,6 @@
 /*
 	Whether periodic file updates should occur every so often.
-	Note: You may manually call LexiconGSUpdate()
+	Note: You may manually call LexiconGSUpdate() if you prefer instead.
 	Default: true
 */
 #macro __LEXICON_GOOGLE_SHEETS_PERIODIC_UPDATE true
@@ -10,7 +10,7 @@
 */
 #macro __LEXICON_GOOGLE_SHEETS_PERIODIC_UPDATE_TIME_SECONDS 10
 /*
-	Whether Lexicon Google Sheets is available in production. 
+		Whether Lexicon Google Sheets should behave as if it were being tested from the IDE.
 	Note: LexiconGSDeclare() will call LexiconIndexDeclareFromFile() if disabled in production builds.
 	Default: false
 */
