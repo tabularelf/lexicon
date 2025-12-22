@@ -11,7 +11,7 @@ for(var _i = 0; _i < _len; ++_i)	 {
 				}
 
 				if (is_callable(requests[@ _i].callback)) {
-					requests[@ _i].callback(requests[@ _i].filename, requests[@ _i].filepath);
+					requests[@ _i].callback(requests[@ _i].filepath);
 				}
 				requests[@ _i].hasInit = true;
 			} else {
