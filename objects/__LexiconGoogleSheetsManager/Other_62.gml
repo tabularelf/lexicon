@@ -6,7 +6,9 @@ for(var _i = 0; _i < _len; ++_i)	 {
 		if (	async_load[? "status"] == 0) {
 			if (!requests[ _i].hasInit) {
 				__LexiconGoogleSheetsTrace($"File \"{requests[@ _i].filename}\" has been downloaded! Loading...");
-				LexiconIndexDeclareFromFile(	requests[@ _i].filepath);
+				if (!requests[_i].isOnDisk) {
+					LexiconIndexDeclareFromFile(requests[@ _i].filepath);
+				}
 				requests[@ _i].hasInit = true;
 			} else {
 				__LexiconGoogleSheetsTrace($"File \"{requests[@ _i].filename}\" has been updated!");

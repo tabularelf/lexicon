@@ -4,6 +4,7 @@
 /// @param {String} sheetPage
 function LexiconGSDeclare(_filename, _sheetId, _sheetPage = "0") {
 	var _connected = os_is_network_connected(network_connect_passive);
+	var _isOnDisk = false;
 	if ((GM_build_type == "exe") && (!__LEXICON_GOOGLE_SHEETS_ALLOW_IN_PRODUCTION)) || (!_connected) {
 		if ((GM_build_type == "run") || (__LEXICON_GOOGLE_SHEETS_ALLOW_IN_PRODUCTION)) && (!_connected) {
 			__LexiconGoogleSheetsTrace("No internet connection detected! Falling back to local file.");
@@ -18,6 +19,11 @@ function LexiconGSDeclare(_filename, _sheetId, _sheetPage = "0") {
 		} else {
 			_filepath = filename_path(GM_project_filename) + "datafiles/" + _filename
 		}
+		
+		if (file_exists(_filepath) {
+			_isOnDisk = true;
+			LexiconIndexDeclareFromFile(_filepath);
+		} 
 
 		if (!__LEXICON_ON_DESKTOP) {
 			__LexiconGoogleSheetsTrace("Not on desktop! Temporarily storing in a temp directory!");
@@ -32,6 +38,7 @@ function LexiconGSDeclare(_filename, _sheetId, _sheetPage = "0") {
 				sheetId: _sheetId,
 				sheetPage: _sheetPage,
 				hasInit: false,
+				isOnDisk: _isOnDisk
 			});
 		}
 	}
