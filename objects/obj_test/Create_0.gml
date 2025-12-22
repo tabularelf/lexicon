@@ -47,4 +47,7 @@ show_debug_message(LexiconParse("Hello {GLOBAL.foo.bar.rawr.uwu}!"));
 
 show_debug_message(Lexicon("copyright", $"2020 - {current_year}", 124));
 
-LexiconGSDeclare("localize_google.csv", "1xw6tkRO5CEa9gkzopOG0dYQgKBJMu9d9bbu6dFZllO8", "660060738");
+LexiconIndexDeclareFromFile("localize_google.csv");
+LexiconGSDeclare("localize_google.csv", "1xw6tkRO5CEa9gkzopOG0dYQgKBJMu9d9bbu6dFZllO8", "660060738", function(_filename) {
+	show_debug_message($"hello from {_filename}");	
+});
