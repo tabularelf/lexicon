@@ -14,7 +14,7 @@ It supports the following:
 * Support for setting per-language fonts w/ categories.
 * Support for setting per-language assets.
 
-For more information, check out the documentation! https://docs.tabularelf.com/lexicon/
+For more information, check out the documentation! https://tabularelf.com/lexicon/
 
 ## Credits
 
