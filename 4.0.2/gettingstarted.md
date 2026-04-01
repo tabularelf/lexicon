@@ -18,6 +18,8 @@ Lexicon requires your language files to be in either JSON or CSV format.
 
 The format of these files are as follows (and all of these are interchangeable):
 
+!> Locale keys can be really anything, but Lexicon is setup to be as `language_REGION`, as respective to both Lexicon and Unic. You may choose to roll your own instead, but be warned that Unic-specific features may not work as expected.
+
 <!-- tabs:start -->
 
 #### **JSON A**
