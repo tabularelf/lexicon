@@ -1,6 +1,6 @@
 Language,English,Comments,French,Japanese,Spanish,Chinese
 Locale,"en_UK, en_AU",,fr_FR,ja_JP,,
 Fallbacks,en,,,jp,,
-npc.alice.hi,Hello {playerName} aaaa!,,,,,
+npc.alice.hi,Hello {playerName}!,,,,,
 ------------------ items,test,test2t,test3,test4,test5,
 npc.alice.bye,Goodbye {playerName}!,,,,,

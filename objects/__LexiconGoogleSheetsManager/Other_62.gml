@@ -6,7 +6,13 @@ for(var _i = 0; _i < _len; ++_i)	 {
 		if (	async_load[? "status"] == 0) {
 			if (!requests[ _i].hasInit) {
 				__LexiconGoogleSheetsTrace($"File \"{requests[@ _i].filename}\" has been downloaded! Loading...");
-				LexiconIndexDeclareFromFile(	requests[@ _i].filepath);
+				if (__LEXICON_GOOGLE_SHEETS_AUTO_DECLARE_FILES) && (!requests[_i].isOnDisk) {
+					LexiconIndexDeclareFromFile(requests[@ _i].filepath);
+				}
+
+				if (is_callable(requests[@ _i].callback)) {
+					requests[@ _i].callback(requests[@ _i].filepath);
+				}
 				requests[@ _i].hasInit = true;
 			} else {
 				__LexiconGoogleSheetsTrace($"File \"{requests[@ _i].filename}\" has been updated!");
