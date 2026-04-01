@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"UnicConvertTimestamp",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"UnicConvertTimestamp",
+  "parent":{
+    "name":"Formatters",
+    "path":"folders/Unic/Formatters.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

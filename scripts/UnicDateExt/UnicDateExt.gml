@@ -76,9 +76,11 @@ function UnicDateExt(_year, _month, _day, _lengthFormat = 1, _localeCode = undef
     date_set_timezone(timezone_utc);
     
     var _datetime = date_create_datetime(_year, _month, 1, 1, 1, 1);
-    _year  = max(floor(_year), 0);
-    _month = clamp(floor(_month), 1, 12);
-    _day   = clamp(floor(_day), 1, date_days_in_month(_datetime));
+    _year    = max(floor(_year), 0);
+    _month   = clamp(floor(_month), 1, 12);
+    _day     = clamp(floor(_day), 1, date_days_in_month(_datetime));
+    
+    var _weekday = date_get_weekday(_datetime);
     
     date_set_timezone(_oldTimezone);
     
@@ -259,7 +261,7 @@ function UnicDateExt(_year, _month, _day, _lengthFormat = 1, _localeCode = undef
                         __UnicError($"Date format for locale \"{_localeCode}\" unsupported (E)");
                     }
                     
-                    buffer_write(_buffer, buffer_text, UnicGetDayName(_day-1, 1, _localeCode));
+                    buffer_write(_buffer, buffer_text, UnicGetDayName(_weekday-1, 1, _localeCode));
                 }
                 else
                 {
@@ -272,7 +274,7 @@ function UnicDateExt(_year, _month, _day, _lengthFormat = 1, _localeCode = undef
                             __UnicError($"Date format for locale \"{_localeCode}\" unsupported (EE)");
                         }
                         
-                        buffer_write(_buffer, buffer_text, UnicGetDayName(_day-1, 1, _localeCode));
+                        buffer_write(_buffer, buffer_text, UnicGetDayName(_weekday-1, 1, _localeCode));
                     }
                     else
                     {
@@ -280,13 +282,13 @@ function UnicDateExt(_year, _month, _day, _lengthFormat = 1, _localeCode = undef
                         if (string_char_at(_format, _formatPos+1) != "E")
                         {
                             // `EEE` Abbreviated form
-                            buffer_write(_buffer, buffer_text, UnicGetDayName(_day-1, 2, _localeCode));
+                            buffer_write(_buffer, buffer_text, UnicGetDayName(_weekday-1, 2, _localeCode));
                         }
                         else
                         {
                             ++_formatPos;
                             // `EEEE` Wide form
-                            buffer_write(_buffer, buffer_text, UnicGetDayName(_day-1, 3, _localeCode));
+                            buffer_write(_buffer, buffer_text, UnicGetDayName(_weekday-1, 3, _localeCode));
                         }
                     }
                 }
@@ -304,7 +306,7 @@ function UnicDateExt(_year, _month, _day, _lengthFormat = 1, _localeCode = undef
                         __UnicError($"Date format for locale \"{_localeCode}\" unsupported (c)");
                     }
                     
-                    buffer_write(_buffer, buffer_text, UnicGetDayName(_day-1, 1, _localeCode));
+                    buffer_write(_buffer, buffer_text, UnicGetDayName(_weekday-1, 1, _localeCode));
                 }
                 else
                 {
@@ -317,7 +319,7 @@ function UnicDateExt(_year, _month, _day, _lengthFormat = 1, _localeCode = undef
                             __UnicError($"Date format for locale \"{_localeCode}\" unsupported (cc)");
                         }
                         
-                        buffer_write(_buffer, buffer_text, UnicGetDayName(_day-1, 1, _localeCode));
+                        buffer_write(_buffer, buffer_text, UnicGetDayName(_weekday-1, 1, _localeCode));
                     }
                     else
                     {
@@ -325,13 +327,13 @@ function UnicDateExt(_year, _month, _day, _lengthFormat = 1, _localeCode = undef
                         if (string_char_at(_format, _formatPos+1) != "c")
                         {
                             // `ccc` Abbreviated form
-                            buffer_write(_buffer, buffer_text, UnicGetDayName(_day-1, 2, _localeCode));
+                            buffer_write(_buffer, buffer_text, UnicGetDayName(_weekday-1, 2, _localeCode));
                         }
                         else
                         {
                             ++_formatPos;
                             // `cccc` Wide form
-                            buffer_write(_buffer, buffer_text, UnicGetDayName(_day-1, 3, _localeCode));
+                            buffer_write(_buffer, buffer_text, UnicGetDayName(_weekday-1, 3, _localeCode));
                         }
                     }
                 }
