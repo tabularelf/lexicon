@@ -33,12 +33,15 @@ function LexiconGSDeclare(_filename, _sheetId, _sheetPage, _callback = undefined
 			__LexiconGoogleSheetsTrace("Not on desktop! Temporarily storing in a temp directory!");
 		}
     	
+		var _tempFilepath = $"{temp_directory}{_filename}";
+
 		with(__LexiconGoogleSheetsManager) {
-			var _id = http_get_file($"https://docs.google.com/spreadsheets/d/{_sheetId}/export?format=csv&gid={_sheetPage}", _filepath);
+			var _id = http_get_file($"https://docs.google.com/spreadsheets/d/{_sheetId}/export?format=csv&gid={_sheetPage}", _tempFilepath);
 			array_push(requests, {
 				id: _id,
 				filename: _filename,
 				filepath: _filepath,
+				tempFilepath: _tempFilepath,
 				sheetId: _sheetId,
 				sheetPage: _sheetPage,
 				hasInit: false,
