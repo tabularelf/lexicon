@@ -3,8 +3,10 @@
 /// @param {String} extension
 /// @param {String | Struct.__LexiconLanguageClass} language_or_locale
 function LexiconIndexLoadBuffer(_buff, _ext, _lang = LexiconLanguageGetCurrent()) {
+	static _systemParsers = __LexiconSystem().__systemParsers;
 	static _parsers = __LexiconSystem().__parsers;
-	var _parser = _parsers[$ string_lower(_ext)];
+
+	var _parser = _parsers[$ string_lower(_ext)] ?? _systemParsers[$ string_lower(_ext)];
 	if (_parser == undefined) {
 		return;
 	}

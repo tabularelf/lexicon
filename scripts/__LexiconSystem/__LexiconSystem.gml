@@ -1,4 +1,4 @@
-#macro __LEXICON_VERSION "4.0.7"
+#macro __LEXICON_VERSION "4.0.8"
 
 enum __LEXICON_TYPE {
 	CONSTANT,
@@ -38,7 +38,8 @@ function __LexiconSystem() {
 		__languages: [],
 		__globalDynamic: {},
 		__globalDynamicModifiers: {},
-		__parsers: __LexiconSystemParsers(),
+		__parsers: __LexiconParsersDatabase(),
+		__systemParsers: __LexiconSystemParsers(),
 		__plugIns: [],
 		__fallback: undefined,
 		__plugInsLoaded: false,

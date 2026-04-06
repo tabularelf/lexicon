@@ -2,6 +2,7 @@
 /// @ignore
 function __LexiconLoadFile(_file, _lang, _async = true) {
 	static _ts = __LexiconSystem().__asyncTs;
+	static _systemParsers = __LexiconSystem().__systemParsers;
 	static _parsers = __LexiconSystem().__parsers;
 	static _list = __LexiconFileAsyncList();
 	static _global = __LexiconSystem();
@@ -9,7 +10,7 @@ function __LexiconLoadFile(_file, _lang, _async = true) {
 	// Load instantly
 	if (!_async) {
 		var _buff = undefined;
-		var _parser = _parsers[$ _file.ext];
+		var _parser = _parsers[$ _file.ext] ?? _systemParsers[$ _file.ext];
 		if (is_undefined(_parser)) {
 			__LexiconTrace($"File \"{_file.filepath}\" doesn't have a valid parser type!");
 			return;

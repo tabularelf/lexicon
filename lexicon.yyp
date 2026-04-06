@@ -130,6 +130,7 @@
     {"id":{"name":"__LexiconParserExample","path":"scripts/__LexiconParserExample/__LexiconParserExample.yy",},},
     {"id":{"name":"__LexiconParserJSON","path":"scripts/__LexiconParserJSON/__LexiconParserJSON.yy",},},
     {"id":{"name":"__LexiconParserJSONStruct","path":"scripts/__LexiconParserJSONStruct/__LexiconParserJSONStruct.yy",},},
+    {"id":{"name":"__LexiconParsersDatabase","path":"scripts/__LexiconParsersDatabase/__LexiconParsersDatabase.yy",},},
     {"id":{"name":"__LexiconPlugInClass","path":"scripts/__LexiconPlugInClass/__LexiconPlugInClass.yy",},},
     {"id":{"name":"__LexiconPlugInCompareVersion","path":"scripts/__LexiconPlugInCompareVersion/__LexiconPlugInCompareVersion.yy",},},
     {"id":{"name":"__LexiconPlugInsLoad","path":"scripts/__LexiconPlugInsLoad/__LexiconPlugInsLoad.yy",},},

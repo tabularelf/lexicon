@@ -93,6 +93,7 @@
     {"name":"__LexiconParserExample","order":2,"path":"scripts/__LexiconParserExample/__LexiconParserExample.yy",},
     {"name":"__LexiconParserJSON","order":2,"path":"scripts/__LexiconParserJSON/__LexiconParserJSON.yy",},
     {"name":"__LexiconParserJSONStruct","order":5,"path":"scripts/__LexiconParserJSONStruct/__LexiconParserJSONStruct.yy",},
+    {"name":"__LexiconParsersDatabase","order":33,"path":"scripts/__LexiconParsersDatabase/__LexiconParsersDatabase.yy",},
     {"name":"__LexiconPlugInClass","order":3,"path":"scripts/__LexiconPlugInClass/__LexiconPlugInClass.yy",},
     {"name":"__LexiconPlugInCompareVersion","order":20,"path":"scripts/__LexiconPlugInCompareVersion/__LexiconPlugInCompareVersion.yy",},
     {"name":"__LexiconPlugInsLoad","order":5,"path":"scripts/__LexiconPlugInsLoad/__LexiconPlugInsLoad.yy",},
