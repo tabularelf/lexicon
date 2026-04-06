@@ -1,6 +1,11 @@
 // feather ignore all
 /// @ignore
 function __LexiconDeclareParserCsv(_buff, _file) {
+	if (buffer_get_size(_buff) == 0) {
+		// File possibly empty
+			__LexiconTrace($"File {_file} is empty! Bailing parsing...");
+		return;
+	}
 	var _grid = __LexiconArray2DFromCsv(buffer_read(_buff, buffer_text), __LEXICON_CSV_CELL_DELIMITER, __LEXICON_CSV_STRING_DELIMITER);
 	var _width = array_length(_grid);
 	var _height = array_length(_grid[0]);
