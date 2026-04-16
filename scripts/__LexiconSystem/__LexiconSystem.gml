@@ -48,6 +48,7 @@ function __LexiconSystem() {
 		__fileVariations: undefined,
 		__asyncSlot: 0,
 		__frame: 0,
+		__missingTextHandler: undefined,
 		__globalVariableStruct: {},
 		__gameRestarted: false,
 		__languageLoaded: false,

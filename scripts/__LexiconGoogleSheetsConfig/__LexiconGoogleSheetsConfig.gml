@@ -11,7 +11,7 @@
 #macro __LEXICON_GOOGLE_SHEETS_PERIODIC_UPDATE_TIME_SECONDS 10
 /*
 	Whether Lexicon Google Sheets should behave as if it were being tested from the IDE.
-	Note: LexiconGSDeclare() will call LexiconIndexDeclareFromFile() if disabled in production builds.
+	Note: LexiconGSDeclare() will call LexiconIndexDeclareFromFile() if disabled in production builds, and __LEXICON_GOOGLE_SHEETS_AUTO_DECLARE_FILES is enabled.
 	Default: false
 */
 #macro __LEXICON_GOOGLE_SHEETS_ALLOW_IN_PRODUCTION false

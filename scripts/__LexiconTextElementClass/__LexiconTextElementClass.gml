@@ -269,6 +269,9 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 		__initialised = false;
 
 		if (__entry != _entryDummy) && (is_undefined(__entry.__text)) {
+			if (is_callable(_global.__missingTextHandler)) {
+				__entryCache = _global.__missingTextHandler(_key);
+			}
 			return;
 		}
 
