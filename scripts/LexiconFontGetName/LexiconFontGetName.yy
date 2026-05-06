@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"LexiconText",
+  "%Name":"LexiconFontGetName",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"LexiconText",
+  "name":"LexiconFontGetName",
   "parent":{
-    "name":"LexiconText",
-    "path":"folders/Lexicon Plug-Ins/LexiconText.yy",
+    "name":"Font",
+    "path":"folders/Lexicon/Font.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

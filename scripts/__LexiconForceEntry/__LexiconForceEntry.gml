@@ -1,5 +1,5 @@
 // feather ignore all
-LexiconPlugInDefine("Lexicon.ForceAdd", "TabularElf", "1.0", "4.0", function() {
+LexiconPlugInDefine("Lexicon.ForceAdd", "TabularElf", "1.0", "4.1", function() {
 	if (__LEXICON_FORCE_ENTRY_ENABLED) {
 		LexiconPlugInRegisterCallback(LexiconCallbackType.ENTRY_CREATED, undefined, function(_text, _key) {
 			static _entries = __LexiconForceAddSystem();

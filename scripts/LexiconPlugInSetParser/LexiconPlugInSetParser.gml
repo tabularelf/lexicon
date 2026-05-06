@@ -3,7 +3,7 @@
 /// @param {Function} parser
 /// @param {Function, Undefined} declare_parser
 function LexiconPlugInSetParser(_ext, _parser, _declareParser = undefined) {
-	static _parsers = __LexiconSystemParsers();
+	static _parsers = __LexiconParsersDatabase();
 	
 	_parsers[$ string_lower(_ext)] = new __LexiconParserClass(_ext, _parser, _declareParser);
 }

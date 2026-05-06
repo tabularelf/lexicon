@@ -7,7 +7,7 @@ function LexiconGSUpdate() {
 
 	with(__LexiconGoogleSheetsManager) {
 		array_foreach(periodicRequests, function(_elm) {
-			_elm.id = http_get_file($"https://docs.google.com/spreadsheets/d/{_elm.sheetId}/export?format=csv&gid={_elm.sheetPage}", _elm.tempFilepath);
+			_elm.id = http_get($"https://docs.google.com/spreadsheets/d/{_elm.sheetId}/export?format=csv&gid={_elm.sheetPage}");
 		});
         	 
 		array_copy(requests, 0, periodicRequests, 0, array_length(periodicRequests));

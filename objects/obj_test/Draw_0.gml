@@ -95,4 +95,4 @@ switch(state) {
 	break;
 }
 
-draw_text(8, 512, Lexicon("npc.alice.hi").Get())
+draw_text(8, 512, Lexicon("npc.alice.hi").Get());

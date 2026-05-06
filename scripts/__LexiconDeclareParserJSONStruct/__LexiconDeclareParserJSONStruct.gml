@@ -15,14 +15,18 @@ function __LexiconDeclareParserJSONStruct(_inst, _file) {
 		__LexiconTrace($"Invalid locale in \"{_file}\".");
 		return;
 	}
+
+	_lang = string_trim(_lang);
+	
  	
 	if (is_array(_locale)) {
 		var _len = array_length(_locale);
 		for(var _i = 0; _i < _len; ++_i) {
-			_langEntry = LexiconLanguageGet(_locale[_i]);
+			var _localeCurrent = string_trim(_locale[_i]);
+			_langEntry = LexiconLanguageGet(_localeCurrent);
 
 			if (is_undefined(_langEntry)) {
-			 	_langEntry = LexiconIndexDeclare(_lang, _locale[_i]);
+			 	_langEntry = LexiconIndexDeclare(_lang, _localeCurrent);
 			}
 			_langEntry.AddFile(_file)
 			if (!is_undefined(_fallback)) {
@@ -34,6 +38,7 @@ function __LexiconDeclareParserJSONStruct(_inst, _file) {
 			}
 		}
 	} else {
+		_locale = string_trim(_locale);
 		_langEntry = LexiconLanguageGet(_locale);
 
 		if (is_undefined(_langEntry)) {

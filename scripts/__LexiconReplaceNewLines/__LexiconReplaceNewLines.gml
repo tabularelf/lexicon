@@ -1,5 +1,5 @@
 // feather ignore all
-LexiconPlugInDefine("Lexicon.ReplaceNewlines", "TabularElf", "1.0", "4.0", function() {
+LexiconPlugInDefine("Lexicon.ReplaceNewlines", "TabularElf", "1.0", "4.1", function() {
 	LexiconPlugInRegisterCallback(LexiconCallbackType.ENTRY_UPDATE, undefined, function(_text) {
 		_text = string_replace_all(_text, "\\r", "\r");
 		_text = string_replace_all(_text, "\\n", "\n");

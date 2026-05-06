@@ -1,6 +1,6 @@
-#macro __LEXICON_GOOGLE_SHEETS_VERSION "1.0.0"
+#macro __LEXICON_GOOGLE_SHEETS_VERSION "1.0.1"
 // feather ignore all
-LexiconPlugInDefine("Lexicon.GoogleSheets", "TabularElf", __LEXICON_GOOGLE_SHEETS_VERSION, "4.0", function() {
+LexiconPlugInDefine("Lexicon.GoogleSheets", "TabularElf", __LEXICON_GOOGLE_SHEETS_VERSION, "4.1", function() {
 	LexiconPlugInAssertDependencies("Lexicon.HotReload", "1.1");
 	if (GM_build_type == "run") || (__LEXICON_GOOGLE_SHEETS_ALLOW_IN_PRODUCTION) {
 		__LexiconGoogleSheetsPrepare();

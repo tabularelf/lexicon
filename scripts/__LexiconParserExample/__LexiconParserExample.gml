@@ -1,5 +1,5 @@
 // feather ignore all
-LexiconPlugInDefine("Lexicon.ParserExample", "TabularElf", "1.0", "4.0", function() {
+LexiconPlugInDefine("Lexicon.ParserExample", "TabularElf", "1.0", "4.1", function() {
 	LexiconPlugInSetParser("txt", function(_buff, _filepath, _lang) {
 		var _text = buffer_read(_buff, buffer_text);
 		_text = string_split_ext(_text, ["\n", "\r"], true);

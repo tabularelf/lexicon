@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"LexiconPlugInSetMissingEntryHandler",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"LexiconPlugInSetMissingEntryHandler",
+  "parent":{
+    "name":"Plug-In",
+    "path":"folders/Lexicon/Plug-In.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

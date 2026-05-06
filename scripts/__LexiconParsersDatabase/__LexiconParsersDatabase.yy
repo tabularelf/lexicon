@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"LexiconText",
+  "%Name":"__LexiconParsersDatabase",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"LexiconText",
+  "name":"__LexiconParsersDatabase",
   "parent":{
-    "name":"LexiconText",
-    "path":"folders/Lexicon Plug-Ins/LexiconText.yy",
+    "name":"(System)",
+    "path":"folders/Lexicon/(System).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

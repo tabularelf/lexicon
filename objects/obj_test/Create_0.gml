@@ -21,6 +21,10 @@ _globals.foo.bar.rawr = {};
 _globals.foo.bar.rawr.uwu = 42;
 _globals.bar = Lexicon("item");
 
+LexiconPlugInSetMissingEntryHandler(function(_key) {
+	return $"Missing: {_key}";
+});
+
 state = 0;
 variation_index = 0;
 keyboard_string = "Alice";
@@ -51,3 +55,7 @@ LexiconIndexDeclareFromFile("localize_google.csv");
 LexiconGSDeclare("localize_google.csv", "1xw6tkRO5CEa9gkzopOG0dYQgKBJMu9d9bbu6dFZllO8", "660060738", function(_filename) {
 	show_debug_message($"hello from {_filename}");	
 });
+
+show_debug_message(Lexicon("start.aselect_name"));
+
+show_debug_message(Lexicon("aaa").SetKey(42));

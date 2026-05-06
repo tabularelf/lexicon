@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"LexiconText",
+  "%Name":"__LexiconTextConfig",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"LexiconText",
+  "name":"__LexiconTextConfig",
   "parent":{
     "name":"LexiconText",
     "path":"folders/Lexicon Plug-Ins/LexiconText.yy",
