@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"LexiconCallbackType",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"LexiconCallbackType",
+  "parent":{
+    "name":"Lexicon",
+    "path":"folders/Lexicon.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

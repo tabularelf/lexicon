@@ -124,6 +124,7 @@
     {"name":"__UnicSystem","order":11,"path":"scripts/__UnicSystem/__UnicSystem.yy",},
     {"name":"__UnicUnicodeData","order":1,"path":"scripts/__UnicUnicodeData/__UnicUnicodeData.yy",},
     {"name":"LexiconAssetSet","order":1,"path":"scripts/LexiconAssetSet/LexiconAssetSet.yy",},
+    {"name":"LexiconCallbackType","order":11,"path":"scripts/LexiconCallbackType/LexiconCallbackType.yy",},
     {"name":"LexiconEntryGetVariations","order":1,"path":"scripts/LexiconEntryGetVariations/LexiconEntryGetVariations.yy",},
     {"name":"LexiconEntryGetVariationsCount","order":2,"path":"scripts/LexiconEntryGetVariationsCount/LexiconEntryGetVariationsCount.yy",},
     {"name":"LexiconEntryHasVariations","order":3,"path":"scripts/LexiconEntryHasVariations/LexiconEntryHasVariations.yy",},

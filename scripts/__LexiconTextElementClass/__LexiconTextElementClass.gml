@@ -28,6 +28,7 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 	__dynamicsToCall = 0;
 	__initialised = false;
 	__bypassFrameCooldown = false;
+	__keySetting = false;
 
 	__Regenerate(_entry, _key, _args);
 
@@ -79,7 +80,12 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 	static SetKey = function(_value) {
 		_value = is_string(_value) ? _value : string(_value);
 		__entry = __LexiconGetEntry(_value);
-		__LanguageUpdate();
+		if (!__keySetting) {
+			__keySetting = true;
+			__LexiconCallbackFire(LexiconCallbackType.TEXT_ELEMENT_KEY_CHANGED, _value, self);
+			__LanguageUpdate();
+			__keySetting = false;
+		}
 		return self;
 	}
 

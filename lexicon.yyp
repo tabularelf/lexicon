@@ -172,6 +172,7 @@
     {"id":{"name":"Lexicon","path":"scripts/Lexicon/Lexicon.yy",},},
     {"id":{"name":"LexiconAssetGet","path":"scripts/LexiconAssetGet/LexiconAssetGet.yy",},},
     {"id":{"name":"LexiconAssetSet","path":"scripts/LexiconAssetSet/LexiconAssetSet.yy",},},
+    {"id":{"name":"LexiconCallbackType","path":"scripts/LexiconCallbackType/LexiconCallbackType.yy",},},
     {"id":{"name":"LexiconEntryGetText","path":"scripts/LexiconEntryGetText/LexiconEntryGetText.yy",},},
     {"id":{"name":"LexiconEntryGetVariations","path":"scripts/LexiconEntryGetVariations/LexiconEntryGetVariations.yy",},},
     {"id":{"name":"LexiconEntryGetVariationsCount","path":"scripts/LexiconEntryGetVariationsCount/LexiconEntryGetVariationsCount.yy",},},

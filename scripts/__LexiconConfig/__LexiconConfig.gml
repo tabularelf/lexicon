@@ -59,3 +59,9 @@
  Default: 10
 */
 #macro __LEXICON_TEXT_PARSER_MAX_REFERENCE_STACK 10
+/* 
+	Whether Lexicon should detect & attempt to deal with language & locale strings that have
+	unnecessary whitespace. 
+	Note: This only mainly applies to LexiconLanguageSet & LexiconLanguageGet.
+*/
+#macro __LEXICON_AUTO_TRIM_LANGUAGE_LOCALE true

@@ -9,17 +9,6 @@ enum __LEXICON_TYPE {
 	ENTRY
 }
 
-enum LexiconCallbackType {
-	ENTRY_UPDATE,
-	ENTRY_COLLECT,
-	ENTRY_CREATED,
-	LANGUAGE_CREATED,
-	LANGUAGE_UPDATE,
-	LANGUAGE_POST_UPDATE,
-	TEXT_ELEMENT_CREATED,
-	LENGTH
-}
-
 #macro __LEXICON_ON_WEB (os_browser != browser_not_a_browser)
 #macro __LEXICON_ON_WINDOWS (os_type == os_windows)
 #macro __LEXICON_ON_LINUX (os_type == os_linux)
