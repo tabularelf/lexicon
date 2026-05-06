@@ -1,4 +1,4 @@
-#macro __LEXICON_VERSION "4.0.8"
+#macro __LEXICON_VERSION "4.1.0"
 
 enum __LEXICON_TYPE {
 	CONSTANT,
@@ -61,6 +61,11 @@ function __LexiconSystem() {
 		__stackKeys: [],
 	};
 
+	if (_init) return _inst;
+
+	
+	_init = true;
+
 	if (__LEXICON_REFER_TO_BUNDLE_AREA) && (!__LEXICON_IS_REFERRABLE_TO_DATAFILES) {
 		if (GM_build_type == "run") && (__LEXICON_ON_DESKTOP) {
 			__LexiconError($"Cannot access datafiles! Please disable sandbox on desktop.\nOr turn off \"{nameof(__LEXICON_REFER_TO_BUNDLE_AREA)}\" in \"{nameof(__LexiconConfig)}\"!");
@@ -69,8 +74,13 @@ function __LexiconSystem() {
 		__LexiconTrace("Cannot access datafiles! Game likely running on a non-desktop platform.");
 	}
 
-	if (_init) return _inst;
-	_init = true;
+	try {
+		UnicLocaleExists("en_AU");
+		if (!file_exists("unic_cldr.bin")) throw true;
+	} catch(_) {
+		__LexiconError("Unic is not installed or is missing datafiles. Please ensure that Unic is installed properly.")
+	}
+
 	var _instPreview = _inst;
 	for(var _i = 0; _i < LexiconCallbackType.LENGTH; ++_i) {
 		_inst.__plugInCallbacks[_i] = [];

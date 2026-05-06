@@ -12,17 +12,17 @@ function __LexiconDeclareParserCsv(_buff, _file) {
 	var _height = array_length(_grid[0]);
 	for(var _j = 1; _j < _height;  ++_j) {
 		
-		if (string_lower(_grid[0][_j]) == "comments") {
+		if (string_trim(string_lower(_grid[0][_j]) == "comments")) {
 				continue;
 		}
 
-		var _lang = _grid[0][_j];
+		var _lang = string_trim(_grid[0][_j]);
 		if (_j >= array_length(_grid[1])) {
 			__LexiconTrace($"CSV Parser - Cannot process language remaining languages. Invalid {_grid[0][_j]} locale.");
 			return;
 		}
 
-		var _locale = _grid[1][_j];
+		var _locale = string_trim(_grid[1][_j]);
 		var _fallbacks = _grid[2][_j];
 		if (_fallbacks == "") {
 			_fallbacks = undefined;

@@ -1,3 +1,8 @@
+// feather ignore all
+/// @param {String} key The key to fetch the text from
+/// @param {String} unique The unique identifier to use. Defaults to __LEXICON_TEXT_DEFAULT_UNIQUE_KEY
+/// @param {Any} ... The variables you wish to pass to the Lexicon cached text element
+/// @return {String}
 function LexiconTextUnique(_key, _unique = __LEXICON_TEXT_DEFAULT_UNIQUE_KEY) {
 	static _cache = __LexiconTextCache();
 	static _argsArray = [];

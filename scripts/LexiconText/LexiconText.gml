@@ -1,3 +1,7 @@
+// feather ignore all
+/// @param {String} key The key to fetch the text from
+/// @param {Any} ... The variables you wish to pass to the Lexicon cached text element
+/// @return {String}
 function LexiconText(_key) {
 	static _cache = __LexiconTextCache();
 	static _argsArray = [];

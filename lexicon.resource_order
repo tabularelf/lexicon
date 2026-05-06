@@ -130,6 +130,7 @@
     {"name":"LexiconEntryIsLoaded","order":4,"path":"scripts/LexiconEntryIsLoaded/LexiconEntryIsLoaded.yy",},
     {"name":"LexiconExt","order":1,"path":"scripts/LexiconExt/LexiconExt.yy",},
     {"name":"LexiconFontGet","order":1,"path":"scripts/LexiconFontGet/LexiconFontGet.yy",},
+    {"name":"LexiconFontGetName","order":3,"path":"scripts/LexiconFontGetName/LexiconFontGetName.yy",},
     {"name":"LexiconFontSet","order":2,"path":"scripts/LexiconFontSet/LexiconFontSet.yy",},
     {"name":"LexiconGetOSLocale","order":2,"path":"scripts/LexiconGetOSLocale/LexiconGetOSLocale.yy",},
     {"name":"LexiconGlobalFallbackSet","order":1,"path":"scripts/LexiconGlobalFallbackSet/LexiconGlobalFallbackSet.yy",},

@@ -6,11 +6,11 @@ function __LexiconParserCsv(_buff, _file, _langEntry) {
 	var _height = array_length(_grid[0]);
 	
 	for(var _j = 1; _j < _height; ++_j) {
-		if (string_lower(_grid[0][_j]) == "Comments") {
+		if (string_trim(string_lower(_grid[0][_j])) == "Comments") {
 			continue;
 		}
 
-		var _language = _grid[0][_j];
+		var _language = string_trim(_grid[0][_j]);
 		if (_j >= array_length(_grid[1])) {
 			__LexiconTrace($"CSV Parser - Cannot process language remaining languages. Invalid {_grid[0][_j]} locale.");
 			return;
@@ -22,6 +22,8 @@ function __LexiconParserCsv(_buff, _file, _langEntry) {
 			array_map_ext(_locale, function(_elm, _index) {
 				return string_trim(_elm);
 			});
+		} else {
+			_locale = string_trim(_grid[1][_j]);
 		}
 
 		if (_langEntry.GetLanguage() != _language) {

@@ -180,6 +180,7 @@
     {"id":{"name":"LexiconExt","path":"scripts/LexiconExt/LexiconExt.yy",},},
     {"id":{"name":"LexiconFontCacheFlush","path":"scripts/LexiconFontCacheFlush/LexiconFontCacheFlush.yy",},},
     {"id":{"name":"LexiconFontGet","path":"scripts/LexiconFontGet/LexiconFontGet.yy",},},
+    {"id":{"name":"LexiconFontGetName","path":"scripts/LexiconFontGetName/LexiconFontGetName.yy",},},
     {"id":{"name":"LexiconFontSet","path":"scripts/LexiconFontSet/LexiconFontSet.yy",},},
     {"id":{"name":"LexiconGetOSLocale","path":"scripts/LexiconGetOSLocale/LexiconGetOSLocale.yy",},},
     {"id":{"name":"LexiconGlobalFallbackGet","path":"scripts/LexiconGlobalFallbackGet/LexiconGlobalFallbackGet.yy",},},

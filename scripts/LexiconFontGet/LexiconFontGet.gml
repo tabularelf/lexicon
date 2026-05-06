@@ -1,5 +1,5 @@
 // feather ignore all
-/// @param {String} fontDirectory
+/// @param {String} fontStyle
 /// @param {Function | Undefined} searchCallback
 /// @param {Bool} searchAllFonts
 /// @param {Struct.__LexiconLanguageClass} language

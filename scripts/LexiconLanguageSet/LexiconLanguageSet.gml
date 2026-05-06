@@ -7,7 +7,7 @@ function LexiconLanguageSet(_lang, _async = false) {
 		LexiconPlugInForceLoad();
 	}
 	
-	var _foundLang = is_string(_lang) ? LexiconLanguageGet(_lang) : _lang;
+	var _foundLang = is_string(_lang) ? LexiconLanguageGet(string_trim(_lang)) : _lang;
 	if (!LexiconIsLanguage(_foundLang)) {
 		__LexiconTrace($"Language \"{_lang}\" not found.");
 		return;
