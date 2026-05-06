@@ -79,15 +79,18 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 	/// @param {String} key
 	static SetKey = function(_value) {
 		_value = is_string(_value) ? _value : string(_value);
+		__key = _value;
 		__entry = __LexiconGetEntry(_value);
 		if (!__keySetting) {
 			__keySetting = true;
-			__LexiconCallbackFire(LexiconCallbackType.TEXT_ELEMENT_KEY_CHANGED, _value, self);
+			__LexiconCallbackFire(LexiconCallbackType.TEXT_ELEMENT_KEY_UPDATED, _value, self);
 			__LanguageUpdate();
 			__keySetting = false;
+		} else if (LexiconPlugInExistsEntry(_value)) {
+			__LexiconCallbackFire(LexiconCallbackType.TEXT_ELEMENT_KEY_UPDATED, _value, self);
 		}
 		return self;
-	}
+	};
 
 	/// @param {Any} ...
 	/// @return {Struct.__LexiconTextElementClass}
@@ -276,7 +279,8 @@ function __LexiconTextElementClass(_entry, _key, _args = undefined) constructor 
 
 		if (__entry != _entryDummy) && (is_undefined(__entry.__text)) {
 			if (is_callable(_global.__missingTextHandler)) {
-				__entryCache = _global.__missingTextHandler(_key);
+				var _callback = _global.__missingTextHandler;
+				__entryCache = _callback(_key);
 			}
 			return;
 		}

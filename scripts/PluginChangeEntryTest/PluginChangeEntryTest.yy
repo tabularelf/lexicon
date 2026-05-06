@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"PluginChangeEntryTest",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"PluginChangeEntryTest",
+  "parent":{
+    "name":"REPO_DO_NOT_IMPORT",
+    "path":"folders/REPO_DO_NOT_IMPORT.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

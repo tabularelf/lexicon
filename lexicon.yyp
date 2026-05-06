@@ -241,6 +241,7 @@
     {"id":{"name":"LexiconUnicAutoLocaleSet","path":"scripts/LexiconUnicAutoLocaleSet/LexiconUnicAutoLocaleSet.yy",},},
     {"id":{"name":"LexiconUnicDatetimeGet","path":"scripts/LexiconUnicDatetimeGet/LexiconUnicDatetimeGet.yy",},},
     {"id":{"name":"LexiconUnicDatetimeSet","path":"scripts/LexiconUnicDatetimeSet/LexiconUnicDatetimeSet.yy",},},
+    {"id":{"name":"PluginChangeEntryTest","path":"scripts/PluginChangeEntryTest/PluginChangeEntryTest.yy",},},
     {"id":{"name":"Script3","path":"scripts/Script3/Script3.yy",},},
     {"id":{"name":"Script4","path":"scripts/Script4/Script4.yy",},},
     {"id":{"name":"Script70","path":"scripts/Script70/Script70.yy",},},

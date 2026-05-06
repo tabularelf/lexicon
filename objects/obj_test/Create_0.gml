@@ -57,3 +57,5 @@ LexiconGSDeclare("localize_google.csv", "1xw6tkRO5CEa9gkzopOG0dYQgKBJMu9d9bbu6dF
 });
 
 show_debug_message(Lexicon("start.aselect_name"));
+
+show_debug_message(Lexicon("aaa").SetKey(42));

@@ -184,6 +184,7 @@
     {"name":"LexiconUnicAutoLocaleGet","order":3,"path":"scripts/LexiconUnicAutoLocaleGet/LexiconUnicAutoLocaleGet.yy",},
     {"name":"LexiconUnicAutoLocaleSet","order":2,"path":"scripts/LexiconUnicAutoLocaleSet/LexiconUnicAutoLocaleSet.yy",},
     {"name":"LexiconUnicDatetimeGet","order":1,"path":"scripts/LexiconUnicDatetimeGet/LexiconUnicDatetimeGet.yy",},
+    {"name":"PluginChangeEntryTest","order":11,"path":"scripts/PluginChangeEntryTest/PluginChangeEntryTest.yy",},
     {"name":"Script3","order":5,"path":"scripts/Script3/Script3.yy",},
     {"name":"Script4","order":6,"path":"scripts/Script4/Script4.yy",},
     {"name":"Script70","order":7,"path":"scripts/Script70/Script70.yy",},

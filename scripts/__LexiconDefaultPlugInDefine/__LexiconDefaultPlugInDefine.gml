@@ -1,7 +1,7 @@
 // feather ignore all
 /// @ignore
 function __LexiconDefaultPlugInDefine() {
-	LexiconPlugInDefine("Lexicon", "TabularElf", "1.0", "4.0", function() {
+	LexiconPlugInDefine("Lexicon", "TabularElf", "1.0", "4.1", function() {
 		if (__LEXICON_VERBOSE) {
 			LexiconPlugInRegisterCallback(LexiconCallbackType.ENTRY_CREATED, undefined, function(_text, _key) {
 				__LexiconTrace($"New entry registered! \"{_key}\" with typeof \"{typeof(_text)}\"!")
