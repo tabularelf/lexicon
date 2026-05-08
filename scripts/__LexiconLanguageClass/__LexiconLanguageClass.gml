@@ -30,12 +30,17 @@ function __LexiconLanguageClass(_language, _locale) constructor {
 		for(var _i = 0; _i < argument_count; ++_i) {
 			var _filepath = argument[_i];
 			if (__LEXICON_IS_REFERRABLE_TO_DATAFILES) {
-				if (file_exists(_global.__datafilesFilepath +_filepath)) {
+				if (!string_starts_with(_filepath, _global.__datafilesFilepath)) && (file_exists(_global.__datafilesFilepath + _filepath)) {
 					_filepath = _global.__datafilesFilepath + _filepath;
-				}
+				} 
 			}
         	
 			_filepath = filename_path(_filepath) + filename_name(_filepath);
+			if (__LEXICON_ERROR_ON_INDEX_FILE_ADD) && (string_starts_with(_filepath, program_directory) || string_starts_with(_filepath, working_directory)) {
+				if (!file_exists(_filepath)) {
+					__LexiconError($"Unable to add file \"{argument[_i]}\". File missing.");
+				}
+			}
 			var _foundFile = false;
 			for(var _j = array_length(__files)-1; _j >= 0; --_j) {
 				if (__files[_j].filepath == _filepath) {

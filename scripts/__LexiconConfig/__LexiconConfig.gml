@@ -63,5 +63,12 @@
 	Whether Lexicon should detect & attempt to deal with language & locale strings that have
 	unnecessary whitespace. 
 	Note: This only mainly applies to LexiconLanguageSet & LexiconLanguageGet.
+	Default: true
 */
 #macro __LEXICON_AUTO_TRIM_LANGUAGE_LOCALE true
+/* 
+	Whether Lexicon should error on being unable to add a valid language file.
+    Note: This only ensures that the file itself actively exists when it is added.
+	Default: true
+*/
+#macro __LEXICON_ERROR_ON_INDEX_FILE_ADD true

@@ -16,12 +16,12 @@ function LexiconIndexDeclareFromFile(_file) {
 	try {
 		var _buff = buffer_load(_file);
 		if (!buffer_exists(_buff)) {
-			__LexiconTrace($"Failed to load file \"{_file}\" for declaring.");
+			if (__LEXICON_ERROR_ON_INDEX_FILE_ADD) __LexiconError($"Failed to load file \"{_file}\" for declaring. File missing.");
 			return;
 		}
 
 		_parser.declare(_buff, _file);
 	} finally {
-		buffer_delete(_buff);
+		if (buffer_exists(_buff)) buffer_delete(_buff);
 	}
 }
