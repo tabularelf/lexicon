@@ -17,6 +17,8 @@ function __LexiconGetEntry(_key) {
 		text = _elm.callback(text, entry);
 	});
 
+	_key = string_trim(_key);
+
 	if (_key == "") {
 		__LexiconError("Invalid key. Key cannot be null or empty. Got \"\"!");
 		return undefined;

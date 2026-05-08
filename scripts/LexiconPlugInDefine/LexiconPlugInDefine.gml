@@ -6,5 +6,5 @@
 /// @param {Function} init_callback The callback that this plug-in will call during plug-in loading.
 function LexiconPlugInDefine(_alias, _author, _version, _targetLexiconVersion, _initCallback) {
 	static _global = __LexiconSystem();
-	array_push(_global.__plugIns, new __LexiconPlugInClass(_alias, _author, _version, _targetLexiconVersion, _initCallback));
+	array_push(_global.__plugIns, new __LexiconPlugInClass(string_trim(_alias), string_trim(_author), string_trim(_version), string_trim(_targetLexiconVersion), _initCallback));
 }

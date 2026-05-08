@@ -3,6 +3,7 @@
 /// @param {String | Undefined} text
 /// @param {Struct.__LexiconLanguageClass} languageInstance
 function LexiconPlugInAddEntry(_key, _text, _language) {
+	_key = string_trim(_key);
 	var _entry = LexiconIsEntry(_key) ? _key : __LexiconGetEntry(_key);
 	
 	if (is_undefined(_entry.__text)) {

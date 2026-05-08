@@ -5,5 +5,5 @@
 function LexiconPlugInSetParser(_ext, _parser, _declareParser = undefined) {
 	static _parsers = __LexiconParsersDatabase();
 	
-	_parsers[$ string_lower(_ext)] = new __LexiconParserClass(_ext, _parser, _declareParser);
+	_parsers[$ string_lower(string_trim(_ext))] = new __LexiconParserClass(string_trim(_ext), _parser, _declareParser);
 }
