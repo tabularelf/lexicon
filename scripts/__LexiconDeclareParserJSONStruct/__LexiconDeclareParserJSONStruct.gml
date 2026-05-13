@@ -17,6 +17,10 @@ function __LexiconDeclareParserJSONStruct(_inst, _file) {
 	}
 
 	_lang = string_trim(_lang);
+
+	if (string_lower(_lang) == "comments") {
+		return;
+	}
 	
  	
 	if (is_array(_locale)) {
