@@ -7,6 +7,8 @@ function __LexiconLoadFile(_file, _lang, _async = true) {
 	static _list = __LexiconFileAsyncList();
 	static _global = __LexiconSystem();
 
+	var _fileInSharedBuffer = false;
+
 	// Load instantly
 	if (!_async) {
 		var _buff = undefined;
@@ -17,7 +19,13 @@ function __LexiconLoadFile(_file, _lang, _async = true) {
 		}
            
 		try {
-			_buff = buffer_load(_file.filepath);
+			_buff = __LexiconFindSharedBuffer(_file);
+			if (is_undefined(_buff)) {
+				_buff = buffer_load(_file.filepath);
+			} else {
+				_fileInSharedBuffer = true;
+			}
+
 			if (buffer_exists(_buff)) {
 				_parser.parser(_buff, _file.filepath, _lang);	
 				if (_file.hash == -1) {
@@ -32,8 +40,16 @@ function __LexiconLoadFile(_file, _lang, _async = true) {
 			__LexiconTrace($"File \"{_file.filepath}\" failed to load with error.\n\n{_ex.longMessage}");
 		} finally {
 			if (buffer_exists(_buff)) {
-				buffer_delete(_buff);	
-			}	
+				if (__LEXICON_USE_FILE_SHARED_BUFFERS) && (!_global.__languageLoaded) && (!_fileInSharedBuffer) {
+					buffer_seek(_buff, buffer_seek_start, 0);
+					array_push(_global.__sharedBuffers, {
+						file: _file,
+						buffer: _buff,
+					});
+				} else {
+					buffer_delete(_buff);
+				}
+			}
 		}
 		return;
 	}
@@ -50,6 +66,7 @@ function __LexiconLoadFile(_file, _lang, _async = true) {
 	if (!instance_exists(__LexiconManager)) {
 		instance_create_depth(0, 0, 0, __LexiconManager);
 	}
+
 	if (time_source_get_state(_ts) != time_source_state_active) {
 		time_source_start(_ts);
 	}
@@ -80,5 +97,10 @@ function __LexiconLoadFile(_file, _lang, _async = true) {
 		id: buffer_async_group_end(),
 		cancelled: false,
 		entry: _entry,
+	});
+
+	array_push(_global.__sharedBuffers, {
+		buffer: _buff,
+		file: _file,
 	});
 }

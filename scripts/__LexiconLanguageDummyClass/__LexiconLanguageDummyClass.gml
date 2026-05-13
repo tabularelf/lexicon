@@ -3,7 +3,7 @@
 function __LexiconLanguageDummyClass(_language, _locale) constructor {
 	/// @ignore
 	static __NULLFUNC__ = function() {
-		__LexiconError("A language was not set. Please set the language via \"LexiconLanguageSet()\"!");		
+		__LexiconError($"A language was not set. Please set the language via \"{nameof(LexiconLanguageSet)}()\"!");		
 	};
 
 	__language = _language;

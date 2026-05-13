@@ -96,6 +96,7 @@
     {"id":{"name":"__LexiconFileAsyncList","path":"scripts/__LexiconFileAsyncList/__LexiconFileAsyncList.yy",},},
     {"id":{"name":"__LexiconFileAsyncTS","path":"scripts/__LexiconFileAsyncTS/__LexiconFileAsyncTS.yy",},},
     {"id":{"name":"__LexiconFileClass","path":"scripts/__LexiconFileClass/__LexiconFileClass.yy",},},
+    {"id":{"name":"__LexiconFindSharedBuffer","path":"scripts/__LexiconFindSharedBuffer/__LexiconFindSharedBuffer.yy",},},
     {"id":{"name":"__LexiconForceAddSystem","path":"scripts/__LexiconForceAddSystem/__LexiconForceAddSystem.yy",},},
     {"id":{"name":"__LexiconForceEntry","path":"scripts/__LexiconForceEntry/__LexiconForceEntry.yy",},},
     {"id":{"name":"__LexiconForceEntryConfig","path":"scripts/__LexiconForceEntryConfig/__LexiconForceEntryConfig.yy",},},

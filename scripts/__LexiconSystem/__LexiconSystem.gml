@@ -29,6 +29,8 @@ function __LexiconSystem() {
 		__globalDynamicModifiers: {},
 		__parsers: __LexiconParsersDatabase(),
 		__systemParsers: __LexiconSystemParsers(),
+		__sharedFiles: {},
+		__sharedBuffers: [],
 		__plugIns: [],
 		__fallback: undefined,
 		__plugInsLoaded: false,

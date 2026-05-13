@@ -64,6 +64,7 @@
     {"name":"__LexiconFileAsyncList","order":1,"path":"scripts/__LexiconFileAsyncList/__LexiconFileAsyncList.yy",},
     {"name":"__LexiconFileAsyncTS","order":2,"path":"scripts/__LexiconFileAsyncTS/__LexiconFileAsyncTS.yy",},
     {"name":"__LexiconFileClass","order":5,"path":"scripts/__LexiconFileClass/__LexiconFileClass.yy",},
+    {"name":"__LexiconFindSharedBuffer","order":34,"path":"scripts/__LexiconFindSharedBuffer/__LexiconFindSharedBuffer.yy",},
     {"name":"__LexiconForceAddSystem","order":1,"path":"scripts/__LexiconForceAddSystem/__LexiconForceAddSystem.yy",},
     {"name":"__LexiconForceEntryConfig","order":1,"path":"scripts/__LexiconForceEntryConfig/__LexiconForceEntryConfig.yy",},
     {"name":"__LexiconGetAssetType","order":24,"path":"scripts/__LexiconGetAssetType/__LexiconGetAssetType.yy",},

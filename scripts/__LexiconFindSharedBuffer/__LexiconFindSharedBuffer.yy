@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__LexiconFindSharedBuffer",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__LexiconFindSharedBuffer",
+  "parent":{
+    "name":"(System)",
+    "path":"folders/Lexicon/(System).yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

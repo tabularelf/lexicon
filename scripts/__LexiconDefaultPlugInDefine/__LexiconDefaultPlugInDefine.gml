@@ -48,6 +48,19 @@ function __LexiconDefaultPlugInDefine() {
 				_global.locale = string_copy(_newLang.GetLocale(), 1, _pos-1);
 			}
 		});
+
+		if (__LEXICON_USE_FILE_SHARED_BUFFERS) {
+			LexiconPlugInRegisterCallback(LexiconCallbackType.LANGUAGE_POST_UPDATE, undefined, function(_newLang) {
+				static _global = __LexiconSystem();
+				var _i = array_length(_global.__sharedBuffers)-1;
+				repeat(array_length(_global.__sharedBuffers)) {
+					var _sharedBuffer = _global.__sharedBuffers[_i];
+					buffer_delete(_sharedBuffer.buffer);	
+					--_i;
+				}
+				array_resize(_global.__sharedBuffers, 0);
+			});
+		}
 	});
 }
 __LexiconDefaultPlugInDefine();

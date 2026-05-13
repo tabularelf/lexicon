@@ -30,8 +30,9 @@ if (array_length(__LexiconFileAsyncList()) == 0) {
 			}
 			__LexiconTrace($"File \"{_file.entry.fileRef.filepath}\" failed to load.\n\n{_ex.longMessage}");
 		} finally {
+			buffer_seek(_file.entry.buff, buffer_seek_start, 0);
 			_file.entry.fileRef.isLoading = false;
-			buffer_delete(_file.entry.buff);
+			if (!__LEXICON_USE_FILE_SHARED_BUFFERS) buffer_delete(_file.entry.buff);
 		}
 	}
 }

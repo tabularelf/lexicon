@@ -72,3 +72,10 @@
 	Default: true
 */
 #macro __LEXICON_ERROR_ON_INDEX_FILE_ADD true
+/* 
+	Whether Lexicon should load files as shared buffers or not.
+	This reduces the amount of files needed to be loaded at once, by reusing the same buffer for parsing.
+	Note: This only ensures that buffers are kept around as-is until LexiconCallbackType.POST_LANGUAGE_UPDATE is fired.
+ 	Default: true
+*/
+#macro __LEXICON_USE_FILE_SHARED_BUFFERS true

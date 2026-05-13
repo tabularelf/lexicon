@@ -51,7 +51,15 @@ function __LexiconLanguageClass(_language, _locale) constructor {
 			
 			if (_foundFile) continue;
 
-			array_push(__files, new __LexiconFileClass(_filepath));
+			var _sharedFile = _global.__sharedFiles[$ _filepath];
+			if (!is_undefined(_sharedFile)) {
+				array_push(__files, _sharedFile);
+			} else {
+				var _file = new __LexiconFileClass(_filepath);
+				array_push(__files, _file);
+				_global.__sharedFiles[$ _filepath] = _file;
+			}
+
 			if (IsLoaded()) {
 				LexiconIndexLoadFile(_filepath, false, self);
 			}
