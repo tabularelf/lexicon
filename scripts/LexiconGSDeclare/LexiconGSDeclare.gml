@@ -21,7 +21,7 @@ function LexiconGSDeclare(_filename, _sheetId, _sheetPage, _callback = undefined
 		
 		var _filepath;
 		if (!__LEXICON_ON_DESKTOP) {
-			_filepath = temp_directory + ".lexicon/" + _filename;
+			_filepath = (__LEXICON_ON_DESKTOP ? temp_directory : "") + ".lexicon/" + _filename;
 		} else {
 			if (GM_is_sandboxed) {
 				__LexiconError($"Lexicon.GoogleSheets - Sandbox is enabled! Please disable it as per your desktop target!");

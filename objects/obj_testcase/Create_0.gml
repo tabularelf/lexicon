@@ -66,22 +66,22 @@ LexiconPlugInSetDynamic("toStatic", function(_str) {
 	return _str;
 }, true);
 
-assert(Lexicon("Hello, world!").Get(), "Hello, world!", "Normal string");
-assert(Lexicon("Hello, {0}!", "Bob").Get(), "Hello, Bob!", "Normal string template");
-assert(Lexicon("Hello, {playerName}!").Get(), "Hello, Alice!", "Normal variable template");
-assert(Lexicon("Hello, {lowercase, Bob}!").Get(), "Hello, bob!", "Lowercase string");
-assert(Lexicon("Hello, {uppercase, {lowercase, Bob}}!").Get(), "Hello, BOB!", "Uppercase + lowercase string");
+assert(LexiconParse("Hello, world!").Get(), "Hello, world!", "Normal string");
+assert(LexiconParse("Hello, {0}!", "Bob").Get(), "Hello, Bob!", "Normal string template");
+assert(LexiconParse("Hello, {playerName}!").Get(), "Hello, Alice!", "Normal variable template");
+assert(LexiconParse("Hello, {lowercase, Bob}!").Get(), "Hello, bob!", "Lowercase string");
+assert(LexiconParse("Hello, {uppercase, {lowercase, Bob}}!").Get(), "Hello, BOB!", "Uppercase + lowercase string");
 
-assert(Lexicon("Hello, {lowercase, Bob}!").Get(), "Hello, bob!", "Lowercase string");
-assert(Lexicon("Hello, {uppercase, {lowercase, Bob}}!").Get(), "Hello, BOB!", "Uppercase + lowercase string");
+assert(LexiconParse("Hello, {lowercase, Bob}!").Get(), "Hello, bob!", "Lowercase string");
+assert(LexiconParse("Hello, {uppercase, {lowercase, Bob}}!").Get(), "Hello, BOB!", "Uppercase + lowercase string");
 
-assert(Lexicon("Hello, {lowercase, {0}}!", "Bob").Get(), "Hello, bob!", "Lowercase string template");
-assert(Lexicon("Hello, {uppercase, {lowercase, {0}}}!", "Bob").Get(), "Hello, BOB!", "Uppercase + lowercase string template");
+assert(LexiconParse("Hello, {lowercase, {0}}!", "Bob").Get(), "Hello, bob!", "Lowercase string template");
+assert(LexiconParse("Hello, {uppercase, {lowercase, {0}}}!", "Bob").Get(), "Hello, BOB!", "Uppercase + lowercase string template");
 
-assert(Lexicon("Hello, {lowercase, {playerName}}!").Get(), "Hello, alice!", "Lowercase variable template");
-assert(Lexicon("Hello, {uppercase, {lowercase, {playerName}}}!").Get(), "Hello, ALICE!", "Uppercase + lowercase variable template");
-assert(Lexicon("Hello, {titlecase, {lowercase, {playerName}}}!").Get(), "Hello, Alice!", "Uppercase + lowercase variable template");
-assert(Lexicon("Hello, {concat, {titlecase, {lowercase, {playerName}}}, {minutes}}!").Get(), "Hello, Alice1!", "Concat variable template");
+assert(LexiconParse("Hello, {lowercase, {playerName}}!").Get(), "Hello, alice!", "Lowercase variable template");
+assert(LexiconParse("Hello, {uppercase, {lowercase, {playerName}}}!").Get(), "Hello, ALICE!", "Uppercase + lowercase variable template");
+assert(LexiconParse("Hello, {titlecase, {lowercase, {playerName}}}!").Get(), "Hello, Alice!", "Uppercase + lowercase variable template");
+assert(LexiconParse("Hello, {concat, {titlecase, {lowercase, {playerName}}}, {minutes}}!").Get(), "Hello, Alice1!", "Concat variable template");
 
 playerName = Lexicon("{playerName}").SetBypassFrameCooldown(true);
 
