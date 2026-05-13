@@ -40,6 +40,7 @@ function __LexiconSystem() {
 		__missingTextHandler: undefined,
 		__globalVariableStruct: {},
 		__gameRestarted: false,
+		__deferred: false,
 		__languageLoaded: false,
 		__forceResetFontCache: false,
 		__allowRegisteringCallbacks: false,

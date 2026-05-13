@@ -34,6 +34,6 @@ function __LexiconUpdateLanguage(_newLang, _async = true) {
 		_global.__languageLoaded = true;
 		_newLang.__loaded = true;
 
-		__LexiconCallbackFire(LexiconCallbackType.LANGUAGE_POST_UPDATE, _newLang);
+		if (!_global.__deferred) __LexiconCallbackFire(LexiconCallbackType.LANGUAGE_POST_UPDATE, _newLang);
 	}
 }

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"LexiconPlugInLanguageDefer",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"LexiconPlugInLanguageDefer",
+  "parent":{
+    "name":"Plug-In",
+    "path":"folders/Lexicon/Plug-In.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

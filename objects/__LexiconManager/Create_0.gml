@@ -13,7 +13,7 @@ __LexiconManagerCleanUp = function(_runPostUpdate = true) {
 	time_source_stop(_global.__asyncTs);
 	__canDestroy = true;
 	_global.__languageLoaded = true;
-	if (_runPostUpdate) __LexiconCallbackFire(LexiconCallbackType.LANGUAGE_POST_UPDATE, _global.__mainLanguage);
+	if (_runPostUpdate) && (!_global.__deferred) __LexiconCallbackFire(LexiconCallbackType.LANGUAGE_POST_UPDATE, _global.__mainLanguage);
 	instance_destroy();
 }
 
