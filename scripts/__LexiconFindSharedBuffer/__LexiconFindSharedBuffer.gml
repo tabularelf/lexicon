@@ -1,3 +1,5 @@
+// feather ignore all
+/// @ignore
 function __LexiconFindSharedBuffer(_file) {
 	static _global = __LexiconSystem();
 	static _ctx = {
@@ -11,7 +13,7 @@ function __LexiconFindSharedBuffer(_file) {
 	_ctx.file = _file;
 	var _index = array_find_index(_global.__sharedBuffers, _callback);
 	if (_index != -1) {
-		return _global.__sharedBuffers[_index];
+		return _global.__sharedBuffers[_index].buffer;
 	}
 
 	return undefined;

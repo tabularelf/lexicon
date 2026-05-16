@@ -7,6 +7,7 @@ function __LexiconHotReloadTS() {
 	
 	var _lang = LexiconLanguageGetCurrent();
 	var _files = variable_clone(_lang.GetFiles(), 0);
+	
 	var _fallback = LexiconGlobalFallbackGet();
 	if (!is_undefined(_fallback)) {
 		if (!is_undefined(LexiconLanguageGet(_fallback))) {
@@ -14,7 +15,7 @@ function __LexiconHotReloadTS() {
 			array_copy(_files, array_length(_files), _fallbackFiles, 0, array_length(_fallbackFiles));
 		}
 	}
-
+ 
 	var _fallbacks = _lang.GetFallbacks();
 	if (!is_undefined(_fallbacks)) {
 		with({_files}) array_foreach(_fallbacks, function(_elm, _index) {

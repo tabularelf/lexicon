@@ -65,14 +65,14 @@ function __LexiconLanguageClass(_language, _locale) constructor {
 			}
 		}
 		return self;
-	}
+	};
 
 	/// @param {array} files
 	/// @self
 	static AddFileExt = function(_args) {
 		method_call(AddFile, _args);
 		return self;
-	}
+	};
 
 	/// @param {String} filepath
 	static RemoveFile = function(_filepath) {
@@ -95,22 +95,22 @@ function __LexiconLanguageClass(_language, _locale) constructor {
 	/// @return {Array<Struct.__LexiconFileClass>}
 	static GetFiles = function() {
 		return __files;
-	}
+	};
 
 	/// @return {Real}
 	static FilesCount = function() {
 		return array_length(__files);
-	} 
+	};
 
 	/// @return {Real}
 	static FallbacksCount = function() {
 		return array_length(__fallbacks);
-	}
+	};
 
 	/// @return {Array<String>}
 	static GetFallbacks = function() {
 		return __fallbacks;
-	}
+	};
 
 	/// @param {String} fallback
 	static AddFallback = function() {
@@ -123,7 +123,7 @@ function __LexiconLanguageClass(_language, _locale) constructor {
 		}
 
 		return self;
-	}
+	};
 
 	/// @param {Array<String>} fallbacks
 	static AddFallbackExt = function(_args) {
@@ -135,20 +135,20 @@ function __LexiconLanguageClass(_language, _locale) constructor {
 			++_i;
 		}
 		return self;
-	}
+	};
 
 	/// @param {String} category
 	/// @param {Asset.GMFont} font
 	static SetFont = function(_fontDir, _font) {
 		__fonts[$ _fontDir] = _font;
 		return self;
-	}
+	};
 
 	/// @param {String} category
 	/// @return {Asset.GMFont | undefined} 
 	static GetFont = function(_fontDir) {
 		return __fonts[$ _fontDir];
-	}
+	};
 
 	/// @param {Any} asset_src
 	/// @param {Any} asset_dest
@@ -170,7 +170,7 @@ function __LexiconLanguageClass(_language, _locale) constructor {
 			}
 		}
 		return self;
-	}
+	};
 
 	/// @param {Any} asset_src
 	/// @param {Any} asset_dest
@@ -193,23 +193,23 @@ function __LexiconLanguageClass(_language, _locale) constructor {
 			}
 		}
 		return self;
-	}
+	};
 
 	/// @param {String} asset
 	/// @return {Any}
 	static GetRemapAsset = function(_asset) {
 		var _assetName = is_string(_asset) ? _asset : __LexiconGetAssetName(_asset);
 		return __remapAsset[$ _assetName] ?? (is_string(_asset) ? (handle_parse(_asset) ?? asset_get_index(_asset)) : _asset); 
-	}
+	};
 
 	/// @param {String} language_or_locale
 	/// @return {Bool}
 	static HasFallback = function(_lang) {
 		return array_get_index(__fallbacks, _lang) != -1;
-	}
+	};
 
 	/// @return {String}
 	static toString = function() {
-		return GetLanguage() + "-" + GetLocale();
-	}
+		return "Lexicon Language Struct: " + GetLanguage() + "-" + GetLocale();
+	};
 }

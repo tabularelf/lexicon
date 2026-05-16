@@ -18,7 +18,7 @@ function __LexiconDeclareParserCsv(_buff, _file) {
 
 		var _lang = string_trim(_grid[0][_j]);
 		if (_j >= array_length(_grid[1])) {
-			__LexiconTrace($"CSV Parser - Cannot process language remaining languages. Invalid {_grid[0][_j]} locale.");
+			__LexiconTrace($"CSV Parser - Cannot process language remaining languages. Invalid {_grid[0][_j]} language.");
 			return;
 		}
 

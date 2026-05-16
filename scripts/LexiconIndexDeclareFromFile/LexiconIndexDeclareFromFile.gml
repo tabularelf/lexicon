@@ -1,13 +1,10 @@
 // feather ignore all
 /// @param {String} filepath
 function LexiconIndexDeclareFromFile(_file) {
-	static _systemParsers = __LexiconSystem().__systemParsers;
-	static _parsers = __LexiconSystem().__parsers;
-
 	LexiconPlugInForceLoad();
 
 	var _ext = string_lower(string_delete(filename_ext(_file), 1, 1));
-	var _parser = _parsers[$ _ext] ?? _systemParsers[$ _ext];
+	var _parser = __LexiconGetParser(_ext)
 	if (is_undefined(_parser) || (is_struct(_parser) && !is_callable(_parser.declare))) {
 		__LexiconTrace($"Cannot declare from file \"{_file}\", parser doesn't exist for \"{_ext}\"!'");
 		return;

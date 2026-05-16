@@ -36,4 +36,8 @@ function __LexiconLanguageDummyClass(_language, _locale) constructor {
 	static GetLocale = function() {
 		return __locale;
 	};
+
+	static toString = function() {
+		return "LEXICON DUMMY LANGUAGE CLASS (INTENTIONAL)";
+	};
 }

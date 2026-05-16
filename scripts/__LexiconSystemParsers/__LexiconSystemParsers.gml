@@ -1,3 +1,5 @@
+// feather ignore all
+/// @ignore
 function __LexiconSystemParsers() {
 	static _inst = undefined;
 	if (is_struct(_inst)) return _inst;

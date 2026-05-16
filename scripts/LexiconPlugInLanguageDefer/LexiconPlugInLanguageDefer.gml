@@ -1,3 +1,4 @@
+// feather ignore all
 function LexiconPlugInLanguageDefer() {
 	static _global = __LexiconSystem();
 	if (_global.__languageLoaded) {

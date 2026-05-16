@@ -49,7 +49,7 @@ LexiconPlugInSetDynamic("getNum", function() {
 	return current_time / 1000;
 }, true);
 
-LexiconPlugInSetEntry("test.foo", "bar {0}")
+//LexiconPlugInSetEntry("test.foo", "bar {0}")
 
 show_debug_message("String speed test");
 repeat(1) {

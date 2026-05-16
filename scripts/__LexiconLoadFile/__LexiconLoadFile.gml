@@ -2,8 +2,6 @@
 /// @ignore
 function __LexiconLoadFile(_file, _lang, _async = true) {
 	static _ts = __LexiconSystem().__asyncTs;
-	static _systemParsers = __LexiconSystem().__systemParsers;
-	static _parsers = __LexiconSystem().__parsers;
 	static _list = __LexiconFileAsyncList();
 	static _global = __LexiconSystem();
 
@@ -12,7 +10,7 @@ function __LexiconLoadFile(_file, _lang, _async = true) {
 	// Load instantly
 	if (!_async) {
 		var _buff = undefined;
-		var _parser = _parsers[$ _file.ext] ?? _systemParsers[$ _file.ext];
+		var _parser = __LexiconGetParser(_file.ext);
 		if (is_undefined(_parser)) {
 			__LexiconTrace($"File \"{_file.filepath}\" doesn't have a valid parser type!");
 			return;
@@ -58,6 +56,45 @@ function __LexiconLoadFile(_file, _lang, _async = true) {
 		if (__LEXICON_VERBOSE) {
 			__LexiconTrace($"File \"{_file.filepath}\" already loading!");
 		}
+		
+		if (__LEXICON_USE_FILE_SHARED_BUFFERS) {
+			var _parser = __LexiconGetParser(_file.ext);
+			if (is_undefined(_parser)) {
+				__LexiconTrace($"File \"{_file.filepath}\" doesn't have a valid parser type!");
+				return;
+			}
+
+			var _buff = __LexiconFindSharedBuffer(_file);
+			if (!is_undefined(_buff)) {
+
+				if (!instance_exists(__LexiconManager)) {
+					instance_create_depth(0, 0, 0, __LexiconManager);
+				}
+
+				var _index = -1;
+				with({_lang}) _index = array_find_index(__LexiconManager.filesList, function(_elm, _index) {
+					return _elm.language == _lang;
+				});
+
+				if (_index == -1) {
+					var _entry = {
+						id: -1,
+						buff: _buff,
+						parser: _parser.parser,
+						language: _lang,
+						fileRef: _file,
+						slot: ++_global.__asyncSlot,
+					};
+						
+					array_push(__LexiconManager.filesList, {
+						id: -1,
+						cancelled: false,
+						entry: _entry,
+					});
+				}
+			}
+		}
+
 		return;
 	}
 
@@ -71,16 +108,16 @@ function __LexiconLoadFile(_file, _lang, _async = true) {
 		time_source_start(_ts);
 	}
 
+	var _parser = __LexiconGetParser(_file.ext);
+	if (is_undefined(_parser)) {
+		__LexiconTrace($"File \"{_file.filepath}\" doesn't have a valid parser type!");
+		return;
+	}
     
 	buffer_async_group_begin("Lexicon");
 	buffer_async_group_option("slottitle", "Language Files");
 	buffer_async_group_option("subtitle", "");
 	buffer_async_group_option("showdialog", false);
-	var _parser = _parsers[$ _file.ext];
-	if (is_undefined(_parser)) {
-		__LexiconTrace($"File \"{_file.filepath}\" doesn't have a valid parser type!");
-		return;
-	}
        
 	var _entries = [];
 	var _buff = buffer_create(1, buffer_grow, 1);
@@ -99,8 +136,10 @@ function __LexiconLoadFile(_file, _lang, _async = true) {
 		entry: _entry,
 	});
 
-	array_push(_global.__sharedBuffers, {
-		buffer: _buff,
-		file: _file,
-	});
+	if (__LEXICON_USE_FILE_SHARED_BUFFERS) {
+		array_push(_global.__sharedBuffers, {
+			file: _file,
+			buffer: _buff,
+		});
+	}
 }

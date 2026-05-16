@@ -22,4 +22,8 @@ function __LexiconEntryClass(_entry, _language = __LexiconLanguageDummy()) const
 	static GetKey = function() {
 		return __entry;
 	}
+
+	static toString = function() {
+		return "Lexicon Entry Class: " + __entry;
+	};
 }

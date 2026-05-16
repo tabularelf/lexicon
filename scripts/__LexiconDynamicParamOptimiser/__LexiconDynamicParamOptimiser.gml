@@ -1,3 +1,4 @@
+// feather ignore all
 /// @ignore
 function __LexiconDynamicParamOptimiser(_target, _parent) {
 	if (is_array(_parent.dynamicArgs)) {

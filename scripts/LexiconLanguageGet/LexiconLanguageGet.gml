@@ -1,6 +1,7 @@
 // feather ignore all
 /// @param {String} language_or_locale Language to fetch
 /// @param {Bool} loose Whether locale search should be loose or not. i.e. "en_AU" will loosely look for "en" if it cannot find "en_AU".
+/// @return {Struct.__LexiconLanguageClass}
 function LexiconLanguageGet(_lang, _loose = false) {
 	if (LexiconIsLanguage(_lang)) return _lang;
 	if (is_struct(_lang)) && (!LexiconIsLanguage(_lang)) return undefined;

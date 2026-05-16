@@ -55,7 +55,7 @@ function __LexiconDefaultPlugInDefine() {
 				var _i = array_length(_global.__sharedBuffers)-1;
 				repeat(array_length(_global.__sharedBuffers)) {
 					var _sharedBuffer = _global.__sharedBuffers[_i];
-					buffer_delete(_sharedBuffer.buffer);	
+					if (buffer_exists(_sharedBuffer.buffer)) buffer_delete(_sharedBuffer.buffer);	
 					--_i;
 				}
 				array_resize(_global.__sharedBuffers, 0);

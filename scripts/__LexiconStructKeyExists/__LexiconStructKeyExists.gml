@@ -1,3 +1,5 @@
+// feather ignore all
+/// @ignore
 function __LexiconStructKeyExists(_root, _key) {
 	if (is_undefined(_root)) return false;
 

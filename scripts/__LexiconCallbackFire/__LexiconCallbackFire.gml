@@ -6,7 +6,7 @@ function __LexiconCallbackFire(_callbackType) {
 		args: [],
 	};
 
-	static _callback = method(_ctx, function(_elm, _index) {
+	static _callbackMultiple = method(_ctx, function(_elm, _index) {
 		switch(array_length(args)) {
 			case 0:
 				_elm.callback();
@@ -24,21 +24,36 @@ function __LexiconCallbackFire(_callbackType) {
 				_elm.callback(args[0], args[1], args[2], args[3]);
 			break;
 		}
-	});
+	}); 
+
+	static _callback = function(_elm, _index) {
+		_elm.callback();
+	};
 
 	if (argument_count > 1) {
 		try {
+			var _isRecursing = array_length(_ctx.args) > 0;
+			
+			var _args = _isRecursing ? [] : _ctx.args;
+			var _oldArgs = _isRecursing ? _ctx.args : undefined;
+			
 			var _i = 1;
-			array_resize(_ctx.args, argument_count-1);
+			array_resize(_args, argument_count-1);
 			repeat(argument_count-1) {
-				_ctx.args[_i-1] = argument[_i];
+				_args[_i-1] = argument[_i];
 				++_i;
 			}
 
-			array_foreach(_plugInCallbacks[_callbackType], _callback);
+			_ctx.args = _args;
+			array_foreach(_plugInCallbacks[_callbackType], _callbackMultiple);
 			return;
 		} finally {
-			array_resize(_ctx.args, 0);
+			if (_isRecursing) {
+				delete _ctx.args;
+				_ctx.args = _oldArgs;
+			} else {
+				array_resize(_ctx.args, 0);
+			}
 		}
 	}
 

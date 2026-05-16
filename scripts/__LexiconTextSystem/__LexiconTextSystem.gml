@@ -1,9 +1,11 @@
+// feather ignore all 
+/// @ignore
 function __LexiconTextSystem() {
 	static _init = false;
 	if (_init) return;
 
 	_init = true;
-	time_source_start(time_source_create(time_source_global, 60, time_source_units_frames, function() {
+	time_source_start(time_source_create(time_source_global, 1, time_source_units_seconds, function() {
 		static _cache = __LexiconTextCache();
 		static _names = [];
 		static _index = 0;
@@ -27,10 +29,4 @@ function __LexiconTextSystem() {
 
 		//show_debug_message($"Total time: {(get_timer() - _t) / 1000}ms, Leftover {struct_names_count(_cache)}");
 	}, [], -1));
-}
-
-function __LexiconTextCache() {
-	static _init = __LexiconTextSystem();
-	static _cache = ds_map_create();
-	return _cache;
 }

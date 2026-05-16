@@ -1,3 +1,5 @@
+// feather ignore all
+/// @ignore
 function __LexiconParserJSONStruct(_inst, _file, _langEntry) {
 	var _lang = _inst[$ "language"];
 

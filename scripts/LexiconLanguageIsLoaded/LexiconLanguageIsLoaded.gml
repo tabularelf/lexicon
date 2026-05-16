@@ -1,5 +1,6 @@
 // feather ignore all
 /// @param {String, Struct__LexiconLanguageClass} language_or_locale
+/// @return {Bool}
 function LexiconLanguageIsLoaded(_lang = LexiconLanguageGetCurrent()) {
 	static _global = __LexiconSystem();
 	if (is_string(_lang)) {

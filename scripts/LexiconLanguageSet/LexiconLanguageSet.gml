@@ -13,7 +13,7 @@ function LexiconLanguageSet(_lang, _async = false) {
 		return;
 	}
 
-	if (__LEXICON_AUTO_TRIM_LANGUAGE_LOCALE) && (string_trim(_lang) != _lang) {
+	if (__LEXICON_AUTO_TRIM_LANGUAGE_LOCALE) && (is_string(_lang) && (string_trim(_lang) != _lang)) {
 		__LexiconTrace($"Warning: \"{string_trim(_lang)}\" is not properly trimmed. Make sure that you are trimming your inputs!");
 		var _callstack = debug_get_callstack();
 		var _str = "  " + string_join_ext("\n  ", _callstack, 1, array_length(_callstack)-2);

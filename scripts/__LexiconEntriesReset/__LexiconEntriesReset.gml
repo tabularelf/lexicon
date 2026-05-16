@@ -6,12 +6,7 @@ function __LexiconEntriesReset(_oldLang){
 	static _asyncList = __LexiconFileAsyncList();
 	struct_foreach(_entries, function(_name, _value) {
 		static _dummy = __LexiconLanguageDummy();
-		if (is_array(_value.__variations)) {
-			delete _value.__variations;
-		}
-		_value.__text = undefined;
-		_value.__language = _dummy;
-		_value.__isStatic = false;
+		LexiconPlugInSetEntry(_name, undefined, _dummy);
 	});
 
 	var _asyncListLen = array_length(_asyncList);
@@ -23,7 +18,7 @@ function __LexiconEntriesReset(_oldLang){
 		_asyncListLen += array_length(fileList);
 		array_foreach(fileList, function(_elm) {
 			_elm.cancelled = true;
-			buffer_delete(_elm.entry.buff);
+			if (buffer_exists(_elm.entry.buff)) buffer_delete(_elm.entry.buff);
 		});
 
 		__LexiconManagerCleanUp(false);
