@@ -64,7 +64,7 @@ function __LexiconLoadFile(_file, _lang, _async = true) {
 				return;
 			}
 
-			var _buff = __LexiconFindSharedBuffer(_file);
+			var _buff = __LEXICON_USE_FILE_SHARED_BUFFERS ? __LexiconFindSharedBuffer(_file) : undefined;
 			if (!is_undefined(_buff)) {
 
 				if (!instance_exists(__LexiconManager)) {
@@ -73,7 +73,7 @@ function __LexiconLoadFile(_file, _lang, _async = true) {
 
 				var _index = -1;
 				with({_lang}) _index = array_find_index(__LexiconManager.filesList, function(_elm, _index) {
-					return _elm.language == _lang;
+					return _elm == _lang;
 				});
 
 				if (_index == -1) {
