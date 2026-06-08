@@ -28,7 +28,11 @@ function LexiconGSDeclare(_filename, _sheetId, _sheetPage, _callback = undefined
 				return _result;
 			}
 
-			_filepath = filename_path(GM_project_filename) + "datafiles/" + _filename;
+			if (__LEXICON_GOOGLE_SHEETS_ALLOW_IN_PRODUCTION) && (GM_build_type == "exe") {
+    			_filepath = program_directory + _filename;
+			} else {
+			    _filepath = filename_path(GM_project_filename) + "datafiles/" + _filename;
+			}
 		}
 		
 		if (__LEXICON_GOOGLE_SHEETS_AUTO_DECLARE_FILES) && (file_exists(_filepath)) {
